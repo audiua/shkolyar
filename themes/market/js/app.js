@@ -66,7 +66,11 @@ $('li.gdz').hover(function(){
 $('.view-filter').click(function(){
 
 	var oldActiveView = $(this).siblings('.active-filter').data('view');
+	var smallBtn = false;
 	var newActiveView = $(this).data('view');
+	if(newActiveView == 'small-book-block'){
+		smallBtn = true;
+	}
 
 	console.log(oldActiveView);
 	console.log(newActiveView);
@@ -79,6 +83,13 @@ $('.view-filter').click(function(){
 
 		$('.'+oldActiveView).each(function(){
 			$(this).removeClass(oldActiveView).addClass(newActiveView);
+			if(smallBtn){
+				$(this).find('.gdz-link').find('a').removeClass('btn-sm').addClass('btn-xs');
+				$(this).find('.textbook-link').find('a').removeClass('btn-sm').addClass('btn-xs');
+			} else {
+				$(this).find('.gdz-link').find('a').removeClass('btn-xs').addClass('btn-sm');
+				$(this).find('.textbook-link').find('a').removeClass('btn-xs').addClass('btn-sm');
+			}
 		});
 	});
 
@@ -172,9 +183,6 @@ function getTask(e){
 	  		var imgWidth = $(data).data('width');
 	  		var imgHeight = $(data).data('height');
 
-	  		console.log(imgWidth);
-	  		console.log(imgHeight);
-
 	  		// console.log(imgWidth);
 	  		var taskW = $('.task').width();
 	
@@ -184,13 +192,11 @@ function getTask(e){
 
 	  		// если картинка решения больше блока
 			if( imgWidth > taskW){
-				console.log('img>');
 
 				// пропорциональное изменение размеров
 				resizeImage(imgWidth,imgHeight,taskW-10);
 	  			
 			} else {
-				console.log('img<');
 				$('.task').find('img').css({'height':imgHeight+'px', 'width':imgWidth+'px'});
 			}
 	  		
@@ -241,7 +247,6 @@ function getTask(e){
 	  		// скролит к заданию
 	  		$('body,html').animate({scrollTop:480},200);
 	  		// $('.task').animate({scrollTop: 0}, 400);
-
 	  		
 	  	}
 	});
@@ -323,7 +328,6 @@ if( $.cookie('showFb') ){
 } else {
 	setTimeout(showFb, 10000);
 }
-
 
 
 });
