@@ -9,7 +9,7 @@ class TaskWidget extends CWidget{
         $this->params = $this->controller->param;
         
         // формируем путь к 
-		$path = $_SERVER['DOCUMENT_ROOT'] 
+		$path = Yii::app()->basePath . '/../' 
             . 'img/'.$this->controller->id.'/'.$this->params['clas']
             . '/'.$this->params['subject']
             . '/'.$this->params['book'].'/task';
