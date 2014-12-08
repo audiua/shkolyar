@@ -52,6 +52,7 @@ return array(
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
+		'application.widgets.lastBookWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'

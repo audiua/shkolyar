@@ -18,6 +18,17 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	Готові домашні завдання безкоштовно за допомогою одного з предметів шкільної програми заощадять 
 	час і дозволять з успіхом розібратися у найскладніших завданнях! <br><br>
 </p>
+
+	
+<div class="separator"></div>
+<div class="info">ГДЗ</div>
+<?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
+
+<div class="separator"></div>
+<div class="info">Підручники</div>
+<?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
+
+<div class="separator"></div>
 <div class="info">Як правильно використовувати готові домашні завдання?</div>
 <p class="description">Звичайно, існування посібників і збірників ГДЗ не
 	припускає того, що учні бездумно списують рішення та відповіді в зошит, хоча багато учнів можливо
@@ -27,9 +38,3 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	школяр мав змогу щонайменше побачити правильну відповідь для звірки і як максимум розглянути правильне 
 	рішення для того, щоб розібратися, як правильно виконувати дане завдання. І само собою зрозуміло, що ГДЗ 
 	онлайн зручно використовувати батькам, які приділяють час на перевірку домашньої роботи своїх дітей.</p>
-	
-<div class="separator"></div>
-<div class="info">ГДЗ</div>
-
-<div class="separator"></div>
-<div class="info">Підручники</div>

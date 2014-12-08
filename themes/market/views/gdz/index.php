@@ -33,6 +33,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
+<div class="clear"></div>
 <div class="separator"></div>
 <div class="info">Як правильно використовувати готові домашні завдання?</div>
 <p class="description">Звичайно, існування посібників і збірників ГДЗ не

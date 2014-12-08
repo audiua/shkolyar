@@ -67,6 +67,16 @@ class TextbookBook extends CActiveRecord
 		);
 	}
 
+	public function scopes(){
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => '(t.public = 1)',
+		);
+
+		return $scopes;
+	}
+
 	public function behaviors(){
 		return array(
 			'CTimestampBehavior' => array(
