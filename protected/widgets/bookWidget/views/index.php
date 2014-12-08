@@ -84,16 +84,16 @@ foreach( $this->model as $i => $one ):
 				if( $this->controller->id == 'gdz' ): ?>
 
 					<div class="gdz-link">
-						<?php echo CHtml::link( 'gdz', array('/gdz/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug)); ?>
+						<?php echo CHtml::link( 'Перейти до збірника ГДЗ', array('/gdz/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug), array('class'=>'btn btn-primary btn-lg')); ?>
 					</div>
 
 
 					<?php 
-					print_r( $this->controller->checkerBook($one->$categoryClas->clas->slug, $one->$categorySubject->subject->slug, $one->slug) );
-					die;
+					// print_r( $this->controller->checkerBook($one->$categoryClas->clas->slug, $one->$categorySubject->subject->slug, $one->slug) );
+					// die;
 					if( $this->controller->checkerBook($one->$categoryClas->clas->slug, $one->$categorySubject->subject->slug, $one->slug) ):?>
 						<div class="textbook-link">
-							<?php echo CHtml::link( 'textbook', array('/textbook/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug)); ?>
+							<?php echo CHtml::link( 'Перейти до підручника онлайн', array('/textbook/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug), array('class'=>'btn btn-success btn-lg')); ?>
 						</div>
 					<?php endif;
 					

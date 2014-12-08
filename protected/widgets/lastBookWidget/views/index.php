@@ -9,7 +9,8 @@ foreach( $model as $i => $one ):
 	}
 
 	$mode_clas = $this->mode.'_clas';
-	$mode_subject = $this->mode.'_subject';;
+	$mode_subject = $this->mode.'_subject';
+	$btnSize = $first == true ? 'btn-sm' : 'btn-xs';
 	
 	$path = 'img/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug.'/book';
 ?>
@@ -40,13 +41,8 @@ foreach( $model as $i => $one ):
 
   		</div>
 		<div class="gdz-link">
-			<?php echo CHtml::link( 'gdz', array('/gdz/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug)); ?>
+			<?php echo CHtml::link( 'Перейти' , array('/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug), array('class'=>'btn btn-primary '.$btnSize)); ?>
 		</div>
-		<div class="textbook-link">
-			<?php echo CHtml::link( 'textbook', array('/textbook/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug)); ?>
-		</div>
-					
-		<!-- <div class="clear"></div> -->
 	</div>
 <?php
 $first = false;

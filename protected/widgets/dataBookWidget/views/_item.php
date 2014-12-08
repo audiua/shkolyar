@@ -19,10 +19,10 @@
 	</div>
 
 	<div class="gdz-link">
-		<?php echo CHtml::link( 'gdz', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug)); ?>
+		<?php echo CHtml::link( 'Перейти до ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-xs')); ?>
 	</div>
 	<div class="textbook-link">
-		<?php echo CHtml::link( 'textbook', array('/textbook/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug)); ?>
+		<?php echo CHtml::link( 'Перейти до підручника', array('/textbook/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-xs')); ?>
 	</div>
 					
 </div>
