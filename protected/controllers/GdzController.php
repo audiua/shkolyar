@@ -126,11 +126,13 @@ public function actionClas($clas){
 
 		$this->setMeta();
 
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'gdz_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.public=1');
+
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
-				'criteria'=>array(
-					'condition'=>'gdz_clas_id='.$this->clasModel->id,
-				), 
+				'criteria'=>$criteria, 
 				'pagination'=>array('pageSize'=>12),
 			)
 		);
