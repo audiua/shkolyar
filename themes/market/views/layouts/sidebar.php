@@ -35,14 +35,14 @@ VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "300", color1: 'FF
 </div>
 
 <div class="sidebar-block">
-	<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:290px;" allowTransparency="true"></iframe>
+	<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=200&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:200px;" allowTransparency="true"></iframe>
 </div>
 
 <div class="sidebar-block">
 	<h3>Популярні за добу</h3>
 	<?php $this->widget('RelativeGdzWidget'); ?>
 
-	<a href="http://TeaserNet.com/?owner_id=183605"><img src="http://teasernet.com/images/tnet/nets/1/200x200-2.gif "></a>
+	<!-- <a href="http://TeaserNet.com/?owner_id=183605"><img src="http://teasernet.com/images/tnet/nets/1/200x200-2.gif "></a> -->
 </div>
 <!-- <div class="sidebar-block">
 	<div class="tizer">
