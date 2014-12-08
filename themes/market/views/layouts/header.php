@@ -246,9 +246,9 @@
 			</div>
 		</li>
 
-		<!-- <li  ><a href="/library">Художня література</a></li>
+		<li  ><a href="/library">Художня література</a></li>
 		<li  ><a href="/works">Твори</a></li>
-		<li  ><a href="/know-all">Всезнайка</a></li> -->
+		<li  ><a href="/know-all">Всезнайка</a></li>
 		
 
 	</ul>
