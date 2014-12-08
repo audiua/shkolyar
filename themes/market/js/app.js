@@ -307,8 +307,22 @@ rotate();
 
 
 // модальное окно лайков фб
-$('#fb-modal').modal('show');
+function showFb(){
+	console.log( $.cookie('showFb') );
+	$.cookie('showFb', 'showFb', {
+	    expires: 1,
+	    path: '/',
+	});
 
+	$('#fb-modal').modal('show');
+}
+
+// проверяем по кукам 1 раз в сутки
+if( $.cookie('showFb') ){
+	return true;
+} else {
+	setTimeout(showFb, 10000);
+}
 
 
 
