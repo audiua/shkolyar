@@ -9,6 +9,9 @@
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
         <link rel="canonical" href="<?php echo $this->canonical; ?>">
 
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css">
         <link rel="stylesheet/less" type="text/css" href="<?php  echo Yii::app()->theme->baseUrl; ?>/less/app.less" />
