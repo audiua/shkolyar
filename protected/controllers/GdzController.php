@@ -401,7 +401,7 @@ public function actionNestedOne(){
 	. '/' . $this->param['subject'] 
 	. '/' . $this->param['book'] . '/task/';
 
-	$sections = scandir('images/' . $path);
+	$sections = scandir('img/' . $path);
 	foreach($sections as $section){
 
 		if($this->param['subject']=='lang_en'){
@@ -413,12 +413,12 @@ public function actionNestedOne(){
 		}
 	}
 
-	if( ! file_exists($_SERVER['DOCUMENT_ROOT'] . '/images/' . $pathImg['path'])){
+	if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
 		$_GET = null;
 		throw new CHttpException('404', 'такого задания в этом учебнике нету');
 	}
 
-	$imgSize = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/' . $pathImg['path']);
+	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
 	$pathImg['width'] = $imgSize[0];
 	$pathImg['height'] = $imgSize[1];
 	// print_r($pathImg['width']);
@@ -429,7 +429,7 @@ public function actionNestedOne(){
 
 	if(Yii::app()->request->isAjaxRequest){
 			
-		echo  CHtml::image(Yii::app()->baseUrl . '/images/' . $pathImg['path'], ' ' ,
+		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
 		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
 		
 		Yii::app()->end();
@@ -457,12 +457,12 @@ public function actionNestedTwo(){
 		. '/' . $this->param['subject'] 
 		. '/' . $this->param['book'] . '/task/';
 
-		$sections = scandir('images/' . $path);
+		$sections = scandir('img/' . $path);
 		foreach($sections as $section){
 			
 			if((int)$section == (int)$this->param['section']){
 
-				$parags =  scandir('images/' . $path . '/' . $section);
+				$parags =  scandir('img/' . $path . '/' . $section);
 				foreach($parags as $p => $parag){
 
 					if( (int)$parag == $this->param['paragraph'] ){
@@ -473,12 +473,12 @@ public function actionNestedTwo(){
 		}
 	}
 
-	if( ! file_exists($_SERVER['DOCUMENT_ROOT'] . '/images/' . $pathImg['path'])){
+	if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
 		$_GET = null;
 		throw new CHttpException('404', 'такого задания в этом учебнике нету');
 	}
 
-	$imgSize = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/' . $pathImg['path']);
+	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
 	$pathImg['width'] = $imgSize[0];
 	$pathImg['height'] = $imgSize[1];
 	// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
@@ -486,7 +486,7 @@ public function actionNestedTwo(){
 
 	if(Yii::app()->request->isAjaxRequest){
 			
-		echo  CHtml::image(Yii::app()->baseUrl . '/images/' . $pathImg['path'], ' ' ,
+		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
 		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
 		
 		Yii::app()->end();

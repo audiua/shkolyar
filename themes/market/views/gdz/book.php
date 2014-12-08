@@ -37,11 +37,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
-<noindex>
-    <div class="h_ads">
-        <img src="/images/horisont.png" alt="">
-    </div>
-</noindex>
+
 <div class="task">
 	<div class="task-title info">Розвязання: 
 	</div>
