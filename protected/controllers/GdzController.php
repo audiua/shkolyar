@@ -346,12 +346,12 @@ public function actionTask($clas, $subject, $book, $task){
 			. $this->param['task'] .'.png';
 		}
 
-		if( ! file_exists($_SERVER['DOCUMENT_ROOT']  . '/images/' . $pathImg['path'])){
+		if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
 			$_GET = null;
 			throw new CHttpException('404', 'такого задания в этом учебнике нету');
 		}
 
-		$imgSize = getimagesize($_SERVER['DOCUMENT_ROOT'] . '/images/' . $pathImg['path']);
+		$imgSize = getimagesize( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
 		$pathImg['width'] = $imgSize[0];
 		$pathImg['height'] = $imgSize[1];
 		// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
@@ -360,7 +360,7 @@ public function actionTask($clas, $subject, $book, $task){
 		if(Yii::app()->request->isAjaxRequest){
 				
 			echo  CHtml::image( 
-				Yii::app()->baseUrl .'/images/'.$pathImg['path'],
+				Yii::app()->baseUrl .'/img/'.$pathImg['path'],
 				'ГДЗ - готові домашні завдання '
 				.$this->subjectModel->subject->title . ' '
 				.$this->param['clas']
