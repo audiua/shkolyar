@@ -23,6 +23,7 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap3.2.0.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/panzoom.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.cookie.js"></script>
        
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>
