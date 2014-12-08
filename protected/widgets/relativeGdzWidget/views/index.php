@@ -2,6 +2,11 @@
 
 <?php 
 foreach( $model as $i => $one ):
+	// книги закрыта для публикации
+	if( ! $one->public){
+		continue;
+	}
+	
 	$path = 'img/gdz/'.$one->gdz_clas->clas->slug.'/'.$one->gdz_subject->subject->slug.'/'.$one->slug.'/book';
 ?>
 	<div class="relative-gdz-block">
