@@ -10,7 +10,7 @@ class TaskWidget extends CWidget{
         
         // формируем путь к 
 		$path = $_SERVER['DOCUMENT_ROOT'] 
-            . 'images/'.$this->controller->id.'/'.$this->params['clas']
+            . 'img/'.$this->controller->id.'/'.$this->params['clas']
             . '/'.$this->params['subject']
             . '/'.$this->params['book'].'/task';
 
