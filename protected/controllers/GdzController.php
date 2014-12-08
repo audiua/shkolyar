@@ -89,7 +89,10 @@ public function actionIndex(){
 		$this->pageTitle = 'SHKOLYAR.INFO - ГДЗ';
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
 
-		$books = new CActiveDataProvider('GdzBook',array('pagination'=>array('pageSize'=>12)));
+		$criteria = new CDbCriteria;
+		$criteria->condition= 't.public=1';
+
+		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
 
 		// кешируем сдесь html страницы
 		$this->render('index', array('books'=>$books));
