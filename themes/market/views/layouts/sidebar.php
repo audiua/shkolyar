@@ -12,11 +12,11 @@
 		<h3>Навігація по розділу <?php echo  $this->id; ?></h3>
 		<?php $this->widget('BookSidebarMenuWidget'); ?>
 	</div>
-	<img src="images/b_l.png" alt="">
+	<!-- <img src="images/b_l.png" alt=""> -->
 	<script type="text/javascript">
     <!--//
-    var _sape_partner_refid = 'OAccdEnzQq';
-    document.write('<script type="text/javascript" src="//cdn-rtb.sape.ru/partner-b/js/seowizard/swf/4_300x250_1.swf.js"></script>');
+    // var _sape_partner_refid = 'OAccdEnzQq';
+    // document.write('<script type="text/javascript" src="//cdn-rtb.sape.ru/partner-b/js/seowizard/swf/4_300x250_1.swf.js"></script>');
     //-->
 </script>
 </div>
@@ -30,12 +30,14 @@
 <!-- VK Widget -->
 <div id="vk_groups"></div>
 <script type="text/javascript">
-VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "200", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81422422);
+VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "150", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81422422);
 </script>
 </div>
 
 <div class="sidebar-block">
-	<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=200&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:200px;" allowTransparency="true"></iframe>
+	<div class="facebook-group">
+		<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=200&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:200px;" allowTransparency="true"></iframe>
+	</div>
 </div>
 
 <div class="sidebar-block">
