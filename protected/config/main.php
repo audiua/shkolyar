@@ -37,7 +37,6 @@ return array(
 		// 'application.components.widgets.taskWidget.*',
 		'application.components.widgets.taskTitleWidget.*',
 		// 'application.components.widgets.tabWidget.*',
-		'application.components.widgets.nestedWidget.*',
 		// 'application.components.widgets.tizerWidget.*',
 		'application.components.widgets.relativeBooksWidget.*',
 
@@ -52,6 +51,7 @@ return array(
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.nestedWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'
