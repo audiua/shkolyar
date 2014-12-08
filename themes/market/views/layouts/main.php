@@ -12,18 +12,18 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css"> -->
         <link rel="stylesheet/less" type="text/css" href="<?php  echo Yii::app()->theme->baseUrl; ?>/less/app.less" />
-        <!-- <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'> -->
-        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
+        <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
         
-        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery1.11.1.min.js"></script>
-        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script> -->
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/less.js"></script>
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap3.2.0.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/jquery1.11.1.min.js"></script> -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
+        <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/less.js"></script> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/bootstrap3.2.0.min.js"></script> -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/panzoom.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.cookie.js"></script>
