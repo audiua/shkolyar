@@ -21,11 +21,11 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 	
 <div class="separator"></div>
-<div class="info">ГДЗ</div>
+<div class="info">Нові надходження збірніків ГДЗ</div>
 <?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 
 <div class="separator"></div>
-<div class="info">Підручники</div>
+<div class="info">Нові надходження Підручників</div>
 <?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
 
 <div class="separator"></div>
