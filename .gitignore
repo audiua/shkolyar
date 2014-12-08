@@ -1,0 +1,10 @@
+assets/*
+!assets/.gitignore
+img/*
+!img/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/config/_db.php
+protected/yiic.log
+robots.txt
+sitemap.xml
