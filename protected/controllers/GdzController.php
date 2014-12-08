@@ -570,7 +570,7 @@ private function loadBook($book){
 	    ':subjectId'=>$this->subjectModel->id,
 	    ':slug'=>$book
 	);
-	$gdzBookModel = GdzBook::model()->find($criteria);
+	$gdzBookModel = GdzBook::model()->public()->find($criteria);
 
 	// проверка на наличие учебника
 	if( ! $gdzBookModel ){
@@ -636,8 +636,8 @@ private function setMeta(){
 public function checkerBook($clas, $subject, $book){
 
 	$bookClas = $this->loadClas($clas, 'textbook');
-	print_r($bookClas);
-	die;
+	// print_r($bookClas);
+	// die;
    	$bookSubject = $this->loadSubject($subject, 'textbook');
  
 	$criteria = new CDbCriteria;
