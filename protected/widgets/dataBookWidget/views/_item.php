@@ -1,4 +1,4 @@
-<?php  $path = 'images/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug.'/book'; ?>
+<?php  $path = 'img/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug.'/book'; ?>
 
 <div class="middle-book-block">
 

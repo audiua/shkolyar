@@ -37,7 +37,7 @@ foreach( $this->model as $i => $one ):
 	// }
 
 
-	$path = 'images/'.$this->controller->id.'/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug.'/book';
+	$path = 'img/'.$this->controller->id.'/'.$one->$categoryClas->clas->slug.'/'.$one->$categorySubject->subject->slug.'/'.$one->slug.'/book';
 
 	// if( ! file_exists( $_SERVER['DOCUMENT_ROOT'] . $path ) ){
 	// 	continue;

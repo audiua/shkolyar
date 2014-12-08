@@ -1,6 +1,6 @@
 <?php 
 $categoryClas = $this->controller->id . '_clas';
-$path = 'images/'.$this->controller->id.'/'.$this->params['clas'].'/'.$this->params['subject'].'/'.$this->model->slug.'/book';?>
+$path = 'img/'.$this->controller->id.'/'.$this->params['clas'].'/'.$this->params['subject'].'/'.$this->model->slug.'/book';?>
 
 <div class="">
 <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$this->model->slug.'.'.$this->model->img, $this->controller->id=='gdz'? 'Підручник' : 'ГДЗ' . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author, 

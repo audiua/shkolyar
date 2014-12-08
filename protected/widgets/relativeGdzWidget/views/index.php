@@ -2,7 +2,7 @@
 
 <?php 
 foreach( $model as $i => $one ):
-	$path = 'images/gdz/'.$one->gdz_clas->clas->slug.'/'.$one->gdz_subject->subject->slug.'/'.$one->slug.'/book';
+	$path = 'img/gdz/'.$one->gdz_clas->clas->slug.'/'.$one->gdz_subject->subject->slug.'/'.$one->slug.'/book';
 ?>
 	<div class="relative-gdz-block">
 
