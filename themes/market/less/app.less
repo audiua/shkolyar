@@ -347,7 +347,7 @@
 	.search{
 		position: absolute;
 		right: 15px;
-		top: 64px;
+		top: 25px;
 		width: 300px;/*410*/
 		// height: 35px;
 		// border: 1px solid #ccc;
@@ -358,7 +358,7 @@
 
 		td > input.gsc-search-button{
 			width: 40px;
-			height: 24px;
+			height: 25px;
 			background-color: @blue;
 			border: none;
 			margin-left: 0px;
@@ -368,8 +368,12 @@
 		td > input.gsc-search-button-v2{
 			background-image: none;
 			padding: 5px 13px;
-			margin-top: 1px;
+			margin-top: 0px;
 			border-radius: 0px;
+		}
+
+		table.gsc-search-box td{
+			vertical-align: top;
 		}
 
 		table.gsc-search-box td.gsc-input{
@@ -377,9 +381,16 @@
 			padding-right: 0px;
 			margin-left: 0px;
 			margin-bottom: 10px;
+			
+			
+			input.gsc-input{
+				font-size: 12px;
+				// color: @yellow;
+			}
 
 			.gsc-input-box{
 				margin-bottom: 2px;
+				border-color: @blue;
 			}
 			
 
@@ -387,7 +398,7 @@
 	}
 
 	.gsib_a{
-		padding-top: 0px !important;
+		padding-top: 2px !important;
 
 
 	}
@@ -498,7 +509,7 @@
 		width: 328px;
 		// min-height: 600px;
 		// outline: 1px dashed gray;
-		padding-top: 15px;
+		// padding-top: 15px;
 		// border-left: 2px dotted #ccc;
 	}
 
