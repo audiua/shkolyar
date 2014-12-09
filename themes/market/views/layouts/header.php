@@ -331,7 +331,15 @@
 
 		<!-- <li  ><a href="/library">Художня література</a></li>
 		<li  ><a href="/works">Твори</a></li> -->
-		<li  ><a href="/know-all">Всезнайка</a></li>
+		<li class="<?php echo Yii::app()->controller->getId() == 'know-all' ? 'active' : '' ; ?> know-all"  ><a href="/know-all">Всезнайка</a>
+			<div class="know-all-block">
+				<a class="know-all-subcategory" href="/know-all/how">Як?</a>
+				<a class="know-all-subcategory" href="/know-all/where">Де?</a>
+				<a class="know-all-subcategory" href="/know-all/when">Коли?</a>
+				<a class="know-all-subcategory" href="/know-all/why">Чому?</a>
+			</div>
+
+		</li>
 		
 
 	</ul>
