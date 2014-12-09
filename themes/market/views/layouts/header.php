@@ -52,6 +52,16 @@
 							<th><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
 							<th><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
 						</tr>
+						<!-- <tr>
+							<th><a href="/gdz/lang-ua">украинська мова(твори)</a></th>
+							<th><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+						</tr> -->
 						<tr>
 							<th><a href="/gdz/lit-ua">украинська література</a></th>
 							<th><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
@@ -63,6 +73,59 @@
 							<th><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
 							
 						</tr>
+						<!-- <tr>
+							<th><a href="/gdz/lit-ua">украинська література(твори)</a></th>
+							<th><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							
+						</tr> -->
+						<tr>
+							<th><a href="/gdz/lang-ua">росийська мова</a></th>
+							<th><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+						</tr>
+						<!-- <tr>
+							<th><a href="/gdz/lang-ua">росийська мова(твори)</a></th>
+							<th><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+						</tr> -->
+						<tr>
+							<th><a href="/gdz/lit-ua">зарубижна література</a></th>
+							<th><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							
+						</tr>
+						<!-- <tr>
+							<th><a href="/gdz/lit-ua">зарубижна література(твори)</a></th>
+							<th><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							
+						</tr> -->
 						<tr>
 							<th><a href="/gdz/fizika">фізика</a></th>
 							<th>-</th>
@@ -180,6 +243,26 @@
 							<th>-</th>
 						</tr>
 						<tr>
+							<th><a href="/gdz/lit-ua">зарубижна литература</a></th>
+							<th><a href="/gdz/5/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+							<th><a href="/gdz/8/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+							<th><a href="/gdz/10/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+						</tr>
+						<!-- <tr>
+							<th><a href="/gdz/lit-ua">художня литература</a></th>
+							<th><a href="/gdz/5/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th><a href="/gdz/6/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+							<th><a href="/gdz/8/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+							<th><a href="/gdz/10/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
+							<th>-</th>
+						</tr> -->
+						<tr>
 							<th><a href="/gdz/fizika">физика</a></th>
 							<th><a href="/gdz/5/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
 							<th><a href="/gdz/6/bio"><span class="green glyphicon glyphicon-ok"></span></a></th>
@@ -246,8 +329,8 @@
 			</div>
 		</li>
 
-		<li  ><a href="/library">Художня література</a></li>
-		<li  ><a href="/works">Твори</a></li>
+		<!-- <li  ><a href="/library">Художня література</a></li>
+		<li  ><a href="/works">Твори</a></li> -->
 		<li  ><a href="/know-all">Всезнайка</a></li>
 		
 
