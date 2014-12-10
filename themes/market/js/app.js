@@ -1,32 +1,5 @@
 $(document).ready(function () {
 
-//---------------------------
-// show filters
-$('.show-filters').click(function(){
-	
-	if( $(this).find('span').hasClass('glyphicon-chevron-left') ){
-		$(this).find('span').removeClass('glyphicon-chevron-left').addClass('glyphicon-chevron-right');
-		$(this).parent().css({'width': '430px'});
-		$('.search-text').css({'left': '155px', 'width':'235px'});
-		$('.search-clas').css({'display': 'block'});
-		$('.search-subject').css({'display': 'block'});
-	} else {
-		$(this).find('span').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
-		$(this).parent().css({'width': '300px'});
-		$('.search-text').css({'left': '25px', 'width':'235px'});
-		$('.search-clas').css({'display': 'none'});
-		$('.search-subject').css({'display': 'none'});
-	}
-});
-
-// $('.search').focusin(function(){
-// 	$('.show-filters').click();
-// });
-
-// $('.search').focusout(function(){
-// 	$('.show-filters').click();
-// });
-
 //--------------------------------------
 // scroll to top page
 $(window).scroll(function() {
@@ -43,7 +16,6 @@ $('#toTop').click(function() {
 });
 
 //-----------------------------------------
-// TODO - переделать под url
 
 $('li.textbook').hover(function(){
 	$(this).css({'background-color':'#f5f5f5', 'z-index': '10'});
@@ -70,7 +42,7 @@ $('li.know-all').hover(function(){
 } );
 
 //--------------------------------------
-// toggle view-filter
+// toggle view-block-filter
 $('.view-filter').click(function(){
 
 	var oldActiveView = $(this).siblings('.active-filter').data('view');
@@ -80,15 +52,8 @@ $('.view-filter').click(function(){
 		smallBtn = true;
 	}
 
-	console.log(oldActiveView);
-	console.log(newActiveView);
-
-
 	$('.view-filter').each(function(){
 		$(this).removeClass('active-filter');
-
-		console.log($('.'+oldActiveView));
-
 		$('.'+oldActiveView).each(function(){
 			$(this).removeClass(oldActiveView).addClass(newActiveView);
 			if(smallBtn){
