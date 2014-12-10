@@ -283,7 +283,6 @@ function rotate(){
 
 rotate();
 
-
 // модальное окно лайков фб
 function showFb(){
 	// console.log( $.cookie('showFb') );
@@ -296,15 +295,15 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-if( $.cookie('showFb') ){
-	return true;
-} else {
+if( ! $.cookie('showFb') ){
 	setTimeout(showFb, 10000);
 }
 
+// выделение выбраного пункта из таблицы
 $('td , th').hover(
 	function(){
 		var vertical = $(this).data('vertical');
+		console.log(vertical);
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 				$(item).css({'background':'#eee'}); 
 			
