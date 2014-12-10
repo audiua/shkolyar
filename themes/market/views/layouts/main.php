@@ -19,6 +19,7 @@
         <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.cookie.js"></script>
         <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/jquery1.11.1.min.js"></script> -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
         <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/less.js"></script> -->
@@ -26,7 +27,6 @@
         <!-- <script src="<?php // echo Yii::app()->theme->baseUrl; ?>/js/bootstrap3.2.0.min.js"></script> -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/app.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/panzoom.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.cookie.js"></script>
        
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>

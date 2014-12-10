@@ -16,25 +16,25 @@
 @gray: #aaa;
 
 .clas-5{
-	color: @color-5;
+	color: @color-5 !important;
 }
 .clas-6{
-	color: @color-6;
+	color: @color-6 !important;
 }
 .clas-7{
-	color: @color-7;
+	color: @color-7 !important;
 }
 .clas-8{
-	color: @color-8;
+	color: @color-8 !important;
 }
 .clas-9{
-	color: @color-9;
+	color: @color-9 !important;
 }
 .clas-10{
-	color: @color-10;
+	color: @color-10 !important;
 }
 .clas-11{
-	color: @color-11;
+	color: @color-11 !important;
 }
 
 @media (min-width: 1200px) {
@@ -80,6 +80,11 @@
 	}
 
 	.bold{
+		font-weight: bold;
+	}
+
+	.big{
+		font-size: 17px;
 		font-weight: bold;
 	}
 
@@ -226,69 +231,139 @@
 	}
 
 	.gdz-table{
-		padding: 10px;
+		// padding: 10px;
 		position: absolute;
 		top: 38px;
 		left: -280px;
 		display: none;
 		// height: 300px;
-		width: 750px;
+		width: 700px;
 		// outline: 2px solid red;
 		background-color: #f5f5f5;
-		box-shadow: 0px 6px 6px #C9C9C9;
+		box-shadow: 0px 6px 6px #999;
 	}
 
 	.textbook-table{
-		padding: 10px;
+		// padding: 10px;
 		position: absolute;
 		top: 38px;
 		left: -380px;
 		display: none;
 		// height: 300px;
-		width: 750px;
+		width: 700px;
 		// outline: 2px solid red;
 		background-color: #f5f5f5;
-		box-shadow: 0px 6px 6px #C9C9C9;
+		box-shadow: 0px 6px 6px #999;
 	}
 
-	.gdz-table table{
+	.gdz-table table, .textbook table{
 		// border: 1px solid #ccc;
 		width: 100%;
 		height: 100%;
 
-	}
+		tr{
+			border-bottom: 1px dashed #ccc;
+			// &:last-child{
+			// 	border-bottom: 1px dashed #ccc;
+			// }
+			&:last-child{
+				border-bottom: none;
+			}
+			&:hover{
+				background-color: #EEE;
+			}
+		}
 
-	.gdz-table table th{
-		border: 1px solid #ccc;
-		width: 25px;
-		height: 25px;
-		text-align: center;
-	}
+		th{
+			// border: 1px solid @blue;
+			// width: 25px;
+			height: 25px;
+			text-align: center;
+			font-weight: normal;
+			border-bottom: 2px solid #ccc;
 
-	table a{
-		font-weight: normal !important ;
-		text-decoration: none !important ;
-	}
+			a{
+				display: block;
+				// width: 30px;
+				line-height: 18px;
+				text-align: center;
+				padding-top: 5px;
+				span{
+					font-size: 14px;
+					color: #777;
+					padding-bottom: 0px;
+					padding-top: 0px;
+					margin-bottom: 0px;
+					margin-top: 0px;
+					font-weight: normal;
+				}
 
-	table a:hover{
-		font-weight: normal !important ;
-		text-decoration: underline !important ;
-	}
+				&:hover{
+					text-decoration: none !important;
+				}
+
+
+			}
+		}
+
+		td{
+			// border: 1px solid #ccc;
+			width: 25px;
+			height: 25px;
+			text-align: center;
 
 
 
-	.textbook-table table{
-		border: 1px solid #ccc;
-		width: 100%;
-		height: 100%;
+		}
 
-	}
+		a{
+			border-bottom: 0px !important;
+		}
 
-	.textbook-table table th{
-		border: 1px solid #ccc;
-		width: 25px;
-		height: 25px;
-		text-align: center;
+		tbody{
+			tr{
+				td{
+					a{
+						display: block;
+						padding-top: 5px;
+						padding-bottom: 5px;
+						color: darken(@blue, 15%);
+						font-weight: normal !important;
+						font-size: 16px;
+
+						&:hover{
+							text-decoration: none !important;
+						}
+
+					}
+				}
+			}
+		}
+
+		th.clas-5{
+			border-bottom-color: @color-5;
+		}
+		th.clas-6{
+			border-bottom-color: @color-6;
+		}
+		th.clas-7{
+			border-bottom-color: @color-7;
+		}
+		th.clas-8{
+			border-bottom-color: @color-8;
+		}
+		th.clas-9{
+			border-bottom-color: @color-9;
+		}
+		th.clas-10{
+			border-bottom-color: @color-10;
+		}
+		th.clas-11{
+			border-bottom-color: @color-11;
+		}
+		
+
+
 	}
 
 	.know-all-block{
@@ -303,11 +378,18 @@
 		padding: 10px;
 
 		a.know-all-subcategory{
+			border-bottom: 0px !important;
+			text-decoration: none !important;
 			display: inline;
 			margin-right: 70px;
 			line-height: 25px;
 			color: darken(@blue, 15%);
-			font-size: 15px;
+			font-weight: normal !important;
+			font-size: 16px;
+
+			&:hover{
+				text-decoration: underline !important;
+			}
 		}
 	}
 
