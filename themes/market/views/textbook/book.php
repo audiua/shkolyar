@@ -10,28 +10,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <h1><?php echo $this->h1; ?></h1>
 
-
-
 <div class="info"></div>
 <div class="book-list">
 	<div class="big-book-block">
-	<?php $this->widget('OneBookWidget', array('model'=>$this->bookModel)); ?>
-
-		<!-- <div class=""><img class="img-middle-book thumbnail" src="http://placehold.it/150x200" alt=""> </div>
-  		<div class="">
-  			<div class="book-author">author</div>
-  			<div class="book-subject">subject</div>
-  			<div class="book-clas">clas</div>
-  			<div class="desc">
-  				<p>Book Book Book Book Book Book Book Book Book Book
-  				Book Book Book Book Book</p>
-  			</div>
-
-  		</div>
-		<div class="textbook-link">
-			<a href="#">textbook</a>
-		</div> -->
-					
+		<?php $this->widget('OneBookWidget', array('model'=>$this->bookModel)); ?>	
 	</div>
 	
 </div>
@@ -41,11 +23,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
-<noindex>
-    <div class="h_ads">
-        <img src="/images/horisont.png" alt="">
-    </div>
-</noindex>
 <div class="task">
 	<div class="task-title info">Сторинка: 
 	</div>
@@ -61,22 +38,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	  <style>
 	    #inverted-contain .panzoom { width: 100%; height: 100%;  }
 	  </style>
-	 <!--  <script>
-	    (function() {
-	      var $section = $('#inverted-contain');
-	      $section.find('.panzoom').panzoom({
-	        $zoomIn: $section.find(".zoom-in"),
-	        $zoomOut: $section.find(".zoom-out"),
-	        $zoomRange: $section.find(".zoom-range"),
-	        $reset: $section.find(".reset"),
-	        startTransform: 'scale(0.9)',
-            increment: 0.1,
-            minScale: 1,
-            contain: 'invert'
-	      }).panzoom('zoom');
-	    })();
-	  </script> -->
-	 
 	</section>
 </div>
 
