@@ -43,7 +43,7 @@ class Knowall extends CActiveRecord
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('title', 'length', 'max'=>255),
 			array('public', 'length', 'max'=>1),
-			array('image', 'file', 'types'=>'jpg, jpeg, gif, png'),
+			array('image','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, clas_id, create_time, update_time, title, text, subject_id, knowall_category_id, public', 'safe', 'on'=>'search'),
@@ -79,6 +79,7 @@ class Knowall extends CActiveRecord
 			'subject_id' => 'Subject',
 			'knewall_category_id' => 'Knowall Category',
 			'public' => 'Public',
+			'image' => 'Image',
 		);
 	}
 
@@ -124,5 +125,11 @@ class Knowall extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public function afterSave(){
+		if (!empty($this->image_upload_file)) {
+			$this->image_upload_file->saveAs($this->image_directory . '/origin.'.$this->image_extension);
+		}
 	}
 }
