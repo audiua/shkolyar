@@ -53,6 +53,7 @@ return array(
 		'application.widgets.bookSidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
 		'application.widgets.lastBookWidget.*',
+		'application.widgets.dataArticleWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'
@@ -96,6 +97,7 @@ return array(
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>'=>'<controller>/book',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
+				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
 				'<controller:\w+>'=> '<controller>/index',
 
 				// '<controller:\w+>/<subject:[a-z-]+>'=>'<controller>/currentSubject',

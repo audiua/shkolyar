@@ -33,12 +33,12 @@ $('li.gdz').hover(function(){
 	$('li.gdz').css({'background-color':'', 'z-index': '1'});
 } );
 
-$('li.know-all').hover(function(){
+$('li.knowall').hover(function(){
 	$(this).css({'background-color':'#f5f5f5', 'z-index': '10'});
-	$('.know-all-block').css({'display':'block'});
+	$('.knowall-block').css({'display':'block'});
 }, function(){ 
-	$('.know-all-block').css({'display':'none'});
-	$('li.know-all').css({'background-color':'', 'z-index': '1'});
+	$('.knowall-block').css({'display':'none'});
+	$('li.knowall').css({'background-color':'', 'z-index': '1'});
 } );
 
 //--------------------------------------

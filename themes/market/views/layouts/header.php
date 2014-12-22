@@ -298,13 +298,13 @@
 		</li>
 
 		<!-- <li  ><a href="/library">Художня література</a></li>
-		<li  ><a href="/works">Твори</a></li> -->
-		<li class="<?php echo Yii::app()->controller->getId() == 'know-all' ? 'active' : '' ; ?> know-all"  ><a href="/know-all">Всезнайка</a>
-			<div class="know-all-block">
-				<a class="know-all-subcategory" href="/know-all/how">Як?</a>
-				<a class="know-all-subcategory" href="/know-all/where">Де?</a>
-				<a class="know-all-subcategory" href="/know-all/when">Коли?</a>
-				<a class="know-all-subcategory" href="/know-all/why">Чому?</a>
+		<li  ><a href="/writing">Твори</a></li> -->
+		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
+			<div class="knowall-block">
+				<a class="knowall-subcategory" href="/knowall/how">Як?</a>
+				<a class="knowall-subcategory" href="/knowall/where">Де?</a>
+				<a class="knowall-subcategory" href="/knowall/when">Коли?</a>
+				<a class="knowall-subcategory" href="/knowall/why">Чому?</a>
 			</div>
 
 		</li>
