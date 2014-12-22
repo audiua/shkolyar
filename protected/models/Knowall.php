@@ -128,8 +128,8 @@ class Knowall extends CActiveRecord
 	}
 
 	public function afterSave(){
-		if (!empty($this->image_upload_file)) {
-			$this->image_upload_file->saveAs($this->image_directory . '/origin.'.$this->image_extension);
+		if (!empty($this->image)) {
+			$this->image->saveAs($this->image_directory . '/origin.'.$this->image_extension);
 		}
 	}
 }

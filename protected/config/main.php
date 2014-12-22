@@ -67,7 +67,7 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		'admin',
+		'inside',
 		
 	),
 
@@ -83,6 +83,7 @@ return array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
 			'rules'=>array(
+				'inside/<controller:\w+>'=>'inside/<controller>',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<page:\d+>/<task:[0-9]+[-]?[0-9ab]{0,2}>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<task:\d+>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<lesson:\d+>/<task:\d+>'=>'site/task',
