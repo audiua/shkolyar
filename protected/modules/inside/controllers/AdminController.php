@@ -1,11 +1,43 @@
 <?php
 
-class AdminController extends Controller
-{
-	public $layout='main';
+class AdminController extends InsideController{
+	
+	/**
+	* @return array action filters
+	*/
+	public function filters(){
+		return array(
+			'accessControl', // perform access control for CRUD operations
+		);
+	}
 
-	public function actionIndex()
-	{
+	/**
+	* Specifies the access control rules.
+	* This method is used by the 'accessControl' filter.
+	* @return array access control rules
+	*/
+	public function accessRules(){
+
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'roles'=>array('admin'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'roles'=>array('user'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+
+	public function actionIndex(){
 		$this->render('index');
 	}
 }

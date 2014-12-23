@@ -5,14 +5,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet/less" type="text/css" href="<?php  echo Yii::app()->getModule('inside')->basePath; ?>/less/inside.less" />
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/inside.css">
+
+        <?php
+
+        $mainAssets = Yii::app()->AssetManager->publish(
+            Yii::app()->getModule('inside')->basePath
+        );
+      
+        // Yii::app()->clientScript->registerCssFile($mainAssets.'/css/inside.css');        
+        Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/inside.js');
+        Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
+
+        ?>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.cookie.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->getModule('inside')->basePath; ?>/js/inside.js"></script>
         
-       
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>
         </title>
@@ -29,9 +38,8 @@
 
         <div class="wrap">
 
-            <div class="header">
-                <?php $this->renderPartial('/layouts/header'); ?>
-            </div>
+            <?php $this->renderPartial('/layouts/header'); ?>
+
 
            <!--  <div class="black"></div>
             <div class="red"></div>
@@ -42,9 +50,9 @@
                 
                 <?php echo $content; ?>
             </div>
-            <div class="sidebar">
-                <?php $this->renderPartial('/layouts/sidebar'); ?>
-            </div>
+            
+            <?php // $this->renderPartial('/layouts/sidebar'); ?>
+            
             <div class="clear"></div>
 
             <div class="footer">

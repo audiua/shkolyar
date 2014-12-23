@@ -47,6 +47,17 @@ class Clas extends CActiveRecord
 		);
 	}
 
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -113,7 +124,7 @@ class Clas extends CActiveRecord
 
 
 	public static function getAll(){
-		return CHtml::listData(self::model()->findAll(), array('id', 'title'));
+		return CHtml::listData(self::model()->findAll(), 'id', 'title');
 	}
 
 }

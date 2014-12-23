@@ -1,8 +1,4 @@
-<div class="middle-article-block">
-	<a href="/knowall/<?php echo $data->knowall_category->slug . '/'. $data->slug ?>" ><?php echo $data->title; ?></a>
-	<div class="article-description">
-		<?php echo $data->description; ?>
-	</div>			
+<div class="middle-article-block col-lg-4">
+	<?php echo  CHtml::image($data->getThumb(250,170,'crop'),'aaa', array('title'=>'ssss', 'class'=>'thumbnail')); ?>
+	<a href="/knowall/<?php echo $data->knowall_category->slug . '/'. $data->slug ?>" ><?php echo $data->title; ?></a>		
 </div>
-
-<?php print_r($data->knowall_category->slug); ?>

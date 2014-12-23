@@ -4,7 +4,6 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
 // Yii::setPathOfAlias('booster', dirname(__FILE__).DIRECTORY_SEPARATOR.'../vendor/clevertech/yii-booster/src');
-
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -18,6 +17,7 @@ return array(
 	// preloading 'log' component
 	'preload'=>array(
 		'log', 
+		// 'bootstrap'
 	),
 
 	//GZIP compress   
@@ -74,6 +74,27 @@ return array(
 	// application components
 	'components'=>array(
 
+       'authManager' => array(
+		    // Будем использовать свой менеджер авторизации
+		    'class' => 'PhpAuthManager',
+		    // Роль по умолчанию. Все, кто не админы, модераторы и юзеры — гости.
+		    'defaultRoles' => array('guest'),
+		),
+
+       'user'=>array(
+		    'class' => 'WebUser',
+		    'loginUrl'=>array('site/login'),
+		    'allowAutoLogin' 	=> true,
+		),
+
+       'image'=>array(
+            'class'=>'application.extensions.image.CImageComponent',
+            // GD or ImageMagick
+            'driver'=>'GD',
+            // ImageMagick setup path
+           // 'params'=>array('directory'=>'D:/Program Files/ImageMagick-6.4.8-Q16'),
+        ),
+
 		'request'=>array(
             'enableCsrfValidation'=>false,
             'enableCookieValidation'=>false,
@@ -83,13 +104,22 @@ return array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
 			'rules'=>array(
-				'inside/<controller:\w+>'=>'inside/<controller>',
+
+				'inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
+				'inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
+				'inside/<controller:\w+>'=>'inside/<controller>/index',
+
+
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<page:\d+>/<task:[0-9]+[-]?[0-9ab]{0,2}>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<task:\d+>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<lesson:\d+>/<task:\d+>'=>'site/task',
 				// '<controller:\w+>/<clas:\d+>/<subject:\w+>/<book:\w+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller:\w+>/nestedTwo',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>'=>'site/book',
+				// 
+				// 
 				'/site/page' => 'site/page',
+				'/site/login' => 'site/login',
+				'/site/logout' => 'site/logout',
 				'<controller:\w+>/search'=>'site/search',
 
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
@@ -150,6 +180,10 @@ return array(
             'compressCss'=>false,
             'combineJs'=>false,
             'compressJs'=>false,
+        ),
+
+        'file' => array(
+            'class'=>'application.extensions.file.CFile',
         ),
 	),
 

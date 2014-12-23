@@ -40,12 +40,10 @@ class Subject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description class_id', 'required'),
-			array('title', 'length', 'max'=>20),
-			array('class_id', 'length', 'max'=>2),
+			array('title, slug', 'required'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, class_id', 'safe', 'on'=>'search'),
+			array('id, title, slug, create_time_, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,6 +62,17 @@ class Subject extends CActiveRecord
 		);
 	}
 
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -72,7 +81,7 @@ class Subject extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
-			'class_id' => 'Class',
+			'slug' => 'Slug',
 		);
 	}
 
@@ -96,7 +105,7 @@ class Subject extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('class_id',$this->class_id,true);
+		$criteria->compare('slug',$this->slug,true);
 		
 
 		return new CActiveDataProvider($this, array(

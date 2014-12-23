@@ -110,4 +110,15 @@ class TextbookSubject extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public static function getAll(){
+
+		$all = self::model()->findAll();
+		if($all){
+			foreach($all as $one){
+				$result[$one->id]=$one->subject->title;
+			}
+		}
+		return $result;
+	}
 }

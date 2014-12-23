@@ -31,7 +31,7 @@ class GdzClas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('clas_id, create_time, update_time', 'required'),
+			array('clas_id', 'required'),
 			array('clas_id, create_time, update_time', 'length', 'max'=>10),
 			array('description', 'safe'),
 			// The following rule is used by search().
@@ -50,6 +50,17 @@ class GdzClas extends CActiveRecord
 		return array(
 			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
 			'gdz_subject'=>array(self::HAS_MANY, 'GdzSubject', 'gdz_clas_id'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 

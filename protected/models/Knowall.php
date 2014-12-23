@@ -11,7 +11,7 @@
  * @property string $title
  * @property string $text
  * @property string $subject_id
- * @property string $knewall_category_id
+ * @property string $knowall_category_id
  * @property string $public
  *
  * The followings are the available model relations:
@@ -21,7 +21,7 @@
  */
 class Knowall extends CActiveRecord
 {
-	public $image;
+	public $thumbnail;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -38,15 +38,15 @@ class Knowall extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, clas_id, create_time, update_time, title, text, subject_id, knewall_category_id', 'required'),
-			array('id, clas_id, create_time, update_time, subject_id, knewall_category_id', 'length', 'max'=>10),
+			array('title, text, knowall_category_id', 'required'),
+			array('id, create_time, update_time, public_time, knowall_category_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('title', 'length', 'max'=>255),
 			array('public', 'length', 'max'=>1),
-			array('image','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
+			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, clas_id, create_time, update_time, title, text, subject_id, knowall_category_id, public', 'safe', 'on'=>'search'),
+			array('id, create_time, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,9 +58,20 @@ class Knowall extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
-			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
+			// 'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
+			// 'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
 			'knowall_category' => array(self::BELONGS_TO, 'KnowallCategory', 'knowall_category_id'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 
@@ -71,15 +82,16 @@ class Knowall extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'clas_id' => 'Clas',
+			// 'clas_id' => 'Clas',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
+			'public_time' => 'Public Time',
 			'title' => 'Title',
 			'text' => 'Text',
-			'subject_id' => 'Subject',
-			'knewall_category_id' => 'Knowall Category',
+			// 'subject_id' => 'Subject',
+			'knowall_category_id' => 'Knowall Category',
 			'public' => 'Public',
-			'image' => 'Image',
+			'thumbnail' => 'thumbnail',
 		);
 	}
 
@@ -102,13 +114,12 @@ class Knowall extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('clas_id',$this->clas_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
+		$criteria->compare('public_time',$this->public_time,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('text',$this->text,true);
-		$criteria->compare('subject_id',$this->subject_id,true);
-		$criteria->compare('knowall_category_id',$this->knewall_category_id,true);
+		$criteria->compare('knowall_category_id',$this->knowall_category_id,true);
 		$criteria->compare('public',$this->public,true);
 
 		return new CActiveDataProvider($this, array(
@@ -127,9 +138,68 @@ class Knowall extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function afterSave(){
-		if (!empty($this->image)) {
-			$this->image->saveAs($this->image_directory . '/origin.'.$this->image_extension);
+	public function getUrl() {
+		return Yii::app()->baseUrl . '/knowall/' . $this->knowall_category->slug . '/' . $this->slug;
+    }
+
+    public function beforeSave(){
+
+    	if($this->isNewRecord){
+    		if( !empty($this->thumbnail) ){
+    			$this->thumbnail_ext = strtolower($this->thumbnail->getExtensionName());
+    		}
+    	} else {
+
+    	}
+
+    	return parent::beforeSave();
+    }
+
+    public function afterSave(){
+
+    	if (!empty($this->thumbnail)) {
+    		$this->thumbnail->saveAs($this->getImgDir() . '/origin.'.$this->thumbnail_ext);
+    	}
+
+		return parent::afterSave();
+    }
+
+    public function uniqKnowallId() {
+		return md5($this->id . $this->slug);
+    }
+
+    public function getImgDir($mkdir = true){
+    	$directory = Yii::app()->basePath . '/../img/knowall/' . $this->knowall_category->slug . '/'.$this->uniqKnowallId();
+        if ($mkdir && file_exists($directory) == false) {
+            mkdir($directory, 0777, true);
+        }
+
+        return $directory;
+    }
+
+    public function getThumb($width=null, $height=null, $mode='origin')
+	{
+		$dir = $this->getImgDir(false) . '/';
+		$originFile = $dir . 'origin.' . $this->thumbnail_ext;
+
+		if (!is_file($originFile)) {
+			return "http://www.placehold.it/{$width}x{$height}/EFEFEF/AAAAAA";
 		}
+
+		if ($mode == 'origin') {
+			return '/img/knowall/'.$this->knowall_category->slug . '/'.$this->uniqKnowallId(). '/origin.'. $this->thumbnail_ext;
+		}
+
+		$fileName = $this->slug . '_' . $width . 'x' . $height . '.' . $this->thumbnail_ext;
+		$filePath = $dir . $fileName;
+		if (!is_file($filePath)) {
+			if ($mode == 'resize') {
+				Yii::app()->image->load($originFile)->resize($width, $height)->save($filePath);
+			} else {
+				Yii::app()->image->cropSave($originFile, $width, $height, $filePath);
+			}
+		}
+
+		return '/img/knowall/'.$this->knowall_category->slug . '/'.$this->uniqKnowallId(). '/'. $fileName;
 	}
 }

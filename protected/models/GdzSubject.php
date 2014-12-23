@@ -116,10 +116,14 @@ class GdzSubject extends CActiveRecord
 		return parent::model($className);
 	}
 
-	// public static function getAll(){
+	public static function getAll(){
 
-	// 	return CHtml::listData(GdzSubject::model()->findAll(), array('id', 'title'));
-
-		 
-	// }
+		$all = self::model()->findAll();
+		if($all){
+			foreach($all as $one){
+				$result[$one->id]=$one->subject->title;
+			}
+		}
+		return $result;
+	}
 }
