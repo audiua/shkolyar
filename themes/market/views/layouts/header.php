@@ -297,8 +297,8 @@
 			</div>
 		</li>
 
-		<!-- <li  ><a href="/library">Художня література</a></li>
-		<li  ><a href="/writing">Твори</a></li> -->
+		<li  ><a href="/library">Художня література</a></li>
+		<li  ><a href="/writing">Твори</a></li>
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
 				<a class="knowall-subcategory" href="/knowall/how">Як?</a>
