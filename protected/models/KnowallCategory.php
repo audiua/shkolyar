@@ -31,11 +31,12 @@ class KnowallCategory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title', 'required'),
-			array('title', 'length', 'max'=>255),
+			array('title, slug', 'length', 'max'=>255),
+			array('description', 'length', 'max'=>1000),
 			array('create_time, update_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, create_time, update_time', 'safe', 'on'=>'search'),
+			array('id, title, slug, description, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,6 +52,17 @@ class KnowallCategory extends CActiveRecord
 		);
 	}
 
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -59,6 +71,8 @@ class KnowallCategory extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
+			'slug' => 'Slug',
+			'description' => 'Description',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 		);
@@ -84,6 +98,8 @@ class KnowallCategory extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('title',$this->title,true);
+		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 

@@ -41,8 +41,17 @@
 	            <li> <?php echo CHtml::link('Пiдручники', '/inside/textbookBook'); ?></li>
 	          </ul>
 	        </li>
+
+	        <li class="dropdown <?php echo stripos($this->id, 'knowall') !== false ? 'active' : '' ; ?>">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Всезнайка <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li> <?php echo CHtml::link('Статьи', '/inside/knowall'); ?></li>
+	            <li class="divider"></li>
+	            <li> <?php echo CHtml::link('Категории', '/inside/knowallCategory'); ?></li>
+	          </ul>
+	        </li>
 			
-			<li class="<?php echo $this->id == 'knowall' ? 'active' : '' ; ?>"><?php echo CHtml::link('Всезнайка', '/inside/knowall'); ?></li>
+			
 			<li class="<?php echo $this->id == 'writing' ? 'active' : '' ; ?>"><?php echo CHtml::link('Твори', '/inside/writing'); ?></li>
 			<li class="<?php echo $this->id == 'library' ? 'active' : '' ; ?>"><?php echo CHtml::link('Худ-лiт', '/inside/library'); ?></li>
 	      
