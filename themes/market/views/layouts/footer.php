@@ -14,10 +14,10 @@
 
 <div class="footer-menu">
 	<ul>
-		<li><?php  echo CHtml::link('Рекламодавцям', array('/site/page?view=advertiser'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Правила та Угоди', array('/site/page?view=rules'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Правовласникам', array('/site/page?view=rightholder'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Контакти', array('/site/page?view=contacts'), array('rel'=>'nofollow')); ?></li>
+		<li><?php  echo CHtml::link('Рекламодавцям', array('/advertiser'), array('rel'=>'nofollow')); ?></li>
+		<li><?php  echo CHtml::link('Правила та Угоди', array('/rules'), array('rel'=>'nofollow')); ?></li>
+		<li><?php  echo CHtml::link('Правовласникам', array('/rightholder'), array('rel'=>'nofollow')); ?></li>
+		<li><?php  echo CHtml::link('Контакти', array('/contacts'), array('rel'=>'nofollow')); ?></li>
 		<li><?php  echo CHtml::link('sitemap.xml', array('/sitemap.xml'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
 
 	</ul>

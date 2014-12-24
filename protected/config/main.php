@@ -113,21 +113,10 @@ return array(
 
 				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
 
-				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<page:\d+>/<task:[0-9]+[-]?[0-9ab]{0,2}>'=>'site/task',
-				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<task:\d+>'=>'site/task',
-				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<lesson:\d+>/<task:\d+>'=>'site/task',
-				// '<controller:\w+>/<clas:\d+>/<subject:\w+>/<book:\w+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller:\w+>/nestedTwo',
-				// '<clas:\d+>/<subject:\w+>/<book:\w+>'=>'site/book',
-				// 
-				// 
-				
-
-				'/site/page' => 'site/page',
+				'<action:advertiser|rules|rightholder|contacts>'=>'site/page',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
-				'<controller:\w+>/search'=>'site/search',
-
-
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<task:\d+>'=>'<controller>/task',
@@ -142,11 +131,9 @@ return array(
 				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
 				'<controller:\w+>'=> '<controller>/index',
 
-				
-
-				'tizer'=>'tizer/index',
-				'position'=>'position/index',
-				'sitemap.xml'=>'sitemap/index',
+				// 'tizer'=>'tizer/index',
+				// 'position'=>'position/index',
+				// 'sitemap.xml'=>'sitemap/index',
 				
 				
 				
