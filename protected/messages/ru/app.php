@@ -21,5 +21,6 @@ return [
 	'Update GdzBook'=>'Обновить сборник гдз',
 	'Update TextbookBook'=>'Обновить учебник',
 	'how'=>'Як',
-	'why'=>'Чому'
+	'why'=>'Чому',
+	'nature'=>'Природа',
 ];
