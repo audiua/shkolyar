@@ -53,6 +53,7 @@ return array(
 		'application.widgets.bookSidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
 		'application.widgets.lastBookWidget.*',
+		'application.widgets.lastKnowallWidget.*',
 		'application.widgets.dataArticleWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
@@ -68,6 +69,7 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
 		'inside',
+		'ajax'
 		
 	),
 
@@ -105,10 +107,12 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 
-				'inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
-				'inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
-				'inside/<controller:\w+>'=>'inside/<controller>/index',
+				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
+				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
+				'/inside/<controller:\w+>'=>'inside/<controller>/index',
 
+				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
+				'/ajax/<controller:\w+>'=>'ajax/<controller>/index',
 
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<page:\d+>/<task:[0-9]+[-]?[0-9ab]{0,2}>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<task:\d+>'=>'site/task',
@@ -117,10 +121,13 @@ return array(
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>'=>'site/book',
 				// 
 				// 
+				
+
 				'/site/page' => 'site/page',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
 				'<controller:\w+>/search'=>'site/search',
+
 
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
@@ -128,10 +135,14 @@ return array(
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>'=>'<controller>/book',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
+
+				'/gdz/<subject:[a-z-]+>'=>'gdz/currentSubject',
+				'/textbook/<subject:[a-z-]+>'=>'textbook/currentSubject',
+
+				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
 				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
 				'<controller:\w+>'=> '<controller>/index',
 
-				// '<controller:\w+>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 				
 
 				'tizer'=>'tizer/index',

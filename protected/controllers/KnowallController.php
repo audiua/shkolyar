@@ -76,7 +76,7 @@ public function actionIndex(){
  */
 public function actionCategory($category){
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_knowall_page', array('duration'=>86400)) ){
+	if($this->beginCache('category_knowall_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка' => $this->createUrl('/knowall/'),
@@ -107,6 +107,34 @@ public function actionCategory($category){
 	}
 
 }
+
+
+public function actionView($category, $article){
+
+	// if($this->beginCache('article_knowall_page_'.$category.$article, array('duration'=>86400, 'varyByParam'=>array('category', 'article'))) ){
+
+
+		$catModel = $this->loadCategory($category);
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.slug="'.$article.'"';
+		$criteria->addCondition('t.knowall_category_id='.$catModel->id);
+		$article = Knowall::model()->find($criteria);
+
+		$this->breadcrumbs = array(
+			'Всезнайка' => $this->createUrl('/knowall/'),
+			Yii::t('app', $category) => $this->createUrl('/knowall/'.$category),
+			$article->title
+
+		);
+
+
+		$this->render('view', array('model'=>$article));
+
+
+	// 	$this->endCache(); 
+	// }
+}
 	
 
 	
@@ -123,6 +151,22 @@ public function actionError()
 			$this->render('error', $error);
 	}
 }
+
+public function loadCategory($category){
+
+	$criteria = new CDbCriteria;
+	$criteria->condition = 't.slug="'.$category.'"';
+	$model = KnowallCategory::model()->find($criteria);
+
+	if(! $model){
+		throw new CHttpException('404', 'нет такогй категории');
+	}
+
+	return $model;
+
+}
+
+
 
 
 

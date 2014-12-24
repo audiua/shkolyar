@@ -185,6 +185,73 @@ public function actionSubject($clas, $subject){
 }
 
 /**
+ * [actionSubject description]
+ * @return [type]          [description]
+ */
+public function actionCurrentSubject($subject){
+	// print_r($_POST);
+	// die;
+
+	// TODO - закешировать на сутка
+	if($this->beginCache('gdz_current_subject_page'.$subject, array('duration'=>1000, 'varyByParam'=>array('subject'))) ){
+
+		// все классы
+		$this->allClasModel = GdzClas::model()->findAll();
+
+		$this->checkSubject($subject);
+
+		$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
+		if(!$subjectModel){
+			throw new CHttpException('404', 'немае такого предмету');
+		}
+
+		$criteria = new CDbCriteria;
+		$criteria->addCondition('t.public=1');
+
+		if($subjectModel){
+			$curentSubjectModel = array_keys( CHtml::listData( GdzSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
+			// unset($subjectModel);
+			if($curentSubjectModel){
+				$criteria->addInCondition('gdz_subject_id', $curentSubjectModel);
+				unset($curentSubjectModel);
+			}
+		}
+
+		$books = new CActiveDataProvider('GdzBook', 
+			array(
+				'criteria'=>$criteria, 
+				'pagination'=>array('pageSize'=>12),
+			)
+		);
+
+		// print_r($book);
+		// die;
+
+		$this->keywords = 'ГДЗ - готові домашні завдання ' . $subjectModel->title . ', гдз '. $subjectModel->title . ', гдз онлайн '
+			. $subjectModel->title . ', гдз '. $subjectModel->title . ' україна, гдз решебники '
+			. $subjectModel->title . ', готові домашні завдання '. $subjectModel->title . ', гдз '. $subjectModel->title;
+
+		$this->description = 'ГДЗ - готові домашні завдання ' 
+			. $subjectModel->title . ', для середніх загальноосвітніх шкіл України.';
+
+		$this->h1 = 'ГДЗ '.$subjectModel->title;
+		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
+
+		$this->breadcrumbs = array(
+			'ГДЗ' => $this->createUrl('/gdz'),
+			// $subjectModel->title => $this->createUrl('/gdz/'.$subject),
+			$subjectModel->title
+		);
+
+		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel));
+
+		$this->endCache(); 
+	}
+}
+
+
+/**
  * [actionBook description]
  * @return [type] [description]
  */

@@ -10,8 +10,11 @@ $('#Knowall_title').focusout(function(){
     }
 
     if(title){
-	    $.post('/knowall/translit', {'title':title}, function(responce){
+	    $.post('/ajax/default/translit', {'title':title}, function(responce){
 	        if(responce.success){
+	        	console.log(responce);
+	        	console.log($('#Knowall_slug'));
+	        	console.log(responce.translit);
 	            $('#Knowall_slug').val(responce.translit);
 	            if( $('#Knowall_slug').hasClass('error') ){
 	                $('#Knowall_slug').removeClass('error');

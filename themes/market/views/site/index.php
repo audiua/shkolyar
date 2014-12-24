@@ -29,6 +29,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
 
 <div class="separator"></div>
+<div class="info">Нові надходження Всезнайки</div>
+<?php $this->widget('LastKnowallWidget'); ?>
+
+<div class="separator"></div>
 <div class="info">Як правильно використовувати готові домашні завдання?</div>
 <p class="description">Звичайно, існування посібників і збірників ГДЗ не
 	припускає того, що учні бездумно списують рішення та відповіді в зошит, хоча багато учнів можливо

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/inside.css">
 
+
         <?php
 
         $mainAssets = Yii::app()->AssetManager->publish(
@@ -14,13 +15,14 @@
         );
       
         // Yii::app()->clientScript->registerCssFile($mainAssets.'/css/inside.css');        
-        Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/inside.js');
         Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
+        // Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/inside.js');
 
         ?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/inside.js"></script>
         
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>
