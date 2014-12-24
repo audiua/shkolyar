@@ -49,12 +49,13 @@
 		<?php echo $form->labelEx($model,'public_time'); ?>
 
 		<?php
-		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		$this->widget('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker', array(
 		    'model' => $model,
 		    'attribute' => 'public_time',
+		    'mode' => 'date',
 		    'value'=>$model->public_time,
 		    'htmlOptions' => array(
-		    	'defaultDate'=>$model->public_time,
+		    	'defaultDate'=>date('dd.mm.yyyy',$model->public_time),
 		        
 		    ),
 		));

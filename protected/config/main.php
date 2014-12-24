@@ -112,7 +112,6 @@ return array(
 				'/inside/<controller:\w+>'=>'inside/<controller>/index',
 
 				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
-				'/ajax/<controller:\w+>'=>'ajax/<controller>/index',
 
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<page:\d+>/<task:[0-9]+[-]?[0-9ab]{0,2}>'=>'site/task',
 				// '<clas:\d+>/<subject:\w+>/<book:\w+>/<unit:\d+>/<lesson:[0-9]+[-]?[0-9]{0,2}>/<task:\d+>'=>'site/task',
