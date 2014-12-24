@@ -27,6 +27,7 @@ $this->menu=array(
 		'knowall_category_id',
 		'create_time',
 		'update_time',
+		'public_time',
 		'public',
 		'description',
 		'slug',

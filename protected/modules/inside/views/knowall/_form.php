@@ -2,6 +2,7 @@
 /* @var $this KnowallController */
 /* @var $model Knowall */
 /* @var $form CActiveForm */
+Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 ?>
 
 <div class="form">
@@ -21,10 +22,39 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
+	
 	<div class="form-group col-lg-6">
 		<?php echo $form->labelEx($model,'text'); ?>
-		<?php echo $form->textArea($model,'text',array('rows'=>8, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php
+		$this->widget('ImperaviRedactorWidget', array(
+		    // You can either use it for model attribute
+		    'model' => $model,
+		    'attribute' => 'text',
+			// 'selector' => '.redactor',
+
+		    // or just for input field
+		    // 'name' => 'Knowall_text',
+
+		    // Some options, see http://imperavi.com/redactor/docs/
+		    'options' => array(
+		    	'buttons'=>array(
+                    'formatting', '|', 'bold', 'italic', 'deleted', '|',
+                    'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
+                    'image', 'video', 'link', '|', 'html',
+                ),
+		        'lang' => 'ru',
+		        'toolbar' => true,
+		        'iframe' => true,
+		        'css' => 'wym.css',
+		        'imageGetJson' => Yii::app()->createAbsoluteUrl('/ajax/default/imageGetJson'),
+		        'imageUpload' => Yii::app()->createAbsoluteUrl('/ajax/default/imageUpload'),
+		        'clipboardUploadUrl' => Yii::app()->createAbsoluteUrl('/ajax/default/imageUpload'),
+		        'fileUpload' => Yii::app()->createAbsoluteUrl('/ajax/default/fileUpload'),
+
+		    ),
+		)); 
+		?>
+		
 		<?php echo $form->error($model,'text'); ?>
 	</div>
 	<div class="form-group col-lg-6">
@@ -85,3 +115,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
