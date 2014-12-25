@@ -32,23 +32,27 @@ public function actionTranslit(){
 
 public function actionImageUpload(){
 	$image=CUploadedFile::getInstanceByName('file');
-	$filename = 'a_'.date('YmdHis').'_'.substr(md5(time()), 0, rand(7, 13)).'.'.$image->extensionName;
-	$path = Yii::app()->basePath.'/../img/knowall/'.$filename;
+	$filename = uniqid().'.'.$image->extensionName;
+	$path = Yii::app()->basePath.'/../img/knowall/article/'.$filename;
 	// echo $path;
 	// die;
-	$image->saveAs(Yii::app()->basePath.'/../img/knowall/'.$filename);
-	$image_open = Yii::app()->image->load(Yii::app()->basePath.'/../img/knowall/'.$filename); 
-	if(isset($image_open)){
-		if ($image_open->width > $image_open->height){
-			$dim = Image::HEIGHT;
-		} else{ 
-			$dim = Image::WIDTH;
-		}  
-		$image_open->resize(100, 100, $dim)->crop(100, 100); 
-	 	$image_open->save(Yii::app()->basePath.'/../img/knowall/thumbs/'.$filename); 
-	} 
+	$image->saveAs(Yii::app()->basePath.'/../img/knowall/article/'.$filename);
+
+
+	// $image_open = Yii::app()->image->load(Yii::app()->basePath.'/../img/knowall/article/'.$filename); 
+	// if(isset($image_open)){
+	// 	if ($image_open->width > $image_open->height){
+	// 		$dim = Image::HEIGHT;
+	// 	} else{ 
+	// 		$dim = Image::WIDTH;
+	// 	}  
+	// 	$image_open->resize(100, 100, $dim)->crop(100, 100); 
+	//  	$image_open->save(Yii::app()->basePath.'/../img/knowall/article/'.'thumb_'.$filename); 
+	// } 
+
+
 	$array = array( 
-	 	'filelink' => Yii::app()->baseUrl.'/img/knowall/'.$filename, 
+	 	'filelink' => Yii::app()->baseUrl.'/img/knowall/article/'.$filename, 
 	 	'filename' => $filename 
  	); 
 	echo stripslashes(json_encode($array)); 

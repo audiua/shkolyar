@@ -69,6 +69,15 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		<?php echo $form->error($model,'thumbnail'); ?>
 	</div>
 
+	<?php if ($model->isNewRecord == false):?>
+		<div class="form-group">
+			<?php echo $form->labelEx($model,'deleteImage'); ?>
+			<?php echo $form->checkBox($model,'deleteImage'); ?>
+			<?php echo $form->error($model,'deleteImage'); ?>
+			<img src="<?=$model->getThumb(100,100,'crop'); ?>" />
+		</div>
+	<?php endif;?>
+
 	<div class="form-group col-lg-2">
 		<?php echo $form->labelEx($model,'knowall_category_id'); ?>
 		<?php echo $form->dropDownList($model,'knowall_category_id',KnowallCategory::getAll(), array('class'=>'form-control')); ?>

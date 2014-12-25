@@ -76,14 +76,23 @@ class KnowallController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
+		// print_r($_POST);
+		// die;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		
+		$data = Yii::app()->getRequest()->getPost('Knowall', null);
+		if (!empty($data)) {
+			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
+			$model->attributes = $data;
 
-		if(isset($_POST['Knowall']))
-		{
-			$model->attributes=$_POST['Knowall'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->public_time = strtotime($model->public_time);
+
+			if($model->save()){
+				Yii::app()->user->setFlash('KNOWALL_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(

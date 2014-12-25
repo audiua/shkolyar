@@ -22,6 +22,7 @@
 class Knowall extends CActiveRecord
 {
 	public $thumbnail;
+	public $deleteImage;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -43,11 +44,11 @@ class Knowall extends CActiveRecord
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('slug', 'unique', 'on' => 'insert'),
 			array('title', 'length', 'max'=>255),
-			array('public', 'length', 'max'=>1),
+			array('public, deleteImage', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, create_time, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
+			array('id, create_time, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,16 +84,15 @@ class Knowall extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			// 'clas_id' => 'Clas',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
 			'title' => 'Title',
 			'text' => 'Text',
-			// 'subject_id' => 'Subject',
 			'knowall_category_id' => 'Knowall Category',
 			'public' => 'Public',
 			'thumbnail' => 'thumbnail',
+			'deleteImage' => 'Удалить изображение',
 		);
 	}
 
@@ -122,6 +122,8 @@ class Knowall extends CActiveRecord
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('knowall_category_id',$this->knowall_category_id,true);
 		$criteria->compare('public',$this->public,true);
+		
+		$criteria->order = 'id DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -145,12 +147,13 @@ class Knowall extends CActiveRecord
 
     public function beforeSave(){
 
-    	if($this->isNewRecord){
-    		if( !empty($this->thumbnail) ){
-    			$this->thumbnail_ext = strtolower($this->thumbnail->getExtensionName());
-    		}
-    	} else {
-
+		if( !empty($this->thumbnail) ){
+			$this->_deleteImage();
+			$this->thumbnail_ext = strtolower($this->thumbnail->getExtensionName());
+		}
+    
+    	if ($this->deleteImage) {
+    		$this->_deleteImage();
     	}
 
     	return parent::beforeSave();
@@ -159,7 +162,11 @@ class Knowall extends CActiveRecord
     public function afterSave(){
 
     	if (!empty($this->thumbnail)) {
-    		$this->thumbnail->saveAs($this->getImgDir() . '/origin.'.$this->thumbnail_ext);
+    		$this->thumbnail->saveAs($this->getImgDir() . '/' . $this->slug . '.' .$this->thumbnail_ext);
+    		$this->getThumb(77,90,'crop');
+    		$this->getThumb(250,170,'crop');
+    		$this->getThumb(380,280,'crop');
+    		$this->getThumb(140,100,'crop');
     	}
 
 		return parent::afterSave();
@@ -170,7 +177,7 @@ class Knowall extends CActiveRecord
     }
 
     public function getImgDir($mkdir = true){
-    	$directory = Yii::app()->basePath . '/../img/knowall/' . $this->knowall_category->slug . '/'.$this->uniqKnowallId();
+    	$directory = Yii::app()->basePath . '/../img/knowall/thumbs/'.$this->uniqKnowallId();
         if ($mkdir && file_exists($directory) == false) {
             mkdir($directory, 0777, true);
         }
@@ -181,14 +188,14 @@ class Knowall extends CActiveRecord
     public function getThumb($width=null, $height=null, $mode='origin')
 	{
 		$dir = $this->getImgDir(false) . '/';
-		$originFile = $dir . 'origin.' . $this->thumbnail_ext;
+		$originFile = $dir . $this->slug . '.' . $this->thumbnail_ext;
 
 		if (!is_file($originFile)) {
 			return "http://www.placehold.it/{$width}x{$height}/EFEFEF/AAAAAA";
 		}
 
 		if ($mode == 'origin') {
-			return '/img/knowall/'.$this->knowall_category->slug . '/'.$this->uniqKnowallId(). '/origin.'. $this->thumbnail_ext;
+			return '/img/knowall/thumbs/'.$this->uniqKnowallId(). '/' . $this->slug . '.' . $this->thumbnail_ext;
 		}
 
 		$fileName = $this->slug . '_' . $width . 'x' . $height . '.' . $this->thumbnail_ext;
@@ -201,6 +208,20 @@ class Knowall extends CActiveRecord
 			}
 		}
 
-		return '/img/knowall/'.$this->knowall_category->slug . '/'.$this->uniqKnowallId(). '/'. $fileName;
+		return '/img/knowall/thumbs/'.$this->uniqKnowallId(). '/'. $fileName;
 	}
+
+	private function _deleteImage() {
+        if ($this->thumbnail_ext) {
+            Yii::app()->file->set($this->getImgDir(false))->delete();
+            $this->thumbnail_ext = '';
+        }
+    }
+
+    public function beforeDelete() {
+
+		$this->_deleteImage();
+
+        return parent::beforeDelete();
+    }
 }
