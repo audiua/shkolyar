@@ -258,15 +258,17 @@ function resizeImage(iW,iH,width)
 
 
 // одинаковая высота сайдбара и контента
-// resizeContentBlock();
+resizeContentBlock();
 
-// function resizeContentBlock(){
-// 	var contHeight = $('.content').outerHeight();
-// 	var sidebarHeight = $('.sidebar').outerHeight();
-// 	if(contHeight < sidebarHeight){
-// 		$('.content').height(sidebarHeight);
-// 	}
-// }
+function resizeContentBlock(){
+	var contHeight = $('.content').outerHeight();
+	var sidebarHeight = $('.sidebar').outerHeight();
+	console.log(contHeight);
+	console.log(sidebarHeight);
+	if(contHeight > sidebarHeight){
+		$('.sidebar').outerHeight(contHeight);
+	}
+}
 
 
 //ротатор баннера адсенса
@@ -303,7 +305,7 @@ if( ! $.cookie('showFb') ){
 $('td , th').hover(
 	function(){
 		var vertical = $(this).data('vertical');
-		console.log(vertical);
+		// console.log(vertical);
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 				$(item).css({'background':'#eee'}); 
 			
