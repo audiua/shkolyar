@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="knowall-category-link">
-			<span>категорія: </span><?php echo CHtml::link($first->knowall_category->title,'/knowall/'.$first->knowall_category->slug ,array('class'=>'')); ?>
+			<?php echo CHtml::link($first->knowall_category->title,'/knowall/'.$first->knowall_category->slug ,array('class'=>'')); ?>
 	</div>
 </div>
 
@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="knowall-category-link">
-			<span>категорія: </span><?php echo CHtml::link($one->knowall_category->title,'/knowall/'.$one->knowall_category->slug ,array('class'=>'')); ?>
+			<?php echo CHtml::link($one->knowall_category->title,'/knowall/'.$one->knowall_category->slug ,array('class'=>'')); ?>
 		</div>
 
 	</div>
