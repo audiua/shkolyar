@@ -12,7 +12,7 @@ class DataArticleWidget extends CWidget{
 
 	public function run(){
 
-		$title = 'Knowall articles';
+		// $title = 'Knowall articles';
 		// if( !empty($this->controller->clasModel) ){
 		// 	$title .= ' ' . $this->controller->clasModel->clas->slug . ' клас';
 		// }
@@ -26,7 +26,7 @@ class DataArticleWidget extends CWidget{
 		// }
 
        // передаем данные в представление виджета
-       $this->render('index',array('dataProvider' => $this->model, 'title'=>$title));
+       $this->render('index',array('dataProvider' => $this->model));
    }
 
 }

@@ -301,10 +301,12 @@
 		<li  ><a href="/writing">Твори</a></li> -->
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
-				<a class="knowall-subcategory" href="/knowall/nature">Природа</a>
-				<a class="knowall-subcategory" href="/knowall/man">Людина</a>
-				<a class="knowall-subcategory" href="/knowall/children">Діти</a>
-				<a class="knowall-subcategory" href="/knowall/technics">Техніка</a>
+				<ul>
+					<li><a class="knowall-subcategory" href="/knowall/nature">Природа</a></li>
+					<li><a class="knowall-subcategory" href="/knowall/man">Людина</a></li>
+					<li><a class="knowall-subcategory" href="/knowall/children">Діти</a></li>
+					<li><a class="knowall-subcategory" href="/knowall/technics">Техніка</a></li>
+				</ul>
 			</div>
 
 		</li>

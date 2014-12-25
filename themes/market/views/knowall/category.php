@@ -6,6 +6,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
+<div class="info"><?php echo $category->title; ?></div> 
+<p class="description">
 <?php echo $category->description; ?>
+</p>
 
 <?php $this->widget('DataArticleWidget', array('model'=>$model)); ?>

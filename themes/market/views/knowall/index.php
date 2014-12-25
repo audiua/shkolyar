@@ -6,4 +6,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
+<div class="info">Всезнайка</div> 
+<p class="description">
+У роздили Всезнайка - зибрани цикави статьи на ризни тематики
+</p>
+
 <?php $this->widget('DataArticleWidget', array('model'=>$model)); ?>

@@ -1,4 +1,4 @@
-<div class="info"><?php echo $title; ?></div> 
+
 <!-- <div class="view-filters">
 	<span class="view-filter glyphicon glyphicon-th-large gray active-filter" data-view='middle-book-block'></span> 
 	<span class="view-filter glyphicon glyphicon-th gray " data-view='small-book-block'></span>  
