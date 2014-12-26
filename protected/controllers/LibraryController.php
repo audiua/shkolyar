@@ -1,6 +1,6 @@
 <?php
 
-class KnowallController extends Controller{
+class LibraryController extends Controller{
 
 public $layout='';
 public $canonical;
@@ -8,7 +8,7 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='SHKOLYAR.INFO - Шкільний інформаційний портал.';
+public $keywords='';
 
 /**
  * @var string  мета тег описания страницы
@@ -18,11 +18,9 @@ public $description='SHKOLYAR.INFO - информацийний портал, д
 public $param;
 
 
-
 public function init(){
 	$this->param = $this->getActionParams();
 }
-
 
 public function filters() {
 	return array(
@@ -38,20 +36,21 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_knowall_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_library_page', array('duration'=>86400)) ){
 
 		$this->breadcrumbs = array(
-			'Всезнайка'
+			'Художня література'
 		);
 
 		$criteria = new CDbCriteria;
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$books = new CActiveDataProvider('LibraryBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$authors = LibraryAuthor::model()->findAll();
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall');
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка';
+		$this->canonical = Yii::app()->createAbsoluteUrl('/library');
+		$this->pageTitle = 'SHKOLYAR.INFO - Художня література';
 		// кешируем сдесь всю страницу
-		$this->render('index', array('model'=>$model));
+		$this->render('index', array('authors'=>$authors, 'books'=>$books));
 		$this->endCache(); 
 	}
 
@@ -63,30 +62,31 @@ public function actionIndex(){
  */
 public function actionCategory($category){
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_knowall_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
+	if($this->beginCache('category_library_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
 
-		$this->breadcrumbs = array(
-			'Всезнайка' => $this->createUrl('/knowall/'),
-			Yii::t('app', $category)
-
-		);
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.slug="'.$category.'"';
 
-		$categoryModel = KnowallCategory::model()->find($criteria);
+		$categoryModel = LibraryAuthor::model()->find($criteria);
 		if(!$categoryModel){
-			throw new CHttpException('404', 'error');
+			throw new CHttpException('404', 'немає такого автора');
 		}
 
 
 		$criteria = new CDbCriteria;
-		$criteria->condition='knowall_category_id='.$categoryModel->id;
+		$criteria->condition='library_author_id='.$categoryModel->id;
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$model = new CActiveDataProvider('LibraryBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		
+		$this->breadcrumbs = array(
+			'Художня література' => $this->createUrl('/library/'),
+			$categoryModel->author
+
+		);
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$category);
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка - '.ucfirst(Yii::t('app', $category));
+		$this->pageTitle = 'SHKOLYAR.INFO - Художня література - '.ucfirst(Yii::t('app', $category));
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
@@ -105,12 +105,12 @@ public function actionView($category, $article){
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.slug="'.$article.'"';
-		$criteria->addCondition('t.knowall_category_id='.$catModel->id);
-		$article = Knowall::model()->find($criteria);
+		$criteria->addCondition('t.library_author_id='.$catModel->id);
+		$article = LibraryBook::model()->find($criteria);
 
 		$this->breadcrumbs = array(
-			'Всезнайка' => $this->createUrl('/knowall/'),
-			Yii::t('app', $category) => $this->createUrl('/knowall/'.$category),
+			'Художня література' => $this->createUrl('/library/'),
+			$catModel->author => $this->createUrl('/library/'.$catModel->slug),
 			$article->title
 
 		);
@@ -143,10 +143,10 @@ public function loadCategory($category){
 
 	$criteria = new CDbCriteria;
 	$criteria->condition = 't.slug="'.$category.'"';
-	$model = KnowallCategory::model()->find($criteria);
+	$model = LibraryAuthor::model()->find($criteria);
 
 	if(! $model){
-		throw new CHttpException('404', 'нет такогй категории');
+		throw new CHttpException('404', 'нет такогй автора');
 	}
 
 	return $model;

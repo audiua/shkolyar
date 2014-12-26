@@ -33,13 +33,13 @@ class LibraryBook extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, author_id, create_time, update_time', 'required'),
+			array('title, library_author_id, slug', 'required'),
 			array('title', 'length', 'max'=>255),
-			array('author_id, create_time, update_time', 'length', 'max'=>10),
+			array('library_author_id, create_time, update_time', 'length', 'max'=>10),
 			array('img_ext, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, img_ext, description, author_id, create_time, update_time', 'safe', 'on'=>'search'),
+			array('id, title, img_ext, slug, description, library_author_id, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +51,18 @@ class LibraryBook extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'author' => array(self::BELONGS_TO, 'LibraryAuthor', 'author_id'),
+			'library_author' => array(self::BELONGS_TO, 'LibraryAuthor', 'library_author_id'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 
@@ -65,9 +76,10 @@ class LibraryBook extends CActiveRecord
 			'title' => 'Title',
 			'img_ext' => 'Img Ext',
 			'description' => 'Description',
-			'author_id' => 'Author',
+			'library_author_id' => 'Author',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
+			'slug' => 'slug',
 		);
 	}
 
@@ -93,9 +105,10 @@ class LibraryBook extends CActiveRecord
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('img_ext',$this->img_ext,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('author_id',$this->author_id,true);
+		$criteria->compare('library_author_id',$this->library_author_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
+		$criteria->compare('slug',$this->slug,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

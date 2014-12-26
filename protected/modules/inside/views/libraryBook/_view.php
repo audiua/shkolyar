@@ -21,7 +21,7 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('author_id')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('library_author_id')); ?>:</b>
 	<?php echo CHtml::encode($data->author_id); ?>
 	<br />
 

@@ -32,8 +32,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'author_id'); ?>
-		<?php echo $form->textField($model,'author_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->label($model,'library_author_id'); ?>
+		<?php echo $form->textField($model,'library_author_id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">

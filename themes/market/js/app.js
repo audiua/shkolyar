@@ -41,6 +41,14 @@ $('li.knowall').hover(function(){
 	$('li.knowall').css({'background-color':'', 'z-index': '1'});
 } );
 
+$('li.library').hover(function(){
+	$(this).css({'background-color':'#f5f5f5', 'z-index': '10'});
+	$('.library-block').css({'display':'block'});
+}, function(){ 
+	$('.library-block').css({'display':'none'});
+	$('li.library').css({'background-color':'', 'z-index': '1'});
+} );
+
 //--------------------------------------
 // toggle view-block-filter
 $('.view-filter').click(function(){

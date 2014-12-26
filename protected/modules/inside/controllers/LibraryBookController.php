@@ -22,16 +22,8 @@ class LibraryBookController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'roles'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -58,6 +50,9 @@ class LibraryBookController extends InsideController
 	{
 		$model=new LibraryBook;
 
+		// print_r($_POST);
+		// die;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -65,7 +60,7 @@ class LibraryBookController extends InsideController
 		{
 			$model->attributes=$_POST['LibraryBook'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -89,7 +84,7 @@ class LibraryBookController extends InsideController
 		{
 			$model->attributes=$_POST['LibraryBook'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -108,31 +103,20 @@ class LibraryBookController extends InsideController
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('LibraryBook');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$model=new LibraryBook('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['LibraryBook']))
 			$model->attributes=$_GET['LibraryBook'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

@@ -297,8 +297,22 @@
 			</div>
 		</li>
 
-		<!-- <li  ><a href="/library">Художня література</a></li>
-		<li  ><a href="/writing">Твори</a></li> -->
+
+		<li class="<?php echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
+			<div class="library-block">
+				<ul>
+					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
+					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
+					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
+					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
+				</ul>
+			</div>
+
+		</li>
+
+
+
+		<!-- <li  ><a href="/writing">Твори</a></li> -->
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
 				<ul>

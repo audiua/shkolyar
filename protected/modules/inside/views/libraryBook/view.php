@@ -25,7 +25,7 @@ $this->menu=array(
 		'title',
 		'img_ext',
 		'description',
-		'author_id',
+		'library_author_id',
 		'create_time',
 		'update_time',
 	),

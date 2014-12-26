@@ -55,6 +55,8 @@ return array(
 		'application.widgets.lastBookWidget.*',
 		'application.widgets.lastKnowallWidget.*',
 		'application.widgets.dataArticleWidget.*',
+		'application.widgets.dataLibraryWidget.*',
+		'application.widgets.libraryAuthorWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'

@@ -36,23 +36,6 @@ public function init(){
 
 }
 
-/**
- * Declares class-based actions.
- */
-public function actions(){
-
-	$this->allClasModel = Clas::model()->cache(86400)->findAll();
-
-	return array(
-		// page action renders "static" pages stored under 'protected/views/site/pages'
-		// They can be accessed via: index.php?r=site/page&view=FileName
-		'page'=>array(
-			'class'=>'CViewAction',
-		),
-	);
-}
-
-
 public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
