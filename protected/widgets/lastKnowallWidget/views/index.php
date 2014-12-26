@@ -15,7 +15,7 @@
 <?php foreach( $model as $i => $one ): ?>
 
 	<div class='knowall-small-one-block'>
-		<?php echo CHtml::image($one->getThumb(140,100,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
+		<?php echo CHtml::image($one->getThumb(160,106,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
 		
 		<div class="knowall-link">
 			<?php echo CHtml::link($one->title,'/knowall/'.$one->knowall_category->slug . '/'. $one->slug,array('class'=>'')); ?>

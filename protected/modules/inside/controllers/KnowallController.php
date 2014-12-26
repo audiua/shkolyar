@@ -47,6 +47,8 @@ class KnowallController extends InsideController
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate(){
+
+
 		$model=new Knowall;
 
 		$data = Yii::app()->getRequest()->getPost('Knowall', null);
@@ -84,10 +86,13 @@ class KnowallController extends InsideController
 		
 		$data = Yii::app()->getRequest()->getPost('Knowall', null);
 		if (!empty($data)) {
+			// print_r($data);
+			// die;
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
 			$model->public_time = strtotime($model->public_time);
+			$model->nausea = $data['nausea'];
 
 			if($model->save()){
 				Yii::app()->user->setFlash('KNOWALL_FLASH', 'Збережено');

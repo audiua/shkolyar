@@ -48,7 +48,7 @@ class Knowall extends CActiveRecord
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, create_time, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
+			array('id, create_time, nausea, length, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -93,6 +93,8 @@ class Knowall extends CActiveRecord
 			'public' => 'Public',
 			'thumbnail' => 'thumbnail',
 			'deleteImage' => 'Удалить изображение',
+			'length' => 'Длина',
+			'nausea'=>'Тошнота',
 		);
 	}
 
@@ -122,6 +124,7 @@ class Knowall extends CActiveRecord
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('knowall_category_id',$this->knowall_category_id,true);
 		$criteria->compare('public',$this->public,true);
+		$criteria->compare('nausea',$this->nausea,true);
 		
 		$criteria->order = 'id DESC';
 
@@ -156,6 +159,9 @@ class Knowall extends CActiveRecord
     		$this->_deleteImage();
     	}
 
+    	$this->length = Helper::getLength($this);
+    	$this->nausea = str_replace(',', '.', $this->nausea) ;
+
     	return parent::beforeSave();
     }
 
@@ -170,6 +176,13 @@ class Knowall extends CActiveRecord
     	}
 
 		return parent::afterSave();
+    }
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
     }
 
     public function uniqKnowallId() {

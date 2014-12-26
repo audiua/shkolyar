@@ -93,6 +93,12 @@ $('.search-form form').submit(function(){
 			'headerHtmlOptions'=>array('width'=>'20px'),
 		),
 		'slug',
+		'length',
+		'nausea'=>array(
+			'name'=>'nausea',
+			'value'=>'$data->nausea."%"',
+			'headerHtmlOptions'=>array('width'=>'30px'),
+		),
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('width'=>'80px')

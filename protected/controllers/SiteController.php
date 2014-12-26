@@ -8,12 +8,12 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='SHKOLYAR.INFO - Шкільний інформаційний портал.';
+public $keywords='Шкільний інформаційний портал, гдз, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
 
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - информацийний портал, для середніх загальноосвітніх шкіл України.';
+public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Данний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці, щоб зберигти Ваш час та допомогти Вам у навчанні. Команда порталу витратила чимало часу та зусиль, щоб досягнути поставленої мети.';
 
 public $param;
 
@@ -40,7 +40,7 @@ public function actionIndex(){
 	if($this->beginCache('main_page', array('duration'=>86400)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
-		$this->pageTitle = 'SHKOLYAR.INFO - Шкильний информацийний портал';
+		$this->pageTitle = 'SHKOLYAR.INFO - Шкільний інформаційний портал.';
 		// кешируем сдесь всю страницу
 		$this->render('index');
 

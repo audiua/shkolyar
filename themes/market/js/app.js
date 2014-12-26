@@ -263,8 +263,8 @@ resizeContentBlock();
 function resizeContentBlock(){
 	var contHeight = $('.content').outerHeight();
 	var sidebarHeight = $('.sidebar').outerHeight();
-	console.log(contHeight);
-	console.log(sidebarHeight);
+	// console.log(contHeight);
+	// console.log(sidebarHeight);
 	if(contHeight > sidebarHeight){
 		$('.sidebar').outerHeight(contHeight);
 	}
@@ -297,15 +297,15 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-if( ! $.cookie('showFb') ){
-	setTimeout(showFb, 10000);
-}
+// if( ! $.cookie('showFb') ){
+// 	setTimeout(showFb, 10000);
+// }
 
 // выделение выбраного пункта из таблицы
 $('td , th').hover(
 	function(){
 		var vertical = $(this).data('vertical');
-		// console.log(vertical);
+		console.log(vertical);
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 				$(item).css({'background':'#eee'}); 
 			

@@ -69,6 +69,12 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		<?php echo $form->error($model,'thumbnail'); ?>
 	</div>
 
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'nausea'); ?>
+		<?php echo $form->textField($model,'nausea'); ?>
+		<?php echo $form->error($model,'nausea'); ?>
+	</div>
+
 	<?php if ($model->isNewRecord == false):?>
 		<div class="form-group">
 			<?php echo $form->labelEx($model,'deleteImage'); ?>
@@ -91,10 +97,10 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		$this->widget('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker', array(
 		    'model' => $model,
 		    'attribute' => 'public_time',
-		    'mode' => 'date',
+		    'mode' => 'datetime',
 		    'value'=>$model->public_time,
 		    'htmlOptions' => array(
-		    	'defaultDate'=>date('dd.mm.yyyy',$model->public_time),
+		    	'defaultDate'=>$model->public_time,
 		        
 		    ),
 		));
