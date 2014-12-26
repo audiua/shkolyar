@@ -306,10 +306,6 @@
 					<li><a class="knowall-subcategory" href="/knowall/planeta">Планета</a></li>
 					<li><a class="knowall-subcategory" href="/knowall/man">Людина</a></li>
 					<li><a class="knowall-subcategory" href="/knowall/children">Діти</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/technics">Техніка</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/technics">Техніка</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/technics">Техніка</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/technics">Техніка</a></li>
 				</ul>
 			</div>
 
