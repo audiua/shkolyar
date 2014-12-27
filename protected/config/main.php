@@ -60,6 +60,7 @@ return array(
 		'application.widgets.dataLibraryWidget.*',
 		'application.widgets.libraryAuthorWidget.*',
 		'application.widgets.writingClasWidget.*',
+		'application.widgets.knowallCategoryWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'

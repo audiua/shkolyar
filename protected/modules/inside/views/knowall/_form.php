@@ -38,9 +38,9 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		    // Some options, see http://imperavi.com/redactor/docs/
 		    'options' => array(
 		    	'buttons'=>array(
-                    'formatting', '|', 'bold', 'italic', 'deleted', '|',
+                    'html','html','formatting', '|', 'bold', 'italic', 'deleted', '|',
                     'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
-                    'image', 'video', 'link', '|', 'html',
+                    'image', 'video', 'link', '|'
                 ),
 		        'lang' => 'ru',
 		        'toolbar' => true,

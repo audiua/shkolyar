@@ -48,10 +48,12 @@ public function actionIndex(){
 		// $criteria->condition= 't.public=1';
 		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2)));
 
+		$category = KnowallCategory::model()->findAll();
+
 		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall');
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка';
 		// кешируем сдесь всю страницу
-		$this->render('index', array('model'=>$model));
+		$this->render('index', array('model'=>$model, 'category'=>$category));
 		$this->endCache(); 
 	}
 
