@@ -44,6 +44,7 @@ return array(
 		'application.widgets.clasNumbWidget.*',
 		'application.widgets.clasNumbCurrentSubjectWidget.*',
 		'application.widgets.subjectWidget.*',
+		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
@@ -55,8 +56,10 @@ return array(
 		'application.widgets.lastBookWidget.*',
 		'application.widgets.lastKnowallWidget.*',
 		'application.widgets.dataArticleWidget.*',
+		'application.widgets.dataWritingWidget.*',
 		'application.widgets.dataLibraryWidget.*',
 		'application.widgets.libraryAuthorWidget.*',
+		'application.widgets.writingClasWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
 		'ext.ExtendedClientScript.cssmin.*'
@@ -126,8 +129,7 @@ return array(
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
-				'/gdz/<subject:[a-z-]+>'=>'gdz/currentSubject',
-				'/textbook/<subject:[a-z-]+>'=>'textbook/currentSubject',
+				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
 				'<controller:\w+>/<category:\w+>'=>'<controller>/category',

@@ -46,7 +46,7 @@ public function actionIndex(){
 
 		$criteria = new CDbCriteria;
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2)));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall');
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка';

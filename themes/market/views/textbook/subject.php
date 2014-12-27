@@ -65,7 +65,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 </div>
 
-  <div class="info">Выберите підручники</div> 
+  <div class="info">Виберіть підручник</div> 
   <div class="view-filters">
 	  <span class="view-filter glyphicon glyphicon-th-large gray active-filter" data-view='middle-book-block'></span> 
 	  <span class="view-filter glyphicon glyphicon-th gray " data-view='small-book-block'></span>  

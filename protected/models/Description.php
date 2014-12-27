@@ -1,35 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "subject".
+ * This is the model class for table "description".
  *
- * The followings are the available columns in table 'subject':
+ * The followings are the available columns in table 'description':
  * @property string $id
- * @property string $title
- * @property string $class
+ * @property string $owner
+ * @property string $action
+ * @property string $clas_id
+ * @property string $subject_id
+ * @property integer $description
+ * @property string $create_time
+ * @property string $update_time
+ *
+ * The followings are the available model relations:
+ * @property Subject $subject
+ * @property Clas $slas
  */
-class Subject extends CActiveRecord
+class Description extends CActiveRecord
 {
-
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'subject';
-	}
-
-	private $_url;
-    
-	public function getUrl(){
-
-		// print_r($this);
-		// die;
-
-
-		if ($this->_url === null)
-		   $this->_url = Yii::app()->createUrl('/'.$this->classes->slug .'/'.$this->slug);
-		return $this->_url;
+		return 'description';
 	}
 
 	/**
@@ -40,10 +35,12 @@ class Subject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, slug', 'required'),
+			array('owner, description, action, clas_id, subject_id, ', 'required'),
+			array('owner, action', 'length', 'max'=>255),
+			array('clas_id, subject_id, create_time, update_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, slug, create_time_, update_time', 'safe', 'on'=>'search'),
+			array('id, owner, action, clas_id, subject_id, description, create_time, update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,14 +49,11 @@ class Subject extends CActiveRecord
 	 */
 	public function relations()
 	{
-
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'gdz_book' => array(self::HAS_MANY, 'GdzBook', 'subject_id'),
-			'gdz_subject' => array(self::HAS_MANY, 'GdzSubject', 'subject_id'),
-			'description' => array(self::HAS_MANY, 'Description', 'subject_id'),
-			// 'classes' => array(self::BELONGS_TO, 'Clas', 'class_id'),
+			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
+			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
 		);
 	}
 
@@ -70,7 +64,10 @@ class Subject extends CActiveRecord
 				'createAttribute' => 'create_time',
 				'updateAttribute' => 'update_time',
 				'setUpdateOnCreate'=>true,
-			)
+			),
+			// 'DescriptionBehavior'=>array(
+			// 	'clas'=>'DescriptionBehavior'
+			// )
 		);
 	}
 
@@ -81,8 +78,13 @@ class Subject extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'slug' => 'Slug',
+			'owner' => 'Owner',
+			'action' => 'Action',
+			'clas_id' => 'Slas',
+			'subject_id' => 'Subject',
+			'description' => 'Description',
+			'create_time' => 'Create Time',
+			'update_time' => 'Update Time',
 		);
 	}
 
@@ -105,15 +107,16 @@ class Subject extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('slug',$this->slug,true);
-		
+		$criteria->compare('owner',$this->owner,true);
+		$criteria->compare('action',$this->action,true);
+		$criteria->compare('clas_id',$this->clas_id,true);
+		$criteria->compare('subject_id',$this->subject_id,true);
+		$criteria->compare('description',$this->description);
+		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('update_time',$this->update_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'pagination'=>array(
-		        'pageSize'=>50,
-		    ),
 		));
 	}
 
@@ -121,16 +124,10 @@ class Subject extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Subject the static model class
+	 * @return Description the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public static function getAll(){
-
-		return CHtml::listData(self::model()->findAll(), 'id', 'title');
-
 	}
 }

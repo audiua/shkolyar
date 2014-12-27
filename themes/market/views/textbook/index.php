@@ -23,4 +23,4 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="separator"></div>
 
 
-<div class="info">Нови надходження</div>
+<div class="info">Нові надходження</div>

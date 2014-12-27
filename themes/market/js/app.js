@@ -49,6 +49,14 @@ $('li.library').hover(function(){
 	$('li.library').css({'background-color':'', 'z-index': '1'});
 } );
 
+$('li.writing').hover(function(){
+	$(this).css({'background-color':'#f5f5f5', 'z-index': '10'});
+	$('.writing-table').css({'display':'block'});
+}, function(){ 
+	$('.writing-table').css({'display':'none'});
+	$('li.writing').css({'background-color':'', 'z-index': '1'});
+} );
+
 //--------------------------------------
 // toggle view-block-filter
 $('.view-filter').click(function(){
