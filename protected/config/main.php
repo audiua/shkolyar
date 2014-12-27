@@ -119,7 +119,7 @@ return array(
 
 				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
 
-				'<action:advertiser|rules|rightholder|contacts>'=>'site/page',
+				'<action:about|advertiser|rules|rightholder|contacts>'=>'site/page',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
 				
@@ -138,7 +138,7 @@ return array(
 
 				// 'tizer'=>'tizer/index',
 				// 'position'=>'position/index',
-				// 'sitemap.xml'=>'sitemap/index',
+				'sitemap.xml'=>'sitemap/index',
 				
 				
 				
