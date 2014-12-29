@@ -9,4 +9,5 @@ protected/yiic.log
 robots.txt
 sitemap.xml
 !/.gitignore
+qa
 qa/*
