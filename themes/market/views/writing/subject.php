@@ -6,12 +6,11 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<div class="info"><?php echo $category->title; ?></div> 
 
-<?php echo $category->description; ?>
+<h1>Твори <?php echo $this->clasModel->slug . ' клас ' . $this->subjectModel->title; ?></h1>
 
+<?php echo $description; ?>
 
-
-<?php $this->widget('DataArticleWidget', array('model'=>$model, 'params'=>array('linkCategory'=>false))); ?>
-<div class="clear"></div>
 <div class="separator"></div>
+<div class="info">Виберіть твір</div>
+<?php $this->widget('DataWritingWidget', array('model'=>$model)); ?>

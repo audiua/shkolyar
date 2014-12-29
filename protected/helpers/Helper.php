@@ -8,7 +8,7 @@ class Helper{
 	 * @param  Article $article
 	 * @return int  длина статьи
 	 */
-	public static function getLength( Knowall $article ){
+	public static function getLength( $article ){
 
 		// content
 		$content = strip_tags($article->text);
@@ -22,6 +22,37 @@ class Helper{
 
 		return $contentLength + $titleLength;
 
+	}
+
+	public static function getShort($title){
+
+		$title = mb_strtolower($title, 'utf8');
+
+		$short = array(
+			'українська мова'=>'укр-мова',
+			'українська література'=>'укр-літ',
+			'російська мова'=>'рос-мова',
+			'зарубіжна література'=>'зар-літ',
+		);
+
+		return isset($short[$title]) ? $short[$title] : $title ;
+	}
+
+	public static function getOwner(){
+		return array(
+			'writing'=>'writing',
+			'gdz'=>'gdz',
+			'textbook'=>'textbook',
+			'knowall'=>'knowall'
+		);
+	}
+
+	public static function getAction(){
+		return array(
+			'clas'=>'clas',
+			'subject'=>'subject',
+			'category'=>'category',
+		);
 	}
 
 

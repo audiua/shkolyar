@@ -297,6 +297,73 @@
 			</div>
 		</li>
 
+		<li  class="<?php  echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
+			<a href="/writing">Твори<!-- <span class="blue glyphicon glyphicon-chevron-down small"></span> --></a>
+			<div class="writing-table">
+				<table>
+					<thead>
+						<tr>
+							<th data-vertical="0"></th>
+							<th class="clas-5" data-vertical="1"><a href="/writing/5" class="clas-5">5 <br><span>клас</span></a></th>
+							<th class="clas-6" data-vertical="2"><a href="/writing/6" class="clas-6">6 <br><span>клас</span></a></th>
+							<th class="clas-7" data-vertical="3"><a href="/writing/7" class="clas-7">7 <br><span>клас</span></a></th>
+							<th class="clas-8" data-vertical="4"><a href="/writing/8" class="clas-8">8 <br><span>клас</span></a></th>
+							<th class="clas-9" data-vertical="5"><a href="/writing/9" class="clas-9">9 <br><span>клас</span></a></th>
+							<th class="clas-10" data-vertical="6"><a href="/writing/10" class="clas-10">10 <br><span>клас</span></a></th>
+							<th class="clas-11" data-vertical="7"><a href="/writing/11" class="clas-11">11 <br><span>клас</span></a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-vertical="0"><a href="/writing/lang-ua">українська мова</a></td>
+							<td data-vertical="1"><a href="/writing/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/writing/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/writing/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/writing/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/writing/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/writing/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/writing/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+				
+						<!-- <tr>
+							<td data-vertical="0"><a href="/writing/lit-ua">українська література</a></td>
+							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/writing/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/writing/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/writing/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/writing/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/writing/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							
+						</tr>
+						
+						<tr>
+							<td data-vertical="0"><a href="/writing/lang-ua">російська мова</a></td>
+							<td data-vertical="1"><a href="/writing/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/writing/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/writing/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/writing/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/writing/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/writing/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/writing/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+						
+						<tr>
+							<td data-vertical="0"><a href="/writing/lit-ua">зарубіжна література</a></td>
+							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/writing/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/writing/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/writing/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/writing/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/writing/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							
+						</tr> -->
+					</tbody>
+				</table>
+
+			</div>
+		</li>
 
 		<li class="<?php echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
 			<div class="library-block">
@@ -310,9 +377,6 @@
 
 		</li>
 
-
-
-		<!-- <li  ><a href="/writing">Твори</a></li> -->
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
 				<ul>

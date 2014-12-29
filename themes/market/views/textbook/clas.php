@@ -37,7 +37,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </nav>
 </div>
 
-<h1>Пидручники <?php echo $this->param['clas'] . ' клас'; ?></h1>
+<h1>Підручники <?php echo $this->param['clas'] . ' клас'; ?></h1>
 <p class="description">
 <?php echo $this->clasModel->description; ?><br><br>
   

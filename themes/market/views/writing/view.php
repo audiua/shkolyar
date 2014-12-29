@@ -6,12 +6,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<div class="info"><?php echo $category->title; ?></div> 
+<h1><?php echo  $model->title; ?> </h1>
 
-<?php echo $category->description; ?>
-
-
-
-<?php $this->widget('DataArticleWidget', array('model'=>$model, 'params'=>array('linkCategory'=>false))); ?>
-<div class="clear"></div>
-<div class="separator"></div>
+<div class="knowall-article">
+	
+<?php echo  $model->description; ?>
+	
+</div>
