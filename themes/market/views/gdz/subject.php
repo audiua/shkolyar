@@ -66,6 +66,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </div>
 <h1><?php echo $this->h1; ?></h1>
 
+<div class="description">
+  <?php  echo $this->subjectModel->description; ?>
+</div>
+
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
 
