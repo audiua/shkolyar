@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ?>
 
 
-<div class="title">Manage Gdz Clases</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
+<div class="title">Управление гдз классами</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
 <div class="clear"></div>
 
 

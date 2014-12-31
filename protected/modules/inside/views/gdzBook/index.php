@@ -97,6 +97,7 @@ $('.search-form form').submit(function(){
 			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->public_time)',
 			'htmlOptions'=>array('width'=>'150px')
 		),
+		'public',
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('width'=>'10px')

@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View GdzClas #<?php echo $model->id; ?></h1>
+<h1>Вид гдз класса #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

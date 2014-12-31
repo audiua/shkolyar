@@ -1,11 +1,9 @@
-<div class="sidebar-block">
+<!-- <div class="sidebar-block">
 	<div class="direct">
-		<!-- <img src="http://placehold.it/300x600">  -->
-		<!-- <img src="/images/banner.png">  -->
 		<img class='big_adsance' src="/images/big.jpeg"> 
 	</div>
 </div>
-
+ -->
 <?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
 <div class="sidebar-block">
 	<div class="menu">

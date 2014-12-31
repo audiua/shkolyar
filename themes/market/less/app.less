@@ -118,10 +118,13 @@
 	}
 
 	.logo a{
+		outline: none;
 		text-decoration: none;
 		&:hover{
 			text-decoration: none;
 		}
+
+
 	}
 
 	.logo img{
@@ -736,6 +739,28 @@
 	h3{
 		color: @blue;
 		font-size: 20px;
+	}
+
+    .description{
+		padding: 15px;
+		
+		p{
+			line-height: 18px;
+			font-family: Arial;
+			color: #333;
+			text-indent: 20px;
+
+			a{
+			border-bottom: 1px solid @yellow;
+			text-decoration: none;
+
+			&:hover{
+				text-decoration: none;
+				color: @yellow;
+				border-bottom: 1px solid @blue;
+			}
+		}
+		}
 	}
 
 	p.description{
@@ -1596,6 +1621,21 @@
 	.last-knowall{
 		margin-top: 20px;
 	}
+
+	.error-image{
+		width: 250px;
+		height: 250px;
+		margin-top: 30px;
+		margin-left: 30px;
+		margin-right: 30px;
+		float: left;
+	}
+
+	.error-block{
+		margin-top: 50px;
+	}
+
+
 	
 
 

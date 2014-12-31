@@ -57,7 +57,7 @@ class GdzBookController extends InsideController
 		{
 			$model->attributes=$_POST['GdzBook'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -81,7 +81,7 @@ class GdzBookController extends InsideController
 		{
 			$model->attributes=$_POST['GdzBook'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(

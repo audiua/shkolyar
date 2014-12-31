@@ -45,7 +45,7 @@ class GdzBook extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, author, gdz_clas_id, subject_id', 'required'),
+			array('title, author, gdz_clas_id, gdz_subject_id', 'required'),
 			array('title, author, slug, year, properties, pagination', 'length', 'max'=>255),
 			array('gdz_clas_id, subject_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
 			array('img, lang, public', 'safe'),
