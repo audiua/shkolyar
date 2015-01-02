@@ -33,8 +33,9 @@ class TextbookSubject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('description, create_time, update_time, subject_id, textbook_clas_id', 'required'),
+			array('subject_id, textbook_clas_id', 'required'),
 			array('create_time, update_time, subject_id, textbook_clas_id', 'length', 'max'=>10),
+			array('description,', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, description, create_time, update_time, subject_id, textbook_clas_id', 'safe', 'on'=>'search'),
@@ -52,6 +53,17 @@ class TextbookSubject extends CActiveRecord
 			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
 			'textbook_clas' => array(self::BELONGS_TO, 'TextbookClas', 'textbook_clas_id'),
 			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_subject_id'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 

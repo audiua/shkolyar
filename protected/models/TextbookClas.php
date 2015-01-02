@@ -32,8 +32,9 @@ class TextbookClas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('description, clas_id, create_time, update_time', 'required'),
+			array('clas_id', 'required'),
 			array('clas_id, create_time, update_time', 'length', 'max'=>10),
+			array('description,', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, description, clas_id, create_time, update_time', 'safe', 'on'=>'search'),
@@ -65,6 +66,17 @@ class TextbookClas extends CActiveRecord
 			'clas_id' => 'Clas',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 
