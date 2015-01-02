@@ -24,7 +24,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 <div class="task">
-	<div class="task-title info">Сторинка: 
+	<div class="task-title info">Сторінка: 
 	</div>
 	<section id="inverted-contain">
 	  <div class="buttons">
@@ -58,7 +58,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
   	</div>
   	<div class="clear"></div>
   	<!-- <div class="separator"></div> -->
-  	<div class="info">Виберить сторинку: </div>
+  	<div class="info">Виберіть сторінку: </div>
   	<div class="task-block">
   		<?php $this->widget('TaskWidget'); ?>
   	</div>

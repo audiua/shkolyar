@@ -145,11 +145,14 @@ public function actionSubject($clas, $subject){
 		$this->description = 'Підручники ' 
 			. $this->subjectModel->subject->title . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
 
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.textbook_subject_id='.$this->subjectModel->id);
+		$criteria->addCondition('t.public=1');
+
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
-				'criteria'=>array(
-					'condition'=>'textbook_clas_id='.$this->clasModel->id .' AND textbook_subject_id='.$this->subjectModel->id,
-				), 
+				'criteria'=>$criteria, 
 				'pagination'=>array('pageSize'=>12),
 			)
 		);
@@ -161,7 +164,7 @@ public function actionSubject($clas, $subject){
 		);
 
 
-		$this->render('subject');
+		$this->render('subject', array('books'=>$books));
 
 		$this->endCache(); 
 	}

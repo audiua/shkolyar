@@ -65,14 +65,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 </div>
 
-  <div class="info">Виберіть підручник</div> 
-  <div class="view-filters">
-	  <span class="view-filter glyphicon glyphicon-th-large gray active-filter" data-view='middle-book-block'></span> 
-	  <span class="view-filter glyphicon glyphicon-th gray " data-view='small-book-block'></span>  
-	  <span class="view-filter glyphicon glyphicon-th-list gray" data-view='list-book-block'></span> 
-  </div>
-
-<?php $this->widget('BookWidget', array('model'=>$this->subjectModel->textbook_book)); ?>
+<div class="info">Виберіть підручник</div> 
+ 
+<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
 
 
