@@ -12,9 +12,6 @@
 				echo '<div class="desc">'.$data->properties.'</div>';
 			}
 		?>
-		<div class="desc">
-			<p><?php echo $data->description; ?></p>
-		</div>
 
 	</div>
 
