@@ -64,5 +64,9 @@ h1{
 	text-align: center;
 }
 
+.col-md-9 .redactor-box .redactor-toolbar{
+	z-index: 900 !important;
+}
+
 
 

@@ -43,7 +43,7 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lang-ua">украинська мова</a></td>
+							<td data-vertical="0"><a href="/gdz/lang-ua">українська мова</a></td>
 							<td data-vertical="1"><!-- <a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a> --></td>
 							<td data-vertical="2"><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -65,7 +65,7 @@
 						</tr>
 						
 						<!-- <tr>
-							<td data-vertical="0"><a href="/gdz/lit-ua">украинська література</a></td>
+							<td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -77,7 +77,7 @@
 						</tr> -->
 						
 						<!-- <tr>
-							<td data-vertical="0"><a href="/gdz/lang-ua">росийська мова</a></td>
+							<td data-vertical="0"><a href="/gdz/lang-ua">російська мова</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -88,7 +88,7 @@
 						</tr> -->
 						
 						<!-- <tr>
-							<td data-vertical="0"><a href="/gdz/lit-ua">зарубижна література</a></td>
+							<td data-vertical="0"><a href="/gdz/lit-ua">зарубіжна література</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -120,7 +120,7 @@
 							<td data-vertical="7"><a href="/gdz/11/algebra"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/geom">геометрия</a></td>
+							<td data-vertical="0"><a href="/gdz/geom">геометрія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/gdz/7/geom"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>

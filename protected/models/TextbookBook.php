@@ -174,4 +174,11 @@ class TextbookBook extends CActiveRecord
 
 		return parent::beforeValidate();
 	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
 }
