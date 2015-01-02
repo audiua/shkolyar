@@ -45,8 +45,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#view-page" role="tab" data-toggle="tab">Переглянути по сторинкам</a></li>
-  <li><a href="#view-book" role="tab" data-toggle="tab">Пенлянути журналом</a></li>
+  <li class="active"><a href="#view-page" role="tab" data-toggle="tab">Переглянути по сторінкам</a></li>
+  <li><a href="#view-book" role="tab" data-toggle="tab">Переглянути журналом</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -64,7 +64,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
   	</div>
   </div>
   <div class="tab-pane" id="view-book">
-	<iframe src="//v.calameo.com/?bkcode=003876070dcf595c00ad2" width="870" height="600" frameborder="0" scrolling="no" allowtransparency allowfullscreen style="margin:0 auto;"></iframe>
+	<!-- <iframe src="//v.calameo.com/?bkcode=003876070dcf595c00ad2" width="870" height="600" frameborder="0" scrolling="no" allowtransparency allowfullscreen style="margin:0 auto;"></iframe> -->
   </div>
 </div>
 

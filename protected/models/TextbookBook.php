@@ -46,6 +46,7 @@ class TextbookBook extends CActiveRecord
 		return array(
 			array('title, author, textbook_clas_id, textbook_subject_id, slug', 'required'),
 			array('title, author, slug, year, properties', 'length', 'max'=>255),
+			array('description,', 'length', 'max'=>1000),
 			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
 			array('public', 'length', 'max'=>1),
 			// The following rule is used by search().
