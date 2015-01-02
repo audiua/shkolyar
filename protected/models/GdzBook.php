@@ -48,7 +48,7 @@ class GdzBook extends CActiveRecord
 			array('title, author, gdz_clas_id, gdz_subject_id', 'required'),
 			array('title, author, slug, year, properties, pagination', 'length', 'max'=>255),
 			array('gdz_clas_id, subject_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
-			array('img, lang, public', 'safe'),
+			array('img, lang, public, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, author, gdz_clas_id, subject_id, slug, img, description, gdz_subject_id, year, properties, pagination, create_time, update_time, public_time, lang', 'safe', 'on'=>'search'),

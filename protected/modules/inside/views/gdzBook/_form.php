@@ -159,8 +159,10 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="clear"></div>
 	<div class="form-group">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Створити' : 'Обновити',array('class'=>'btn btn-success')); ?>
-		<?php echo CHtml::link('Вiдмiнити', '/inside/gdzBook/index',array('class'=>'btn btn-default')); ?>
+		<div class="col-md-offset-9 col-lg-offset-9 col-md-2 col-lg-2">
+			<?php echo CHtml::submitButton($model->isNewRecord ? 'Створити' : 'Обновити',array('class'=>'btn btn-success', )); ?>
+			<?php echo CHtml::link('Вiдмiнити', '/inside/gdzBook/index',array('class'=>'btn btn-default')); ?>
+		</div>
 	</div>
 
 <?php $this->endWidget(); ?>
