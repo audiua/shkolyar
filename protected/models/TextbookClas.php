@@ -139,23 +139,20 @@ class TextbookClas extends CActiveRecord
 		$clasDir = $dir.'/'.$this->clas->slug;
 
 		if(file_exists($dir)){
-			echo $dir;
 
 			if(! is_writable($dir)){
 				chmod($dir, 0777);
 			}
 
 			if(!file_exists($clasDir)){
-				echo $clasDir;
-				echo mkdir($clasDir);
-				echo chmod($clasDir, 0777);
+				mkdir($clasDir);
+				chmod($clasDir, 0777);
 			}
 
 			if(! is_writable($clasDir)){
 				chmod($clasDir, 0777);
 			}
 			
-			die;
 		}
 
 		return parent::afterSave();
