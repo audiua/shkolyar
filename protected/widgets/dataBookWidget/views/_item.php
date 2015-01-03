@@ -19,11 +19,24 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 
 	</div>
 
+	<?php 
+		if($this->controller->id == 'gdz'):
+	?>
+
 	<div class="gdz-link">
 		<?php echo CHtml::link( 'Перейти до ГДЗ', array('/gdz/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
 	</div>
+
+	<?php 
+		else:
+	?>
+
 	<div class="textbook-link">
 		<?php echo CHtml::link( 'Перейти до підручника', array('/textbook/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-sm')); ?>
 	</div>
+
+	<?php 
+		endif;
+	?>
 					
 </div>

@@ -203,7 +203,7 @@ class TextbookBook extends CActiveRecord
     			mkdir($clasDir.'/book');
     			chmod($clasDir, 0777);
 
-    			mkdir($clasDir.'/jurnal');
+    			mkdir($clasDir.'/task');
     			chmod($clasDir, 0777);
 
     		}
