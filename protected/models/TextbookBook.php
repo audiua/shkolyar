@@ -50,6 +50,7 @@ class TextbookBook extends CActiveRecord
 			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('public', 'length', 'max'=>1),
+			array('img, lang, public, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, author, textbook_clas_id, textbook_subject_id, slug, img, description, year, properties, pagination, lang, public, create_time, update_time, public_time', 'safe', 'on'=>'search'),
