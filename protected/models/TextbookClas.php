@@ -136,6 +136,8 @@ class TextbookClas extends CActiveRecord
 
 		// создам папку для картинок
 		$dir = Yii::app()->basePath . '/../img/textbook';
+		echo $dir;
+		die;
 		$clasDir = $dir.'/'.$this->clas->slug;
 
 		if(file_exists($dir)){
