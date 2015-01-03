@@ -54,16 +54,24 @@ class GdzClasController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['GdzClas']))
-		{
-			$model->attributes=$_POST['GdzClas'];
-			if($model->save())
+		$data = Yii::app()->getRequest()->getPost('GdzClas', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('GdzClas_FLASH', 'Збережено');
 				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+
+
+
 	}
 
 	/**
@@ -78,11 +86,16 @@ class GdzClasController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['GdzClas']))
-		{
-			$model->attributes=$_POST['GdzClas'];
-			if($model->save())
+		$data = Yii::app()->getRequest()->getPost('GdzClas', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('GdzClas_FLASH', 'Збережено');
 				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(

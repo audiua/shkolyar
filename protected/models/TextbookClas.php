@@ -130,4 +130,31 @@ class TextbookClas extends CActiveRecord
 		}
 		return $result;
 	}
+
+
+	public function afterSave(){
+
+		// создам папку для картинок
+		$dir = Yii::app()->basePath . '/../img/textbook';
+		$clasDir = $dir.'/'.$this->clas->slug;
+
+		if(file_exists($dir)){
+
+			if(! is_writable($dir)){
+				chmod($dir, 0777);
+			}
+
+			if(!file_exists($clasDir)){
+				mkdir($clasDir);
+				chmod($clasDir, 0777);
+			}
+
+			if(! is_writable($clasDir)){
+				chmod($clasDir, 0777);
+			}
+			
+		}
+
+		return parent::afterSave();
+	}
 }

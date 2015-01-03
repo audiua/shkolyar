@@ -72,20 +72,23 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	</div>
 
 	<div class="form-group">
-			<?php echo $form->labelEx($model,'gdz_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-			<?php echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
-			<?php echo $form->error($model,'gdz_clas_id'); ?>
+		<?php echo $form->labelEx($model,'gdz_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php echo $form->error($model,'gdz_clas_id'); ?>
 	</div>
 
 	<div class="form-group">
-			<?php echo $form->labelEx($model,'gdz_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-			<?php echo $form->dropDownList($model,'gdz_subject_id', GdzSubject::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
-			<?php echo $form->error($model,'gdz_subject_id'); ?>
+		<?php echo $form->labelEx($model,'gdz_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->dropDownList($model,'gdz_subject_id', GdzSubject::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php echo $form->error($model,'gdz_subject_id'); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php echo $form->textField($model,'slug',array('size'=>60,'maxlength'=>255,'class'=>'col-md-4 col-lg-4 control-label')); ?>
+		<div class="col-md-offset-1 col-lg-offset-1 col-md-2 col-lg-2">
+			<?php echo CHtml::button('Перевести',array('class'=>'btn btn-default slug-translit')); ?>
+		</div>
 		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
@@ -168,3 +171,40 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+	
+$('.slug-translit').click(function(){
+
+    var slug = '';
+    if( $('#GdzBook_slug').val() ){
+        slug = $('#GdzBook_slug').val();
+    }
+
+    if(slug){
+	    $.post('/ajax/gdzBook/translit', {'slug':slug}, function(responce){
+	        if(responce.success){
+	        	console.log(responce);
+	        	console.log($('#GdzBook_slug'));
+	        	console.log(responce.translit);
+	            $('#GdzBook_slug').val(responce.translit);
+	            if( $('#GdzBook_slug').hasClass('error') ){
+	                $('#GdzBook_slug').removeClass('error');
+	                $('.slug_error').each(function(){
+	                    $(this).remove();
+	                });
+	            }
+	        } else {
+	            $('#GdzBook_slug').val(responce.translit);
+	            $('.name_error').each(function(){
+	                $(this).remove();
+	            });
+	            $('#GdzBook_slug').after('<span class="help-inline error slug_error">' + responce.error + '</span>');
+	            $('#GdzBook_slug').addClass('error');
+	        }
+	    }, 'json');
+    }
+
+});
+
+</script>

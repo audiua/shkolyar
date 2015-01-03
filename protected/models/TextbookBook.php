@@ -48,6 +48,7 @@ class TextbookBook extends CActiveRecord
 			array('title, author, slug, year, properties', 'length', 'max'=>255),
 			array('description,', 'length', 'max'=>1000),
 			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('public', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -181,5 +182,38 @@ class TextbookBook extends CActiveRecord
 		$this->public_time = date('d.m.Y H:i', $this->public_time);
 
         return parent::afterFind();
+    }
+
+    public function afterSave(){
+
+    	// создам папку для картинок
+    	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->subject->slug;
+    	$clasDir = $dir.'/'.$this->slug;
+
+    	if(file_exists($dir)){
+
+    		if(! is_writable($dir)){
+    			chmod($dir, 0777);
+    		}
+
+    		if(! file_exists($clasDir)){
+    			mkdir($clasDir);
+    			chmod($clasDir, 0777);
+
+    			mkdir($clasDir.'/book');
+    			chmod($clasDir, 0777);
+
+    			mkdir($clasDir.'/jurnal');
+    			chmod($clasDir, 0777);
+
+    		}
+
+    		if(! is_writable($clasDir)){
+    			chmod($clasDir, 0777);
+    		}
+    		
+    	}
+
+    	return parent::afterSave();
     }
 }

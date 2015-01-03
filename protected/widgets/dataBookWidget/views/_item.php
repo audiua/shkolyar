@@ -6,7 +6,7 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 
 <div class="middle-book-block">
 
-<div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, $data->author . ' '.$data->description, array('class'=>'img-middle-book thumbnail ')) ?> </div>
+<div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, $data->author, array('class'=>'img-middle-book thumbnail ')) ?> </div>
 	<div class="">
 		<div class="book-author"> <?php echo $data->author; ?></div>
 		<div class="book-subject"> <?php echo $data->title; ?></div>

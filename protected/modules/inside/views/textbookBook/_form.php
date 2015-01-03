@@ -86,6 +86,10 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php echo $form->textField($model,'slug',array('size'=>60,'maxlength'=>255,'class'=>'col-md-4 col-lg-4 control-label')); ?>
+		<div class="col-md-offset-1 col-lg-offset-1 col-md-2 col-lg-2">
+			<?php echo CHtml::button('Перевести',array('class'=>'btn btn-default slug-translit')); ?>
+		</div>	
+	
 		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
@@ -168,3 +172,40 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+	
+$('.slug-translit').click(function(){
+
+    var slug = '';
+    if( $('#TextbookBook_slug').val() ){
+        slug = $('#TextbookBook_slug').val();
+    }
+
+    if(slug){
+	    $.post('/ajax/textbookBook/translit', {'slug':slug}, function(responce){
+	        if(responce.success){
+	        	console.log(responce);
+	        	console.log($('#TextbookBook_slug'));
+	        	console.log(responce.translit);
+	            $('#TextbookBook_slug').val(responce.translit);
+	            if( $('#TextbookBook_slug').hasClass('error') ){
+	                $('#TextbookBook_slug').removeClass('error');
+	                $('.slug_error').each(function(){
+	                    $(this).remove();
+	                });
+	            }
+	        } else {
+	            $('#TextbookBook_slug').val(responce.translit);
+	            $('.name_error').each(function(){
+	                $(this).remove();
+	            });
+	            $('#TextbookBook_slug').after('<span class="help-inline error slug_error">' + responce.error + '</span>');
+	            $('#TextbookBook_slug').addClass('error');
+	        }
+	    }, 'json');
+    }
+
+});
+
+</script>
