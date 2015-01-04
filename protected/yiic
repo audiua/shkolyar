@@ -1,4 +1,6 @@
 #!/usr/bin/env php
 <?php
+echo ini_get('register_argc_argv');
+die;
 
 require_once(dirname(__FILE__).'/yiic.php');
