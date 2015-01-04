@@ -55,5 +55,66 @@ class Helper{
 		);
 	}
 
+	public static function lastPublicTime($mode = null){
 
+		$models = array(
+			'GdzBook', 
+			'TextbookBook', 
+			'Knowall', 
+			// 'libraryBook', 
+			// 'libraryAuthor',
+			'Writing'
+		);
+
+		$lastTime=0;
+
+		$criteria=new CDbCriteria;
+		$criteria->order = 'public_time DESC';
+		$criteria->limit = 1;
+
+		if(!$mode){
+    		foreach($models as $model){
+    			$last = $model::model()->public()->find($criteria);
+
+    			if(! $last){
+    				continue;
+    			}
+
+    			if(isset($last->public_time)){
+
+			    	if($last->update_time > $last->public_time){
+			    		if( $last->update_time > $lastTime ){
+	    					$lastTime = $last->update_time;
+	    				}
+			    	} else {
+			    		if( $last->public_time > $lastTime ){
+	    					$lastTime = $last->public_time;
+	    				}
+			    	}
+
+    			} else {
+    				if( $last->update_time > $lastTime ){
+    					$lastTime = $last->update_time;
+    				}
+    			}
+    		}
+		} else {
+
+			$last = $mode::model()->public()->find($criteria);
+			if(isset($last->public_time)){
+
+			    	if($last->update_time > $last->public_time){
+			    		return $last->update_time;
+			    	} else {
+			    		return $last->public_time;
+			    	}
+
+			} else {
+				return $last->update_time;
+			}
+    	}
+		
+
+		return $lastTime;
+	}
 }

@@ -185,4 +185,17 @@ class GdzBook extends CActiveRecord
 
         return parent::afterFind();
     }
+
+    public function lastPublicTime(){
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'public_time DESC';
+    	$criteria->limit = 1;
+    	$last = self::model()->public()->find( $criteria );
+
+    	if( $last->update_time > $last->public_time ){
+    		return $last->update_time;
+    	}
+
+    	return $last->public_time;
+    }
 }

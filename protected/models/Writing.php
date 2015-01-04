@@ -47,12 +47,23 @@ class Writing extends CActiveRecord
 			array('nausea', 'numerical'),
 			array('clas_id, subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
 			array('title, slug', 'length', 'max'=>255),
-			array('deleteImage', 'length', 'max'=>1),
+			array('deleteImage,public', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, clas_id, thumbnail_ext, deleteImage, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
+			array('id, clas_id, thumbnail_ext, deleteImage, public, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => '(t.public = 1)',
+		);
+
+		return $scopes;
 	}
 
 	/**
@@ -84,6 +95,7 @@ class Writing extends CActiveRecord
 			'title' => 'Title',
 			'slug' => 'Slug',
 			'length' => 'Length',
+			'public' => 'Public',
 			'nausea' => 'Nausea',
 			'thumbnail_ext' => 'Img Ext',
 			'thumbnail' => 'thumbnail',
@@ -118,6 +130,7 @@ class Writing extends CActiveRecord
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('public',$this->public);
 		$criteria->compare('length',$this->length);
 		$criteria->compare('nausea',$this->nausea);
 		$criteria->compare('thumbnail_ext',$this->thumbnail_ext,true);

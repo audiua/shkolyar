@@ -26,8 +26,9 @@ class Clas extends CActiveRecord
     private $_url;
     
 	public function getUrl(){
-	   if ($this->_url === null)
+	   if ($this->_url === null){
 	       $this->_url = Yii::app()->createUrl('/'.$this->slug);
+	   }
 	   return $this->_url;
 	}
 

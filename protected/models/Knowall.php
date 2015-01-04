@@ -52,6 +52,17 @@ class Knowall extends CActiveRecord
 		);
 	}
 
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => '(t.public = 1)',
+		);
+
+		return $scopes;
+	}
+
 	/**
 	 * @return array relational rules.
 	 */

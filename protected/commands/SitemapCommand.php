@@ -5,119 +5,150 @@ date_default_timezone_set('Europe/Kiev');
 /**
  * Class SitemapCommand
  */
-class SitemapCommand extends ConsoleCommand {
+class SitemapCommand extends CConsoleCommand {
 
 	private $siteUrl = 'http://shkolyar.info';
+	private $lastModify = array();
 
-	/**
-	 * Включаем режим "не создавать пид-файл"
-	 */
-	protected function testMode() {
+	const ALWAYS = 'always';
+    const HOURLY = 'hourly';
+    const DAILY = 'daily';
+    const WEEKLY = 'weekly';
+    const MONTHLY = 'monthly';
+    const YEARLY = 'yearly';
+    const NEVER = 'never';
 
-		return true;
+    protected $items = array();
+
+	public function actionIndex() {
+
+		$this->addUrl('', self::WEEKLY, 0.2, Helper::lastPublicTime() );
+		$this->addUrl('/about', self::MONTHLY, 0.1, 1420326180 );
+		$this->addUrl('/contacts', self::MONTHLY, 0.1, 1420326180 );
+		$this->addUrl('/advertiser', self::MONTHLY, 0.1, 1420326180 );
+		$this->addUrl('/rules', self::MONTHLY, 0.1, 1420326180 );
+		$this->addUrl('/rightholder', self::MONTHLY, 0.1, 1420326180 );
+		$this->addUrl('/gdz', self::MONTHLY, 0.2, Helper::lastPublicTime('GdzBook') );
+		$this->addUrl('/textbook', self::MONTHLY, 0.2, Helper::lastPublicTime('TextbookBook') );
+		$this->addUrl('/writing', self::MONTHLY, 0.2, Helper::lastPublicTime('Writing') );
+		$this->addUrl('/knowall', self::MONTHLY, 0.2, Helper::lastPublicTime('Knowall') );
+		$this->addModels( Clas::model()->findAll(), self::WEEKLY, 0.2);
+		$this->addModels( GdzClas::model()->findAll(), self::WEEKLY, 0.2);
+		// $this->addModels( TextbookClas::model()->findAll(), self::WEEKLY, 0.2);
+		// $this->addModels( Subject::model()->findAll(), self::DAILY, 0.5);
+		// $this->addModels( GdzSubject::model()->findAll(), self::DAILY, 0.5);
+		// $this->addModels( TextbookSubject::model()->findAll(), self::DAILY, 0.5);
+		// $this->addModels( GdzBook::model()->public()->findAll(), self::DAILY, 0.8);
+		// $this->addModels( TextbookBook::model()->public()->findAll(), self::DAILY, 0.8);
+		// $this->addModels( Writing::model()->public()->findAll(), self::DAILY, 0.8);
+		// $this->addModels( TextbookBook::model()->public()->findAll(), self::DAILY, 0.8);
+		$xml = $this->render();
+
+		file_put_contents(Yii::app()->basePath . '/../sitemap.xml', $xml);
 	}
 
-	protected function process() {
+	 /**
+     * @param $url
+     * @param string $changeFreq
+     * @param float $priority
+     * @param int $lastmod
+     */
+    public function addUrl($url, $changeFreq=self::DAILY, $priority=0.5, $lastMod=0)
+    {
+        $item = array(
+            'loc' => $this->siteUrl . $url,
+            'changefreq' => $changeFreq,
+            'priority' => $priority
+        );
+        if ($lastMod){
+            $item['lastmod'] = $this->dateToW3C($lastMod);
+ 		}
 
-		// sitemap.xml
-		$doc = new DOMDocument('1.0', 'utf-8');
-		$urlset = $doc->createElement('urlset');
-		$doc->appendChild($urlset);
-		$xmlns = $doc->createAttribute('xmlns');
-		$urlset->appendChild($xmlns);
-		$value = $doc->createTextNode('http://www.sitemaps.org/schemas/sitemap/0.9');
-		$xmlns->appendChild($value);
+        $this->items[] = $item;
+    }
 
-		$this->addItem($doc, $urlset, array(
-			'loc' => $this->siteUrl . '/',
-			'priority' => '1.0',
-			'changefreq' => 'daily',
-			'lastmod' => time(),
-			'is_domain' => true,
-		));
+    /**
+     * @param CActiveRecord[] $models
+     * @param string $changeFreq
+     * @param float $priority
+     */
+    public function addModels($models, $changeFreq=self::DAILY, $priority=0.5){
+        $time=time();
 
-		// Models Map
-		$sources = array(
-			'Article',
-			'ArticleCategory',
-		);
+        // print_r($models);
+        // die;
+        foreach ($models as $model){
 
-		foreach ($sources as $modelName) {
+            //  добаляем в карту только опубликованные
+            if( isset($model->created) ){
+                if( $time < $model->created ){
+                    continue;
+                }
+            }
 
-			$criteria = new CDbCriteria();
+            $item = array(
+                'loc' => $this->siteUrl . $model->getUrl(),
+                'changefreq' => $changeFreq,
+                'priority' => $priority
+            );
+ 
+            if ($model->hasAttribute('update_time')){
 
-			if ($modelName == 'Article') {
-				$criteria->condition = '(publish_date <= now() || publish_date IS NULL)';
-				$criteria->order = 'lastmod DESC';
-			} elseif ($modelName == 'ArticleCategory') {
-				$criteria->order = 'parent_id, id';
-			}
-			$offset = 0;
-			while (true) {
+            	if(isset($model->public_time)){
+            		if($model->public_time > $model->update_time){
+            			$item['lastmod'] = $this->dateToW3C($model->public_time);
+            		} else {
+            			$item['lastmod'] = $this->dateToW3C($model->update_time);
+            		}
+            	} else {
+                	$item['lastmod'] = $this->dateToW3C($model->update_time);
+            	}
 
-				$criteria->offset = $offset;
-				$criteria->limit = 100;
-				$items = CActiveRecord::model($modelName)->findAll($criteria);
-				if (empty($items)) break;
 
-				foreach ($items as $item) {
+            }
+ 
+            $this->items[] = $item;
+        }
+    }
 
-					$priority = '0.4';
-					if ($modelName == 'Article') {
-						$priority = '0.5';
-						if (strtotime($item->publish_date) >= time() - 3600 * 24 * 7) {
-							$priority = '0.9';
-						} elseif (strtotime($item->publish_date) >= time() - 3600 * 24 * 30) {
-							$priority = '0.8';
-						}
-					}
+    /**
+     * @return string XML code
+     */
+    public function render()
+    {
+        $dom = new DOMDocument('1.0', 'utf-8');
+        $urlset = $dom->createElement('urlset');
+        $urlset->setAttribute('xmlns','http://www.sitemaps.org/schemas/sitemap/0.9');
+        foreach($this->items as $item)
+        {
+            $url = $dom->createElement('url');
+ 
+            foreach ($item as $key=>$value)
+            {
+                $elem = $dom->createElement($key);
+                $elem->appendChild($dom->createTextNode($value));
+                $url->appendChild($elem);
+            }
+ 
+            $urlset->appendChild($url);
+        }
+        $dom->appendChild($urlset);
+ 
+        return $dom->saveXML();
+    }
+ 
+    protected function dateToW3C($date)
+    {
+    	
+        if (is_int($date)){
+            $dateTime = new DateTime(date('Y-m-d\TH:i:sP',$date));
+            return $dateTime->format(DateTime::W3C);
+        } else {
 
-					$this->addItem($doc, $urlset, array(
-						'loc' => $item->getUrl(false),
-						'lastmod' => $modelName == 'ArticleCategory' ? strtotime('01.01.' . date('Y')) : $item->lastmod,
-						'priority' => $priority,
-						'changefreq' => $modelName == 'Article' ? 'monthly' : 'yearly',
-					));
-				}
+            $dateTime = new DateTime(date('Y-m-d\TH:i:sP',strtotime($date)));
+            return $dateTime->format(DateTime::W3C);
+        }
+    }
 
-				$offset = $offset + 100;
-			}
-		}
-
-		$doc->formatOutput = true;
-		$doc->save(dirname(__FILE__) ."/../../sitemap.xml");
-	}
-
-	/**
-	 * @param $doc
-	 * @param $urlset
-	 * @param $attributes
-	 */
-	private function addItem(&$doc, &$urlset, $attributes) {
-
-		$url = $doc->createElement('url');
-		$urlset->appendChild($url);
-
-		$loc = $doc->createElement('loc');
-		$url->appendChild($loc);
-		$urlValue = (isset($attributes['is_domain'])) ? $attributes['loc'] : $this->siteUrl . $attributes['loc'];
-
-		$value = $doc->createTextNode($urlValue);
-		$loc->appendChild($value);
-
-		$lastmod = $doc->createElement('lastmod');
-		$url->appendChild($lastmod);
-		$value = $doc->createTextNode(date('Y-m-d', $attributes['lastmod']));
-		$lastmod->appendChild($value);
-
-		$priority = $doc->createElement('priority');
-		$value = $doc->createTextNode($attributes['priority']);
-		$priority->appendChild($value);
-		$url->appendChild($priority);
-
-		$changefreq = $doc->createElement('changefreq');
-		$value = $doc->createTextNode($attributes['changefreq']);
-		$changefreq->appendChild($value);
-		$url->appendChild($changefreq);
-	}
+	
 }
