@@ -192,6 +192,8 @@ function getTask(e){
 
 	  		// добавляем хэш тег задания
 	  		window.location.hash = numb;
+
+	  		$('.page-number').text(numb);
 	  		
 	  		// вставляем картинку
 	  		$(book).html(reponse);
@@ -340,9 +342,9 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-if( ! $.cookie('showFb') ){
-	setTimeout(showFb, 10000);
-}
+// if( ! $.cookie('showFb') ){
+// 	setTimeout(showFb, 10000);
+// }
 
 // выделение выбраного пункта из таблицы
 $('td , th').hover(
@@ -370,6 +372,7 @@ $('td , th').hover(
 
              
 $(window).scroll(function(){
+	
     if ( $(this).scrollTop() > 45 && $('.header').hasClass("fixed-menu") == false ){
         $('.header').fadeOut('fast',function(){
             $(this).addClass("fixed-menu")

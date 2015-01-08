@@ -135,6 +135,7 @@ return array(
 
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
 				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
+				'<controller:\w+>/<category:\w+><page:\d>'=>'<controller>/category',
 				'<controller:\w+>'=> '<controller>/index',
 
 				// 'tizer'=>'tizer/index',

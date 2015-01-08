@@ -24,7 +24,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 <div class="task">
-	<div class="task-title info">Сторінка: 
+	<div class="task-title info">Сторінка <span class='page-number'></span>
 	</div>
 	<section id="inverted-contain">
 	  <div class="buttons">

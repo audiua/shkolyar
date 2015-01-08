@@ -88,8 +88,8 @@
 
 </div>
 
-<div class="separator"></div>
-<div class="clear"></div>
+<!-- <div class="separator"></div>
+<div class="clear"></div> -->
 
 <!-- <div class="sidebar-block">
 	<h3>Соц. мережі</h3>
@@ -102,13 +102,13 @@
 </div> -->
 
 
-<div class="sidebar-block">
+<!-- <div class="sidebar-block"> -->
 
-	<h3>Популярні за добу</h3>
-	<?php $this->widget('RelativeGdzWidget'); ?>
+	<!-- <h3>Популярні за добу</h3> -->
+	<?php // $this->widget('RelativeGdzWidget'); ?>
 
 	<!-- <a href="http://TeaserNet.com/?owner_id=183605"><img src="http://teasernet.com/images/tnet/nets/1/200x200-2.gif "></a> -->
-</div>
+<!-- </div> -->
 <!-- <div class="sidebar-block">
 	<div class="tizer">
 		<h3>tizer</h3>

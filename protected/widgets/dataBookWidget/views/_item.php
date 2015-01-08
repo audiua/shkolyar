@@ -24,7 +24,7 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 	?>
 
 	<div class="gdz-link">
-		<?php echo CHtml::link( 'Перейти до ГДЗ', array('/gdz/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
+		<?php echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
 	</div>
 
 	<?php 
@@ -32,7 +32,7 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 	?>
 
 	<div class="textbook-link">
-		<?php echo CHtml::link( 'Перейти до підручника', array('/textbook/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-sm')); ?>
+		<?php echo CHtml::link( 'Підручник', array('/textbook/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-sm')); ?>
 	</div>
 
 	<?php 

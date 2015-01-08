@@ -27,5 +27,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
+<div class="info">Нові надходження</div>
 
-<!-- <div class="info">Нові надходження</div> -->
+<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
+
+

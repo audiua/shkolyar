@@ -69,12 +69,12 @@ public function actionIndex(){
 		// print_r($this->allClasModel);
 		// die;
 
-		// $textbooks = new CActiveDataProvider('TextboobBook',array('pagination'=>array('pageSize'=>12)));
+		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>12)));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 
 		// кешируем сдесь всю страницу
-		$this->render('index');
+		$this->render('index', array('books'=>$textbooks));
 
 		$this->endCache(); 
 	}
@@ -581,7 +581,8 @@ private function checkBook($book){
 
 private function setMeta(){
 	if($this->clasModel){
-		$this->h1 = 'Підручники '. $this->clasModel->clas->slug.' клас';
+		$book = $this->action->id == 'book' ? 'Підручник ' : 'Підручники ' ;
+		$this->h1 = $book . $this->clasModel->clas->slug.' клас';
 		$this->canonical = '/textbook/'.$this->clasModel->clas->slug;
 
 	}

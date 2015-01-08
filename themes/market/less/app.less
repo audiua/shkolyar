@@ -900,8 +900,9 @@
 	}
 
 	.book-list{
+		position: relative;
 		width: 100%;
-		padding: 10px;
+		padding-top: 10px;
 		// border-top: 1px solid #ccc;
 	}
 
@@ -927,13 +928,13 @@
 		.gdz-link{
 			position: absolute;
 			bottom: 65px;
-			right: 72px;
+			right: 135px;
 		}
 
 		.textbook-link{
 			position: absolute;
 			bottom: 30px;
-			right: 74px;
+			right: 100px;
 		}
 	}
 
@@ -992,13 +993,13 @@
 		.gdz-link{
 			position: absolute;
 			bottom: 52px;
-			right: 32px;
+			right: 95px;
 		}
 
 		.textbook-link{
 			position: absolute;
 			bottom: 30px;
-			right: 30px;
+			right: 70px;
 		}
 	}
 
@@ -1012,13 +1013,13 @@
 		.gdz-link{
 			position: absolute;
 			bottom: 65px;
-			right: 447px;
+			right: 515px;
 		}
 
 		.textbook-link{
 			position: absolute;
 			bottom: 30px;
-			right: 474px;
+			right: 484px;
 		}
 	}
 
@@ -1050,8 +1051,16 @@
 	}
 
 	.view-filters{
-		margin-left: 15px;
-		cursor: pointer;
+		top: +5px;
+		position: absolute;
+		padding: 5px 15px;
+		// box-shadow: 0px 0px 4px #ccc;
+
+		span{
+			cursor: pointer;
+
+		}
+
 		// float: left;
 
 	}
@@ -1475,8 +1484,9 @@
 	// }
 
 	.sorter{
-		margin-right: 15px !important;
-		margin-bottom: 10px !important;
+		padding-bottom: 10px;
+		// margin-right: 15px !important;
+		// margin-bottom: 10px !important;
 
 		a{
 			// border-bottom: 1px solid @yellow;
