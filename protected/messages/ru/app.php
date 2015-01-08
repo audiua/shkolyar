@@ -23,4 +23,5 @@ return array(
 	'how'=>'Як',
 	'why'=>'Чому',
 	'nature'=>'Природа',
+	'planeta'=>'Планета',
 );

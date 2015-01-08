@@ -1,7 +1,7 @@
 <div class="last-knowall">
 <?php $first = array_shift($model); ?>
 <div class="knowall-large-block">
-	<?php echo CHtml::image($first->getThumb(380,280,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
+	<?php echo CHtml::image($first->getThumb(350,280,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
 	<div class="knowall-link">
 		<?php echo CHtml::link($first->title,'/knowall/'.$first->knowall_category->slug . '/'. $first->slug,array('class'=>'')); ?>
 	</div>
@@ -15,7 +15,7 @@
 <?php foreach( $model as $i => $one ): ?>
 
 	<div class='knowall-small-one-block'>
-		<?php echo CHtml::image($one->getThumb(160,106,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
+		<?php echo CHtml::image($one->getThumb(150,106,'crop'),'aaa', array('title'=>'ssss', 'class'=>'')); ?>
 		
 		<div class="knowall-link">
 			<?php echo CHtml::link($one->title,'/knowall/'.$one->knowall_category->slug . '/'. $one->slug,array('class'=>'')); ?>

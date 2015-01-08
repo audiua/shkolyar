@@ -1,7 +1,7 @@
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
-    'homeLink'=>CHtml::link('Головна', Yii::app()->homeUrl),
+    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
@@ -11,7 +11,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="description">
 	<p>
-		Ми сподіваємось, що зможимо полегшити вам пошук - онлайн підручників, з шкільної програми для українських середніх 
+		Ми сподіваємось, що зможимо полегшити Вам пошук - онлайн підручників, з шкільної програми для українських середніх 
 		загальноосвітніх шкіл. В
 		даному розділі Ви легко і швидко можите знайти підручник, по якому навчаєтесь у школі та переглядати його онлайн. Тут зібрані усі підручники 
 		шкільної програми України для старших класів(5-11). Нарешті, більше не потрібно носити важкі паперові підручники, 

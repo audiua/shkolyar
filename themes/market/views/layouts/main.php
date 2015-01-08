@@ -54,6 +54,12 @@
 
             <div class="content">
                
+
+            <div class="h-direct">
+                <img src="/images/hor.jpeg"> 
+            </div>        
+
+
                 
                 <?php echo $content; ?>
             </div>

@@ -308,8 +308,8 @@
 			</div>
 		</li>
 
-		<li  class="<?php  echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
-			<a href="/writing">Твори<!-- <span class="blue glyphicon glyphicon-chevron-down small"></span> --></a>
+		<!-- <li  class="<?php // echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
+			<a href="/writing">Твори</a>
 			<div class="writing-table">
 				<table>
 					<thead>
@@ -336,7 +336,7 @@
 							<td data-vertical="7"><a href="/writing/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 				
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/writing/lit-ua">українська література</a></td>
 							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -369,14 +369,14 @@
 							<td data-vertical="6"><a href="/writing/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/writing/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
-						</tr> -->
+						</tr>
 					</tbody>
 				</table>
 
 			</div>
-		</li>
+		</li> -->
 
-		<li class="<?php echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
+		<!-- <li class="<?php // echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
 			<div class="library-block">
 				<ul>
 					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
@@ -386,15 +386,15 @@
 				</ul>
 			</div>
 
-		</li>
+		</li> -->
 
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
 				<ul>
 					<li><a class="knowall-subcategory" href="/knowall/nature">Природа</a></li>
 					<li><a class="knowall-subcategory" href="/knowall/planeta">Планета</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/man">Людина</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/children">Діти</a></li>
+					<!-- <li><a class="knowall-subcategory" href="/knowall/man">Людина</a></li>
+					<li><a class="knowall-subcategory" href="/knowall/children">Діти</a></li> -->
 				</ul>
 			</div>
 

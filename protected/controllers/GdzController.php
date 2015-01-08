@@ -301,6 +301,8 @@ public function actionBook( $clas, $subject, $book ){
  */
 public function actionTask($clas, $subject, $book, $task){
 
+	sleep(5);
+
 	// TODO - закешировать на 30 days
 	if($this->beginCache('task_page'.$clas.$subject.$book.$task, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book','task'))) ){
 
@@ -384,6 +386,8 @@ public function actionTask($clas, $subject, $book, $task){
  * @return [type] [description]
  */
 public function actionNestedOne(){
+
+	sleep(5);
 
 	$path = 'gdz/' . $this->param['clas'] 
 	. '/' . $this->param['subject'] 

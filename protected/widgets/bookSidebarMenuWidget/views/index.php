@@ -23,10 +23,15 @@
 			</li>
 		<?php endif; ?>
 
+
+		<li>
+			<?php echo CHtml::link( 'Всезнайка', array('/knowall'));  ?>
+		</li>
+
+
 	</ul>
 
 	<div class="clear"></div>
-	<div class="separator"></div>
 
 	<!-- <div class="title-sidebar-menu">Клас</div> -->
 	<ul class="sidebar-menu-clas">
@@ -36,7 +41,12 @@
 				if($subject){
 					$urlClas .='/'.$subject;
 				} 
-				echo CHtml::link( 'Всі класи', array($urlClas)); 
+
+				if( $clas==0 ){
+					echo '<span class="active">Всі класи</span>';
+				} else {
+					echo CHtml::link( 'Всі класи', array($urlClas)); 
+				}
 			?>
 		</li>
 		<?php foreach($this->controller->allClasModel as $oneClas): ?>
@@ -49,14 +59,18 @@
 				} else  {
 					$urlClas .= '/'.$oneClas->clas->slug;
 				}
-				echo CHtml::link( $oneClas->clas->slug, array($urlClas)); ?>
+
+				if($clas==$oneClas->clas->slug){
+					echo '<span class="active">'.$oneClas->clas->slug.'</span>';
+				} else {
+					echo CHtml::link( $oneClas->clas->slug, array($urlClas)); 
+				} ?>
 			</li>
 			
 		<?php endforeach; ?>
 	</ul>
 	
 	<div class="clear"></div>
-	<div class="separator"></div>
 
 	<!-- <div class="title-sidebar-menu">Предмет</div> -->
 	<ul class="sidebar-menu-subject">
@@ -66,7 +80,12 @@
 				if($clas){
 					$urlClas .='/'.$clas;
 				} 
-				echo CHtml::link( 'Всі предмети', array($urlClas)); 
+
+				if( $subject=='' ){
+					echo '<span class="active">Всі предмети</span>';
+				} else {
+					echo CHtml::link( 'Всі предмети', array($urlClas)); 
+				}
 			?>
 		</li>
 
@@ -80,7 +99,13 @@
 
 				$urlSubject .= '/'.$oneSubject->slug;
 
-				echo CHtml::link( $oneSubject->title, array($urlSubject)); ?>
+				if($subject==$oneSubject->slug){
+					echo '<span class="active">'.$oneSubject->title.'</span>';
+				} else {
+					echo CHtml::link( $oneSubject->title, array($urlSubject)); 
+				} ?>
+
+
 			</li>
 		<?php endforeach; ?>
 	</ul>
