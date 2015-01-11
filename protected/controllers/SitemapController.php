@@ -23,26 +23,28 @@ public function actionIndex() {
     // echo Helper::lastPublicTime();
     // die;
 
-    $this->addUrl('', self::DAILY, 0.9, Helper::lastTime() );
-	$this->addUrl('/about', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','about') );
-	$this->addUrl('/contacts', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','contacts') );
-	$this->addUrl('/advertiser', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','advertiser') );
-	$this->addUrl('/rules', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','rules') );
-	$this->addUrl('/rightholder', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','rightholder') );
-	$this->addUrl('/gdz', self::WEEKLY, 0.5, Helper::lastPublicTime('GdzBook') );
-	$this->addUrl('/textbook', self::WEEKLY, 0.5, Helper::lastPublicTime('TextbookBook') );
-	$this->addUrl('/writing', self::WEEKLY, 0.5, Helper::lastPublicTime('Writing') );
-	$this->addUrl('/knowall', self::WEEKLY, 0.5, Helper::lastPublicTime('Knowall') );
-	$this->addModels( Clas::model()->findAll(), self::WEEKLY, 0.4);
-	$this->addModels( GdzClas::model()->findAll(), self::WEEKLY, 0.4);
-	// $this->addModels( TextbookClas::model()->findAll(), self::WEEKLY, 0.2);
-	// $this->addModels( Subject::model()->findAll(), self::DAILY, 0.5);
-	// $this->addModels( GdzSubject::model()->findAll(), self::DAILY, 0.5);
-	// $this->addModels( TextbookSubject::model()->findAll(), self::DAILY, 0.5);
-	// $this->addModels( GdzBook::model()->public()->findAll(), self::DAILY, 0.8);
-	// $this->addModels( TextbookBook::model()->public()->findAll(), self::DAILY, 0.8);
-	// $this->addModels( Writing::model()->public()->findAll(), self::DAILY, 0.8);
-	// $this->addModels( TextbookBook::model()->public()->findAll(), self::DAILY, 0.8);
+    $this->addUrl('/', self::DAILY, 0.9, Helper::lastTime() );
+	$this->addUrl('/about', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','page','about') );
+	$this->addUrl('/contacts', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','page','contacts') );
+	$this->addUrl('/advertiser', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','page','advertiser') );
+	$this->addUrl('/rules', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','page','rules') );
+	$this->addUrl('/rightholder', self::MONTHLY, 0.1, Helper::lastDescriptionTime('site','page','rightholder') );
+	$this->addUrl('/gdz/', self::WEEKLY, 0.5, Helper::lastTime('GdzBook') );
+	$this->addUrl('/textbook/', self::WEEKLY, 0.5, Helper::lastTime('TextbookBook') );
+	$this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
+	$this->addUrl('/knowall/', self::WEEKLY, 0.5, Helper::lastTime('Knowall') );
+    $this->addModels( GdzClas::model()->findAll(), self::WEEKLY, 0.3);
+    $this->addModels( TextbookClas::model()->findAll(), self::WEEKLY, 0.3);
+    $criteria = new CDbCriteria;
+    $criteria->group = 'subject_id'; 
+	$this->addModels( GdzSubject::model()->findAll($criteria), self::WEEKLY, 0.6);
+    $this->addModels( TextbookSubject::model()->findAll($criteria), self::WEEKLY, 0.6);
+    $this->addModelsWithClas('gdz', GdzClas::model()->findAll(), self::WEEKLY, 0.7);
+	$this->addModelsWithClas('textbook', TextbookClas::model()->findAll(), self::WEEKLY, 0.7);
+	$this->addModels( GdzBook::model()->public()->findAll(), self::WEEKLY, 0.8);
+	$this->addModels( TextbookBook::model()->public()->findAll(), self::WEEKLY, 0.8);
+	// $this->addModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
+	// $this->addModels( TextbookBook::model()->public()->findAll(), self::WEEKLY, 0.8);
 	$xml = $this->create();
 
 	header("Content-type: text/xml");
@@ -82,13 +84,11 @@ public function addUrl($url, $changeFreq=self::DAILY, $priority=0.5, $lastMod=0)
 public function addModels($models, $changeFreq=self::DAILY, $priority=0.5){
     $time=time();
 
-    // print_r($models);
-    // die;
     foreach ($models as $model){
 
         //  добаляем в карту только опубликованные
-        if( isset($model->created) ){
-            if( $time < $model->created ){
+        if( isset($model->public_time) ){
+            if( $time < $model->public_time ){
                 continue;
             }
         }
@@ -105,10 +105,11 @@ public function addModels($models, $changeFreq=self::DAILY, $priority=0.5){
         		if($model->public_time > $model->update_time){
         			$item['lastmod'] = $this->dateToW3C($model->public_time);
         		} else {
-        			$item['lastmod'] = $this->dateToW3C($model->update_time);
+        			$item['lastmod'] = $this->dateToW3C((int)$model->update_time);
         		}
         	} else {
-            	$item['lastmod'] = $this->dateToW3C($model->update_time);
+                
+            	$item['lastmod'] = $this->dateToW3C((int)$model->update_time);
         	}
 
 
@@ -116,6 +117,58 @@ public function addModels($models, $changeFreq=self::DAILY, $priority=0.5){
 
         $this->items[] = $item;
     }
+}
+
+/**
+ * @param CActiveRecord[] $models
+ * @param string $changeFreq
+ * @param float $priority
+ */
+public function addModelsWithClas($mode, $models, $changeFreq=self::DAILY, $priority=0.5){
+    $time=time();
+    $subjects = $mode.'_subject';
+
+    foreach ($models as $model){
+
+
+        if($model->$subjects){
+            foreach($model->$subjects as $subject){
+
+                $item = array(
+                    'loc' => $this->siteUrl . $subject->getUrl($model->clas->slug),
+                    'changefreq' => $changeFreq,
+                    'priority' => $priority
+                );
+
+
+
+                if ($subject->hasAttribute('update_time')){
+
+                    if(isset($subject->public_time)){
+                        if($subject->public_time > $subject->update_time){
+                            $item['lastmod'] = $this->dateToW3C($subject->public_time);
+                        } else {
+                            $item['lastmod'] = $this->dateToW3C((int)$subject->update_time);
+                        }
+                    } else {
+                        
+                        $item['lastmod'] = $this->dateToW3C((int)$subject->update_time);
+                    }
+
+
+                }
+
+                $this->items[] = $item;
+
+                
+            }
+        }
+
+
+    }
+
+
+    
 }
 
 /**

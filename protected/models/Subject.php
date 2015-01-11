@@ -28,7 +28,7 @@ class Subject extends CActiveRecord
 
 
 		if ($this->_url === null)
-		   $this->_url = Yii::app()->createUrl('/'.$this->classes->slug .'/'.$this->slug);
+		   $this->_url = Yii::app()->createUrl('/'.$this->slug);
 		return $this->_url;
 	}
 

@@ -18,6 +18,8 @@
  */
 class GdzSubject extends CActiveRecord
 {
+	private $_url;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -125,5 +127,14 @@ class GdzSubject extends CActiveRecord
 			}
 		}
 		return $result;
+	}
+
+	public function getUrl($clas=null){
+	   if ($this->_url === null){
+	   		$url = !empty($clas) ? $clas . '/'.$this->subject->slug : $this->subject->slug;
+	        $this->_url = Yii::app()->createUrl( '/gdz/' . $url );
+	        $this->_url .= '/';
+	   }
+	   return $this->_url;
 	}
 }

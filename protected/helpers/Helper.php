@@ -148,10 +148,15 @@ class Helper{
 	 * @param  [type] $subjectId [description]
 	 * @return [type]            [description]
 	 */
-	public static function lastDescriptionTime( $owner, $action, $clasId=null, $subjectId=null ){
+	public static function lastDescriptionTime( $owner, $action, $mode=null, $clasId=null, $subjectId=null ){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'owner=:owner';
 		$criteria->addCondition('action=:action');
+
+		if($mode){
+			$criteria->addCondition('page_mode="'.$mode.'"' );
+		}
+
 		if($clasId){
 			$criteria->addCondition('clas_id='.(int)$clasId );
 		}
@@ -164,7 +169,7 @@ class Helper{
 
 		$model = Description::model()->find($criteria);
 		if($model){
-			return $model->update->time;
+			return $model->update_time;
 		}
 	}
 }

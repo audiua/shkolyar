@@ -26,6 +26,7 @@
  */
 class GdzBook extends CActiveRecord
 {
+	private $_url;
 
 	public $subject_id;
 
@@ -198,4 +199,11 @@ class GdzBook extends CActiveRecord
 
     	return $last->public_time;
     }
+
+    public function getUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/gdz/' . $this->gdz_clas->clas->slug . '/'. $this->gdz_subject->subject->slug . '/'. $this->slug );
+	   }
+	   return $this->_url;
+	}
 }

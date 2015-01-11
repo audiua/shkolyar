@@ -135,6 +135,7 @@ class GdzClas extends CActiveRecord
 	public function getUrl(){
 	   if ($this->_url === null){
 	       $this->_url = Yii::app()->createUrl('/gdz/'.$this->clas->slug);
+	       $this->_url .= '/';
 	   }
 	   return $this->_url;
 	}
