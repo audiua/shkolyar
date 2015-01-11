@@ -52,6 +52,7 @@ class GdzClas extends CActiveRecord
 		return array(
 			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
 			'gdz_subject'=>array(self::HAS_MANY, 'GdzSubject', 'gdz_clas_id'),
+			'gdz_book'=>array(self::HAS_MANY, 'GdzBook', 'gdz_clas_id'),
 		);
 	}
 

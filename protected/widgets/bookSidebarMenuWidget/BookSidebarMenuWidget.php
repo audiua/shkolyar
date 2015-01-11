@@ -12,24 +12,32 @@ class BookSidebarMenuWidget extends CWidget{
 	public function run(){
 
 		if( isset($this->params['clas']) ){
-			$clas = $this->params['clas'];
+			$clas = $this->controller->clasModel;
 		} else {
-			$clas = 0;
+			$clas = null;
 		}
 
 		if( isset($this->params['subject']) ){
-			$subject = $this->params['subject'];
+			$subject = Subject::model()->findByAttributes(array('slug'=>$this->params['subject']));
 		} else {
-			$subject = '';
+			$subject = null;
 		}
 
 		if( ! $this->controller->allClasModel){
-			$this->controller->allClasModel = GdzClas::model()->findAll();
+			$clasName = ucfirst($this->controller->id).'Clas';
+			$this->controller->allClasModel = $clasName::model()->findAll();
 		}
 
+		$subjectName = ucfirst($this->controller->id).'Subject';
 		$criteria = new CDbCriteria;
-		$criteria->order = 'title';
-		$allSubjectModel = Subject::model()->findAll($criteria);
+
+		if($clas){
+			$criteria->condition = $this->controller->id . '_clas_id='.$clas->id;
+		}
+
+		$criteria->order = "'title ASC'";
+		$criteria->group = 'subject_id';
+		$allSubjectModel = $subjectName::model()->findAll($criteria);
 
        // передаем данные в представление виджета
        $this->render('index', array('clas'=>$clas, 'allSubjectModel'=>$allSubjectModel, 'subject'=>$subject));

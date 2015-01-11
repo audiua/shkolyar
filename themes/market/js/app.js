@@ -311,7 +311,7 @@ function resizeContentBlock(){
 	// console.log(contHeight);
 	// console.log(sidebarHeight);
 	if(contHeight > sidebarHeight){
-		$('.sidebar').outerHeight(contHeight);
+		$('.sidebar').height(contHeight);
 	}
 }
 

@@ -24,4 +24,8 @@ return array(
 	'why'=>'Чому',
 	'nature'=>'Природа',
 	'planeta'=>'Планета',
+	'about'=>'Про нас',
+	'rightholder'=>'Правовласникам',
+	'advertiser'=>'Рекламодавцям',
+	'contacts'=>'Контакти',
 );

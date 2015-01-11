@@ -58,6 +58,7 @@ class Subject extends CActiveRecord
 		return array(
 			'gdz_book' => array(self::HAS_MANY, 'GdzBook', 'subject_id'),
 			'gdz_subject' => array(self::HAS_MANY, 'GdzSubject', 'subject_id'),
+			'textbook_subject' => array(self::HAS_MANY, 'TextbookSubject', 'subject_id'),
 			'description' => array(self::HAS_MANY, 'Description', 'subject_id'),
 			// 'classes' => array(self::BELONGS_TO, 'Clas', 'class_id'),
 		);

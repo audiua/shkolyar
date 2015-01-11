@@ -1,4 +1,2 @@
-<div class="info">Про нас</div>
-<div class="page">	
-	Про портал та його важливість
-</div>
+<div class="info"><?php echo $title; ?></div>
+<?php echo $model ?>

@@ -169,7 +169,14 @@ public function actionLogout(){
 }
 
 public function actionPage($action){
-	$this->render($action);
+
+	$description = $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'page', 'page_mode'=>$action)), true);
+	if($description){
+		$this->render('page', array('title'=>Yii::t('app', $action), 'description'=>$description));
+	} else {
+		throw new CHttpException('404');
+	}
+
 }
 
 }

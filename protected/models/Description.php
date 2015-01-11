@@ -35,12 +35,13 @@ class Description extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('owner, description, action, clas_id, subject_id, ', 'required'),
-			array('owner, action', 'length', 'max'=>255),
+			array('owner, description, action', 'required'),
+			array('owner, action, page_mode', 'length', 'max'=>255),
 			array('clas_id, subject_id, create_time, update_time', 'length', 'max'=>10),
+			array('block_id', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, owner, action, clas_id, subject_id, description, create_time, update_time', 'safe', 'on'=>'search'),
+			array('id, owner, action, clas_id, subject_id, description, create_time, update_time, page_mode, block_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,6 +81,8 @@ class Description extends CActiveRecord
 			'id' => 'ID',
 			'owner' => 'Owner',
 			'action' => 'Action',
+			'page_mode' => 'page mode',
+			'block_id' => 'block_id',
 			'clas_id' => 'Slas',
 			'subject_id' => 'Subject',
 			'description' => 'Description',
@@ -110,6 +113,8 @@ class Description extends CActiveRecord
 		$criteria->compare('owner',$this->owner,true);
 		$criteria->compare('action',$this->action,true);
 		$criteria->compare('clas_id',$this->clas_id,true);
+		$criteria->compare('page_mode',$this->page_mode,true);
+		$criteria->compare('block_id',$this->block_id);
 		$criteria->compare('subject_id',$this->subject_id,true);
 		$criteria->compare('description',$this->description);
 		$criteria->compare('create_time',$this->create_time,true);
