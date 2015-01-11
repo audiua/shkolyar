@@ -40,22 +40,36 @@ class Helper{
 
 	public static function getOwner(){
 		return array(
-			'writing'=>'writing',
-			'gdz'=>'gdz',
-			'textbook'=>'textbook',
-			'knowall'=>'knowall'
+			'writing'=>'твори',
+			'gdz'=>'гдз',
+			'textbook'=>'підручники',
+			'knowall'=>'всезнайка',
+			'site'=>'сайт'
 		);
 	}
 
 	public static function getAction(){
 		return array(
 			'clas'=>'clas',
+			'index'=>'index',
+			'page'=>'page',
 			'subject'=>'subject',
 			'category'=>'category',
 		);
 	}
 
-	public static function lastPublicTime($mode = null){
+	public static function getPageMode(){
+		return array(
+			''=>'',
+			'about'=>'Про нас',
+			'rules'=>'Правила',
+			'rightholder'=>'Правовласникам',
+			'advertiser'=>'Рекламодавцям',
+			'contacts'=>'Контакти',
+		);
+	}
+
+	public static function lastTime($mode = null){
 
 		$models = array(
 			'GdzBook', 
@@ -63,58 +77,94 @@ class Helper{
 			'Knowall', 
 			// 'libraryBook', 
 			// 'libraryAuthor',
-			'Writing'
+			// 'Writing'
+		);
+
+		$order = array(
+			'public', 
+			'update'
 		);
 
 		$lastTime=0;
 
-		$criteria=new CDbCriteria;
-		$criteria->order = 'public_time DESC';
-		$criteria->limit = 1;
+		foreach($order as $item){
 
-		if(!$mode){
-    		foreach($models as $model){
-    			$last = $model::model()->public()->find($criteria);
+			$criteria=new CDbCriteria;
+			$criteria->order = $item.'_time DESC';
+			$criteria->limit = 1;
 
-    			if(! $last){
-    				continue;
-    			}
+			if(!$mode){
+	    		foreach($models as $model){
+	    			$last = $model::model()->public()->find($criteria);
 
-    			if(isset($last->public_time)){
+	    			if(! $last){
+	    				continue;
+	    			}
 
-			    	if($last->update_time > $last->public_time){
-			    		if( $last->update_time > $lastTime ){
+	    			if( isset($last->public_time) && !is_null($last->public_time) ){
+	    				$last->public_time = strtotime($last->public_time);
+
+	    				if( $last->public_time > time() || $last->update_time > $last->public_time ){
+	    					$lastTime = ( $last->update_time > $lastTime ) ? $last->update_time : $lastTime ;
+	    				} else {
+				    		$lastTime = ( $last->public_time > $lastTime ) ? $last->public_time : $lastTime ;
+	    				}
+	    			} else {
+	    				if( $last->update_time > $lastTime ){
 	    					$lastTime = $last->update_time;
 	    				}
-			    	} else {
-			    		if( $last->public_time > $lastTime ){
-	    					$lastTime = $last->public_time;
-	    				}
-			    	}
-
-    			} else {
-    				if( $last->update_time > $lastTime ){
-    					$lastTime = $last->update_time;
-    				}
-    			}
-    		}
-		} else {
-
-			$last = $mode::model()->public()->find($criteria);
-			if(isset($last->public_time)){
-
-			    	if($last->update_time > $last->public_time){
-			    		return $last->update_time;
-			    	} else {
-			    		return $last->public_time;
-			    	}
+	    			}
+	    		}
 
 			} else {
-				return $last->update_time;
-			}
-    	}
-		
 
-		return $lastTime;
+				$last = $mode::model()->public()->find($criteria);
+				
+				if( isset($last->public_time) && !is_null($last->public_time) ){
+					$last->public_time = strtotime($last->public_time);
+					if( $last->public_time > time() || $last->update_time > $last->public_time ){
+						$lastTime = ( $last->update_time > $lastTime ) ? $last->update_time : $lastTime ;
+					} else {
+			    		$lastTime = ( $last->public_time > $lastTime ) ? $last->public_time : $lastTime ;
+					}
+
+				} else {
+					if( $last->update_time > $lastTime ){
+						$lastTime = $last->update_time;
+					}
+				}
+	    	}
+		}
+
+		
+		return (int)$lastTime;
+	}
+
+	/**
+	 * [lastDescriptionTime description]
+	 * @param  [type] $owner     [description]
+	 * @param  [type] $action    [description]
+	 * @param  [type] $clasId    [description]
+	 * @param  [type] $subjectId [description]
+	 * @return [type]            [description]
+	 */
+	public static function lastDescriptionTime( $owner, $action, $clasId=null, $subjectId=null ){
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'owner=:owner';
+		$criteria->addCondition('action=:action');
+		if($clasId){
+			$criteria->addCondition('clas_id='.(int)$clasId );
+		}
+
+		if($subjectId){
+			$criteria->addCondition('subject_id='.(int)$subjectId );
+		}
+
+		$criteria->params = array(':owner'=>$owner, ':action'=>$action);
+
+		$model = Description::model()->find($criteria);
+		if($model){
+			return $model->update->time;
+		}
 	}
 }
