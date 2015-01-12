@@ -14,6 +14,9 @@
  */
 class KnowallCategory extends CActiveRecord
 {
+
+	private $_url;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -121,5 +124,42 @@ class KnowallCategory extends CActiveRecord
 
 	public static function getAll(){
 		return CHtml::listData(self::model()->findAll(), 'id', 'title');
+	}
+
+	public function getUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/knowall/' .  $this->slug );
+	   }
+	   return $this->_url;
+	}
+
+	// модели для карты сайта
+	public function forSitemap(){
+		$result = array();
+		$time = time();
+
+		$all = self::model()->findAll();
+		
+		foreach($all as $one){
+			$flag = false;
+			if($one->knowall){
+
+				foreach($one->knowall as $knowall){
+
+					// isset published book
+					if($knowall->public && $knowall->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
+		return $result;
 	}
 }

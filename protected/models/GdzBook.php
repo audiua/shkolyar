@@ -86,7 +86,7 @@ class GdzBook extends CActiveRecord
 		$scopes = parent::scopes();
 
 		$scopes['public'] = array(
-			'condition' => '(t.public = 1)',
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
 		);
 
 		return $scopes;

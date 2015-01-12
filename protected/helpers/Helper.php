@@ -169,7 +169,7 @@ class Helper{
 
 		$model = Description::model()->find($criteria);
 		if($model){
-			return $model->update_time;
+			return (int)$model->update_time;
 		}
 	}
 }

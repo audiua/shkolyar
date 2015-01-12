@@ -139,4 +139,32 @@ class GdzClas extends CActiveRecord
 	   }
 	   return $this->_url;
 	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$all = self::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			$flag = false;
+			if($one->gdz_book){
+
+				foreach($one->gdz_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
+		return $result;
+	}
 }

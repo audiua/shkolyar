@@ -21,6 +21,8 @@
  */
 class Knowall extends CActiveRecord
 {
+
+	private $_url;
 	public $thumbnail;
 	public $deleteImage;
 	/**
@@ -57,7 +59,7 @@ class Knowall extends CActiveRecord
 		$scopes = parent::scopes();
 
 		$scopes['public'] = array(
-			'condition' => '(t.public = 1)',
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
 		);
 
 		return $scopes;
@@ -155,10 +157,6 @@ class Knowall extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function getUrl() {
-		return Yii::app()->baseUrl . '/knowall/' . $this->knowall_category->slug . '/' . $this->slug;
-    }
-
     public function beforeSave(){
 
 		if( !empty($this->thumbnail) ){
@@ -247,5 +245,12 @@ class Knowall extends CActiveRecord
 		$this->_deleteImage();
 
         return parent::beforeDelete();
+    }
+
+    public function getUrl(){
+       if ($this->_url === null){
+            $this->_url = Yii::app()->createUrl( '/knowall/' .  $this->knowall_category->slug . '/' . $this->slug );
+       }
+       return $this->_url;
     }
 }

@@ -1,3 +1,3 @@
 <?php 
-echo $sitemap;
- ?>
+header("Content-type: text/xml");
+echo $xml;

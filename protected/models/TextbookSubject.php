@@ -170,4 +170,40 @@ class TextbookSubject extends CActiveRecord
 	   }
 	   return $this->_url;
 	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$time = time();
+		
+		$criteria = new CDbCriteria;
+		$criteria->group = 'subject_id'; 
+		$all = self::model()->findAll($criteria);
+		
+		foreach($all as $one){
+			
+			$flag = false;
+			if($one->textbook_book){
+
+				foreach($one->textbook_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+				
+
+			}
+
+			$flag = false;
+		}
+
+		return $result;
+	}
 }

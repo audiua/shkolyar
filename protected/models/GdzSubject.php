@@ -137,4 +137,36 @@ class GdzSubject extends CActiveRecord
 	   }
 	   return $this->_url;
 	}
+
+	// модели для карты сайта
+	public function forSitemap(){
+		$result = array();
+		$time = time();
+
+		$criteria = new CDbCriteria;
+		$criteria->group = 'subject_id'; 
+		$all = self::model()->findAll($criteria);
+		
+		foreach($all as $one){
+			$flag = false;
+			if($one->gdz_book){
+
+				foreach($one->gdz_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
+		return $result;
+	}
 }

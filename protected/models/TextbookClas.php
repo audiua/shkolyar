@@ -54,7 +54,7 @@ class TextbookClas extends CActiveRecord
 		return array(
 			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
 			'textbook_subject' => array(self::HAS_MANY, 'TextbookSubject', 'textbook_clas_id'),
-			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_subject_id'),
+			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_clas_id'),
 		);
 	}
 
@@ -168,4 +168,37 @@ class TextbookClas extends CActiveRecord
 	   }
 	   return $this->_url;
 	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$all = self::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			
+			$flag = false;
+			if($one->textbook_book){
+
+				foreach($one->textbook_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+				
+
+			}
+
+			$flag = false;
+		}
+
+		return $result;
+	}
+
 }
