@@ -52,6 +52,7 @@ return array(
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.knowallSidebarMenuWidget.*',
 		'application.widgets.sidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
 		'application.widgets.lastBookWidget.*',

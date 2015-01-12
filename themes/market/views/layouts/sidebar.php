@@ -13,8 +13,8 @@
 
 		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
 			<?php $this->widget('BookSidebarMenuWidget'); ?>
-		<?php else : ?>
-			<?php $this->widget('SidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'knowall') : ?>
+			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
 		<?php endif; ?>
 	</div>
 

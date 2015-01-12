@@ -28,4 +28,5 @@ return array(
 	'rightholder'=>'Правовласникам',
 	'advertiser'=>'Рекламодавцям',
 	'contacts'=>'Контакти',
+	'money'=>'Заробіток',
 );

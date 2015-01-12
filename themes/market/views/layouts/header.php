@@ -393,8 +393,8 @@
 				<ul>
 					<li><a class="knowall-subcategory" href="/knowall/nature">Природа</a></li>
 					<li><a class="knowall-subcategory" href="/knowall/planeta">Планета</a></li>
-					<!-- <li><a class="knowall-subcategory" href="/knowall/man">Людина</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/children">Діти</a></li> -->
+					<li><a class="knowall-subcategory" href="/knowall/money">Заробіток</a></li>
+					<li><a class="knowall-subcategory" href="/knowall/men">Людина</a></li>
 				</ul>
 			</div>
 
