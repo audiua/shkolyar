@@ -342,9 +342,9 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-// if( ! $.cookie('showFb') ){
-// 	setTimeout(showFb, 10000);
-// }
+if( ! $.cookie('showFb') ){
+	setTimeout(showFb, 10000);
+}
 
 // выделение выбраного пункта из таблицы
 $('td , th').hover(

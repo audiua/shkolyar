@@ -187,7 +187,15 @@ return array(
             'compressCss'=>false,
             'combineJs'=>false,
             'compressJs'=>false,
+			'scriptMap'=>array(
+				// 'jquery.js'=>'/js/jquery1.11.1.min.js',
+				// 'jquery.cookie.js'=>'/js/jquery1.11.1.min.js',
+				// 'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js',
+			)
         ),
+
+  //       'clienScript'=>array(
+		// );
 
         'file' => array(
             'class'=>'application.extensions.file.CFile',
