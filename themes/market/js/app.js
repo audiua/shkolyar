@@ -342,7 +342,7 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-if( ! $.cookie('showFb') ){
+if( $.cookie('showFb') ){
 	setTimeout(showFb, 10000);
 }
 
