@@ -15,7 +15,10 @@
 			<?php $this->widget('BookSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'knowall') : ?>
 			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
+		<?php else: ?>
+			<?php $this->widget('SidebarMenuWidget'); ?>
 		<?php endif; ?>
+		
 	</div>
 
 	<img src="/images/b_l.png"> 

@@ -1,5 +1,6 @@
 assets/*
 !assets/.gitignore
+images/*
 img/*
 !img/.gitignore
 protected/runtime/*
@@ -9,5 +10,3 @@ protected/yiic.log
 robots.txt
 sitemap.xml
 !/.gitignore
-qa
-qa/*
