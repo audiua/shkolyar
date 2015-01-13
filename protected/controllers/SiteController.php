@@ -139,6 +139,7 @@ public function actionSearch(){
  * Displays the login page
  */
 public function actionLogin(){
+	$this->layout = '//layouts/login';
 	$model=new LoginForm;
 
 
@@ -157,7 +158,7 @@ public function actionLogin(){
 		}
 	}
 	// display the login form
-	$this->renderPartial('login',array('model'=>$model));
+	$this->render('login',array('model'=>$model));
 }
 
 /**
