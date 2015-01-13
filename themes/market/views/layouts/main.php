@@ -29,8 +29,8 @@
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js');
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js');
-            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
             Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
+            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
 
          ?>
 

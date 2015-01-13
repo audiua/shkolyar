@@ -79,7 +79,7 @@
 	    </div>
 
 	    <div role="tabpanel" class="tab-pane" id="tw">
-            <a class="twitter-timeline"  href="https://twitter.com/shkolyar_info" data-widget-id="553267900979896320">Твиты от @shkolyar_info</a>
+            <a class="twitter-timeline"  href="https://twitter.com/shkolyar_info" data-widget-id="553267900979896320">Твіти @shkolyar_info</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           
 	    </div>
