@@ -47,7 +47,7 @@ class DescriptionWidget extends CWidget{
     }
 
 	public function run(){
-        $this->render('index', 'description'=>$description);
+        $this->render('index', array('description'=>$description));
     }
 
     
