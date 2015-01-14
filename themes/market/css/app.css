@@ -891,13 +891,21 @@
   .pager {
     clear: both;
   }
-  .pager .next > a {
+  .pager .previous {
+    margin-right: 10px;
+  }
+  .pager .previous a,
+  .pager .previous span {
     float: none;
   }
-  .pager .previous > a {
-    float: none;
+  .pager .next {
+    margin-left: 10px;
   }
-  .pager li > a {
+  .pager .next a,
+  .pager .next span {
+    float: none !important;
+  }
+  .pager li a {
     color: #FFA500;
     border-color: #4169E1;
   }
@@ -1246,6 +1254,29 @@
   }
   .nav li a {
     outline: none;
+  }
+  .form-page {
+    height: 300px;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: #fff;
+    box-shadow: 0px 0px 7px #999;
+    padding-top: 10px;
+  }
+  .form-page h1 {
+    color: #777;
+    margin-bottom: 20px;
+  }
+  .form-page .checkbox {
+    color: #bbb;
+  }
+  .login-form {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .full-width {
+    width: 100%;
   }
   .main-menu {
     margin-bottom: 15px;

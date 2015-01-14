@@ -49,6 +49,7 @@ return array(
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
 		'application.widgets.taskWidget.*',
+		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
@@ -136,8 +137,11 @@ return array(
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
-				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
-				'<controller:\w+>/<category:\w+><page:\d>'=>'<controller>/category',
+				
+				'<controller:knowall>/<category:\w+>/<page:\d>'=>'<controller>/category',
+				'<controller:knowall>/<category:\w+>'=>'<controller>/category',
+				
+				'<controller:knowall>/<page:\d>'=>'<controller>/index',
 				'<controller:\w+>'=> '<controller>/index',
 
 				// 'tizer'=>'tizer/index',
@@ -188,9 +192,9 @@ return array(
             'combineJs'=>false,
             'compressJs'=>false,
 			'scriptMap'=>array(
-				// 'jquery.js'=>'/js/jquery1.11.1.min.js',
+				'jquery.js'=>'/js/jquery1.11.1.min.js',
 				// 'jquery.cookie.js'=>'/js/jquery1.11.1.min.js',
-				// 'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js',
+				'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js',
 			)
         ),
 

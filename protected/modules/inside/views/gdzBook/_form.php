@@ -72,14 +72,30 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	</div>
 
 	<div class="form-group">
+
+
+
 		<?php echo $form->labelEx($model,'gdz_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php 
+
+		echo CHtml::dropDownList('GdzBook_gdz_clas_id',$model->gdz_clas_id, 
+		  GdzClas::getAll(),
+		  array(
+		    // 'prompt'=>'Select Region',
+		    'class'=>'col-md-2 col-lg-2 control-label',
+		    'ajax' => array(
+		    'type'=>'POST', 
+		    'url'=>Yii::app()->createUrl('/ajax/gdzBook/subject'), 
+		    'update'=>'#GdzBook_gdz_subject_id', 
+		    'data'=>array('clas'=>'js:this.value'),
+		  )));  ?>
+		<?php // echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
 		<?php echo $form->error($model,'gdz_clas_id'); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'gdz_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'gdz_subject_id', GdzSubject::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php echo $form->dropDownList($model,'gdz_subject_id', array(''=>''), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
 		<?php echo $form->error($model,'gdz_subject_id'); ?>
 	</div>
 
@@ -206,5 +222,20 @@ $('.slug-translit').click(function(){
     }
 
 });
+
+
+
+// sobject for class
+var clas = $( "#GdzBook_gdz_clas_id :selected").val();
+if(clas){	
+	$.post('/ajax/gdzBook/subject', {'clas':clas}, function(responce){
+	    if(responce){
+	    	console.log(responce);
+	    	$( "#GdzBook_gdz_subject_id" ).html(responce)
+	    }
+	}, 'html');
+}
+console.log(clas);
+
 
 </script>

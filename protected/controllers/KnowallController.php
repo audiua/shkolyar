@@ -37,16 +37,30 @@ public function filters() {
  * when an action is not explicitly requested by users.
  */
 public function actionIndex(){
+
+	$page = Yii::app()->getRequest()->getParam('page', null);
+
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_knowall_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_knowall_page'.$page, array('duration'=>86400)) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка'
 		);
 
 		$criteria = new CDbCriteria;
-		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2)));
+		$criteria->condition= 't.public=1';
+
+
+		$model = new CActiveDataProvider(
+			'Knowall',
+			array(
+				'criteria'=>$criteria,
+				'pagination'=>array(
+					'pageSize'=>12,
+					'pageVar'=>'page'
+				)
+			)
+		);
 
 		$category = KnowallCategory::model()->findAll();
 
@@ -64,8 +78,10 @@ public function actionIndex(){
  * when an action is not explicitly requested by users.
  */
 public function actionCategory($category){
+
+	$page = Yii::app()->getRequest()->getParam('page', null);
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_knowall_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
+	if($this->beginCache('category_knowall_page'.$category.$page, array('duration'=>86400, 'varyByParam'=>array('category'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка' => $this->createUrl('/knowall/'),
@@ -83,9 +99,9 @@ public function actionCategory($category){
 
 
 		$criteria = new CDbCriteria;
-		$criteria->condition='knowall_category_id='.$categoryModel->id;
-		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$criteria->condition= 't.public=1';
+		$criteria->addCondition('knowall_category_id='.$categoryModel->id);
+		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$category);
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка - '.ucfirst(Yii::t('app', $category));

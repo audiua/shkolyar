@@ -54,10 +54,13 @@ class GdzBookController extends InsideController
 		// $this->performAjaxValidation($model);
 
 		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
+		$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
+
 		if (!empty($data)) {
 			// print_r($data);
 			// die;
 			$model->attributes = $data;
+
 
 			if($model->save()){
 				Yii::app()->user->setFlash('GDZBOOK_FLASH', 'Збережено');

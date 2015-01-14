@@ -1329,21 +1329,37 @@
 	}
 
 	.pager{
+
 		clear: both;
-	}
 
-	.pager .next > a{
-		float: none;
-	}
+		.previous{
+			margin-right: 10px;
 
-	.pager .previous > a{
-		float: none;
-	}
+			a,span{
+				float: none;
+			}
+		}
 
-	.pager li > a{
-		color: @yellow;
-		border-color: @blue;
-	}
+		.next{
+			margin-left: 10px;
+
+			a,span{
+				float: none !important;
+			}
+		}
+
+		.page_li{
+
+		}
+
+		li{
+			a{
+				color: @yellow;
+				border-color: @blue;
+			}
+		}
+	} 
+
 
 	.pager li.selected > a{
 		color: @blue;

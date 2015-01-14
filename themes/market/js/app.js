@@ -342,7 +342,7 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-if( $.cookie('showFb') ){
+if( !$.cookie('showFb') ){
 	setTimeout(showFb, 10000);
 } else {
 	$.cookie('showFb', 'showFb', {
@@ -355,7 +355,7 @@ if( $.cookie('showFb') ){
 $('td , th').hover(
 	function(){
 		var vertical = $(this).data('vertical');
-		console.log(vertical);
+		// console.log(vertical);
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 				$(item).css({'background':'#eee'}); 
 			
@@ -410,5 +410,12 @@ $('.b-right').click(function(){
 });
 
 
+
+// disabled padination buttons
+$('.yiiPager').find('.disabled').each(function(){
+	$(this).find('a').click(function(e){
+		e.preventDefault();
+	});
+});
 
 });
