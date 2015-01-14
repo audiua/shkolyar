@@ -125,9 +125,16 @@ class TextbookSubject extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public static function getAll(){
+	public static function getAll($clas=null){
 
-		$all = self::model()->findAll();
+		$result = array();
+		$criteria = new CDbCriteria;
+		if($clas){
+			$criteria->condition = 'textbook_clas_id='.$clas;
+		}
+
+		$all = self::model()->findAll($criteria);
+
 		if($all){
 			foreach($all as $one){
 				$result[$one->id]=$one->subject->title;

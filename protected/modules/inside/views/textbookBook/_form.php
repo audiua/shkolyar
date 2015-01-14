@@ -72,16 +72,39 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	</div>
 
 	<div class="form-group">
+
+
 		<?php echo $form->labelEx($model,'textbook_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'textbook_clas_id', TextbookClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php 
+
+		echo CHtml::dropDownList('TextbookBook_textbook_clas_id',$model->textbook_clas_id, 
+		  TextbookClas::getAll(),
+		  array(
+		    // 'prompt'=>'Select Region',
+		    'class'=>'col-md-2 col-lg-2 control-label',
+		    'ajax' => array(
+		    'type'=>'POST', 
+		    'url'=>Yii::app()->createUrl('/ajax/textbookBook/subject'), 
+		    'update'=>'#TextbookBook_textbook_subject_id', 
+		    'data'=>array('clas'=>'js:this.value'),
+		  )));  ?>
+		<?php // echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
 		<?php echo $form->error($model,'textbook_clas_id'); ?>
 	</div>
 
+
+
+
+
+
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'textbook_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'textbook_subject_id', TextbookSubject::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php echo $form->dropDownList($model,'textbook_subject_id', array(''=>''), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
 		<?php echo $form->error($model,'textbook_subject_id'); ?>
 	</div>
+
+
+
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
@@ -207,5 +230,17 @@ $('.slug-translit').click(function(){
     }
 
 });
+
+
+
+var clas = $( "#TextbookBook_textbook_clas_id :selected").val();
+if(clas){	
+	$.post('/ajax/textbookBook/subject', {'clas':clas}, function(responce){
+	    if(responce){
+	    	console.log(responce);
+	    	$( "#TextbookBook_textbook_subject_id" ).html(responce)
+	    }
+	}, 'html');
+}
 
 </script>

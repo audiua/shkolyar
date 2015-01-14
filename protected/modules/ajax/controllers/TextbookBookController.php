@@ -29,6 +29,25 @@ public function actionTranslit(){
 		Yii::app()->end();
 	}
 }
+
+public function actionSubject(){
+	if (Yii::app()->request->isAjaxRequest) {
+		$clas = Yii::app()->request->getPost('clas', null);
+
+		if($clas){
+
+			$subject = TextbookSubject::model()->getAll($clas);
+
+		    foreach($subject as $value=>$name)
+		    {
+		        echo CHtml::tag('option',
+		                   array('value'=>$value),CHtml::encode($name),true);
+		    }
+		}
+		
+		Yii::app()->end();
+	}
+}
 	
 
 }

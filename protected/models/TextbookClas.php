@@ -125,10 +125,14 @@ class TextbookClas extends CActiveRecord
 
 	public static function getAll(){
 
+		$result = array();
 		$all = self::model()->findAll();
 		if($all){
 			foreach($all as $one){
-				$result[$one->id]=$one->clas->title;
+
+				if($one->textbook_book){
+					$result[$one->id]=$one->clas->title;
+				}
 			}
 		}
 		return $result;

@@ -119,7 +119,7 @@ class GdzSubject extends CActiveRecord
 	}
 
 	public static function getAll($clas=null){
-
+		$result = array();
 		$criteria = new CDbCriteria;
 		if($clas){
 			$criteria->condition = 'gdz_clas_id='.$clas;

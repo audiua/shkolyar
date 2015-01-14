@@ -235,7 +235,7 @@ if(clas){
 	    }
 	}, 'html');
 }
-console.log(clas);
+// console.log(clas);
 
 
 </script>
