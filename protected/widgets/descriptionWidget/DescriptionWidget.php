@@ -3,10 +3,9 @@
 class DescriptionWidget extends CWidget{
 
 	public $params = array();
-    public $model;
+    public $model = null;
 
 	public function init(){
-
 
         $param = array();
         $criteria = new CDbCriteria;
@@ -35,19 +34,15 @@ class DescriptionWidget extends CWidget{
         ) );
 
         $model = Description::model()->find($criteria);
-
         if($model){
-            $description = $model->description;
-        } else {
-            $description = '';
+            $this->model = $model;
         }
-
 
         parent::init();
     }
 
 	public function run(){
-        $this->render('index', array('description'=>$description));
+        $this->render('index');
     }
 
     

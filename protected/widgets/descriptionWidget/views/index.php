@@ -1,3 +1,3 @@
 <?php
 
-echo $description;
+echo !empty($this->model) ? $this->model->description : '' ;

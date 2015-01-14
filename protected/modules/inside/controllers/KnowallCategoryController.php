@@ -52,8 +52,7 @@ class KnowallCategoryController extends InsideController
 
 		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
 		if (!empty($data)) {
-			// print_r($data);
-			// die;
+
 			$model->attributes = $data;
 			if($model->save()){
 				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
@@ -79,8 +78,6 @@ class KnowallCategoryController extends InsideController
 
 		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
 		if (!empty($data)) {
-			// print_r($data);
-			// die;
 			$model->attributes = $data;
 			if($model->save()){
 				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
@@ -92,7 +89,7 @@ class KnowallCategoryController extends InsideController
 			'model'=>$model,
 		));
 
-
+	}
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
