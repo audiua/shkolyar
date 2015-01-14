@@ -57,8 +57,8 @@ class TextbookBookController extends InsideController
 		if (!empty($data)) {
 			// print_r($data);
 			// die;
-			$model->attributes = $data;
 			$data['textbook_clas_id'] = Yii::app()->getRequest()->getPost('TextbookBook_textbook_clas_id', null);
+			$model->attributes = $data;
 
 			if($model->save()){
 				Yii::app()->user->setFlash('TextbookBook_FLASH', 'Збережено');
@@ -87,8 +87,8 @@ class TextbookBookController extends InsideController
 		if (!empty($data)) {
 			// print_r($data);
 			// die;
-			$model->attributes = $data;
 			$data['textbook_clas_id'] = Yii::app()->getRequest()->getPost('TextbookBook_textbook_clas_id', null);
+			$model->attributes = $data;
 
 			if($model->save()){
 				Yii::app()->user->setFlash('TextbookBook_FLASH', 'Збережено');
