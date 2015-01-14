@@ -50,20 +50,23 @@ class KnowallCategoryController extends InsideController
 	{
 		$model=new KnowallCategory;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['KnowallCategory']))
-		{
-			$model->attributes=$_POST['KnowallCategory'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+			if($model->save()){
+				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		
 	}
+
 
 	/**
 	 * Updates a particular model.
@@ -74,20 +77,21 @@ class KnowallCategoryController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['KnowallCategory']))
-		{
-			$model->attributes=$_POST['KnowallCategory'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+			if($model->save()){
+				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
-	}
+
 
 	/**
 	 * Deletes a particular model.

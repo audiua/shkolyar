@@ -36,12 +36,12 @@ class Description extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('owner, description, action', 'required'),
-			array('owner, action, page_mode', 'length', 'max'=>255),
-			array('clas_id, subject_id, create_time, update_time', 'length', 'max'=>10),
+			array('owner, , action, page_mode', 'length', 'max'=>255),
+			array('clas_id, category_id, subject_id, create_time, update_time', 'length', 'max'=>10),
 			array('block_id', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, owner, action, clas_id, subject_id, description, create_time, update_time, page_mode, block_id', 'safe', 'on'=>'search'),
+			array('id, owner, category, action, clas_id, subject_id, description, create_time, update_time, page_mode, block_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +55,7 @@ class Description extends CActiveRecord
 		return array(
 			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
 			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
+			'category' => array(self::BELONGS_TO, 'KnowallCategory', 'category_id'),
 		);
 	}
 
@@ -83,7 +84,8 @@ class Description extends CActiveRecord
 			'action' => 'Action',
 			'page_mode' => 'page mode',
 			'block_id' => 'block_id',
-			'clas_id' => 'Slas',
+			'clas_id' => 'Clas',
+			'category_id' => 'category',
 			'subject_id' => 'Subject',
 			'description' => 'Description',
 			'create_time' => 'Create Time',
@@ -114,6 +116,7 @@ class Description extends CActiveRecord
 		$criteria->compare('action',$this->action,true);
 		$criteria->compare('clas_id',$this->clas_id,true);
 		$criteria->compare('page_mode',$this->page_mode,true);
+		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('block_id',$this->block_id);
 		$criteria->compare('subject_id',$this->subject_id,true);
 		$criteria->compare('description',$this->description);

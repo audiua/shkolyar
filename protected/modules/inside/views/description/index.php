@@ -62,6 +62,14 @@ $('.search-form form').submit(function(){
 			'header'=>'Клас',
 			'htmlOptions'=>array('width'=>'30px')
 		),
+
+		'category_id'=>array(
+			'name'=>'category_id',
+			'value'=>'!empty($data->category_id) ? $data->category->title : "" ',
+			'header'=>'category',
+			'htmlOptions'=>array('width'=>'30px')
+		),
+
 		'subject_id'=>array(
 			'name'=>'subject_id',
 			'value'=>'!empty($data->subject) ? $data->subject->slug : "" ',

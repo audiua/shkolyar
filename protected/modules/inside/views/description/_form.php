@@ -64,32 +64,36 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'owner', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'owner',Helper::getOwner(), array('class'=>'col-md-3 col-lg-3 control-label')); ?>
+		<?php echo $form->dropDownList($model,'owner',Helper::getOwner(), array('class'=>'col-md-4 col-lg-4 control-label')); ?>
 		<?php echo $form->error($model,'owner'); ?>
 	
-		<?php echo $form->labelEx($model,'action', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'action',Helper::getAction(), array('class'=>'col-md-3 col-lg-3 control-label')); ?>
+		<?php echo $form->labelEx($model,'action', array('class'=>"col-md-1 col-lg-1 control-label")); ?>
+		<?php echo $form->dropDownList($model,'action',Helper::getAction(), array('class'=>'col-md-4 col-lg-4 control-label')); ?>
 		<?php echo $form->error($model,'action'); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'clas_id',array_merge(array(''=>''), Clas::getAll()), array('class'=>'col-md-3 col-lg-3 control-label')); ?>
+		<?php echo $form->dropDownList($model,'clas_id',Clas::getAll(),array('class'=>'col-md-4 col-lg-4 control-label','empty' => '')); ?>
 		<?php echo $form->error($model,'clas_id'); ?>
 
-		<?php echo $form->labelEx($model,'subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'subject_id',array_merge(array(''=>''), Subject::getAll()), array('class'=>'col-md-3 col-lg-3 control-label')); ?>
+		<?php echo $form->labelEx($model,'subject_id', array('class'=>"col-md-1 col-lg-1 control-label")); ?>
+		<?php echo $form->dropDownList($model,'subject_id',Subject::getAll(),array('class'=>'col-md-4 col-lg-4 control-label','empty' => '')); ?>
 		<?php echo $form->error($model,'subject_id'); ?>
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'page_mode', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'page_mode',Helper::getPageMode(), array('class'=>'col-md-3 col-lg-3 control-label')); ?>
-		<?php echo $form->error($model,'action'); ?>
+		<?php echo $form->labelEx($model,'category_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->dropDownList($model,'category_id',KnowallCategory::getall(),array('class'=>'col-md-2 col-lg-2 control-label','empty' => '')); ?>
+		<?php echo $form->error($model,'category_id'); ?>
+
+		<?php echo $form->labelEx($model,'page_mode', array('class'=>"col-md-1 col-lg-1 control-label")); ?>
+		<?php echo $form->dropDownList($model,'page_mode',Helper::getPageMode(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+		<?php echo $form->error($model,'page_mode'); ?>
 	
 		
-		<?php echo $form->labelEx($model,'block_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->textField($model,'block_id',array('size'=>60,'maxlength'=>255,'class'=>'col-md-3 col-lg-3 control-label')); ?>
+		<?php echo $form->labelEx($model,'block_id', array('class'=>"col-md-1 col-lg-1 control-label")); ?>
+		<?php echo $form->textField($model,'block_id',array('size'=>60,'maxlength'=>255,'class'=>'col-md-2 col-lg-2 control-label')); ?>
 		<?php echo $form->error($model,'block_id'); ?>
 	</div>
 
