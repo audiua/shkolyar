@@ -37,9 +37,9 @@ class DescriptionWidget extends CWidget{
         $model = Description::model()->find($criteria);
 
         if($model){
-            $this->model = $model;
+            $description = $model->description;
         } else {
-            throw new CHttpException('404');
+            $description = '';
         }
 
 
@@ -47,7 +47,7 @@ class DescriptionWidget extends CWidget{
     }
 
 	public function run(){
-        $this->render('index');
+        $this->render('index', 'description'=>$description);
     }
 
     
