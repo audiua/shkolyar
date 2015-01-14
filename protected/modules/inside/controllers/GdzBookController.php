@@ -91,6 +91,7 @@ class GdzBookController extends InsideController
 		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
 		if (!empty($data)) {
 			$model->attributes = $data;
+			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
 
 
 			// echo $model->public_time;
