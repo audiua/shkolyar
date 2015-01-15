@@ -72,6 +72,7 @@
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo Yii::app()->user->role; ?> <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><?php echo CHtml::link('Сайт', '/',array('target'=>'_blanck')); ?></li>
+	            <li><?php echo CHtml::link('Настройки', '/inside/setting'); ?></li>
 	            <li class="divider"></li>
 	            <li><?php echo CHtml::link('Выйти', '/site/logout'); ?></li>
 	          </ul>

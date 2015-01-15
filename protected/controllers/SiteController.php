@@ -139,6 +139,25 @@ public function actionSearch(){
  * Displays the login page
  */
 public function actionLogin(){
+
+
+	// авторизация только после получения куки на 1 мин
+	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	if( ! $model){
+		throw new CHttpException('404');
+	}
+
+	$token = Yii::app()->request->cookies['cookie_token'];
+	if( ! $token ){
+		throw new CHttpException('404');
+	}
+
+	$value = unserialize($model->value);
+	if( $value['expire'] < time() || $token->value !== $value['token'] ){
+		throw new CHttpException('404');
+	}
+
+
 	$this->layout = '//layouts/login';
 	$model=new LoginForm;
 
@@ -178,6 +197,31 @@ public function actionPage($action){
 		throw new CHttpException('404');
 	}
 
+}
+
+public function actionJewel(){
+	$token = sha1( uniqid() );
+
+	// echo $token;
+	$cookie = new CHttpCookie('cookie_token', $token );
+
+	// print_r($cookie);
+	$cookie->expire = time() + 60; // 1 min
+	Yii::app()->request->cookies['cookie_token'] = $cookie;
+
+	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	if($model){
+		$model->value = serialize(
+			array(
+				'expire'=>$cookie->expire,
+				'token'=>$token
+			)
+		);
+
+		if($model->update()){
+			$this->redirect(Yii::app()->user->returnUrl);
+		}
+	}
 }
 
 }

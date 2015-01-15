@@ -124,6 +124,7 @@ return array(
 				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
 
 				'<action:about|advertiser|rules|rightholder|contacts>'=>'site/page',
+				'/jewel' => 'site/jewel',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
 				
