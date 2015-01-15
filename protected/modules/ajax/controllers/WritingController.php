@@ -1,6 +1,6 @@
 <?php
 
-class WritingController extends Controller
+class WritingController extends InsideController
 {
 
 public function filters()

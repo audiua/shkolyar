@@ -1,6 +1,6 @@
 <?php
 
-class TextbookBookController extends Controller
+class TextbookBookController extends InsideController
 {
 
 public function filters()

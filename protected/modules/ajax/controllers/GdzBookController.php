@@ -1,6 +1,6 @@
 <?php
 
-class GdzBookController extends Controller
+class GdzBookController extends InsideController
 {
 
 public function filters()
