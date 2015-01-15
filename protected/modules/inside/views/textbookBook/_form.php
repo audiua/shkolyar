@@ -99,7 +99,7 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'textbook_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'textbook_subject_id', array(''=>''), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
+		<?php echo $form->dropDownList($model,'textbook_subject_id', TextbookSubject::getAll($model->textbook_clas_id), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
 		<?php echo $form->error($model,'textbook_subject_id'); ?>
 	</div>
 
@@ -233,14 +233,14 @@ $('.slug-translit').click(function(){
 
 
 
-var clas = $( "#TextbookBook_textbook_clas_id :selected").val();
-if(clas){	
-	$.post('/ajax/textbookBook/subject', {'clas':clas}, function(responce){
-	    if(responce){
-	    	console.log(responce);
-	    	$( "#TextbookBook_textbook_subject_id" ).html(responce)
-	    }
-	}, 'html');
-}
+// var clas = $( "#TextbookBook_textbook_clas_id :selected").val();
+// if(clas){	
+// 	$.post('/ajax/textbookBook/subject', {'clas':clas}, function(responce){
+// 	    if(responce){
+// 	    	console.log(responce);
+// 	    	$( "#TextbookBook_textbook_subject_id" ).html(responce)
+// 	    }
+// 	}, 'html');
+// }
 
 </script>
