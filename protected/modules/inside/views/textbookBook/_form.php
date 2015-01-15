@@ -76,9 +76,9 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 		<?php echo $form->labelEx($model,'textbook_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php 
-
+		$clas = empty($model->textbook_clas_id) ? 1 : null;
 		echo CHtml::dropDownList('TextbookBook_textbook_clas_id',$model->textbook_clas_id, 
-		  TextbookClas::getAll(),
+		  TextbookClas::getAll($clas),
 		  array(
 		    // 'prompt'=>'Select Region',
 		    'class'=>'col-md-2 col-lg-2 control-label',

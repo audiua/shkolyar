@@ -77,9 +77,9 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 		<?php echo $form->labelEx($model,'gdz_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php 
-
+		$clas = empty($model->gdz_clas_id) ? 1 : null;
 		echo CHtml::dropDownList('GdzBook_gdz_clas_id',$model->gdz_clas_id, 
-		  GdzClas::getAll(),
+		  GdzClas::getAll( $clas ),
 		  array(
 		    // 'prompt'=>'Select Region',
 		    'class'=>'col-md-2 col-lg-2 control-label',
@@ -95,7 +95,7 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'gdz_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'gdz_subject_id', GdzBook::getAll($model->gdz_clas_id), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
+		<?php echo $form->dropDownList($model,'gdz_subject_id', GdzSubject::getAll($model->gdz_clas_id), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
 		<?php echo $form->error($model,'gdz_subject_id'); ?>
 	</div>
 
