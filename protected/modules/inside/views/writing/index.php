@@ -86,6 +86,11 @@ $('.search-form form').submit(function(){
 		'slug',
 		'length',
 		'nausea',
+		'public'=>array(
+			'name'=>'public',
+			'value'=>'$data->public==1 ? "Да":"Нет"',
+			'headerHtmlOptions'=>array('width'=>'20px'),
+		),
 		// 'img_ext',
 		
 		array(
