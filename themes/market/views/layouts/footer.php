@@ -14,11 +14,11 @@
 
 <div class="footer-menu">
 	<ul>
-		<li><?php  echo CHtml::link('Про нас', array('/about'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Правила', array('/rules'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Правовласникам', array('/rightholder'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Рекламодавцям', array('/advertiser'), array('rel'=>'nofollow')); ?></li>
-		<li><?php  echo CHtml::link('Контакти', array('/contacts'), array('rel'=>'nofollow')); ?></li>
+		<li><?php  echo CHtml::link('Про нас', array('/about'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/about'?'active':'')); ?></li>
+		<li><?php  echo CHtml::link('Правила', array('/rules'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/rules'?'active':'')); ?></li>
+		<li><?php  echo CHtml::link('Правовласникам', array('/rightholder'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/rightholder'?'active':'')); ?></li>
+		<li><?php  echo CHtml::link('Рекламодавцям', array('/advertiser'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/advertiser'?'active':'')); ?></li>
+		<li><?php  echo CHtml::link('Контакти', array('/contacts'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/contacts'?'active':'')); ?></li>
 		<li><?php  echo CHtml::link('sitemap.xml', array('/sitemap.xml'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
 
 	</ul>
