@@ -43,16 +43,20 @@ return array(
 		'application.helpers.*',
 		'application.widgets.clasNumbWidget.*',
 		'application.widgets.clasNumbCurrentSubjectWidget.*',
+		'application.widgets.clasNumbWritingCurrentSubjectWidget.*',
 		'application.widgets.subjectWidget.*',
 		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
+		'application.widgets.libraryBookWidget.*',
 		'application.widgets.taskWidget.*',
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.writingSidebarMenuWidget.*',
+		'application.widgets.librarySidebarMenuWidget.*',
 		'application.widgets.knowallSidebarMenuWidget.*',
 		'application.widgets.sidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
@@ -127,6 +131,7 @@ return array(
 				'/jewel' => 'site/jewel',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
+				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
 				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
@@ -139,10 +144,10 @@ return array(
 
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
 				
-				'<controller:knowall>/<category:\w+>/<page:\d>'=>'<controller>/category',
-				'<controller:knowall>/<category:\w+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:\w+>/<page:\d+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
 				
-				'<controller:knowall>/<page:\d>'=>'<controller>/index',
+				'<controller:knowall|library|writing>/<page:\d>'=>'<controller>/index',
 				'<controller:\w+>'=> '<controller>/index',
 
 				// 'tizer'=>'tizer/index',

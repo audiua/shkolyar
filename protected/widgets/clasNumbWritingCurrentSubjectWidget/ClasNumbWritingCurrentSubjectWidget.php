@@ -1,6 +1,6 @@
 <?php
 
-class ClasNumbCurrentSubjectWidget extends CWidget{
+class ClasNumbWritingCurrentSubjectWidget extends CWidget{
 
 	public $params = array();
 	public $subject = null;
@@ -9,16 +9,16 @@ class ClasNumbCurrentSubjectWidget extends CWidget{
 	public function init(){
 		$this->params = $this->controller->param;
 		$this->mode = $this->controller->id;
+		$this->params['allClasModel'] = Clas::model()->findAll();
         parent::init();
     }
 
 	public function run(){
-		$subject = $this->controller->id . '_subject';
 
 		$clasWithCurrentSubject = array();
-		foreach($this->controller->allClasModel as $oneClas){
-			foreach( $oneClas->$subject as $oneGdzSubgect ){
-				if($oneGdzSubgect->subject->id == $this->subject->id){
+		foreach($this->params['allClasModel'] as $oneClas){
+			foreach( $oneClas->writing as $article ){
+				if($article->subject->id == $this->subject->id){
 					$clasWithCurrentSubject[] = $oneClas;
 				}
 			}

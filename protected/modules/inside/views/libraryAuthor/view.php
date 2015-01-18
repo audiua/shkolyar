@@ -25,7 +25,7 @@ $this->menu=array(
 		'author',
 		'create_time',
 		'update_time',
-		'biography',
+		'descripiton',
 		'slug',
 	),
 )); ?>

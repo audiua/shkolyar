@@ -59,7 +59,7 @@ class KnowallController extends InsideController
 			$model->public_time = strtotime($model->public_time);
 
 			if($model->save()){
-				Yii::app()->user->setFlash('KNOWALL_FLASH', 'Збережено');
+				Yii::app()->user->setFlash('Knowall_FLASH', 'Збережено');
 				$this->redirect(array('index'));
 			}
 		}

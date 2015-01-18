@@ -179,10 +179,10 @@ public function actionCurrentSubject($subject){
 	// die;
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_current_subject_page'.$subject, array('duration'=>1000, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('textbook_current_subject_page'.$subject, array('duration'=>1000, 'varyByParam'=>array('subject'))) ){
 
 		// все классы
-		$this->allClasModel = GdzClas::model()->findAll();
+		$this->allClasModel = TextbookClas::model()->findAll();
 
 		$this->checkSubject($subject);
 
@@ -195,15 +195,15 @@ public function actionCurrentSubject($subject){
 		$criteria->addCondition('t.public=1');
 
 		if($subjectModel){
-			$curentSubjectModel = array_keys( CHtml::listData( GdzSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
+			$curentSubjectModel = array_keys( CHtml::listData( TextbookSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
 			// unset($subjectModel);
 			if($curentSubjectModel){
-				$criteria->addInCondition('gdz_subject_id', $curentSubjectModel);
+				$criteria->addInCondition('textbook_subject_id', $curentSubjectModel);
 				unset($curentSubjectModel);
 			}
 		}
 
-		$books = new CActiveDataProvider('GdzBook', 
+		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
 				'pagination'=>array('pageSize'=>12),
@@ -213,19 +213,16 @@ public function actionCurrentSubject($subject){
 		// print_r($book);
 		// die;
 
-		$this->keywords = 'ГДЗ - готові домашні завдання ' . $subjectModel->title . ', гдз '. $subjectModel->title . ', гдз онлайн '
-			. $subjectModel->title . ', гдз '. $subjectModel->title . ' україна, гдз решебники '
-			. $subjectModel->title . ', готові домашні завдання '. $subjectModel->title . ', гдз '. $subjectModel->title;
+		$this->keywords = '';
 
-		$this->description = 'ГДЗ - готові домашні завдання ' 
-			. $subjectModel->title . ', для середніх загальноосвітніх шкіл України.';
+		$this->description = '';
 
-		$this->h1 = 'ГДЗ '.$subjectModel->title;
+		$this->h1 = 'Підручники '.$subjectModel->title;
 		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
 
 		$this->breadcrumbs = array(
-			'ГДЗ' => $this->createUrl('/gdz'),
+			'Підручники' => $this->createUrl('/textbook'),
 			// $subjectModel->title => $this->createUrl('/gdz/'.$subject),
 			$subjectModel->title
 		);

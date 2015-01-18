@@ -8,8 +8,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="info">Біографія <?php echo $category->author; ?></div> 
 <p class="description">
-<?php echo $category->biography; ?>
+<?php echo $category->description; ?>
 </p>
 
-<div class="info">Твори <?php echo $category->author; ?></div>
+<div class="info">Твори автора</div>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

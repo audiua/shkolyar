@@ -15,6 +15,10 @@
 			<?php $this->widget('BookSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'knowall') : ?>
 			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'library') : ?>
+			<?php $this->widget('LibrarySidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'writing') : ?>
+			<?php $this->widget('WritingSidebarMenuWidget'); ?>
 		<?php else: ?>
 			<?php $this->widget('SidebarMenuWidget'); ?>
 		<?php endif; ?>

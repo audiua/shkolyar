@@ -15,6 +15,14 @@
 			<li>
 			<?php echo CHtml::link( 'Всезнайка', array('/knowall'));  ?>
 			</li>
+
+			<li>
+			<?php echo CHtml::link( 'Художня література', array('/library'));  ?>
+			</li>
+
+			<li>
+			<?php echo CHtml::link( 'Твори', array('/writing'));  ?>
+			</li>
 		
 
 	</ul>

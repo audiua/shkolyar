@@ -10,6 +10,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="knowall-article">
 	
-<?php echo  $model->description; ?>
+<?php echo  $model->text; ?>
 	
 </div>

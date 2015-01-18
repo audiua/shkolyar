@@ -53,11 +53,16 @@ class LibraryAuthorController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['LibraryAuthor']))
-		{
-			$model->attributes=$_POST['LibraryAuthor'];
-			if($model->save())
+		$data = Yii::app()->getRequest()->getPost('LibraryAuthor', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('LibraryAuthor_FLASH', 'Збережено');
 				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -72,21 +77,29 @@ class LibraryAuthorController extends InsideController
 	 */
 	public function actionUpdate($id)
 	{
+
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['LibraryAuthor']))
-		{
-			$model->attributes=$_POST['LibraryAuthor'];
-			if($model->save())
+		$data = Yii::app()->getRequest()->getPost('LibraryAuthor', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('LibraryAuthor_FLASH', 'Збережено');
 				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
+
+
 	}
 
 	/**

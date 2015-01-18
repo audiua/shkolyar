@@ -25,9 +25,13 @@ class Clas extends CActiveRecord
 
     private $_url;
     
-	public function getUrl(){
+	public function getUrl($mode=null){
 	   if ($this->_url === null){
-	       $this->_url = Yii::app()->createUrl('/'.$this->slug);
+	   		if($mode){
+	        	$this->_url = Yii::app()->createUrl('/'.$mode.'/'.$this->slug);
+	   		} else {
+	        	$this->_url = Yii::app()->createUrl('/'.$this->slug);
+	   		}
 	   }
 	   return $this->_url;
 	}
@@ -70,6 +74,7 @@ class Clas extends CActiveRecord
 			'gdz_clas'=>array(self::HAS_ONE, 'GdzClas', 'clas_id'),
 			'gdz_book' => array(self::HAS_MANY, 'GdzBook', 'clas_id'),
 			'gdz_subject' => array(self::HAS_MANY, 'GdzSubject', 'clas_id'),
+			'writing' => array(self::HAS_MANY, 'Writing', 'clas_id'),
 		);
 	}
 

@@ -56,6 +56,13 @@ $('.search-form form').submit(function(){
 			'value'=>'Yii::app()->dateFormatter->format(\'HH:mm:ss d MMMM yyyy\', $data->update_time)'
 		),
 		'slug',
+		// 'description',
+		'length',
+		'nausea'=>array(
+			'name'=>'nausea',
+			'value'=>'$data->nausea."%"',
+			'headerHtmlOptions'=>array('width'=>'30px'),
+		),
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('width'=>'80px')

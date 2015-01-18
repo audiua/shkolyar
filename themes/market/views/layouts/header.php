@@ -308,7 +308,7 @@
 			</div>
 		</li>
 
-		<!-- <li  class="<?php // echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
+		<li  class="<?php  echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
 			<a href="/writing">Твори</a>
 			<div class="writing-table">
 				<table>
@@ -325,6 +325,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					
 						<tr>
 							<td data-vertical="0"><a href="/writing/lang-ua">українська мова</a></td>
 							<td data-vertical="1"><a href="/writing/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
@@ -348,45 +349,53 @@
 							
 						</tr>
 						
-						<tr>
-							<td data-vertical="0"><a href="/writing/lang-ua">російська мова</a></td>
-							<td data-vertical="1"><a href="/writing/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/writing/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/writing/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/writing/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/writing/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/writing/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/writing/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
-						
-						<tr>
-							<td data-vertical="0"><a href="/writing/lit-ua">зарубіжна література</a></td>
-							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/writing/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/writing/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/writing/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/writing/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/writing/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-							
-						</tr>
 					</tbody>
 				</table>
 
 			</div>
-		</li> -->
+		</li>
 
-		<!-- <li class="<?php // echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
+		<li class="<?php  echo Yii::app()->controller->getId() == 'library' ? 'active' : '' ; ?> library"  ><a href="/library">Художня література</a>
 			<div class="library-block">
-				<ul>
-					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
-					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
-					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
-					<li><a class="library-subcategory" href="/library/vasulchenko">Васильченко С. В.</a></li>
-				</ul>
+
+				<div role="tabpanel">
+
+				  <!-- Nav tabs -->
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#lit-ua" aria-controls="lit-ua" role="tab" data-toggle="tab">Українська література</a></li>
+				    <li role="presentation"><a href="#lit-w" aria-controls="lit-w" role="tab" data-toggle="tab">Зарубіжна література</a></li>
+				  </ul>
+
+				  <!-- Tab panes -->
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
+			    		<ul>
+			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевчененкоко Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевчен Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевч Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевченкоенко Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевче Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевченко Т.Г.</a></li>
+			    		</ul>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="lit-w">
+						<ul>
+							<li><a class="library-subcategory" href="/library/shevchenko">J.London</a></li>
+							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
+							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
+							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
+						</ul>
+			            
+				    </div>
+
+				  </div>
+
+				</div>
+
 			</div>
 
-		</li> -->
+		</li>
 
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">

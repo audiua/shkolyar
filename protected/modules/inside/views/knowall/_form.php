@@ -16,6 +16,7 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	'enableAjaxValidation'=>false,
 	'htmlOptions' => array(
         'enctype' => 'multipart/form-data',
+        'class'=>"form-horizontal"
     ),
 )); ?>
 

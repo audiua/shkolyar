@@ -5,7 +5,7 @@
 <div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/first.'.$data->img_ext, ' ', array('class'=>'img-middle-book thumbnail ')) ?> </div>
 	<div class="">
 		<div class="book-author"> <?php echo $data->library_author->author; ?></div>
-		<div class="book-title"> <?php echo $data->title; ?></div>
+		<div class="book-subject"> <?php echo $data->title; ?></div>
 		<div class="desc">
 			<!-- <p><?php // echo $data->description; 
 			?></p> -->

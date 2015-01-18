@@ -10,17 +10,32 @@ class Helper{
 	 */
 	public static function getLength( $article ){
 
+		$lenght = 0;
+
 		// content
-		$content = strip_tags($article->text);
-		$content = str_replace( ' ', '', $content );
-		$contentLength = mb_strlen($content, 'utf-8');
+		if(isset($article->text)){
+			$content = strip_tags($article->text);
+			$content = str_replace( ' ', '', $content );
+			$contentLength = mb_strlen($content, 'utf-8');
+			$lenght += $contentLength;
+		}
+
+		if(isset($article->description)){
+			$description = strip_tags($article->description);
+			$description = str_replace( ' ', '', $description );
+			$descriptionLength = mb_strlen($description, 'utf-8');
+			$lenght += $descriptionLength;
+		}
 
 		// title
-		$title = strip_tags($article->title);
-		$title = str_replace( ' ', '', $title );
-		$titleLength = mb_strlen($title, 'utf-8');
+		if(isset($article->title)){
+			$title = strip_tags($article->title);
+			$title = str_replace( ' ', '', $title );
+			$titleLength = mb_strlen($title, 'utf-8');
+			$lenght += $titleLength;
+		}
 
-		return $contentLength + $titleLength;
+		return $lenght;
 
 	}
 
@@ -90,7 +105,7 @@ class Helper{
 		foreach($order as $item){
 
 			$criteria=new CDbCriteria;
-			$criteria->order = $item.'_time DESC';
+			$criteria->order = "`{$item}_time` DESC";
 			$criteria->limit = 1;
 
 			if(!$mode){
@@ -119,6 +134,9 @@ class Helper{
 			} else {
 
 				$last = $mode::model()->public()->find($criteria);
+				if(!$last){
+					continue;
+				}
 				
 				if( isset($last->public_time) && !is_null($last->public_time) ){
 					$last->public_time = strtotime($last->public_time);

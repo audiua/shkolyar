@@ -27,7 +27,7 @@ $this->widget('zii.widgets.CListView', array(
 	'emptyText'=>'А нету никаких книг!',
     'sortableAttributes'=>array(
         'author',
-        'gdz_clas_id',
+        // 'gdz_clas_id',
     ),
 ));
 ?>

@@ -8,7 +8,20 @@
 	</div>
 
 	<div class="knowall-category-link">
-			<?php echo CHtml::link($data->clas->slug, '/writing/'.$data->clas->slug ,array('class'=>'')); ?> <?php echo CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->clas->slug ,array('class'=>'')); ?>
+			<?php 
+				if(isset($this->params['clas'])){
+					echo '<span>'.$data->clas->slug.' клас</span>';
+				} else {
+					echo CHtml::link($data->clas->slug.' клас', '/writing/'.$data->clas->slug ,array('class'=>'')); 
+				}
+			?>
+			<?php 
+				if(isset($this->params['subject'])){
+					echo '<span>, '.Helper::getShort($data->subject->title).'</span>';
+				} else { 
+					echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->clas->slug ,array('class'=>'')); 
+				}
+			?>
 	</div>
 
 </div>

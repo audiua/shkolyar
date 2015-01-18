@@ -24,6 +24,7 @@
 class Writing extends CActiveRecord
 {
 
+	private $_url;
 	public $thumbnail;
 	public $deleteImage;
 	/**
@@ -245,4 +246,62 @@ class Writing extends CActiveRecord
 
         return parent::beforeDelete();
     }
+
+    public function forSitemap($mode='clas'){
+    	$result = array();
+    	$model = ucfirst($mode);
+		$all = $model::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			$flag = false;
+			if($one->writing){
+
+				foreach($one->writing as $article){
+
+					// isset published book
+					if($article->public && $article->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
+		return $result;
+    }
+
+    /**
+     * [getUrl description]
+     * @return [type] [description]
+     */
+	public function getUrl(){
+		if ($this->_url === null){
+			$this->_url = '/writing/';
+
+			if( $this->clas ){
+				$this->_url .= $this->clas->slug.'/';
+			}
+
+			if( $this->subject ){
+				$this->_url .= $this->subject->slug.'/';
+			}
+			
+			$this->_url = Yii::app()->createUrl( $this->_url );
+
+		}
+		
+		return $this->_url;
+	}
+
+	public function getArticleUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/writing/' . $this->clas->slug . '/'. $this->subject->slug . '/'. $this->slug );
+	   }
+	   return $this->_url;
+	}
 }
