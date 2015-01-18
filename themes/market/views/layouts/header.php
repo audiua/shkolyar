@@ -371,20 +371,10 @@
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
 			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевчененкоко Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевчен Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевч Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевченкоенко Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевче Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vasulchenko">Шевченко Т.Г.</a></li>
 			    		</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="lit-w">
 						<ul>
-							<li><a class="library-subcategory" href="/library/shevchenko">J.London</a></li>
-							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
-							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
-							<li><a class="library-subcategory" href="/library/vasulchenko">J.London</a></li>
 						</ul>
 			            
 				    </div>
