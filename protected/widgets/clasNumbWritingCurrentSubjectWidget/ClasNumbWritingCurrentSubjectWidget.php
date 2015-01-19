@@ -17,10 +17,15 @@ class ClasNumbWritingCurrentSubjectWidget extends CWidget{
 
 		$clasWithCurrentSubject = array();
 		foreach($this->params['allClasModel'] as $oneClas){
+			$flag = false;
 			foreach( $oneClas->writing as $article ){
 				if($article->subject->id == $this->subject->id){
-					$clasWithCurrentSubject[] = $oneClas;
+					$flag = true;
 				}
+			}
+
+			if($flag){
+				$clasWithCurrentSubject[] = $oneClas;
 			}
 		}
 
