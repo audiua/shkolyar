@@ -28,7 +28,10 @@ $this->widget('zii.widgets.CListView', array(
     'sortableAttributes'=>array(
         'author',
         // 'gdz_clas_id',
+        // 
     ),
+    'template'=>"{items}\n{pager}",
+    'ajaxUpdate'=>false,
 ));
 ?>
 </div>

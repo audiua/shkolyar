@@ -69,7 +69,7 @@ public function actionIndex(){
 		// print_r($this->allClasModel);
 		// die;
 
-		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>12)));
+		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 
@@ -104,16 +104,19 @@ public function actionClas($clas){
 		$this->keywords = 'Підручники '.$clas.' клас, гдз '.$clas. ' клас, Підручники онлайн '.$clas. ' клас, Підручники '.$clas. ' клас україна, Підручники '.$clas.' клас, Підручники '.$this->clasModel->clas->title.' клас';
 		$this->description = 'Підручники для ' . $clas . ' класу середніх загальноосвітніх шкіл України.';
 
-		// $books = new CActiveDataProvider('GdzBook', 
-		// 	array(
-		// 		'criteria'=>array(
-		// 			'condition'=>'gdz_clas_id='.$this->clasModel->id,
-		// 		), 
-		// 		'pagination'=>array('pageSize'=>12),
-		// 	)
-		// );
 
-		$this->render('clas');
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.public=1');
+
+		$books = new CActiveDataProvider('TextbookBook', 
+			array(
+				'criteria'=>$criteria, 
+				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+			)
+		);
+
+		$this->render('clas', array('books'=>$books));
 
 
 		$this->endCache(); 
@@ -153,7 +156,7 @@ public function actionSubject($clas, $subject){
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>12),
+				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
 			)
 		);
 
@@ -206,7 +209,7 @@ public function actionCurrentSubject($subject){
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>12),
+				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
 			)
 		);
 

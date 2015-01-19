@@ -134,7 +134,7 @@ return array(
 				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
 
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
-				'<controller:knowall|library|writing>/page/<page:\d>'=>'<controller>/index',
+				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
 				'<controller:\w+>'=> '<controller>/index',
 				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',

@@ -77,7 +77,7 @@ public function actionIndex(){
 		$criteria = new CDbCriteria;
 		$criteria->condition= 't.public=1';
 
-		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>4,'pageVar'=>'page')));
+		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
 
 		// кешируем сдесь html страницы
 		$this->render('index', array('books'=>$books));
