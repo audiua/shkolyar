@@ -69,6 +69,7 @@ class Helper{
 			'index'=>'index',
 			'page'=>'page',
 			'subject'=>'subject',
+			'currentSubject'=>'currentSubject',
 			'category'=>'category',
 		);
 	}
