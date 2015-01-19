@@ -69,7 +69,10 @@ public function actionIndex(){
 		// print_r($this->allClasModel);
 		// die;
 
-		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
+		$criteria = new CDbCriteria;
+		$criteria->condition= 't.public=1';
+
+		$textbooks = new CActiveDataProvider('TextbookBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 

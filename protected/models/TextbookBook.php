@@ -102,7 +102,7 @@ class TextbookBook extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
-			'author' => 'Author',
+			'author' => 'Автор',
 			'textbook_clas_id' => 'Клас',
 			'textbook_subject_id' => 'Предмет',
 			'slug' => 'Slug',
