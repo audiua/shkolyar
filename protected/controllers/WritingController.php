@@ -49,7 +49,7 @@ public function actionIndex(){
 
 		$criteria = new CDbCriteria;
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>6,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
 		
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/writing');

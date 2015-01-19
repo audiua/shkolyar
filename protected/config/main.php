@@ -133,6 +133,7 @@ return array(
 				'/site/logout' => 'site/logout',
 				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
 
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
 				'<controller:knowall|library|writing>/page/<page:\d>'=>'<controller>/index',
 				'<controller:\w+>'=> '<controller>/index',
 				
@@ -140,8 +141,9 @@ return array(
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>'=>'<controller>/book',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
+				
 				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
