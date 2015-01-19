@@ -196,7 +196,7 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/textbook/lang-ua">украинська мова</a></td>
+							<td data-vertical="0"><a href="/textbook/lang-ua">українська мова</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/textbook/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -207,7 +207,7 @@
 						</tr>
 				
 						<tr>
-							<td data-vertical="0"><a href="/textbook/lit-ua">украинська література</a></td>
+							<td data-vertical="0"><a href="/textbook/lit-ua">українська література</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/textbook/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -219,7 +219,7 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/textbook/lang-ua">росийська мова</a></td>
+							<td data-vertical="0"><a href="/textbook/lang-ua">російська мова</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/textbook/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -230,7 +230,7 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/textbook/lit-ua">зарубижна література</a></td>
+							<td data-vertical="0"><a href="/textbook/lit-ua">зарубіжна література</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/textbook/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -262,7 +262,7 @@
 							<td data-vertical="7"><a href="/textbook/11/algebra"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/textbook/geom">геометрия</a></td>
+							<td data-vertical="0"><a href="/textbook/geom">геометрія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/textbook/7/geom"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
