@@ -147,6 +147,7 @@ return array(
 				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
+				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
