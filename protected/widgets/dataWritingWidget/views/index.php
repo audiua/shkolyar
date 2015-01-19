@@ -27,8 +27,10 @@ $this->widget('zii.widgets.CListView', array(
 	'emptyText'=>'No article!',
     'sortableAttributes'=>array(
         'title',
-        'update_time',
+        // 'update_time',
     ),
+    'template'=>"{items}\n{pager}",
+    'ajaxUpdate'=>false,
 ));
 ?>
 </div>
