@@ -96,7 +96,7 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'gdz_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php 
-			$clas = empty($model->gdz_clas_id) ? 1 : $model->textbook_clas_id;
+			$clas = empty($model->gdz_clas_id) ? 1 : $model->gdz_clas_id;
 			echo $form->dropDownList($model,'gdz_subject_id', GdzSubject::getAll($clas), array('class'=>'col-md-2 col-lg-2 control-label ')); 
 		?>
 		<?php echo $form->error($model,'gdz_subject_id'); ?>
