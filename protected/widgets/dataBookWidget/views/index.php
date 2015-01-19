@@ -10,6 +10,9 @@
 </div>
 <div class="clear"></div>
 <?php
+
+$subject = $this->controller->id.'_subject_id';
+$clas = $this->controller->id.'_clas_id';
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_item',
@@ -28,8 +31,8 @@ $this->widget('zii.widgets.CListView', array(
 	'emptyText'=>'А нету никаких книг!',
     'sortableAttributes'=>array(
         'author',
-        // 'gdz_clas_id',
-        // 
+        $subject,
+        $clas,
     ),
     // 'template'=>"{items}\n{pager}",
     'ajaxUpdate'=>false,
