@@ -73,8 +73,6 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="form-group">
 
-
-
 		<?php echo $form->labelEx($model,'gdz_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php 
 		
@@ -229,15 +227,15 @@ $('.slug-translit').click(function(){
 
 
 // sobject for class
-var clas = $( "#GdzBook_gdz_clas_id :selected").val();
-if(clas){	
-	$.post('/ajax/gdzBook/subject', {'clas':clas}, function(responce){
-	    if(responce){
-	    	console.log(responce);
-	    	$( "#GdzBook_gdz_subject_id" ).html(responce)
-	    }
-	}, 'html');
-}
+// var clas = $( "#GdzBook_gdz_clas_id :selected").val();
+// if(clas){	
+// 	$.post('/ajax/gdzBook/subject', {'clas':clas}, function(responce){
+// 	    if(responce){
+// 	    	console.log(responce);
+// 	    	$( "#GdzBook_gdz_subject_id" ).html(responce)
+// 	    }
+// 	}, 'html');
+// }
 // console.log(clas);
 
 

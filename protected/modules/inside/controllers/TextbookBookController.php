@@ -80,9 +80,6 @@ class TextbookBookController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		$data = Yii::app()->getRequest()->getPost('TextbookBook', null);
 		if (!empty($data)) {
 			// print_r($data);

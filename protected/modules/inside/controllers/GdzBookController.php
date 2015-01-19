@@ -50,20 +50,14 @@ class GdzBookController extends InsideController
 	{
 		$model=new GdzBook;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
 
 		if (!empty($data)) {
 			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
-			// print_r($data);
-			// die;
 			$model->attributes = $data;
 
-
 			if($model->save()){
-				Yii::app()->user->setFlash('GDZBOOK_FLASH', 'Збережено');
+				Yii::app()->user->setFlash('GdzBook_FLASH', 'Збережено');
 				$this->redirect(array('index'));
 			}
 		}
@@ -85,21 +79,13 @@ class GdzBookController extends InsideController
 		// print_r($_POST);
 		// die;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		
 		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
 		if (!empty($data)) {
 			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
 			$model->attributes = $data;
 
-
-			// echo $model->public_time;
-			// echo time();
-			// die;
-
 			if($model->save()){
-				Yii::app()->user->setFlash('GDZBOOK_FLASH', 'Збережено');
+				Yii::app()->user->setFlash('GdzBook_FLASH', 'Збережено');
 				$this->redirect(array('index'));
 			}
 		}
@@ -107,8 +93,6 @@ class GdzBookController extends InsideController
 		$this->render('update',array(
 			'model'=>$model,
 		));
-
-
 	}
 
 	/**

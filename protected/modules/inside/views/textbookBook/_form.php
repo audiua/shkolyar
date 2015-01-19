@@ -73,7 +73,6 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
 	<div class="form-group">
 
-
 		<?php echo $form->labelEx($model,'textbook_clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
 		<?php 
 		echo CHtml::dropDownList('TextbookBook_textbook_clas_id',$model->textbook_clas_id, 
@@ -87,14 +86,9 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		    'update'=>'#TextbookBook_textbook_subject_id', 
 		    'data'=>array('clas'=>'js:this.value'),
 		  )));  ?>
-		<?php // echo $form->dropDownList($model,'gdz_clas_id', GdzClas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
+
 		<?php echo $form->error($model,'textbook_clas_id'); ?>
 	</div>
-
-
-
-
-
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'textbook_subject_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
@@ -103,9 +97,6 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		echo $form->dropDownList($model,'textbook_subject_id', TextbookSubject::getAll($clas), array('class'=>'col-md-2 col-lg-2 control-label ')); ?>
 		<?php echo $form->error($model,'textbook_subject_id'); ?>
 	</div>
-
-
-
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'slug', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
