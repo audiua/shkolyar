@@ -2,7 +2,7 @@
 	<?php 
 		$class = 5;
 	foreach( $this->model as $i => $one ): 
-	    if( $one->description ): ?>
+	    if( $one->writing ): ?>
 			<div class="subject">
 			    <h3><?php 
 			    	// выводим только с книгами
