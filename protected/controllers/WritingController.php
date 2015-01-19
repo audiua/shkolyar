@@ -49,7 +49,7 @@ public function actionIndex(){
 
 		$criteria = new CDbCriteria;
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/writing');
@@ -78,7 +78,7 @@ public function actionClas($clas){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.clas_id="'.$this->clasModel->id.'"';
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного класу');
 		}
@@ -133,7 +133,7 @@ public function actionSubject($clas, $subject){
 		$criteria->condition = 't.clas_id="'.$this->clasModel->id.'"';
 		$criteria->addCondition('t.subject_id="'.$this->subjectModel->id.'"');
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного предмету');
 		}
@@ -182,7 +182,7 @@ public function actionCurrentSubject($subject){
 		$criteria = new CDbCriteria;
 		$criteria->condition='t.subject_id="'.$this->subjectModel->id.'"';
 		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного предмету');
 		}

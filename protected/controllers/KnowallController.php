@@ -56,7 +56,7 @@ public function actionIndex(){
 			array(
 				'criteria'=>$criteria,
 				'pagination'=>array(
-					'pageSize'=>2,
+					'pageSize'=>12,
 					'pageVar'=>'page'
 				)
 			)
@@ -101,7 +101,7 @@ public function actionCategory($category){
 		$criteria = new CDbCriteria;
 		$criteria->condition= 't.public=1';
 		$criteria->addCondition('knowall_category_id='.$categoryModel->id);
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$category);
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка - '.ucfirst(Yii::t('app', $category));

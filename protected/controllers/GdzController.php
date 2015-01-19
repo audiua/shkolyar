@@ -77,7 +77,7 @@ public function actionIndex(){
 		$criteria = new CDbCriteria;
 		$criteria->condition= 't.public=1';
 
-		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		// кешируем сдесь html страницы
 		$this->render('index', array('books'=>$books));
@@ -121,7 +121,7 @@ public function actionClas($clas){
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
@@ -166,7 +166,7 @@ public function actionSubject($clas, $subject){
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
@@ -218,7 +218,7 @@ public function actionCurrentSubject($subject){
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 

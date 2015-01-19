@@ -69,7 +69,7 @@ public function actionIndex(){
 		// print_r($this->allClasModel);
 		// die;
 
-		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>2,'pageVar'=>'page')));
+		$textbooks = new CActiveDataProvider('TextbookBook',array('pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 
@@ -112,7 +112,7 @@ public function actionClas($clas){
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
@@ -156,7 +156,7 @@ public function actionSubject($clas, $subject){
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
@@ -209,7 +209,7 @@ public function actionCurrentSubject($subject){
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>2,'pageVar'=>'page'),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
