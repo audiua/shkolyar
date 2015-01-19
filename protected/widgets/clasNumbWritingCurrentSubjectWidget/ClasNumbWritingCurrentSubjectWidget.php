@@ -14,12 +14,12 @@ class ClasNumbWritingCurrentSubjectWidget extends CWidget{
     }
 
 	public function run(){
-
+		$time = time();
 		$clasWithCurrentSubject = array();
 		foreach($this->params['allClasModel'] as $oneClas){
 			$flag = false;
 			foreach( $oneClas->writing as $article ){
-				if($article->subject->id == $this->subject->id){
+				if($article->subject->id == $this->subject->id && $article->public && $article->public_time < $time ){
 					$flag = true;
 				}
 			}
