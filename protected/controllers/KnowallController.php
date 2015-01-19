@@ -56,7 +56,7 @@ public function actionIndex(){
 			array(
 				'criteria'=>$criteria,
 				'pagination'=>array(
-					'pageSize'=>12,
+					'pageSize'=>2,
 					'pageVar'=>'page'
 				)
 			)

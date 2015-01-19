@@ -133,6 +133,9 @@ return array(
 				'/site/logout' => 'site/logout',
 				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
 				
+				'<controller:knowall|library|writing>/<page:\d>'=>'<controller>/index',
+				'<controller:\w+>'=> '<controller>/index',
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<task:\d+>'=>'<controller>/task',
@@ -147,8 +150,6 @@ return array(
 				'<controller:knowall|library|writing>/<category:\w+>/<page:\d+>'=>'<controller>/category',
 				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
 				
-				'<controller:knowall|library|writing>/<page:\d>'=>'<controller>/index',
-				'<controller:\w+>'=> '<controller>/index',
 
 				// 'tizer'=>'tizer/index',
 				// 'position'=>'position/index',
