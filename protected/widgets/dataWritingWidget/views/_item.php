@@ -19,7 +19,7 @@
 				if(isset($this->params['subject'])){
 					echo '<span>, '.Helper::getShort($data->subject->title).'</span>';
 				} else { 
-					echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->clas->slug ,array('class'=>'')); 
+					echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->subject->slug ,array('class'=>'')); 
 				}
 			?>
 	</div>
