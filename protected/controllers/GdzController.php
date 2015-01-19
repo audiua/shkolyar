@@ -215,6 +215,8 @@ public function actionCurrentSubject($subject){
 			}
 		}
 
+		$description = $this->getDescription($this->clasModel->id);
+
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
 				'criteria'=>$criteria, 
@@ -242,7 +244,7 @@ public function actionCurrentSubject($subject){
 			$subjectModel->title
 		);
 
-		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel));
+		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel, 'description'=>$description));
 
 		$this->endCache(); 
 	}
@@ -650,6 +652,25 @@ public function checkerBook($clas, $subject, $book){
 
 
 	return TextbookBook::model()->count($criteria);
+
+}
+
+public function getDescription($subject=null){
+
+	$criteria = new CDbCriteria;
+	$criteria->condition = 't.owner="'.$this->id.'"';
+	$criteria->addCondition('t.action="'.$this->action->id.'"');
+
+	if($subject){
+		$criteria->addCondition('t.subject_id="'.$subject.'"');
+	}
+
+	$model = Description::model()->find($criteria);
+	if($model){
+		return $model->description;
+	}
+
+	return '';
 
 }
 
