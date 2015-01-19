@@ -29,7 +29,7 @@ $this->widget('zii.widgets.CListView', array(
         'title',
         // 'update_time',
     ),
-    'template'=>"{items}\n{pager}",
+    // 'template'=>"{items}\n{pager}",
     'ajaxUpdate'=>false,
 ));
 ?>
