@@ -88,13 +88,13 @@ class Writing extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'clas_id' => 'Clas',
-			'subject_id' => 'Subject',
+			'clas_id' => 'Клас',
+			'subject_id' => 'Предмет',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
 			'text' => 'text',
-			'title' => 'Title',
+			'title' => 'Заголовок',
 			'slug' => 'Slug',
 			'length' => 'Length',
 			'public' => 'Public',

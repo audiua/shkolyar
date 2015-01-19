@@ -25,7 +25,7 @@ $this->widget('zii.widgets.CListView', array(
 	'emptyText'=>'А нету никаких книг!',
     'sortableAttributes'=>array(
         'title',
-        'create_time',
+        'library_category_id',
     ),
 ));
 ?>

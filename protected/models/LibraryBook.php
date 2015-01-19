@@ -86,10 +86,10 @@ class LibraryBook extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
+			'title' => 'Заголовок',
 			'img_ext' => 'Img Ext',
 			'description' => 'Description',
-			'library_author_id' => 'Author',
+			'library_author_id' => 'Автор',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'slug' => 'slug',
