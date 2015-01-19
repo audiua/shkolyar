@@ -31,7 +31,7 @@ $this->widget('zii.widgets.CListView', array(
         // 'gdz_clas_id',
         // 
     ),
-    'template'=>"{items}\n{pager}",
+    // 'template'=>"{items}\n{pager}",
     'ajaxUpdate'=>false,
 ));
 ?>

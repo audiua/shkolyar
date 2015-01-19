@@ -13,20 +13,22 @@ $this->widget('zii.widgets.CListView', array(
     'itemView'=>'_item',
     'summaryText' => '',
     'sorterHeader' => 'Сортувати по: ',
-    'pager'=>array(
-    	'header' => '',
-    	'firstPageLabel'=>'<<',
-        'prevPageLabel'=>'<',
-        'nextPageLabel'=>'>',
-        'lastPageLabel'=>'>>',
-        'cssFile'=>false,
-		'internalPageCssClass'=>'pager_li',
-	),
+ //    'pager'=>array(
+ //    	'header' => '',
+ //    	'firstPageLabel'=>'<<',
+ //        'prevPageLabel'=>'<',
+ //        'nextPageLabel'=>'>',
+ //        'lastPageLabel'=>'>>',
+ //        'cssFile'=>false,
+	// 	'internalPageCssClass'=>'pager_li',
+	// ),
+    'pager'=>'LinkPager', 
 	'emptyText'=>'А нету никаких книг!',
     'sortableAttributes'=>array(
         'title',
-        'library_category_id',
+        'library_author_id',
     ),
+    'ajaxUpdate'=>false,
 ));
 ?>
 </div>
