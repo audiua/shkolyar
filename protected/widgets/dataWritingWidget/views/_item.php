@@ -12,14 +12,22 @@
 				if(isset($this->params['clas'])){
 					echo '<span>'.$data->clas->slug.' клас</span>';
 				} else {
-					echo CHtml::link($data->clas->slug.' клас', '/writing/'.$data->clas->slug ,array('class'=>'')); 
+					if(isset($this->params['subject'])){
+						echo CHtml::link($data->clas->slug.' клас', '/writing/'.$data->clas->slug . '/' . $data->subject->slug ,array('class'=>'')); 
+					} else {
+						echo CHtml::link($data->clas->slug.' клас', '/writing/'.$data->clas->slug ,array('class'=>'')); 
+					}
 				}
 			?>
 			<?php 
 				if(isset($this->params['subject'])){
 					echo '<span>, '.Helper::getShort($data->subject->title).'</span>';
 				} else { 
-					echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->subject->slug ,array('class'=>'')); 
+					if(isset($this->params['clas'])){
+						echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->clas->slug . '/' .$data->subject->slug ,array('class'=>'')); 
+					} else {
+						echo '<span>, </span>'.  CHtml::link(Helper::getShort($data->subject->title), '/writing/'.$data->subject->slug ,array('class'=>'')); 
+					}
 				}
 			?>
 	</div>
