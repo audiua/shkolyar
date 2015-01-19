@@ -215,7 +215,7 @@ public function actionCurrentSubject($subject){
 			}
 		}
 
-		$description = $this->getDescription($this->clasModel->id);
+		$description = $this->getDescription($subjectModel->id);
 
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
