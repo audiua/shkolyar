@@ -63,41 +63,41 @@
 							<td data-vertical="6"><!-- <a href="/gdz/10/lang-en"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
 							<td data-vertical="7"><!-- <a href="/gdz/11/lang-en"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
-						
-						<!-- <tr>
-							<td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td>
-							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-							
-						</tr> -->
-						
-						<!-- <tr>
+
+						<tr>
 							<td data-vertical="0"><a href="/gdz/lang-ua">російська мова</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+							<td data-vertical="2"><!-- <a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
+							<td data-vertical="3"><!-- <a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
+							<td data-vertical="4"><!-- <a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
+							<td data-vertical="5"><!-- <a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a> --></td>
+							<td data-vertical="6"><!-- <a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
+							<td data-vertical="7"><!-- <a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
+						</tr>
 						
-						<!-- <tr>
+						<tr>
+							<td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td>
+							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><!-- <a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
+							<td data-vertical="3"><!-- <a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
+							<td data-vertical="4"><!-- <a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
+							<td data-vertical="5"><!-- <a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a> --></td>
+							<td data-vertical="6"><!-- <a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
+							<td data-vertical="7"><!-- <a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
+							
+						</tr>
+						
+						<tr>
 							<td data-vertical="0"><a href="/gdz/lit-ua">зарубіжна література</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="2"><!-- <a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
+							<td data-vertical="3"><!-- <a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
+							<td data-vertical="4"><!-- <a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
+							<td data-vertical="5"><!-- <a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a> --></td>
+							<td data-vertical="6"><!-- <a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
+							<td data-vertical="7"><!-- <a href="/gdz/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 							
-						</tr> -->
+						</tr>
 						
 						<tr>
 							<td data-vertical="0"><a href="/gdz/fizika">фізика</a></td>
@@ -129,7 +129,7 @@
 							<td data-vertical="6"><!-- <a href="/gdz/10/geom"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
 							<td data-vertical="7"><!-- <a href="/gdz/11/geom"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/gdz/him">хімія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -138,8 +138,8 @@
 							<td data-vertical="5"><a href="/gdz/9/him"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/gdz/10/him"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/gdz/11/him"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
-						<!-- <tr>
+						</tr>
+						<tr>
 							<td data-vertical="0"><a href="/gdz/bio">біологія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -148,8 +148,8 @@
 							<td data-vertical="5"><a href="/gdz/9/bio"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/gdz/10/bio"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/gdz/11/bio"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
-						<!-- <tr>
+						</tr>
+						<tr>
 							<td data-vertical="0"><a href="/gdz/geo">географія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"><a href="/gdz/6/geo"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -158,7 +158,62 @@
 							<td data-vertical="5"><a href="/gdz/9/geo"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/gdz/10/geo"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/gdz/11/geo"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+						</tr>
+
+						<tr>
+							<td data-vertical="0"><a href="/gdz/info">інформатика</a></td>
+							<td data-vertical="1"></td>
+							<td data-vertical="2"><a href="/gdz/6/info"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/gdz/7/info"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/gdz/8/info"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/gdz/9/info"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/gdz/10/info"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/gdz/11/info"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+
+						<tr>
+							<td data-vertical="0"><a href="/gdz/health">основи здоров'я</a></td>
+							<td data-vertical="1"></td>
+							<td data-vertical="2"><a href="/gdz/6/health"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/gdz/7/health"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/gdz/8/health"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/gdz/9/health"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/gdz/10/health"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/gdz/11/health"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+
+						<tr>
+							<td data-vertical="0"><a href="/gdz/etika">етика</a></td>
+							<td data-vertical="1"></td>
+							<td data-vertical="2"><a href="/gdz/6/etika"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/gdz/7/etika"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/gdz/8/etika"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/gdz/9/etika"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/gdz/10/etika"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/gdz/11/etika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+
+						<tr>
+							<td data-vertical="0"><a href="/gdz/nature">природознавство</a></td>
+							<td data-vertical="1"></td>
+							<td data-vertical="2"><a href="/gdz/6/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/gdz/7/nature"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/gdz/8/nature"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/gdz/9/nature"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/gdz/10/nature"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/gdz/11/nature"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+
+						<tr>
+							<td data-vertical="0"><a href="/gdz/history-ua">історія України</a></td>
+							<td data-vertical="1"></td>
+							<td data-vertical="2"><a href="/gdz/6/history-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/gdz/7/history-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/gdz/8/history-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/gdz/9/history-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/gdz/10/history-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/gdz/11/history-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
 
 					</tbody>
 				</table>

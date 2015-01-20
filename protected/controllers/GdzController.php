@@ -75,7 +75,8 @@ public function actionIndex(){
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
 
 		$criteria = new CDbCriteria;
-		$criteria->condition= 't.public=1';
+		$criteria->condition = 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
 
 		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
@@ -117,6 +118,7 @@ public function actionClas($clas){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.gdz_clas_id='.$this->clasModel->id;
 		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
@@ -162,6 +164,7 @@ public function actionSubject($clas, $subject){
 		$criteria->condition = 't.gdz_clas_id='.$this->clasModel->id;
 		$criteria->addCondition('t.gdz_subject_id='.$this->subjectModel->id);
 		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 
 		$books = new CActiveDataProvider('GdzBook', 
 			array(
@@ -205,6 +208,7 @@ public function actionCurrentSubject($subject){
 
 		$criteria = new CDbCriteria;
 		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 
 		if($subjectModel){
 			$curentSubjectModel = array_keys( CHtml::listData( GdzSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
@@ -565,6 +569,8 @@ private function loadBook($book){
 	$criteria->condition='gdz_clas_id=:classId';
 	$criteria->addCondition('gdz_subject_id=:subjectId');
 	$criteria->addCondition('slug=:slug');
+	$criteria->addCondition('t.public_time<'.time());
+	$criteria->addCondition('t.public=1');
 	$criteria->params = array(
 	    ':classId'=>$this->clasModel->id, 
 	    ':subjectId'=>$this->subjectModel->id,

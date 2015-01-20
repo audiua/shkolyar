@@ -255,11 +255,11 @@
   .textbook table tbody tr td a,
   .writing table tbody tr td a {
     display: block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #1d44b8;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #214cce;
     font-weight: normal !important;
-    font-size: 16px;
+    font-size: 12px;
   }
   .gdz-table table tbody tr td a:hover,
   .textbook table tbody tr td a:hover,
@@ -482,6 +482,9 @@
     width: 810px;
     padding: 15px;
   }
+  .content p {
+    text-align: justify;
+  }
   .sidebar {
     padding: 15px;
     padding-top: 30px;
@@ -550,6 +553,7 @@
     font-family: Arial;
     color: #333;
     text-indent: 20px;
+    text-align: justify;
   }
   .description p a {
     border-bottom: 1px solid #FFA500;
@@ -1204,6 +1208,9 @@
   }
   .knowall-small-block .knowall-small-one-block .knowall-category-link span {
     color: #bbb;
+  }
+  .knowall-article p {
+    text-align: justify;
   }
   .last-knowall {
     margin-top: 20px;

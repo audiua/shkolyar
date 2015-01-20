@@ -360,14 +360,16 @@ $('td , th').hover(
 				$(item).css({'background':'#eee'}); 
 			
 		});
-		$(this).css({'background':'#d3e4ff'}).find('span').removeClass('small').addClass('big');
+		// $(this).css({'background':'#d3e4ff'}).find('span').removeClass('small').addClass('big');
+		$(this).css({'background':'#d3e4ff'});
 	},
 	function(){
 		var vertical = $(this).data('vertical');
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 			$(item).css({'background':'inherit'});
 		});
-		$(this).css({'background':'inherit'}).find('span').removeClass('big').addClass('small');
+		// $(this).css({'background':'inherit'}).find('span').removeClass('big').addClass('small');
+		$(this).css({'background':'inherit'});
 	}
 );
 
