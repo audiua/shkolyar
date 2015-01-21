@@ -1,8 +1,5 @@
 <?php
 
-// require_once(dirname(__FILE__).'/protected/helpers/support.php');
-// die;
-
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/protected/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';

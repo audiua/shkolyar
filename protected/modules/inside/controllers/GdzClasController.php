@@ -25,7 +25,10 @@ class GdzClasController extends InsideController
 				'actions'=>array('index','view', 'update','create','delete'),
 				'roles'=>array('admin'),
 			),
-			
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),

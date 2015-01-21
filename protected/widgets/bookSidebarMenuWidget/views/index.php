@@ -126,11 +126,27 @@
 		</li>
 
 		<?php 
+		$time = time();
 		$field= $this->controller->id.'_book';
 		foreach($allSubjectModel as $oneSubject):
 			if( ! $oneSubject->$field ){ 
 				continue; 
 			} 
+
+			$flag = true;
+		    foreach($oneSubject->$field as $book){
+
+		        // isset published book
+		        if($book->public && $book->public_time < $time){
+		            $flag = false;
+		            break;
+		        }
+		    }
+		    
+		    if($flag){
+		        continue;
+		    }
+			
 
 			?>
 			<li class="<?php echo ( ! is_null($subject) && $subject->slug == $oneSubject->subject->slug) ? 'active' : '' ; ?>">
