@@ -250,7 +250,7 @@
 							<td data-vertical="7"></td>
 						</tr>
 
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/lang-ua">українська мова</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -259,9 +259,9 @@
 							<td data-vertical="5"><a href="/textbook/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
+						</tr> -->
 				
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/lit-ua">українська література</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -271,9 +271,9 @@
 							<td data-vertical="6"><a href="/textbook/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
-						</tr>
+						</tr> -->
 						
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/lang-ua">російська мова</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -282,9 +282,9 @@
 							<td data-vertical="5"><a href="/textbook/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
+						</tr> -->
 						
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/lit-ua">зарубіжна література</a></td>
 							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -294,9 +294,9 @@
 							<td data-vertical="6"><a href="/textbook/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
-						</tr>
+						</tr> -->
 						
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/fizika">фізика</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -305,7 +305,7 @@
 							<td data-vertical="5"><a href="/textbook/9/fizika"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/fizika"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/10/fizika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
+						</tr> -->
 						<tr>
 							<td data-vertical="0"><a href="/textbook/algebra">алгебра</a></td>
 							<td data-vertical="1"></td>
@@ -316,7 +316,7 @@
 							<td data-vertical="6"><a href="/textbook/10/algebra"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/algebra"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/geom">геометрія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -325,8 +325,8 @@
 							<td data-vertical="5"><a href="/textbook/9/geom"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/geom"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/geom"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
-						<tr>
+						</tr> -->
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/him">хімія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -335,8 +335,8 @@
 							<td data-vertical="5"><a href="/textbook/9/him"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/him"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/him"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
-						<tr>
+						</tr> -->
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/bio">біологія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
@@ -345,8 +345,8 @@
 							<td data-vertical="5"><a href="/textbook/9/bio"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/bio"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/bio"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
-						<tr>
+						</tr> -->
+						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/geo">географія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"><a href="/textbook/6/geo"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
@@ -355,7 +355,7 @@
 							<td data-vertical="5"><a href="/textbook/9/geo"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
 							<td data-vertical="6"><a href="/textbook/10/geo"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
 							<td data-vertical="7"><a href="/textbook/11/geo"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr>
+						</tr> -->
 
 					</tbody>
 				</table>
