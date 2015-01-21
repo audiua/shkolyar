@@ -328,7 +328,7 @@ function rotate(){
 	}, 10000 );
 }
 
-rotate();
+// rotate();
 
 // модальное окно лайков фб
 function showFb(){
