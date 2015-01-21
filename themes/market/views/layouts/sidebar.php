@@ -1,37 +1,8 @@
-<div class="sidebar-block">
+<!-- <div class="sidebar-block">
 	<div class="direct">
 		<img class='big_adsance' src="/images/big.jpeg"> 
 	</div>
-</div>
-
-<div class="separator"></div>
-<div class="clear"></div>
-
-<div class="sidebar-block">
-	<div class="menu">
-		<h3>Навігація</h3>
-
-		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
-			<?php $this->widget('BookSidebarMenuWidget'); ?>
-		<?php elseif($this->id == 'knowall') : ?>
-			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
-		<?php elseif($this->id == 'library') : ?>
-			<?php $this->widget('LibrarySidebarMenuWidget'); ?>
-		<?php elseif($this->id == 'writing') : ?>
-			<?php $this->widget('WritingSidebarMenuWidget'); ?>
-		<?php else: ?>
-			<?php $this->widget('SidebarMenuWidget'); ?>
-		<?php endif; ?>
-		
-	</div>
-
-	<img src="/images/b_l.png"> 
-
-	
-</div>
-
-<div class="separator"></div>
-<div class="clear"></div>
+</div> -->
 
 <div class="sidebar-block">
 	<h3>Соц. мережі</h3>
@@ -94,6 +65,37 @@
 
 
 </div>
+
+<div class="separator"></div>
+<div class="clear"></div>
+
+<div class="sidebar-block">
+	<div class="menu">
+		<h3>Навігація</h3>
+
+		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
+			<?php $this->widget('BookSidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'knowall') : ?>
+			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'library') : ?>
+			<?php $this->widget('LibrarySidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'writing') : ?>
+			<?php $this->widget('WritingSidebarMenuWidget'); ?>
+		<?php else: ?>
+			<?php $this->widget('SidebarMenuWidget'); ?>
+		<?php endif; ?>
+		
+	</div>
+
+	<!-- <img src="/images/b_l.png">  -->
+
+	
+</div>
+
+<div class="separator"></div>
+<div class="clear"></div>
+
+
 
 <!-- <div class="separator"></div>
 <div class="clear"></div> -->

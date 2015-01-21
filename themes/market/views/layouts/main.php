@@ -64,9 +64,9 @@
             <div class="content">
                
 
-            <div class="h-direct">
+            <!-- <div class="h-direct">
                 <img src="/images/hor.jpeg"> 
-            </div>        
+            </div> -->        
 
 
                 
