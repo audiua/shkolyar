@@ -27,7 +27,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	<div class="task-title info">Сторінка <span class='page-number'></span>
 	</div>
 	<section id="inverted-contain">
-	  <div class="buttons">
+		<div class="loading"></div>
+        <div class="darking"></div>
+	 	<div class="buttons">
 	    <button class="zoom-out"><span class="glyphicon glyphicon-zoom-out "></span></button>
 	    <input type="range" class="zoom-range">
 	    <button class="zoom-in"><span class="glyphicon glyphicon-zoom-in "></span></button>
