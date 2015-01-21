@@ -6,6 +6,10 @@ public $size=0;
 
 public function sizeDir($path){
 
+    if(!file_exists($path)){
+        return $this->size;
+    }
+
 	$dir = opendir($path);
 	while($d = readdir($dir)){
 		if ($d == '.' || $d == '..') continue;
