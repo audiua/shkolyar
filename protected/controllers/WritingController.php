@@ -166,13 +166,14 @@ public function actionCurrentSubject($subject){
 	if($this->beginCache('writing_current_subject_page'.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
 
 		$this->checkSubject($subject);
+		echo $subject;
 		$this->subjectModel = $this->loadSubject($subject);
 
 		$this->keywords = 'твори '.$this->subjectModel->title;
 
 		$this->description = 'твори '.$this->subjectModel->title;
 
-		$description = $this->getDescription(null,$this->subjectModel->id);
+		$description = $this->getDescription( null, $this->subjectModel->id);
 
 		// $this->h1 = 'ГДЗ '.(int)$clas.' клас '. $this->subjectModel->subject->title;
 		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
@@ -299,6 +300,9 @@ private function loadClas($clas){
 
 public function getDescription($clas=null, $subject=null){
 
+	var_dump($clas);
+	var_dump($subject);
+
 	$criteria = new CDbCriteria;
 	$criteria->condition = 't.owner="'.$this->id.'"';
 	$criteria->addCondition('t.action="'.$this->action->id.'"');
@@ -313,6 +317,7 @@ public function getDescription($clas=null, $subject=null){
 	}
 
 	$model = Description::model()->find($criteria);
+	var_dump($model);
 	if($model){
 		return $model->description;
 	}
