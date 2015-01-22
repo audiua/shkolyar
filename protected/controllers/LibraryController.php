@@ -2,6 +2,9 @@
 
 class LibraryController extends Controller{
 
+// кеш на сутки 86400, 100 дней = 8640000
+const CACHE_TIME = 8640000;
+
 public $layout='';
 public $canonical;
 
@@ -121,6 +124,47 @@ public function actionView($category, $article){
 
 	// 	$this->endCache(); 
 	// }
+}
+
+public function actionTask($category, $article, $task){
+
+	// TODO - закешировать на 30 days
+	if($this->beginCache('library_task_page'.$category.$article.$task, array('duration'=>self::CACHE_TIME )) ){
+
+		$pathImg['path'] = 'library/' . $category . '/' 
+			. $article . '/book/' 
+			. $task .'.png';
+
+		if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
+			$_GET = null;
+			throw new CHttpException('404', 'такого задания в этом учебнике нету');
+		}
+
+		$imgSize = getimagesize( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
+		$pathImg['width'] = $imgSize[0];
+		$pathImg['height'] = $imgSize[1];
+		// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
+
+
+		if(Yii::app()->request->isAjaxRequest){
+				
+			echo  CHtml::image( 
+				Yii::app()->baseUrl .'/img/'.$pathImg['path'],
+				'',
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> ''));
+
+			$this->endCache(); 
+			
+			Yii::app()->end();
+
+	    } else {
+	    	$this->render('view', array('task'=>$pathImg));
+	    }
+
+
+		$this->endCache(); 
+	
+	}
 }
 	
 

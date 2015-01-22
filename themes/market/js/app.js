@@ -9,6 +9,15 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $(document).ajaxComplete(function(event, request, settings) {
+    
+	var contHeight = $('.content').outerHeight();
+	var sidebarHeight = $('.sidebar').outerHeight();
+	// console.log('resize');
+	// console.log(sidebarHeight);
+	if(contHeight > sidebarHeight){
+		$('.sidebar').height(contHeight);
+	}
+	
     $('.loading').hide();
     $('.darking').hide();
 });
@@ -308,7 +317,7 @@ resizeContentBlock();
 function resizeContentBlock(){
 	var contHeight = $('.content').outerHeight();
 	var sidebarHeight = $('.sidebar').outerHeight();
-	// console.log(contHeight);
+	// console.log('resize');
 	// console.log(sidebarHeight);
 	if(contHeight > sidebarHeight){
 		$('.sidebar').height(contHeight);
@@ -419,5 +428,8 @@ $('.yiiPager').find('.disabled').each(function(){
 		e.preventDefault();
 	});
 });
+
+
+$('[data-url=1]').click();
 
 });

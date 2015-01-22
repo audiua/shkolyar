@@ -13,3 +13,38 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		<?php $this->widget('LibraryBookWidget', array('model'=>$model)); ?>	
 	</div>
 </div>
+
+
+
+<div class="clear"></div>
+<div class="separator task-separator"></div>
+
+<div class="task">
+	<div class="task-title info">Повний текст твору: 
+	</div>
+	<section id="inverted-contain">
+		<div class="loading"></div>
+        <div class="darking"></div>
+		  <div class="buttons">
+		    <button class="zoom-out"><span class="glyphicon glyphicon-zoom-out "></span></button>
+		    <input type="range" class="zoom-range">
+		    <button class="zoom-in"><span class="glyphicon glyphicon-zoom-in "></span></button>
+		    <button class="reset"><span class="glyphicon glyphicon-remove"></span></button>
+		  </div>
+	  
+		  <div class="panzoom-parent"></div>
+		  <span class="b-left"><span class="glyphicon glyphicon-arrow-left big" aria-hidden="true"></span></span>	
+		  <span class="b-right"><span class="glyphicon glyphicon-arrow-right big" aria-hidden="true"></span></span>
+		  <style>
+		    #inverted-contain .panzoom { width: 100%; height: 100%;  }
+		  </style>
+	</section>
+</div>
+
+<div class="clear"></div>
+<div class="separator"></div>
+
+<div class="info">Виберіть сторінку</div>
+<div class="task-block">
+	<?php $this->widget('LibraryTaskWidget'); ?>
+</div>

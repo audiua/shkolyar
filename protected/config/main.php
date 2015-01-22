@@ -50,6 +50,7 @@ return array(
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
 		'application.widgets.libraryBookWidget.*',
+		'application.widgets.libraryTaskWidget.*',
 		'application.widgets.taskWidget.*',
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
@@ -150,6 +151,7 @@ return array(
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
+				'<controller:library>/<category:\w+>/<article:[a-z-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
 				
 				'<controller:knowall|library|writing>/<category:\w+>/page/<page:\d+>'=>'<controller>/category',
