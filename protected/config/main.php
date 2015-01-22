@@ -141,7 +141,7 @@ return array(
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>'=>'<controller>/book',
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
 				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
