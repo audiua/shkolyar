@@ -300,9 +300,6 @@ private function loadClas($clas){
 
 public function getDescription($clas=null, $subject=null){
 
-	var_dump($clas);
-	var_dump($subject);
-
 	$criteria = new CDbCriteria;
 	$criteria->condition = 't.owner="'.$this->id.'"';
 	$criteria->addCondition('t.action="'.$this->action->id.'"');
@@ -317,7 +314,6 @@ public function getDescription($clas=null, $subject=null){
 	}
 
 	$model = Description::model()->find($criteria);
-	var_dump($model);
 	if($model){
 		return $model->description;
 	}
