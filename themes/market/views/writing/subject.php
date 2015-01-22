@@ -9,7 +9,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <h1>Твори <?php echo $this->clasModel->slug . ' клас ' . $this->subjectModel->title; ?></h1>
 
-<?php echo $description; ?>
+<div class="description">
+  <?php  echo $description; ?>
+</div>
 
 <div class="separator"></div>
 <div class="info">Виберіть твір</div>

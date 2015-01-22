@@ -65,19 +65,9 @@ $('.search-form form').submit(function(){
 			'header'=>'Предмет',
 			'htmlOptions'=>array('width'=>'60px')
 		),
-		'create_time'=>array(
-			'name'=>'create_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->create_time)',
-			'htmlOptions'=>array('width'=>'150px')
-		),
-		'update_time'=>array(
-			'name'=>'update_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->update_time)',
-			'htmlOptions'=>array('width'=>'150px')
-		),
 		'public_time'=>array(
 			'name'=>'public_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->public_time)',
+			'value'=>'$data->public_time',
 			'htmlOptions'=>array('width'=>'150px')
 		),
 		

@@ -48,7 +48,8 @@ public function actionIndex(){
 		);
 
 		$criteria = new CDbCriteria;
-		// $criteria->condition= 't.public=1';
+		$criteria->condition = 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		
 
@@ -77,7 +78,8 @@ public function actionClas($clas){
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.clas_id="'.$this->clasModel->id.'"';
-		// $criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного класу');
@@ -132,7 +134,8 @@ public function actionSubject($clas, $subject){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.clas_id="'.$this->clasModel->id.'"';
 		$criteria->addCondition('t.subject_id="'.$this->subjectModel->id.'"');
-		// $criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного предмету');
@@ -181,7 +184,8 @@ public function actionCurrentSubject($subject){
 
 		$criteria = new CDbCriteria;
 		$criteria->condition='t.subject_id="'.$this->subjectModel->id.'"';
-		// $criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
 			throw new CHttpException('404', 'немає творів для данного предмету');
@@ -221,6 +225,8 @@ public function actionView($clas, $category, $article){
 		$criteria->condition = 't.slug="'.$article.'"';
 		$criteria->addCondition('t.clas_id='.$this->clasModel->id);
 		$criteria->addCondition('t.subject_id='.$this->subjectModel->id);
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 		$article = Writing::model()->find($criteria);
 
 		$this->breadcrumbs = array(

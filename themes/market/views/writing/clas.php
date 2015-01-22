@@ -7,7 +7,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
 <h1>Твори <?php echo $this->param['clas'] . ' клас'; ?></h1>
 
-<?php echo $description; ?>
+<div class="description">
+  <?php  echo $description; ?>
+</div>
 
 <div class="separator"></div>
 <div class="info">Виберіть предмет</div>
