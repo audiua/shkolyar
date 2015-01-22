@@ -36,33 +36,33 @@ public function actionIndex() {
     	
         $this->addUrl('/gdz/', self::WEEKLY, 0.5, Helper::lastTime('GdzBook') );
         $this->addModels( GdzClas::model()->forSitemap(), self::WEEKLY, 0.3);
-        $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.6);
-        $this->addModelsWithClas('gdz', GdzClas::model()->forSitemap(), self::WEEKLY, 0.7);
+        $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.5);
+        $this->addModelsWithClas('gdz', GdzClas::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModels( GdzBook::model()->public()->findAll(), self::WEEKLY, 0.8);
         
         $this->addUrl('/textbook/', self::WEEKLY, 0.5, Helper::lastTime('TextbookBook') );
         $this->addModels( TextbookClas::model()->forSitemap(), self::WEEKLY, 0.3);
-        $this->addModels( TextbookSubject::model()->forSitemap(), self::WEEKLY, 0.6);
-        $this->addModelsWithClas('textbook', TextbookClas::model()->forSitemap(), self::WEEKLY, 0.7);
+        $this->addModels( TextbookSubject::model()->forSitemap(), self::WEEKLY, 0.5);
+        $this->addModelsWithClas('textbook', TextbookClas::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModels( TextbookBook::model()->public()->findAll(), self::WEEKLY, 0.8);
         // $this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
         // $this->addUrl('/library/', self::WEEKLY, 0.5, Helper::lastTime('Library') );
      
         $this->addUrl('/knowall/', self::WEEKLY, 0.5, Helper::lastTime('Knowall') );
-        $this->addModels( KnowallCategory::model()->forSitemap(), self::WEEKLY, 0.3);
-    	$this->addModels( Knowall::model()->public()->findAll(), self::WEEKLY, 0.3);
+        $this->addModels( KnowallCategory::model()->forSitemap(), self::WEEKLY, 0.5);
+    	$this->addModels( Knowall::model()->public()->findAll(), self::WEEKLY, 0.8);
         
         $this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
-        $this->addModels( Writing::model()->forSitemap('clas'), self::WEEKLY, 0.1, 'writing');
-        $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.1, 'writing');
-        $this->addWritingWithClas( Writing::model()->public()->findAll(), self::WEEKLY, 0.3);
-        $this->addWritingModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.3);
+        $this->addModels( Writing::model()->forSitemap('clas'), self::WEEKLY, 0.5, 'writing');
+        $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.5, 'writing');
+        $this->addWritingWithClas( Writing::model()->public()->findAll(), self::WEEKLY, 0.5);
+        $this->addWritingModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
         // $this->addModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
     	// $this->addModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
 
         $this->addUrl('/library/', self::WEEKLY, 0.5, Helper::lastTime('LibraryBook') );
-        $this->addModels( LibraryAuthor::model()->findAll(), self::WEEKLY, 0.3);
-        $this->addModels( LibraryBook::model()->public()->findAll(), self::WEEKLY, 0.3);
+        $this->addModels( LibraryAuthor::model()->findAll(), self::WEEKLY, 0.8);
+        $this->addModels( LibraryBook::model()->public()->findAll(), self::WEEKLY, 0.8);
         // $this->addModels( LibraryBook::model()->forSitemap(), self::WEEKLY, 0.3);
         // $this->addUrl('/library/', self::WEEKLY, 0.5, Helper::lastTime('LibraryBook') );
         // $this->addModels( KnowallCategory::model()->forSitemap(), self::WEEKLY, 0.3);

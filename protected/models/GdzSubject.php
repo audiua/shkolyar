@@ -45,6 +45,17 @@ class GdzSubject extends CActiveRecord
 		);
 	}
 
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
 	/**
 	 * @return array relational rules.
 	 */
