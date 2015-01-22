@@ -172,7 +172,7 @@ public function actionCurrentSubject($subject){
 
 		$this->description = 'твори '.$this->subjectModel->title;
 
-		$description = $this->getDescription($this->subjectModel->id);
+		$description = $this->getDescription(null,$this->subjectModel->id);
 
 		// $this->h1 = 'ГДЗ '.(int)$clas.' клас '. $this->subjectModel->subject->title;
 		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;

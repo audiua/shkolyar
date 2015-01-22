@@ -200,6 +200,8 @@ public function actionCurrentSubject($subject){
 			throw new CHttpException('404', 'немае такого предмету');
 		}
 
+		$description = $this->getDescription(null,$subjectModel->id);
+
 		$criteria = new CDbCriteria;
 		$criteria->addCondition('t.public=1');
 		$criteria->addCondition('t.public_time<'.time());
@@ -237,7 +239,7 @@ public function actionCurrentSubject($subject){
 			$subjectModel->title
 		);
 
-		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel));
+		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel, 'description'=>$description));
 
 		$this->endCache(); 
 	}
