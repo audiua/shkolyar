@@ -200,7 +200,7 @@ public function actionCurrentSubject($subject){
 			throw new CHttpException('404', 'немае такого предмету');
 		}
 
-		$description = $this->getDescription(null,$subjectModel->id);
+		$description = $this->getDescription($subjectModel->id);
 
 		$criteria = new CDbCriteria;
 		$criteria->addCondition('t.public=1');
@@ -632,6 +632,23 @@ public function checkerBook($clas, $subject, $book){
 
 }
 
+public function getDescription($subject=null){
 
+	$criteria = new CDbCriteria;
+	$criteria->condition = 't.owner="'.$this->id.'"';
+	$criteria->addCondition('t.action="'.$this->action->id.'"');
+
+	if($subject){
+		$criteria->addCondition('t.subject_id="'.$subject.'"');
+	}
+
+	$model = Description::model()->find($criteria);
+	if($model){
+		return $model->description;
+	}
+
+	return '';
+
+}
 
 }
