@@ -166,7 +166,6 @@ public function actionCurrentSubject($subject){
 	if($this->beginCache('writing_current_subject_page'.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
 
 		$this->checkSubject($subject);
-		echo $subject;
 		$this->subjectModel = $this->loadSubject($subject);
 
 		$this->keywords = 'твори '.$this->subjectModel->title;
