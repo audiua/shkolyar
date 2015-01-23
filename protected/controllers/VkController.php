@@ -11,15 +11,9 @@ class VkController extends Controller{
 			Yii::app()->end();
 		}
 
-
-
-
 		$gdz = $this->getGdz();
 		if($gdz){
 			$str = $gdz->gdz_clas->clas->slug . ' клас ' . $gdz->gdz_subject->subject->title . ' ' . $gdz->author  . ' ' . Yii::app()->createAbsoluteUrl( $gdz->getUrl() );
-				
-				echo $str;
-				die;
 
 				$this->invoke('wall.post', array(
 				    'owner_id' => -81422422,
@@ -27,9 +21,6 @@ class VkController extends Controller{
 				    'from_group' => 1
 				));
 		}
-
-
-
 
 		Yii::app()->end();
 	}
