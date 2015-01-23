@@ -1,6 +1,6 @@
 <div class="last-knowall">
 <?php $first = array_shift($model); 
-	$imgPath = '/img/library/'.$first->library_author->slug.'/'.$first->slug.'/book/first.png';
+	$imgPath = '/img/library/'.$first->library_author->slug.'/'.$first->slug.'/book/first.'.$first->img_ext;
 ?>
 <div class="knowall-large-block">
 	<?php echo CHtml::image($imgPath,'aaa', array('title'=>'ssss', 'class'=>'img-350x280')); ?>
