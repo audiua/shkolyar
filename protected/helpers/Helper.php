@@ -39,6 +39,10 @@ class Helper{
 
 	}
 
+	public static function getShortAuthor($author){
+		return substr($author,0, stripos($author, ' '));
+	}
+
 	public static function getShort($title){
 
 		$title = mb_strtolower($title, 'utf8');

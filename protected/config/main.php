@@ -63,6 +63,8 @@ return array(
 		'application.widgets.nestedWidget.*',
 		'application.widgets.lastBookWidget.*',
 		'application.widgets.lastKnowallWidget.*',
+		'application.widgets.lastLibraryWidget.*',
+		'application.widgets.lastWritingWidget.*',
 		'application.widgets.dataArticleWidget.*',
 		'application.widgets.dataWritingWidget.*',
 		'application.widgets.dataLibraryWidget.*',
