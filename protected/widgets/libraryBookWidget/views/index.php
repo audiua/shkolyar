@@ -11,7 +11,7 @@ $path = 'img/library/'.$this->model->library_author->slug . '/' . $this->model->
 	<div class="book-author"><span class="gray small">автор: </span><?php echo $this->model->library_author->author; ?></div>
 	<div class="book-subject"><span class="gray small">назва: </span><?php echo $this->model->title; ?></div>
 	
-	<div class="desc">
+	<div class="description">
 		<p><?php echo $this->model->description; ?></p>
 	</div>
 

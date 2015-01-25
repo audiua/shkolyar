@@ -124,7 +124,7 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 
-				'vk/<hash:[a-z0-9-]+>'=>'vk/index',
+				'vk/<hash:[a-z0-9-]+>/<mode:[a-z]+>'=>'vk/index',
 				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>'=>'inside/<controller>/index',

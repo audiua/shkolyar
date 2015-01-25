@@ -27,12 +27,12 @@ class VkPosting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('owner, owner_id, create_time', 'required'),
+			array('owner, owner_id', 'required'),
 			array('owner', 'length', 'max'=>255),
-			array('owner_id, create_time', 'length', 'max'=>10),
+			array('owner_id, create_time, update_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, owner, owner_id, create_time', 'safe', 'on'=>'search'),
+			array('id, owner, owner_id, create_time,update_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +47,17 @@ class VkPosting extends CActiveRecord
 		);
 	}
 
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -57,6 +68,7 @@ class VkPosting extends CActiveRecord
 			'owner' => 'Owner',
 			'owner_id' => 'Owner',
 			'create_time' => 'Create Time',
+			'update_time' => 'Update time',
 		);
 	}
 
@@ -82,6 +94,7 @@ class VkPosting extends CActiveRecord
 		$criteria->compare('owner',$this->owner,true);
 		$criteria->compare('owner_id',$this->owner_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
+		$criteria->compare('update_time',$this->update_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

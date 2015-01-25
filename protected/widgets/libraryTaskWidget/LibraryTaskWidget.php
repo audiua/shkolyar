@@ -43,6 +43,11 @@ class LibraryTaskWidget extends CWidget{
         natsort($all);
 
         foreach($all as $one){
+
+            if(stripos($one,'first')!==false){
+                continue;
+            }
+
             if(is_dir($dir.DIRECTORY_SEPARATOR.$one)){
                 $path[$one] = $this->rec($dir.DIRECTORY_SEPARATOR.$one);
             } elseif(is_file($dir.DIRECTORY_SEPARATOR.$one)) {

@@ -90,6 +90,9 @@
     width: 90px;
     float: left;
   }
+  .sketch {
+    font-family: 'Cabin Sketch', cursive, Arial, Verdana;
+  }
   .logo-title {
     height: 50%;
     color: #4169E1;
@@ -1035,7 +1038,7 @@
     padding-bottom: 25px;
   }
   .middle-article-block .knowall-link {
-    height: 40px;
+    height: 60px;
   }
   .middle-article-block .knowall-link a {
     margin-left: 5px;
@@ -1172,6 +1175,8 @@
   .knowall-small-block .knowall-small-one-block img {
     float: left;
     margin-right: 15px;
+    width: 150px;
+    height: 106px;
   }
   .knowall-small-block .knowall-small-one-block .knowall-link {
     text-align: left;

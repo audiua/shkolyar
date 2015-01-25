@@ -38,11 +38,12 @@ class LibraryAuthor extends CActiveRecord
 		return array(
 			array('author, description, slug', 'required'),
 			array('author, slug', 'length', 'max'=>255),
-			array('create_time,length, update_time', 'length', 'max'=>10),
+			array('public, description', 'safe'),
+			array('create_time,length, update_time,public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, author, nausea, length, create_time, update_time, description, slug', 'safe', 'on'=>'search'),
+			array('id, author, nausea, length, create_time, update_time, description, slug,public_time,public', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +57,17 @@ class LibraryAuthor extends CActiveRecord
 		return array(
 			'library_book' => array(self::HAS_MANY, 'LibraryBook', 'library_author_id'),
 		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => 't.`public` = 1 AND t.`public_time`<'.time(),
+		);
+
+		return $scopes;
 	}
 
 	public function behaviors(){
@@ -83,6 +95,8 @@ class LibraryAuthor extends CActiveRecord
 			'slug' => 'Slug',
 			'length' => 'Длина',
 			'nausea'=>'Тошнота',
+			'public' => 'public',
+			'public_time' => 'public_time',
 		);
 	}
 
@@ -110,6 +124,8 @@ class LibraryAuthor extends CActiveRecord
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('public_time',$this->update_time);
+		$criteria->compare('public',$this->slug);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -126,6 +142,21 @@ class LibraryAuthor extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
 
 	public function beforeSave(){
 

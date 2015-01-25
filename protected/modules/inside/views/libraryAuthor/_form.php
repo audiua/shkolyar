@@ -73,6 +73,32 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		<?php echo $form->error($model,'slug'); ?>
 	</div>
 
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'public_time', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<div class="col-md-9 col-lg-9">
+			<?php
+			$this->widget('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker', array(
+			    'model' => $model,
+			    'attribute' => 'public_time',
+			    'mode' => 'datetime',
+			    'value'=>$model->public_time,
+			    'htmlOptions' => array(
+			    	'defaultDate'=>$model->public_time,
+			        
+			    ),
+			));
+			?>
+		</div>
+		
+		<?php echo $form->error($model,'public_time'); ?>
+	</div>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'public', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->dropDownList($model,'public', array(0=>'no', 1=>'yes'), array('class'=>'col-md-4 col-lg-4 control-label')); ?>
+		<?php echo $form->error($model,'public'); ?>
+	</div>
+
 	<div class="clear"></div>
 	<div class="form-group">
 		<div class="col-md-offset-9 col-lg-offset-9 col-md-2 col-lg-2">
