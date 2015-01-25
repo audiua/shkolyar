@@ -14,7 +14,9 @@
 </div>
 
 <div class="knowall-small-block">
-<?php foreach( $model as $i => $one ): ?>
+<?php foreach( $model as $i => $one ): 
+	$imgPath = '/img/library/'.$one->library_author->slug.'/'.$one->slug.'/book/first.'.$one->img_ext;
+?>
 
 	<div class='knowall-small-one-block'>
 		<?php echo CHtml::image($imgPath,'aaa', array('title'=>'ssss', 'class'=>'img-150x106')); ?>
