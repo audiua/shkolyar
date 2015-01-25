@@ -43,7 +43,7 @@ public function filters() {
 public function actionIndex(){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_writing_page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main_writing_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Твори'
@@ -71,7 +71,7 @@ public function actionIndex(){
  */
 public function actionClas($clas){
 	// TODO - закешировать на сутки
-	if($this->beginCache('writing_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('writing_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 
 		$this->checkClas($clas);
 
@@ -114,7 +114,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('writing_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -163,7 +163,7 @@ public function actionSubject($clas, $subject){
 public function actionCurrentSubject($subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('writing_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		$this->checkSubject($subject);
 		$this->subjectModel = $this->loadSubject($subject);

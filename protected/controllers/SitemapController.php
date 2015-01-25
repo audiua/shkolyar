@@ -21,6 +21,15 @@ const CACHE_TIME = 14400;
 
 protected $items = array();
 
+public function filters() {
+    return array(
+        // array( 'COutputCache', 'duration'=> 60, ),
+        // убираем дубли ссылок
+        array('DuplicateFilter')
+    );
+}
+
+
 public function actionIndex() {
 
     header("Content-type: text/xml");

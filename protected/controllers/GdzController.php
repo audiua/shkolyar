@@ -11,7 +11,7 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='ГДЗ - готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz';
+public $keywords='готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz';
 
 /**
  * @var string  мета тег описания страницы
@@ -62,7 +62,7 @@ public function actionIndex(){
 
 
 	// TODO - закешировать на 4 hour
-	if($this->beginCache('main-gdz-page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main-gdz-page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'ГДЗ'
@@ -95,7 +95,7 @@ public function actionIndex(){
 public function actionClas($clas){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('gdz_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('gdz_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 		
 		$this->checkClas($clas);
 
@@ -148,7 +148,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('gdz_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -203,7 +203,7 @@ public function actionCurrentSubject($subject){
 	// die;
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('gdz_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		// все классы
 		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();

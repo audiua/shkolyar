@@ -57,7 +57,7 @@ public function filters() {
 public function actionIndex(){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main-textbook-page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main-textbook-page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Підручники'
@@ -88,7 +88,7 @@ public function actionIndex(){
 public function actionClas($clas){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('clas_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('clas_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->clasModel = $this->loadClas($clas);
@@ -132,7 +132,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('subject_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('subject_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -183,7 +183,7 @@ public function actionSubject($clas, $subject){
 public function actionCurrentSubject($subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('textbook_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('textbook_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		// все классы
 		$this->allClasModel = TextbookClas::model()->cache(86400)->findAll();

@@ -40,7 +40,7 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_library_page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Художня література'
@@ -70,8 +70,7 @@ public function actionIndex(){
  */
 public function actionCategory($category){
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category'))) ){
-
+	if($this->beginCache('category_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.slug="'.$category.'"';
@@ -93,7 +92,7 @@ public function actionCategory($category){
 
 		);
 
-		$this->h1 = 'Художня література' . $categoryModel->author;
+		$this->h1 = 'Художня література ' . $categoryModel->author;
 		$this->keywords = $categoryModel->author . ', Художня література '.$categoryModel->author;
 		$this->description = 'Художня література '.$categoryModel->author;
 
@@ -188,22 +187,6 @@ public function actionTask($category, $article, $task){
 
 		$this->endCache(); 
 	
-	}
-}
-	
-
-	
-/**
- * This is the action to handle external exceptions.
- */
-public function actionError()
-{
-	if($error=Yii::app()->errorHandler->error)
-	{
-		if(Yii::app()->request->isAjaxRequest)
-			echo $error['message'];
-		else
-			$this->render('error', $error);
 	}
 }
 
