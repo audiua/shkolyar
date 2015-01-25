@@ -174,7 +174,7 @@
 						<tr>
 							<td data-vertical="0"><a href="/gdz/health">основи здоров'я</a></td>
 							<td data-vertical="1"><a href="/gdz/5/health"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><!-- <a href="/gdz/6/health"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
+							<td data-vertical="2"><a href="/gdz/6/health"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/health"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/health"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
 							<td data-vertical="5"><a href="/gdz/9/health"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
@@ -196,7 +196,7 @@
 						<tr>
 							<td data-vertical="0"><a href="/gdz/nature">природознавство</a></td>
 							<td data-vertical="1"><a href="/gdz/5/nature"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><!-- <a href="/gdz/6/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
+							<td data-vertical="2"><a href="/gdz/6/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/nature"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/nature"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
 							<td data-vertical="5"><!-- <a href="/gdz/9/nature"><span class="green glyphicon glyphicon-ok small clas-9"></span></a> --></td>
