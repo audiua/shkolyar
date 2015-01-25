@@ -66,6 +66,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 </div>
 
+<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->clasModel->title; ?></h1>
+
+<div class="description">
+  <?php echo $this->clasModel->description; ?>
+</div>
+
 <div class="info">Виберіть підручник</div> 
  
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
