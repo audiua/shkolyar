@@ -129,14 +129,14 @@ class LinkPager extends CLinkPager
 	public function run()
 	{
 		$this->registerClientScript();
-		echo '<!--noindex-->';
+		echo '<noindex>';
 		$buttons=$this->createPageButtons();
 		if(empty($buttons))
 			return;
 		echo $this->header;
 		echo CHtml::tag('ul',$this->htmlOptions,implode("\n",$buttons));
 		echo $this->footer;
-		echo '<!--/noindex-->';
+		echo '</noindex>';
 	}
 
 	/**

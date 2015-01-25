@@ -1,2 +1,5 @@
-user-agent: *
-disallow: / 
+User-agent:*
+Disallow: /protected/
+Disallow: /themes/
+Sitemap:http://shkolyar.info/sitemap.xml
+Host:shkolyar.info
