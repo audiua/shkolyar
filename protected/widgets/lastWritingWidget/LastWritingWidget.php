@@ -22,7 +22,7 @@ class LastWritingWidget extends CWidget{
 	private function lastWritingArticles(){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.public=1';
-		$criteria->addCondition('t.public_time > '.time() );
+		$criteria->addCondition('t.public_time < '.time() );
 		$criteria->order = 'create_time DESC';
 		$criteria->limit = 4;
 
