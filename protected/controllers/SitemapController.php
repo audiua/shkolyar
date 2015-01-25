@@ -16,7 +16,8 @@ const MONTHLY = 'monthly';
 const YEARLY = 'yearly';
 const NEVER = 'never';
 
-const CACHE_TIME = 86400;
+// 4 часа
+const CACHE_TIME = 14400;
 
 protected $items = array();
 

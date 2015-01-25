@@ -4,16 +4,17 @@ class SiteController extends Controller{
 
 public $layout='';
 public $canonical;
+const CACHE_TIME = 7200;
 
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='Шкільний інформаційний портал, гдз, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
+public $keywords='Шкільний інформаційний портал, гдз, гдз онлайн, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
 
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Данний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці, щоб зберигти Ваш час та допомогти Вам у навчанні. Команда порталу витратила чимало часу та зусиль, щоб досягнути поставленої мети.';
+public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці, щоб зберигти Ваш час та допомогти Вам у навчанні.';
 
 public $param;
 
@@ -27,7 +28,7 @@ public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
 		// убираем дубли ссылок
-		// array('DuplicateFilter')
+		array('DuplicateFilter')
 	);
 }
 
@@ -37,7 +38,7 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 		$this->pageTitle = 'SHKOLYAR.INFO - Шкільний інформаційний портал.';

@@ -2,7 +2,7 @@
 
 <div class="middle-book-block">
 
-<div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/first.'.$data->img_ext, ' ', array('class'=>'img-middle-book thumbnail ')) ?> </div>
+<div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/first.'.$data->img_ext, 'SHKOLYAR.INFO - Художня література ' . $data->library_author->author . ' ’’'.$data->title.'’’', array('class'=>'img-middle-book thumbnail ', 'title'=>'SHKOLYAR.INFO - Художня література ' . $data->library_author->author . ' ’’'.$data->title.'’’')) ?> </div>
 	<div class="">
 		<div class="book-author"> <?php echo $data->library_author->author; ?></div>
 		<div class="book-subject"> <?php echo $data->title; ?></div>

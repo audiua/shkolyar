@@ -2,10 +2,11 @@
 
 class WritingController extends Controller{
 
-const CACHE_TIME = 86400;
+const CACHE_TIME = 14400;
 
 public $layout='';
 public $canonical;
+public $h1='';
 
 public $clasModel=null;
 public $subjectModel=null;
@@ -13,7 +14,7 @@ public $subjectModel=null;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='твори';
+public $keywords='твори, шкільні твори';
 
 /**
  * @var string  мета тег описания страницы
@@ -31,7 +32,7 @@ public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
 		// убираем дубли ссылок
-		// array('DuplicateFilter')
+		array('DuplicateFilter')
 	);
 }
 
@@ -40,8 +41,9 @@ public function filters() {
  * when an action is not explicitly requested by users.
  */
 public function actionIndex(){
+
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_writing_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_writing_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->breadcrumbs = array(
 			'Твори'
@@ -52,11 +54,12 @@ public function actionIndex(){
 		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		
-
 		$this->canonical = Yii::app()->createAbsoluteUrl('/writing');
 		$this->pageTitle = 'SHKOLYAR.INFO - Твори';
+		$this->h1 = 'Твори';
 		// кешируем сдесь всю страницу
 		$this->render('index', array('model'=>$model));
+		
 		$this->endCache(); 
 	}
 
@@ -68,7 +71,7 @@ public function actionIndex(){
  */
 public function actionClas($clas){
 	// TODO - закешировать на сутки
-	if($this->beginCache('writing_clas_page', array('duration'=>86400, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('writing_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
 
 		$this->checkClas($clas);
 
@@ -82,11 +85,9 @@ public function actionClas($clas){
 		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
-			throw new CHttpException('404', 'немає творів для данного класу');
+			throw new CHttpException('404');
 		}
 
-
-		
 		$this->breadcrumbs = array(
 			'Твори' => $this->createUrl('/writing/'),
 			$clas
@@ -95,7 +96,8 @@ public function actionClas($clas){
 
 		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори';
 		$this->description = 'твори для '.$this->clasModel->slug . ' класу ';
-		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$clas);
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing'.$clas);
+		$this->h1 = 'Твори '. $clas . ' клас';
 		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$clas.' клас';
 		// кешируем сдесь всю страницу
 		$this->render('clas', array('model'=>$model, 'description'=>$description));
@@ -112,7 +114,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_subject_page'.$clas.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('writing_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -126,10 +128,7 @@ public function actionSubject($clas, $subject){
 
 		$description = $this->getDescription($this->clasModel->id, $this->subjectModel->id);
 
-		// $this->h1 = 'ГДЗ '.(int)$clas.' клас '. $this->subjectModel->subject->title;
-		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
-		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$clas.'/'.$subject);
-		// $this->setMeta();
+		$this->h1 = 'Твори '.(int)$clas.' клас '. $this->subjectModel->title;
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.clas_id="'.$this->clasModel->id.'"';
@@ -141,8 +140,6 @@ public function actionSubject($clas, $subject){
 			throw new CHttpException('404', 'немає творів для данного предмету');
 		}
 
-
-		
 		$this->breadcrumbs = array(
 			'Твори' => $this->createUrl('/writing/'),
 			$this->clasModel->slug . ' клас' => $this->createUrl('/writing/'.$clas),
@@ -150,8 +147,8 @@ public function actionSubject($clas, $subject){
 
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$clas);
-		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$clas.' клас';
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing'.$clas.'/'.$subject);
+		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$clas.' клас ' . $this->subjectModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('subject', array('model'=>$model, 'description'=>$description));
 
@@ -166,21 +163,18 @@ public function actionSubject($clas, $subject){
 public function actionCurrentSubject($subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_current_subject_page'.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('writing_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
 
 		$this->checkSubject($subject);
 		$this->subjectModel = $this->loadSubject($subject);
 
-		$this->keywords = 'твори '.$this->subjectModel->title;
+		$this->keywords = 'твори, шкільні твори, твори '.$this->subjectModel->title;
 
 		$this->description = 'твори '.$this->subjectModel->title;
 
 		$description = $this->getDescription( null, $this->subjectModel->id);
 
-		// $this->h1 = 'ГДЗ '.(int)$clas.' клас '. $this->subjectModel->subject->title;
-		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
-		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$clas.'/'.$subject);
-		// $this->setMeta();
+		$this->h1 = 'Твори ' . $this->subjectModel->title;
 
 		$criteria = new CDbCriteria;
 		$criteria->condition='t.subject_id="'.$this->subjectModel->id.'"';
@@ -188,18 +182,15 @@ public function actionCurrentSubject($subject){
 		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		if(!$model){
-			throw new CHttpException('404', 'немає творів для данного предмету');
+			throw new CHttpException('404');
 		}
 
-
-		
 		$this->breadcrumbs = array(
 			'Твори' => $this->createUrl('/writing/'),
 			$this->subjectModel->title,
-
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$this->subjectModel->slug);
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->subjectModel->slug);
 		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$this->subjectModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('current_subject', array('model'=>$model, 'description'=>$description));
@@ -211,9 +202,7 @@ public function actionCurrentSubject($subject){
 
 public function actionView($clas, $category, $article){
 
-
-	// if($this->beginCache('article_knowall_page_'.$category.$article, array('duration'=>86400, 'varyByParam'=>array('category', 'article'))) ){
-
+	if($this->beginCache('article_knowall_page', array('duration'=>86400, 'varyByParam'=>array('clas, category', 'article'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($category);
@@ -237,14 +226,16 @@ public function actionView($clas, $category, $article){
 
 		);
 
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->clasModel->slug . '/'. $this->subjectModel->slug . '/' . $article->slug);
+		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$this->clasModel->slug . ' '. $this->subjectModel->title . ' ' . $article->title;
+
 		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори '.$this->subjectModel->title.', твори '.$this->clasModel->slug . ' клас '.$this->subjectModel->title;
 		$this->description = 'твір для '.$this->clasModel->slug . ' класу '.$this->subjectModel->title . ' на тему: '.$article->title ;
 
 		$this->render('view', array('model'=>$article));
 
-
-	// 	$this->endCache(); 
-	// }
+		$this->endCache(); 
+	}
 }
 	
 

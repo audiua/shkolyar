@@ -68,6 +68,9 @@
     width: 1140px;
     position: relative;
   }
+  .shkolyar {
+    font-family: 'Cabin Sketch', cursive, Arial, Verdana;
+  }
   .logo {
     padding-top: 5px;
     float: left;
@@ -740,8 +743,6 @@
     font-size: 18px;
   }
   .view-filters {
-    top: 5px;
-    position: absolute;
     padding: 5px 15px;
   }
   .view-filters span {

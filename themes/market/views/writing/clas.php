@@ -5,7 +5,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
-<h1>Твори <?php echo $this->param['clas'] . ' клас'; ?></h1>
+
+<h1><?php echo $this->h1; ?></h1>
 
 <div class="description">
   <?php  echo $description; ?>

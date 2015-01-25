@@ -3,20 +3,21 @@
 class LibraryController extends Controller{
 
 // кеш на сутки 86400, 100 дней = 8640000
-const CACHE_TIME = 8640000;
+const CACHE_TIME = 14400;
 
 public $layout='';
 public $canonical;
+public $h1='';
 
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='';
+public $keywords='Художня література, українська література, світова  література, зарубіжна література, світова література';
 
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - информацийний портал, для середніх загальноосвітніх шкіл України.';
+public $description='SHKOLYAR.INFO - Художня література';
 
 public $param;
 
@@ -29,7 +30,7 @@ public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
 		// убираем дубли ссылок
-		// array('DuplicateFilter')
+		array('DuplicateFilter')
 	);
 }
 
@@ -39,14 +40,17 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_library_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_library_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->breadcrumbs = array(
 			'Художня література'
 		);
 
+		$this->h1 = 'Художня література';
+
 		$criteria = new CDbCriteria;
-		// $criteria->condition= 't.public=1';
+		$criteria->condition = 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
 		$books = new CActiveDataProvider('LibraryBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
 		$authors = LibraryAuthor::model()->findAll();
 
@@ -54,6 +58,7 @@ public function actionIndex(){
 		$this->pageTitle = 'SHKOLYAR.INFO - Художня література';
 		// кешируем сдесь всю страницу
 		$this->render('index', array('authors'=>$authors, 'books'=>$books));
+		
 		$this->endCache(); 
 	}
 
@@ -65,7 +70,7 @@ public function actionIndex(){
  */
 public function actionCategory($category){
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_library_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
+	if($this->beginCache('category_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category'))) ){
 
 
 		$criteria = new CDbCriteria;
@@ -76,10 +81,10 @@ public function actionCategory($category){
 			throw new CHttpException('404', 'немає такого автора');
 		}
 
-
 		$criteria = new CDbCriteria;
 		$criteria->condition='library_author_id='.$categoryModel->id;
-		// $criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('LibraryBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
 		
 		$this->breadcrumbs = array(
@@ -88,8 +93,12 @@ public function actionCategory($category){
 
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$category);
-		$this->pageTitle = 'SHKOLYAR.INFO - Художня література - '.ucfirst(Yii::t('app', $category));
+		$this->h1 = 'Художня література' . $categoryModel->author;
+		$this->keywords = $categoryModel->author . ', Художня література '.$categoryModel->author;
+		$this->description = 'Художня література '.$categoryModel->author;
+
+		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category);
+		$this->pageTitle = 'SHKOLYAR.INFO - Художня література '.$categoryModel->author;
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
@@ -101,7 +110,7 @@ public function actionCategory($category){
 
 public function actionView($category, $article){
 
-	// if($this->beginCache('article_knowall_page_'.$category.$article, array('duration'=>86400, 'varyByParam'=>array('category', 'article'))) ){
+	if($this->beginCache('library_category_article_page_', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
 
 
 		$catModel = $this->loadCategory($category);
@@ -119,17 +128,32 @@ public function actionView($category, $article){
 		);
 
 
+		$this->h1 = 'Художня література' . $catModel->author . ' ’’' . $article->title. '’’';
+		$this->keywords = $catModel->author . ', Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
+		$this->description = 'Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
+
+
+		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category.'/'.$article->slug);
+		$this->pageTitle = 'SHKOLYAR.INFO - Художня література '.$catModel->author . ' ' . $article->title;
+
 		$this->render('view', array('model'=>$article));
 
 
-	// 	$this->endCache(); 
-	// }
+		$this->endCache(); 
+	}
 }
 
 public function actionTask($category, $article, $task){
 
 	// TODO - закешировать на 30 days
-	if($this->beginCache('library_task_page'.$category.$article.$task, array('duration'=>self::CACHE_TIME )) ){
+	if($this->beginCache('library_task_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article', 'task') )) ){
+
+		$catModel = $this->loadCategory($category);
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.slug="'.$article.'"';
+		$criteria->addCondition('t.library_author_id='.$catModel->id);
+		$articleModel = LibraryBook::model()->find($criteria);
 
 		$pathImg['path'] = 'library/' . $category . '/' 
 			. $article . '/book/' 
@@ -137,7 +161,7 @@ public function actionTask($category, $article, $task){
 
 		if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
 			$_GET = null;
-			throw new CHttpException('404', 'такого задания в этом учебнике нету');
+			throw new CHttpException('404');
 		}
 
 		$imgSize = getimagesize( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
@@ -150,8 +174,8 @@ public function actionTask($category, $article, $task){
 				
 			echo  CHtml::image( 
 				Yii::app()->baseUrl .'/img/'.$pathImg['path'],
-				'',
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> ''));
+				'SHKOLYAR.INFO - Художня література '.$catModel->author . ' ’’' . $articleModel->title . '’’ сторінка '.$task,
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> 'SHKOLYAR.INFO - Художня література '.$catModel->author . ' ’’' . $articleModel->title . '’’ сторінка '.$task));
 
 			$this->endCache(); 
 			

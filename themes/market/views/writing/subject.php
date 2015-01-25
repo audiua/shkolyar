@@ -6,8 +6,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-
-<h1>Твори <?php echo $this->clasModel->slug . ' клас ' . $this->subjectModel->title; ?></h1>
+<h1><?php echo $this->h1; ?></h1>
 
 <div class="description">
   <?php  echo $description; ?>

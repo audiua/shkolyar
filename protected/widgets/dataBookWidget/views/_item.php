@@ -6,7 +6,9 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 
 <div class="middle-book-block">
 
-<div class=""> <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, $data->author, array('class'=>'img-middle-book thumbnail ')) ?> </div>
+<div class=""> <?php 
+$contr = ($this->controller->id=='gdz') ? 'ГДЗ ':'Підручник ';
+echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 'SHKOLYAR.INFO - ' . $contr . $data->$categoryClas->clas->slug . ' клас ' . $data->$categorySubject->subject->title . ' ' .  $data->author, array('class'=>'img-middle-book thumbnail ', 'title'=>'SHKOLYAR.INFO - ' . $contr . $data->$categoryClas->clas->slug . ' клас ' . $data->$categorySubject->subject->title . ' ' .  $data->author)) ?> </div>
 	<div class="">
 		<div class="book-author"> <?php echo $data->author; ?></div>
 		<div class="book-subject"> <?php echo $data->title; ?></div>

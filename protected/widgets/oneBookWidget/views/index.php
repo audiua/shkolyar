@@ -8,17 +8,34 @@ $path = 'img/'.$this->controller->id.'/'.$this->params['clas'].'/'.$this->params
 ?> 
 </div>
 	<div class="">
-		<div class="book-author"><?php echo $this->model->author; ?></div>
-		<div class="book-subject"><?php echo $this->model->title; ?></div>
-		<div class="book-clas"><?php echo $this->model->$categoryClas->clas->slug; ?> клас</div>
-		<div class="desc">
-			<p><?php echo $this->model->description; ?></p>
-		</div>
+		<div class="book-author"><span class="gray small">автор: </span><?php echo $this->model->author; ?></div>
+		<div class="book-subject"><span class="gray small">предмет: </span>
+		<?php 
+			$subj = $this->model->title;
+			$subj .= $this->model->properties ? ' ' . $this->model->properties : '' ;
+			echo  $subj;
+		?></div>
+		<div class="book-clas"><span class="gray small">клас: </span><?php echo $this->model->$categoryClas->clas->slug; ?> клас</div>
+	
+		<?php if($this->model->year): ?>
+		<div class="book-clas"><span class="gray small">рік: </span><?php echo $this->model->year; ?></div>
+		<?php endif; ?>
+
+		<?php if($this->model->edition): ?>
+		<div class="book-clas"><span class="gray small">видавництво: </span><?php echo $this->model->edition; ?></div>
+		<?php endif; ?>
+
+		<?php if($this->model->info): ?>
+		<div class="book-clas"><span class="gray small">особливысть: </span><?php echo $this->model->info; ?></div>
+		<?php endif; ?>
+
+		<div class="clear"></div>
+		<div class="description"><?php echo $this->model->description; ?></div>
 
 	</div>
 <div class="textbook-link">
 	<?php 
-	$controller = $this->controller->id=='gdz' ? 'textbook' : 'gdz';
+	// $controller = $this->controller->id=='gdz' ? 'textbook' : 'gdz';
 	// echo $controller;
 	// die;
 	// if($this->controller->checkerBook($this->model->slug, $this->params['clas'], $this->params['subject'])){

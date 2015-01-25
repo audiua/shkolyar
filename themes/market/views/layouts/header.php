@@ -88,7 +88,7 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lit-w">зарубіжна література</a></td>
+							<td data-vertical="0"><a href="/gdz/lit-w">світова література</a></td>
 							<td data-vertical="1"><a href="/gdz/5/lit-w"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -195,7 +195,7 @@
 
 						<tr>
 							<td data-vertical="0"><a href="/gdz/nature">природознавство</a></td>
-							<td data-vertical="1"><a href="/gdz/5/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="1"><a href="/gdz/5/nature"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/nature"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/nature"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
@@ -426,6 +426,7 @@
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
 			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
+			    			<li><a class="library-subcategory" href="/library/vingranovskyy">Вінграновський М.С.</a></li>
 			    		</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="lit-w">

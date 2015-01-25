@@ -2,8 +2,8 @@
 
 class GdzController extends Controller{
 
-// кеш на сутки 86400, 100 дней = 8640000
-const CACHE_TIME = 8640000;
+// кеш на сутки 86400
+const CACHE_TIME = 14400;
 
 public $layout='';
 public $canonical;
@@ -11,7 +11,7 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='ГДЗ - готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники';
+public $keywords='ГДЗ - готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz';
 
 /**
  * @var string  мета тег описания страницы
@@ -61,7 +61,7 @@ public function beforeAction($action){
 public function actionIndex(){
 
 
-	// TODO - закешировать на сутки
+	// TODO - закешировать на 4 hour
 	if($this->beginCache('main-gdz-page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->breadcrumbs = array(
@@ -69,7 +69,7 @@ public function actionIndex(){
 		);
 
 		// все классы
-		$this->allClasModel = GdzClas::model()->findAll();
+		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
 
 		$this->pageTitle = 'SHKOLYAR.INFO - ГДЗ';
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
@@ -95,7 +95,7 @@ public function actionIndex(){
 public function actionClas($clas){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('gdz_clas_page'.$clas, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('gdz_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas'))) ){
 		
 		$this->checkClas($clas);
 
@@ -107,7 +107,15 @@ public function actionClas($clas){
 
 		);
 
-		$this->keywords = 'ГДЗ - готові домашні завдання '.$clas.' клас, гдз '.$clas. ' клас, гдз онлайн '.$clas. ' клас, гдз '.$clas. ' клас україна, гдз решебники '.$clas.' клас, готові домашні завдання '.$this->clasModel->clas->title.' клас, гдз '.$this->clasModel->clas->title.' клас';
+		$this->keywords = 
+			'ГДЗ - готові домашні завдання '.$clas.' клас, 
+			гдз '.$clas. ' клас, 
+			гдз онлайн '.$clas. ' клас, 
+			гдз '.$clas. ' клас Україна, 
+			гдз решебники '.$clas.' клас, 
+			готові домашні завдання '.$this->clasModel->clas->title.' клас, 
+			гдз '.$this->clasModel->clas->title.' клас';
+
 		$this->description = 'ГДЗ - готові домашні завдання для ' . $clas . ' класу середніх загальноосвітніх шкіл України.';
 		// $this->h1 = 'ГДЗ '.(int)$clas.' клас';
 		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
@@ -128,6 +136,7 @@ public function actionClas($clas){
 		);
 
 		$this->render('clas', array('books'=>$books));
+
 		$this->endCache(); 
 	}
 }
@@ -139,7 +148,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_subject_page'.$clas.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('gdz_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -149,7 +158,7 @@ public function actionSubject($clas, $subject){
 
 		$this->keywords = 'ГДЗ - готові домашні завдання ' . $this->subjectModel->subject->title . ' ' 
 			.$clas.' клас, гдз '. $this->subjectModel->subject->title . ' ' .$clas.' клас, гдз онлайн '
-			. $this->subjectModel->subject->title . ' ' .$clas. ' клас, гдз '. $this->subjectModel->subject->title . ' ' .$clas. ' клас україна, гдз решебники '
+			. $this->subjectModel->subject->title . ' ' .$clas. ' клас, гдз '. $this->subjectModel->subject->title . ' ' .$clas. ' клас Україна, гдз решебники '
 			. $this->subjectModel->subject->title . ' ' .$clas.' клас, готові домашні завдання '. $this->subjectModel->subject->title . ' ' .$this->clasModel->clas->title.' клас, гдз '. $this->subjectModel->subject->title . ' ' .$this->clasModel->clas->title.' клас';
 
 		$this->description = 'ГДЗ - готові домашні завдання ' 
@@ -194,10 +203,10 @@ public function actionCurrentSubject($subject){
 	// die;
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_current_subject_page'.$subject, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('gdz_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject'))) ){
 
 		// все классы
-		$this->allClasModel = GdzClas::model()->findAll();
+		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
 
 		$this->checkSubject($subject);
 
@@ -262,7 +271,7 @@ public function actionCurrentSubject($subject){
 public function actionBook( $clas, $subject, $book ){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_book_page'.$clas.$subject.$book, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
+	if($this->beginCache('gdz_book_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
 		
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -310,7 +319,7 @@ public function actionTask($clas, $subject, $book, $task){
 	// sleep(5);
 
 	// TODO - закешировать на 30 days
-	if($this->beginCache('task_page'.$clas.$subject.$book.$task, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book','task'))) ){
+	if($this->beginCache('task_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book','task'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -320,34 +329,11 @@ public function actionTask($clas, $subject, $book, $task){
 		$this->subjectModel = $this->loadSubject($subject);
 		$this->bookModel = $this->loadBook($book);
 
-		if(isset($this->param['unit']) && $this->param['unit'] > 0){
-			$unit = 'unit_'.$this->param['unit'] . '/';
-		} else {
-			$unit = '';
-		}
-
-		if(isset($this->param['page'])){
-			$pathImg['path'] = 'gdz/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/' 
-			. $unit
-			. 'lesson_' . $this->param['lesson'] . '/' 
-			. $this->param['page'] . '_' 
-			. $this->param['task'] .'.png';
-		} elseif(isset($this->param['lesson'])){
-			$pathImg['path'] = 'gdz/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/' 
-			. $unit
-			. 'lesson_' . $this->param['lesson'] . '/' 
-			. $this->param['task'] .'.png';
-		} else {
-			$pathImg['path'] = 'gdz/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/'
-			. $this->param['task'] .'.png';
-		}
-
+		$pathImg['path'] = 'gdz/' . $clas . '/' 
+		. $subject . '/' 
+		. $book . '/task/'
+		. $task .'.png';
+		
 		if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
 			$_GET = null;
 			throw new CHttpException('404', 'такого задания в этом учебнике нету');
@@ -370,7 +356,7 @@ public function actionTask($clas, $subject, $book, $task){
 				.' рішення до завдяння '
 				. $this->param['task'],
 			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> 'ГДЗ - готові домашні завдання ' .$this->subjectModel->subject->title . ' '
-				. $this->param['clas'] .' клас '.$this->bookModel->author.' рішення до завдяння '. $this->param['task']));
+				. $clas .' клас '.$this->bookModel->author.' рішення до завдяння '. $task));
 
 			$this->endCache(); 
 			
@@ -391,52 +377,68 @@ public function actionTask($clas, $subject, $book, $task){
  * 
  * @return [type] [description]
  */
-public function actionNestedOne(){
+public function actionNestedOne($clas, $subject, $book, $section, $task){
 
-	// sleep(5);
+	// TODO - закешировать на 30 days
+	if($this->beginCache('task_nested_one_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas','subject','book','section','task'))) ){
 
-	$path = 'gdz/' . $this->param['clas'] 
-	. '/' . $this->param['subject'] 
-	. '/' . $this->param['book'] . '/task/';
+		$this->checkClas($clas);
+		$this->checkSubject($subject);
+		$this->checkBook($book);
 
-	$sections = scandir('img/' . $path);
-	foreach($sections as $section){
+		$this->clasModel = $this->loadClas($clas);
+		$this->subjectModel = $this->loadSubject($subject);
+		$this->bookModel = $this->loadBook($book);
 
-		if($this->param['subject']=='lang_en'){
-			$section = (int)$section . '_Урок ' . (int)$section;
+		$path = 'gdz/' . $clas 
+		. '/' . $subject 
+		. '/' . $book . '/task/';
+
+		$sections = scandir('img/' . $path);
+		$pathImg= array();
+		foreach($sections as $oneSection){
+
+			if($subject=='lang-en'){
+				$section = (int)$section . '_Урок ' . (int)$section;
+			}
+
+			if((int)$oneSection == (int)$section){
+				$pathImg['path'] = $path . $oneSection . '/' . $task . '.png';
+			}
 		}
 
-		if((int)$section == (int)$this->param['section']){
-			$pathImg['path'] = $path . $section . '/' . $this->param['task'] . '.png';
+		if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
+			$_GET = null;
+			throw new CHttpException('404', 'такого задания в этом учебнике нету');
 		}
-	}
 
-	if( ! file_exists( Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
-		$_GET = null;
-		throw new CHttpException('404', 'такого задания в этом учебнике нету');
-	}
+		$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
+		$pathImg['width'] = $imgSize[0];
+		$pathImg['height'] = $imgSize[1];
 
-	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
-	$pathImg['width'] = $imgSize[0];
-	$pathImg['height'] = $imgSize[1];
-	// print_r($pathImg['width']);
-	// die;
-
-	// echo $path;
-	// die;
-
-	if(Yii::app()->request->isAjaxRequest){
+		if(Yii::app()->request->isAjaxRequest){
+				
+			echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'],
+			'ГДЗ - готові домашні завдання '
+				.$this->subjectModel->subject->title . ' '
+				.$this->param['clas']
+				.' клас '.$this->bookModel->author
+				.' рішення до завдяння '
+				. $section . '/' . $task,
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
 			
-		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
-		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
-		
-		Yii::app()->end();
 
-    } else {
+			$this->endCache(); 
+
+			Yii::app()->end();
+
+	    }
+
     	$this->render('task', array('task'=>$pathImg));
-    }
+	    
+	    $this->endCache(); 
 
-	// $this->render('task',['task'=>$pathImg]);
+	}
 }
 
 
@@ -444,54 +446,76 @@ public function actionNestedOne(){
  * 
  * @return [type] [description]
  */
-public function actionNestedTwo(){
+public function actionNestedTwo($clas, $subject, $book, $section, $paragraph ,$task){
 
-	//TODO переделать под авто определение 
-	$img = $this->param['task'] . '.png';
+	// TODO - закешировать на 30 days
+	if($this->beginCache('task_nested_one_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas','subject','book','section', 'paragraph','task'))) ){
 
-	if( isset($this->param['section']) ){
+		$this->checkClas($clas);
+		$this->checkSubject($subject);
+		$this->checkBook($book);
 
-		$path = 'gdz/' . $this->param['clas'] 
-		. '/' . $this->param['subject'] 
-		. '/' . $this->param['book'] . '/task/';
+		$this->clasModel = $this->loadClas($clas);
+		$this->subjectModel = $this->loadSubject($subject);
+		$this->bookModel = $this->loadBook($book);
+
+
+
+		//TODO переделать под авто определение 
+		$img = $task . '.png';
+
+		$path = 'gdz/' . $clas 
+		. '/' . $subject
+		. '/' . $book . '/task/';
 
 		$sections = scandir('img/' . $path);
-		foreach($sections as $section){
+		foreach($sections as $oneSection){
 			
-			if((int)$section == (int)$this->param['section']){
+			if((int)$oneSection == (int)$section){
 
-				$parags =  scandir('img/' . $path . '/' . $section);
+				$parags =  scandir('img/' . $path . '/' . $oneSection);
 				foreach($parags as $p => $parag){
 
-					if( (int)$parag == $this->param['paragraph'] ){
-						$pathImg['path'] =$path . $section . '/' . $parag . '/' . $this->param['task'] . '.png';
+					if( (int)$parag == $paragraph ){
+						$pathImg['path'] =$path . $oneSection . '/' . $parag . '/' . $task . '.png';
 					}
 				}
 			}
 		}
-	}
-
-	if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
-		$_GET = null;
-		throw new CHttpException('404', 'такого задания в этом учебнике нету');
-	}
-
-	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
-	$pathImg['width'] = $imgSize[0];
-	$pathImg['height'] = $imgSize[1];
-	// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
-
-
-	if(Yii::app()->request->isAjaxRequest){
-			
-		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
-		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
 		
-		Yii::app()->end();
 
-    } else {
-    	$this->render('task', array('task'=>$pathImg));
-    }
+		if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
+			$_GET = null;
+			throw new CHttpException('404', 'такого задания в этом учебнике нету');
+		}
+
+		$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
+		$pathImg['width'] = $imgSize[0];
+		$pathImg['height'] = $imgSize[1];
+		// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
+
+
+		if(Yii::app()->request->isAjaxRequest){
+				
+			echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], 'ГДЗ - готові домашні завдання '
+				.$this->subjectModel->subject->title . ' '
+				.$this->param['clas']
+				.' клас '.$this->bookModel->author
+				.' рішення до завдяння '
+				. $section . '/' . $paragraph . '/' . $task,
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
+			
+			$this->endCache(); 
+
+			Yii::app()->end();
+
+	    }
+
+		$this->render('task', array('task'=>$pathImg));
+
+	    $this->endCache(); 
+
+	}
 
 }
 
@@ -521,7 +545,7 @@ public function actionError(){
 private function loadClas($clas, $category = 'gdz'){
 
 	$model = ucfirst($category) . 'Clas';
-	$clasModel = Clas::model()->find('slug=:clas',array(':clas'=>(int)$clas));
+	$clasModel = Clas::model()->cache(86400)->find('slug=:clas',array(':clas'=>(int)$clas));
 	if( ! $clasModel ){
 		throw new CHttpException('404', 'not clas');
 	}
@@ -542,7 +566,7 @@ private function loadClas($clas, $category = 'gdz'){
  */
 private function loadSubject($subject){
 
-	$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
+	$subjectModel = Subject::model()->cache(86400)->findByAttributes(array('slug'=>$subject));
 	// модель предмета
 	if( ! $subjectModel){
 		throw new CHttpException('404', 'нет такого предмета');
@@ -576,7 +600,7 @@ private function loadBook($book){
 	    ':subjectId'=>$this->subjectModel->id,
 	    ':slug'=>$book
 	);
-	$gdzBookModel = GdzBook::model()->public()->find($criteria);
+	$gdzBookModel = GdzBook::model()->cache(86400)->public()->find($criteria);
 
 	// проверка на наличие учебника
 	if( ! $gdzBookModel ){

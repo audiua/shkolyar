@@ -34,7 +34,7 @@ $this->widget('zii.widgets.CListView', array(
         $subject,
         $clas,
     ),
-    // 'template'=>"{items}\n{pager}",
+    'template'=>"{items}\n{pager}",
     'ajaxUpdate'=>false,
 ));
 ?>
