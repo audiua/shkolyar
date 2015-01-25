@@ -65,12 +65,12 @@ $('.search-form form').submit(function(){
 		),
 		'create_time'=>array(
 			'name'=>'create_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->create_time)',
+			'value'=>'$data->create_time',
 			'htmlOptions'=>array('width'=>'150px')
 		),
 		'update_time'=>array(
 			'name'=>'update_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->update_time)',
+			'value'=>'$data->update_time',
 			'htmlOptions'=>array('width'=>'150px')
 		),
 		'textbook_clas_id'=>array(
