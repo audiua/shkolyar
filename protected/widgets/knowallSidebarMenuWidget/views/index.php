@@ -21,6 +21,14 @@
 			</li>
 		<?php endif; ?>
 
+		<li>
+			<?php echo CHtml::link( 'Художня література', array('/library'));  ?>
+		</li>
+
+		<li>
+			<?php echo CHtml::link( 'Твори', array('/writing'));  ?>
+		</li>
+
 	</ul>
 
 	<div class="clear"></div>

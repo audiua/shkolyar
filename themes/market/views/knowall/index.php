@@ -18,6 +18,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
+
+<div class="info">Виберіть статтю</div>
 <?php $this->widget('DataArticleWidget', array('model'=>$model, 'params'=>array('linkCategory'=>true))); ?>
 <div class="clear"></div>
 <div class="separator"></div>
