@@ -21,8 +21,8 @@ class LastLibraryWidget extends CWidget{
 
 	private function lastLibraryArticles(){
 		$criteria = new CDbCriteria;
-		// $criteria->condition = 't.public=1';
-		// $criteria->addCondition = 't.public_time > '.time();
+		$criteria->condition = 't.public=1';
+		$criteria->addCondition = 't.public_time > '.time();
 		$criteria->order = 'create_time DESC';
 		$criteria->limit = 4;
 
