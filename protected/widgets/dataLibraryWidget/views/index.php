@@ -29,6 +29,7 @@ $this->widget('zii.widgets.CListView', array(
         'library_author_id',
     ),
     'ajaxUpdate'=>false,
+    'template'=>"{items}\n{pager}",
 ));
 ?>
 </div>
