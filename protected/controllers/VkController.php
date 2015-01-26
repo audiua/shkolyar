@@ -269,18 +269,18 @@ class VkController extends Controller{
 		$criteria->addCondition('public_time > '.$lastTime->writing_last_public_time);
 		$criteria->addCondition('public_time < '.time());
 
-		$writing = Writing::model()->public()->find($criteria);
+		$writing = Knowall::model()->public()->find($criteria);
 		if($writing){
 			$lastTime->writing_last_public_time = strtotime( $writing->public_time );
 			$lastTime->update();
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'writing', 'owner_id'=>$writing->id));
+			$public = VkPosting::model()->findbyAttributes(array('owner'=>'knowall', 'owner_id'=>$writing->id));
 			if($public){
 				$public->update();
 				$this->_p = true;
 			} else {
 				$public = new VkPosting;
-				$public->owner = 'writing';
+				$public->owner = 'knowall';
 				$public->owner_id = $writing->id;
 				$public->save();
 			}
