@@ -18,17 +18,17 @@
         <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
         <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
         
-        <?php Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
+        <?php Yii::app()->getClientScript()->registerCoreScript('jquery', CClientScript::POS_END); ?>
 
         <?php 
 
             $path = Yii::app()->theme->basePath;
             $mainAssets = Yii::app()->AssetManager->publish($path);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js');
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js');
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js');
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
             Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
 
