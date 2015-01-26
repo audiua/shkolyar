@@ -48,9 +48,9 @@ class VkController extends Controller{
 				case 'writing': 
 
 				if($this->_p){
-					$str = $this->normalDate(strtotime($model->public_time)).' обновлено шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+					$str = $this->normalDate(strtotime($model->public_time)).' обновлено шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				} else {
-					$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+					$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				}
 
 				break;
@@ -58,9 +58,9 @@ class VkController extends Controller{
 				case 'library': 
 
 					if($this->_p){
-						$str = $this->normalDate(strtotime($model->public_time)).' обновлено твір художньої літератури '.$model->library_author->author .' ' . $model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' обновлено твір художньої літератури '.$model->library_author->author . ' ' . $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					} else {
-						$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий твір художньої літератури '.$model->library_author->author .' ' . $model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий твір художньої літератури '.$model->library_author->author .' ' . $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					}
 
 				break;
@@ -78,9 +78,9 @@ class VkController extends Controller{
 				case 'knowall': 
 
 					if($this->_p){
-						$str = $this->normalDate(strtotime($model->public_time)).' обновленно статтю у розділі Всезнайка '.$model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' обновленно статтю у розділі Всезнайка '.$model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					} else {
-						$str = $this->normalDate(strtotime($model->public_time)).' добавлено нову цікаву статтю у розділ Всезнайка '.$model->title . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' добавлено нову цікаву статтю у розділ Всезнайка '.$model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					}
 
 				break;
