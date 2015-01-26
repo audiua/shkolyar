@@ -1317,6 +1317,14 @@
   .full-width {
     width: 100%;
   }
+  .vk-like-widget {
+    float: right;
+    width: 250px;
+  }
+  .fb-like-widget {
+    float: left;
+    width: 250px;
+  }
   .main-menu {
     margin-bottom: 15px;
     background-color: #4169E1;

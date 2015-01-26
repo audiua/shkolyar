@@ -29,14 +29,36 @@
 
 <!-- Small modal -->
 <div class="modal fade" id="fb-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
     	<div class="modal-header">
-	        <h5 class="modal-title" id="myModalLabel">Жми «Нравится» и получай все необходимое для учебы в Фейсбуке:</h5>
+    		<h5 class="modal-title" id="myModalLabel">Нажимай «Нравится» и отримуй усе необхідне для навчання у школі в соціальних мережах <span class="shkolyar blue">Facebook</span> і <span class="shkolyar blue">Vkontakte</span>:</h5>
       	</div>
-      	<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=290&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:290px;" allowTransparency="true"></iframe>
+
+      	<div class="fb-like-widget">
+      		<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=290&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:290px;" allowTransparency="true"></iframe>
+      	</div>
+    	
+    	<div class="vk-like-widget">
+	    	<script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
+
+	    	<script type="text/javascript">
+			  VK.init({
+			    apiId: 81422422,
+			    onlyWidgets: true
+			  });
+			</script>
+
+			<div id="vk_like"></div>
+			<script type="text/javascript">
+			 VK.Widgets.Like('vk_like');
+			</script>
+    	</div>
+
+		<div class="clear"></div>
+
     	<div class="modal-footer">
-    		<button type="button" class="btn btn-default" data-dismiss="modal">Мне уже нравится <span>SHKOLYAR.INFO</span></button>
+    		<button type="button" class="btn btn-default" data-dismiss="modal">Мені вже подобається <span>SHKOLYAR.INFO</span></button>
       </div>
     </div>
   </div>
