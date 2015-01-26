@@ -1320,11 +1320,11 @@
   .vk-like-widget {
     float: right;
     width: 250px;
+    margin-top: 30px;
   }
   .fb-like-widget {
     float: left;
     width: 250px;
-    margin-top: 30px;
   }
   .main-menu {
     margin-bottom: 15px;
