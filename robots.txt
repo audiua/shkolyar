@@ -1,5 +1,7 @@
 User-agent:*
+Disallow: /index.php
+Disallow: /assets/
 Disallow: /protected/
 Disallow: /themes/
-Sitemap:http://shkolyar.info/sitemap.xml
-Host:shkolyar.info
+Host: shkolyar.info
+Sitemap: http://shkolyar.info/sitemap.xml
