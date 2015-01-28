@@ -94,11 +94,11 @@ $(document).ready(function() {
                 foreach ($model as $i => $event) {
                     $clas = get_class($event);
                     
-                    // if(strtotime( $event->public_time) < time() ){
-                    //     $color = '#aaa';
-                    // } else {
-                    //     $color = $colors[$clas];
-                    // }
+                    if(strtotime( $event->public_time) < time() ){
+                        $color_bg = '#fafafa';
+                    } else {
+                        $color_bg = '#fff';
+                    }
                         
                     $color = $colors[$clas];
                 
@@ -110,6 +110,7 @@ $(document).ready(function() {
                     // echo "start: '" . event.start.format("YYYY-MM-DD") . "',";
                     echo "allDay: false,";
                     echo "color: '". $color."',";
+                    echo "backgroundColor : '". $color_bg."',";
                     echo "url: '" . Yii::app()->createUrl("inside/".$clas."/update", array("id"=>$event->id)) . "'";
                     // echo "urlCalendar: '" . Yii::app()->createUrl("inside/".$clas."/updateFromCalendar", array("id"=>$event->id)) . "'";
                     echo "},";
