@@ -128,7 +128,7 @@ $(document).ready(function() {
             } else {
                 var id = event.id.replace(/[a-zA-Z_]+/igm, "");
                 $.ajax({
-                    url: ("http://shkolyar.loc/inside/"+event.className+"/updateFromCalendar/"+id),
+                    url: ("http://shkolyar.info/inside/"+event.className+"/updateFromCalendar/"+id),
                     data: ({
                         public_time: event.start.format("YYYY-M-D HH:mm")
                     }),
