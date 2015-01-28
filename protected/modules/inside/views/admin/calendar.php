@@ -123,9 +123,9 @@ $(document).ready(function() {
                 revertFunc();
 
             } else {
-                
+
                 $.ajax({
-                    url: ("http://shkolyar.loc/inside/"+event.className+"/updateFromCalendar/"+event.id),
+                    url: ("http://shkolyar.info/inside/"+event.className+"/updateFromCalendar/"+event.id),
                     data: ({
                         public_time: event.start.format("YYYY-M-D HH:mm")
                     }),
