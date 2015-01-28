@@ -93,11 +93,14 @@ $(document).ready(function() {
 
                 foreach ($model as $i => $event) {
                     $clas = get_class($event);
-                    if(strtotime( $event->public_time) < time() ){
-                        $color = '#aaa';
-                    } else {
-                        $color = $colors[$clas];
-                    }
+                    
+                    // if(strtotime( $event->public_time) < time() ){
+                    //     $color = '#aaa';
+                    // } else {
+                    //     $color = $colors[$clas];
+                    // }
+                        
+                    $color = $colors[$clas];
                 
                     echo "{";
                     echo "id:'" . $clas . '_'.$event->id . "',";
