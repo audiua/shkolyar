@@ -110,7 +110,7 @@ $(document).ready(function() {
                     // echo "start: '" . event.start.format("YYYY-MM-DD") . "',";
                     echo "allDay: false,";
                     echo "color: '". $color."',";
-                    echo "backgroundColor : '". $color_bg."',";
+                    echo "borderColor  : '". $color_bg."',";
                     echo "url: '" . Yii::app()->createUrl("inside/".$clas."/update", array("id"=>$event->id)) . "'";
                     // echo "urlCalendar: '" . Yii::app()->createUrl("inside/".$clas."/updateFromCalendar", array("id"=>$event->id)) . "'";
                     echo "},";
