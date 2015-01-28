@@ -63,6 +63,7 @@
 			
 			<li class="<?php echo $this->id == 'writing' ? 'active' : '' ; ?>"><?php echo CHtml::link('Твори', '/inside/writing'); ?></li>
 			<li class="<?php echo $this->id == 'description' ? 'active' : '' ; ?>"><?php echo CHtml::link('Описи', '/inside/description'); ?></li>
+			<li class="<?php echo $this->action->id == 'calendar' ? 'active' : '' ; ?>"><?php echo CHtml::link('Розклад публікацій', '/inside/admin/calendar'); ?></li>
 	      
 	      </ul>
 	     

@@ -22,7 +22,7 @@ class GdzBookController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -80,10 +80,8 @@ class GdzBookController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// print_r($_POST);
-		// die;
-
 		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
+
 		if (!empty($data)) {
 			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
 			$model->attributes = $data;
@@ -97,6 +95,20 @@ class GdzBookController extends InsideController
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+
+	public function actionUpdateFromCalendar($id){
+		// print_r($_POST);
+		// die;
+
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		}
+		
 	}
 
 	/**

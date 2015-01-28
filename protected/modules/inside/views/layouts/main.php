@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/inside.css">
+
 
         <?php Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
 
@@ -13,7 +13,7 @@
 
             $path = Yii::app()->theme->basePath;
             $mainAssets = Yii::app()->AssetManager->publish($path);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js');
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js');
@@ -26,6 +26,9 @@
          ?>
 
 
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/inside.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.print.css" media='print'>
         
         <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
@@ -73,7 +76,7 @@
 
         </div>
 
-    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap-switch.min.js"></script>
-    
+    <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/lib/moment.min.js"></script>
+    <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.min.js"></script>
     </body>
 </html>

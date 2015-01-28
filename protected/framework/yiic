@@ -1,7 +1,5 @@
 #!/usr/bin/env php
 <?php
-
-ini_set('register_argc_argv', 1);
 /**
  * Yii command line script for Unix/Linux.
  *

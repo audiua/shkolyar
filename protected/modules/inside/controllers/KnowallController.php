@@ -22,7 +22,7 @@ class KnowallController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -107,6 +107,17 @@ class KnowallController extends InsideController
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionUpdateFromCalendar($id){
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		} else {
+			echo json_encode(array('success'=>false));
+		}
 	}
 
 	/**
