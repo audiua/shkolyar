@@ -59,8 +59,6 @@ class WritingController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
-
 			if($model->save()){
 				Yii::app()->user->setFlash('WRITING_FLASH', 'Збережено');
 				$this->redirect(array('index'));
@@ -95,7 +93,6 @@ class WritingController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
 			$model->nausea = $data['nausea'];
 
 			if($model->save()){
@@ -110,8 +107,6 @@ class WritingController extends InsideController
 	}
 
 	public function actionUpdateFromCalendar($id){
-		// print_r($_POST);
-		// die;
 
 		$model=$this->loadModel($id);
 		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);

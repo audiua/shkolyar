@@ -168,6 +168,15 @@ class Writing extends CActiveRecord
 	// 	return Yii::app()->baseUrl . '/writing/' . $this->clas . '/' . $this->slug;
  //    }
 
+
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
+
     public function beforeSave(){
 
 		if( !empty($this->thumbnail) ){

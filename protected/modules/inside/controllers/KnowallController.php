@@ -60,8 +60,6 @@ class KnowallController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
-
 			if($model->save()){
 				Yii::app()->user->setFlash('Knowall_FLASH', 'Збережено');
 				$this->redirect(array('index'));
@@ -95,7 +93,6 @@ class KnowallController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
 			$model->nausea = $data['nausea'];
 
 			if($model->save()){
