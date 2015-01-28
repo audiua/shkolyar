@@ -100,7 +100,7 @@ $(document).ready(function() {
                     }
                 
                     echo "{";
-                    echo "id:'" . $event->id . "',";
+                    echo "id:'" . $clas . '_'.$event->id . "',";
                     echo "className:'" . $clas . "',";
                     echo "title: '" .$title[$clas] . ' #'. $event->id .   "',";
                     echo "start: '" . date('Y-m-d H:i',strtotime($event->public_time)) . "',";
@@ -123,9 +123,9 @@ $(document).ready(function() {
                 revertFunc();
 
             } else {
-
+                var id = event.id.replace(/[a-zA-Z_]+/igm, "");
                 $.ajax({
-                    url: ("http://shkolyar.info/inside/"+event.className+"/updateFromCalendar/"+event.id),
+                    url: ("http://shkolyar.info/inside/"+event.className+"/updateFromCalendar/"+id),
                     data: ({
                         public_time: event.start.format("YYYY-M-D HH:mm")
                     }),
