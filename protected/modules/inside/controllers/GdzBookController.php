@@ -99,8 +99,8 @@ class GdzBookController extends InsideController
 
 
 	public function actionUpdateFromCalendar($id){
-		// print_r($_POST);
-		// die;
+		print_r($_POST);
+		die;
 
 		$model=$this->loadModel($id);
 		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
