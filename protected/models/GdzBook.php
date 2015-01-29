@@ -47,6 +47,7 @@ class GdzBook extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, author, gdz_clas_id, gdz_subject_id', 'required'),
+			array('public_time', 'unique'),
 			array('title, edition, info, author, slug, year, properties, pagination', 'length', 'max'=>255),
 			array('gdz_clas_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),

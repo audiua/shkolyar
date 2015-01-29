@@ -45,6 +45,7 @@ class Knowall extends CActiveRecord
 			array('id, create_time, update_time, public_time, knowall_category_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('slug', 'unique', 'on' => 'insert'),
+			array('public_time', 'unique'),
 			array('title', 'length', 'max'=>255),
 			array('public, deleteImage', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),

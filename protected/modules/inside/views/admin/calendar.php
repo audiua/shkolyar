@@ -28,16 +28,6 @@ $(document).ready(function() {
         });
 
     }
-
-
-
-
-
-
-
-
-
-
  
     $('#calendar').fullCalendar({
 
@@ -58,20 +48,6 @@ $(document).ready(function() {
             day: "День"
         },
         editable: true,
-
-
-        // eventDragStart: function( event, jsEvent, ui, view ) { 
-        //     var now = moment();
-        //     if( moment( event.start ).isBefore(now) ){
-        //         revertFunc();
-        //     }
-            
-
-
-            
-        // },
-
-
 
         events: [
      
@@ -94,11 +70,11 @@ $(document).ready(function() {
                 foreach ($model as $i => $event) {
                     $clas = get_class($event);
                     
-                    if(strtotime( $event->public_time) < time() ){
-                        $color_bg = '#fafafa';
-                    } else {
-                        $color_bg = '#fff';
-                    }
+                    // if(strtotime( $event->public_time) < time() ){
+                    //     $color_bg = '#fafafa';
+                    // } else {
+                    //     $color_bg = '#fff';
+                    // }
                         
                     $color = $colors[$clas];
                 
@@ -107,12 +83,10 @@ $(document).ready(function() {
                     echo "className:'" . $clas . "',";
                     echo "title: '" .$title[$clas] . ' #'. $event->id .   "',";
                     echo "start: '" . date('Y-m-d H:i',strtotime($event->public_time)) . "',";
-                    // echo "start: '" . event.start.format("YYYY-MM-DD") . "',";
                     echo "allDay: false,";
                     echo "color: '". $color."',";
-                    echo "borderColor  : '". $color_bg."',";
+                    // echo "borderColor  : '". $color_bg."',";
                     echo "url: '" . Yii::app()->createUrl("inside/".$clas."/update", array("id"=>$event->id)) . "'";
-                    // echo "urlCalendar: '" . Yii::app()->createUrl("inside/".$clas."/updateFromCalendar", array("id"=>$event->id)) . "'";
                     echo "},";
                 }
             ?>

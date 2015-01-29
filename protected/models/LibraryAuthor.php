@@ -38,6 +38,7 @@ class LibraryAuthor extends CActiveRecord
 		return array(
 			array('author, description, slug', 'required'),
 			array('author, slug', 'length', 'max'=>255),
+			array('public_time', 'unique'),
 			array('public, description', 'safe'),
 			array('create_time,length, update_time,public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),

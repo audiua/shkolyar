@@ -16,8 +16,6 @@ class VkController extends Controller{
 
 		$method = 'get'.ucfirst($mode);
 		$model = $this->$method();
-		// echo $mode;
-		// print_r($model);
 
 		if($model){
 
@@ -124,11 +122,14 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->gdz_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 		$gdz = GdzBook::model()->find($criteria);
 		if($gdz){
 			$lastTime->gdz_last_public_time = strtotime($gdz->public_time);
-			$lastTime->update();
+			if( ! $lastTime->update()){
+				die($lastTime->gerErrors);
+			}
 
 			$public = VkPosting::model()->findbyAttributes(array('owner'=>'gdz', 'owner_id'=>$gdz->id));
 			if($public){
@@ -153,7 +154,8 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->textbook_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 		$textbook = TextbookBook::model()->find($criteria);
 		if($textbook){
 			$lastTime->textbook_last_public_time = strtotime($textbook->public_time);
@@ -180,7 +182,8 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->writing_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 
 		$writing = Writing::model()->public()->find($criteria);
 		if($writing){
@@ -209,7 +212,8 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->library_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 
 		$library = LibraryBook::model()->public()->find($criteria);
 		if($library){
@@ -238,7 +242,8 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->author_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 
 		$author = LibraryAuthor::model()->find($criteria);
 		if($author){
@@ -267,7 +272,8 @@ class VkController extends Controller{
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'public=1';
 		$criteria->addCondition('public_time > '.$lastTime->writing_last_public_time);
-		$criteria->addCondition('public_time < '.time());
+		$criteria->addCondition('public_time < '.time() - 14400);
+		$criteria->order = 'public_time ASC';
 
 		$writing = Knowall::model()->public()->find($criteria);
 		if($writing){

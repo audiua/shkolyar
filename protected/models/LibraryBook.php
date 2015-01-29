@@ -36,6 +36,7 @@ class LibraryBook extends CActiveRecord
 		return array(
 			array('title, library_author_id, slug', 'required'),
 			array('title', 'length', 'max'=>255),
+			array('public_time', 'unique'),
 			array('library_author_id, length, create_time, update_time,public_time', 'length', 'max'=>10),
 			array('img_ext,public, description', 'safe'),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),

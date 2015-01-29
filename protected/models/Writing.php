@@ -46,6 +46,7 @@ class Writing extends CActiveRecord
 			array('clas_id, subject_id, text, title, slug', 'required'),
 			array('length', 'numerical', 'integerOnly'=>true),
 			array('nausea', 'numerical'),
+			array('public_time', 'unique'),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('clas_id, subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
 			array('title, slug', 'length', 'max'=>255),
