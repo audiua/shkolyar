@@ -63,8 +63,19 @@
 			
 			<li class="<?php echo $this->id == 'writing' ? 'active' : '' ; ?>"><?php echo CHtml::link('Твори', '/inside/writing'); ?></li>
 			<li class="<?php echo $this->id == 'description' ? 'active' : '' ; ?>"><?php echo CHtml::link('Описи', '/inside/description'); ?></li>
-			<li class="<?php echo $this->action->id == 'calendar' ? 'active' : '' ; ?>"><?php echo CHtml::link('Розклад публікацій', '/inside/admin/calendar'); ?></li>
+			<li class="<?php echo $this->action->id == 'calendar' ? 'active' : '' ; ?>"><?php echo CHtml::link('Розклад', '/inside/admin/calendar'); ?></li>
 	      
+			<li class="dropdown <?php echo stripos($this->id, 'keyword') !== false ? 'active' : '' ; ?>">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Keywords <span class="caret"></span></a>
+			  <ul class="dropdown-menu" role="menu">
+			    <li> <?php echo CHtml::link('Keywords', '/inside/keyword'); ?></li>
+			    <li class="divider"></li>
+			    <li> <?php echo CHtml::link('Keyword position', '/inside/keyword/position'); ?></li>
+			  </ul>
+			</li>
+
+
+
 	      </ul>
 	     
 	      <ul class="nav navbar-nav navbar-right">

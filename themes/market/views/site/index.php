@@ -4,23 +4,24 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<div class="info">Всезнайка</div>
+<!-- <div class="info">Всезнайка</div> -->
+<h3 class="info">Всезнайка</h3>
 <?php $this->widget('LastKnowallWidget'); ?>
 <div class="separator"></div>
 
-<div class="info">Підручники</div>
+<h3 class="info">Підручники</h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
 <div class="separator"></div>
 
-<div class="info">ГДЗ</div>
+<h3 class="info">ГДЗ</h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 <div class="separator"></div>
 
-<div class="info">Твори</div>
+<h3 class="info">Твори</h3>
 <?php $this->widget('LastWritingWidget'); ?>
 <div class="separator"></div>
 
-<div class="info">Художня література</div>
+<h3 class="info">Художня література</h3>
 <?php $this->widget('LastLibraryWidget'); ?>
 <div class="separator"></div>
 

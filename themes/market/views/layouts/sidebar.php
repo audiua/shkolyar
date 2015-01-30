@@ -5,7 +5,7 @@
 </div> -->
 
 <div class="sidebar-block">
-	<h3>Соц. мережі</h3>
+	<div class="info">Соц. мережі</div>
 	<noindex>
 		<div role="tabpanel">
 
@@ -72,7 +72,7 @@
 
 <div class="sidebar-block">
 	<div class="menu">
-		<h3>Навігація</h3>
+		<div class="info">Навігація</div>
 
 		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
 			<?php $this->widget('BookSidebarMenuWidget'); ?>

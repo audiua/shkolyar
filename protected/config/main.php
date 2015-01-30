@@ -124,6 +124,8 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 
+
+				'position/<token:[a-z0-9-]+>'=>'position/index',
 				'vk/<hash:[a-z0-9-]+>/<mode:[a-z]+>'=>'vk/index',
 				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
