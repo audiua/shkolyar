@@ -96,7 +96,7 @@ public function actionClas($clas){
 
 		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори';
 		$this->description = 'твори для '.$this->clasModel->slug . ' класу ';
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing'.$clas);
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas);
 		$this->h1 = 'Твори '. $clas . ' клас';
 		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$clas.' клас';
 		// кешируем сдесь всю страницу
@@ -147,7 +147,7 @@ public function actionSubject($clas, $subject){
 
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing'.$clas.'/'.$subject);
+		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas.'/'.$subject);
 		$this->pageTitle = 'SHKOLYAR.INFO - Твори '.$clas.' клас ' . $this->subjectModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('subject', array('model'=>$model, 'description'=>$description));
