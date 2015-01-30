@@ -1,7 +1,20 @@
-User-agent:*
-Disallow: /index.php
-Disallow: /assets/
-Disallow: /protected/
-Disallow: /themes/
+User-agent: *
+Disallow: /assets
+Disallow: /protected
+Disallow: /themes
 Host: shkolyar.info
 Sitemap: http://shkolyar.info/sitemap.xml
+
+User-agent: Yandex
+Disallow: /assets
+Disallow: /protected
+Disallow: /themes
+Host: shkolyar.info
+
+User-agent: Googlebot-Image
+Allow: /img
+Allow: /images
+
+User-agent: YandexImages
+Allow: /img
+Allow: /images
