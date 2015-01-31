@@ -8,7 +8,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <!-- <img src="/images/horisont.png" alt=""> -->
 
-<h1>Готові домашні завдання (ГДЗ)</h1>
+<h1>ГДЗ (Готові домашні завдання)</h1>
 <div class="description">
 	
 	<p>
