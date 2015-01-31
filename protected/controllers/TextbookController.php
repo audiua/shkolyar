@@ -245,10 +245,12 @@ public function actionCurrentSubject($subject){
 public function actionBook( $clas, $subject, $book ){
 
 
-
 	// TODO - закешировать на сутка
 	if($this->beginCache('book_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
 
+		$path = Yii::app()->theme->basePath;
+	    $mainAssets = Yii::app()->AssetManager->publish($path);
+		Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js', CClientScript::POS_END);
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);

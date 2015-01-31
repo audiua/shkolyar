@@ -109,8 +109,12 @@ public function actionCategory($category){
 
 public function actionView($category, $article){
 
+
 	if($this->beginCache('library_category_article_page_', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
 
+		$path = Yii::app()->theme->basePath;
+	    $mainAssets = Yii::app()->AssetManager->publish($path);
+		Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js', CClientScript::POS_END);
 
 		$catModel = $this->loadCategory($category);
 
