@@ -4,25 +4,35 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+
+
+        <?php Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
+
+        <?php 
+
+            $path = Yii::app()->theme->basePath;
+            $mainAssets = Yii::app()->AssetManager->publish($path);
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js');
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap-switch.min.js');
+            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
+            // Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap-switch.min.css');
+            // Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
+
+         ?>
+
+
         <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/inside.css">
-
-
-        <?php
-
-        $mainAssets = Yii::app()->AssetManager->publish(
-            Yii::app()->getModule('inside')->basePath
-        );
-      
-        // Yii::app()->clientScript->registerCssFile($mainAssets.'/css/inside.css');        
-        Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/jquery.cookie.js');
-        // Yii::app()->clientScript->registerScriptFile($mainAssets.'/js/inside.js');
-
-        ?>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/inside.js"></script>
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.print.css" media='print'>
+        
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        <!-- <script src="<?php echo Yii::app()->baseUrl; ?>/js/inside.js"></script> -->
         
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>
@@ -66,6 +76,7 @@
 
         </div>
 
-
+    <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/lib/moment.min.js"></script>
+    <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/css/fullcalendar/fullcalendar.min.js"></script>
     </body>
 </html>

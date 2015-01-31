@@ -1,7 +1,7 @@
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
-    'homeLink'=>CHtml::link('Головна', Yii::app()->homeUrl),
+    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down"></span></span></noindex>',
 ));
 ?>
@@ -42,32 +42,36 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	<div class="task-title info">Розвязання: 
 	</div>
 	<section id="inverted-contain">
-	  <div class="buttons">
-	    <button class="zoom-out"><span class="glyphicon glyphicon-zoom-out "></span></button>
-	    <input type="range" class="zoom-range">
-	    <button class="zoom-in"><span class="glyphicon glyphicon-zoom-in "></span></button>
-	    <button class="reset"><span class="glyphicon glyphicon-remove"></span></button>
-	  </div>
+		<div class="loading"></div>
+        <div class="darking"></div>
+		  <div class="buttons">
+		    <button class="zoom-out"><span class="glyphicon glyphicon-zoom-out "></span></button>
+		    <input type="range" class="zoom-range">
+		    <button class="zoom-in"><span class="glyphicon glyphicon-zoom-in "></span></button>
+		    <button class="reset"><span class="glyphicon glyphicon-remove"></span></button>
+		  </div>
 	  
-	  <div class="panzoom-parent"></div>
-	  <style>
-	    #inverted-contain .panzoom { width: 100%; height: 100%;  }
-	  </style>
-	 <!--  <script>
-	    (function() {
-	      var $section = $('#inverted-contain');
-	      $section.find('.panzoom').panzoom({
-	        $zoomIn: $section.find(".zoom-in"),
-	        $zoomOut: $section.find(".zoom-out"),
-	        $zoomRange: $section.find(".zoom-range"),
-	        $reset: $section.find(".reset"),
-	        startTransform: 'scale(0.9)',
-            increment: 0.1,
-            minScale: 1,
-            contain: 'invert'
-	      }).panzoom('zoom');
-	    })();
-	  </script> -->
+		  <div class="panzoom-parent"></div>
+		  <span class="b-left"><span class="glyphicon glyphicon-arrow-left big" aria-hidden="true"></span></span>	
+		  <span class="b-right"><span class="glyphicon glyphicon-arrow-right big" aria-hidden="true"></span></span>
+		  <style>
+		    #inverted-contain .panzoom { width: 100%; height: 100%;  }
+		  </style>
+		 <!--  <script>
+		    (function() {
+		      var $section = $('#inverted-contain');
+		      $section.find('.panzoom').panzoom({
+		        $zoomIn: $section.find(".zoom-in"),
+		        $zoomOut: $section.find(".zoom-out"),
+		        $zoomRange: $section.find(".zoom-range"),
+		        $reset: $section.find(".reset"),
+		        startTransform: 'scale(0.9)',
+	            increment: 0.1,
+	            minScale: 1,
+	            contain: 'invert'
+		      }).panzoom('zoom');
+		    })();
+		  </script> -->
 	 
 	</section>
 </div>

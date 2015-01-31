@@ -4,16 +4,17 @@ class SiteController extends Controller{
 
 public $layout='';
 public $canonical;
+const CACHE_TIME = 7200;
 
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='Шкільний інформаційний портал, гдз, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
+public $keywords='Шкільний інформаційний портал, гдз, гдз онлайн, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
 
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Данний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці, щоб зберигти Ваш час та допомогти Вам у навчанні. Команда порталу витратила чимало часу та зусиль, щоб досягнути поставленої мети.';
+public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
 
 public $param;
 
@@ -27,7 +28,7 @@ public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
 		// убираем дубли ссылок
-		// array('DuplicateFilter')
+		array('DuplicateFilter')
 	);
 }
 
@@ -37,7 +38,7 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 		$this->pageTitle = 'SHKOLYAR.INFO - Шкільний інформаційний портал.';
@@ -58,10 +59,12 @@ public function actionError()
 {
 	if($error=Yii::app()->errorHandler->error)
 	{
-		if(Yii::app()->request->isAjaxRequest)
+		if(Yii::app()->request->isAjaxRequest){
 			echo $error['message'];
-		else
-			$this->render('error', $error);
+		} else {
+			$this->pageTitle=Yii::app()->name . ' - Error '.$error['code'];
+			$this->render('error'.$error['code'], $error);
+		}
 	}
 }
 
@@ -137,6 +140,26 @@ public function actionSearch(){
  * Displays the login page
  */
 public function actionLogin(){
+
+
+	// авторизация только после получения куки на 1 мин
+	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	if( ! $model){
+		throw new CHttpException('404');
+	}
+
+	$token = Yii::app()->request->cookies['cookie_token'];
+	if( ! $token ){
+		throw new CHttpException('404');
+	}
+
+	$value = unserialize($model->value);
+	if( $value['expire'] < time() || $token->value !== $value['token'] ){
+		throw new CHttpException('404');
+	}
+
+
+	$this->layout = '//layouts/login';
 	$model=new LoginForm;
 
 
@@ -155,7 +178,7 @@ public function actionLogin(){
 		}
 	}
 	// display the login form
-	$this->renderPartial('login',array('model'=>$model));
+	$this->render('login',array('model'=>$model));
 }
 
 /**
@@ -167,7 +190,39 @@ public function actionLogout(){
 }
 
 public function actionPage($action){
-	$this->render($action);
+
+	$description = $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'page', 'page_mode'=>$action)), true);
+	if($description){
+		$this->render('page', array('title'=>Yii::t('app', $action), 'description'=>$description));
+	} else {
+		throw new CHttpException('404');
+	}
+
+}
+
+public function actionJewel(){
+	$token = sha1( uniqid() );
+
+	// echo $token;
+	$cookie = new CHttpCookie('cookie_token', $token );
+
+	// print_r($cookie);
+	$cookie->expire = time() + 60; // 1 min
+	Yii::app()->request->cookies['cookie_token'] = $cookie;
+
+	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	if($model){
+		$model->value = serialize(
+			array(
+				'expire'=>$cookie->expire,
+				'token'=>$token
+			)
+		);
+
+		if($model->update()){
+			$this->redirect(Yii::app()->user->returnUrl);
+		}
+	}
 }
 
 }

@@ -4,16 +4,17 @@ class KnowallController extends Controller{
 
 public $layout='';
 public $canonical;
-
+public $h1;
+const CACHE_TIME = 14400;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='SHKOLYAR.INFO - Шкільний інформаційний портал.';
+public $keywords='Всезнайка';
 
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - информацийний портал, для середніх загальноосвітніх шкіл України.';
+public $description='SHKOLYAR.INFO - Всезнайка';
 
 public $param;
 
@@ -28,7 +29,7 @@ public function filters() {
 	return array(
 		// array( 'COutputCache', 'duration'=> 60, ),
 		// убираем дубли ссылок
-		// array('DuplicateFilter')
+		array('DuplicateFilter')
 	);
 }
 
@@ -37,16 +38,29 @@ public function filters() {
  * when an action is not explicitly requested by users.
  */
 public function actionIndex(){
+
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_knowall_page', array('duration'=>86400)) ){
+	if($this->beginCache('main_knowall_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка'
 		);
 
 		$criteria = new CDbCriteria;
-		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>2)));
+		$criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
+
+
+		$model = new CActiveDataProvider(
+			'Knowall',
+			array(
+				'criteria'=>$criteria,
+				'pagination'=>array(
+					'pageSize'=>12,
+					'pageVar'=>'page'
+				)
+			)
+		);
 
 		$category = KnowallCategory::model()->findAll();
 
@@ -54,6 +68,8 @@ public function actionIndex(){
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка';
 		// кешируем сдесь всю страницу
 		$this->render('index', array('model'=>$model, 'category'=>$category));
+		
+
 		$this->endCache(); 
 	}
 
@@ -64,8 +80,9 @@ public function actionIndex(){
  * when an action is not explicitly requested by users.
  */
 public function actionCategory($category){
+
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_knowall_page', array('duration'=>86400, 'varyByParam'=>array('category'))) ){
+	if($this->beginCache('category_knowall_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка' => $this->createUrl('/knowall/'),
@@ -83,12 +100,16 @@ public function actionCategory($category){
 
 
 		$criteria = new CDbCriteria;
-		$criteria->condition='knowall_category_id='.$categoryModel->id;
-		// $criteria->condition= 't.public=1';
-		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
+		$criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
+		$criteria->addCondition('knowall_category_id='.$categoryModel->id);
+		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/'.$category);
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка - '.ucfirst(Yii::t('app', $category));
+		$this->keywords = 'Всезнайка, '.$categoryModel->title;
+		$this->description = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title;
+
+		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall/'.$category);
+		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
@@ -100,13 +121,14 @@ public function actionCategory($category){
 
 public function actionView($category, $article){
 
-	// if($this->beginCache('article_knowall_page_'.$category.$article, array('duration'=>86400, 'varyByParam'=>array('category', 'article'))) ){
-
+	if($this->beginCache('article_knowall_page_', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
 
 		$catModel = $this->loadCategory($category);
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.slug="'.$article.'"';
+		$criteria->addCondition('t.public_time<'.time());
+		$criteria->addCondition('t.public=1');
 		$criteria->addCondition('t.knowall_category_id='.$catModel->id);
 		$article = Knowall::model()->find($criteria);
 
@@ -117,27 +139,12 @@ public function actionView($category, $article){
 
 		);
 
+		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title . ' ' . $article->title;
 
 		$this->render('view', array('model'=>$article));
 
 
-	// 	$this->endCache(); 
-	// }
-}
-	
-
-	
-/**
- * This is the action to handle external exceptions.
- */
-public function actionError()
-{
-	if($error=Yii::app()->errorHandler->error)
-	{
-		if(Yii::app()->request->isAjaxRequest)
-			echo $error['message'];
-		else
-			$this->render('error', $error);
+		$this->endCache(); 
 	}
 }
 
@@ -154,9 +161,5 @@ public function loadCategory($category){
 	return $model;
 
 }
-
-
-
-
 
 }

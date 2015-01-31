@@ -22,8 +22,12 @@ class KnowallController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -56,10 +60,8 @@ class KnowallController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
-
 			if($model->save()){
-				Yii::app()->user->setFlash('KNOWALL_FLASH', 'Збережено');
+				Yii::app()->user->setFlash('Knowall_FLASH', 'Збережено');
 				$this->redirect(array('index'));
 			}
 		}
@@ -91,7 +93,6 @@ class KnowallController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
 			$model->nausea = $data['nausea'];
 
 			if($model->save()){
@@ -103,6 +104,17 @@ class KnowallController extends InsideController
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionUpdateFromCalendar($id){
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		} else {
+			echo json_encode(array('success'=>false));
+		}
 	}
 
 	/**

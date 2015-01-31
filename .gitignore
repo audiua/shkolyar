@@ -1,5 +1,6 @@
 assets/*
 !assets/.gitignore
+images/*
 img/*
 !img/.gitignore
 protected/runtime/*

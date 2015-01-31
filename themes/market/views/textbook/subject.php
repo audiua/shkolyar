@@ -2,6 +2,7 @@
 
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
+    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
@@ -65,14 +66,15 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 </div>
 
-  <div class="info">Виберіть підручник</div> 
-  <div class="view-filters">
-	  <span class="view-filter glyphicon glyphicon-th-large gray active-filter" data-view='middle-book-block'></span> 
-	  <span class="view-filter glyphicon glyphicon-th gray " data-view='small-book-block'></span>  
-	  <span class="view-filter glyphicon glyphicon-th-list gray" data-view='list-book-block'></span> 
-  </div>
+<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->subject->title; ?></h1>
 
-<?php $this->widget('BookWidget', array('model'=>$this->subjectModel->textbook_book)); ?>
+<div class="description">
+  <?php echo $this->subjectModel->description; ?>
+</div>
+
+<div class="info">Виберіть підручник</div> 
+ 
+<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
 
 

@@ -18,6 +18,8 @@
  */
 class GdzSubject extends CActiveRecord
 {
+	private $_url;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -40,6 +42,17 @@ class GdzSubject extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, description, create_time, update_time, gdz_clas_id, subject_id', 'safe', 'on'=>'search'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 
@@ -116,14 +129,61 @@ class GdzSubject extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public static function getAll(){
+	public static function getAll($clas=null){
+		$result = array();
+		$criteria = new CDbCriteria;
+		if($clas){
+			$criteria->condition = 'gdz_clas_id='.$clas;
+		}
 
-		$all = self::model()->findAll();
+		$all = self::model()->findAll($criteria);
+
 		if($all){
 			foreach($all as $one){
 				$result[$one->id]=$one->subject->title;
 			}
 		}
+		return $result;
+	}
+
+	public function getUrl($clas=null){
+	   if ($this->_url === null){
+	   		$url = !empty($clas) ? $clas . '/'.$this->subject->slug : $this->subject->slug;
+	        $this->_url = Yii::app()->createUrl( '/gdz/' . $url );
+	        $this->_url .= '/';
+	   }
+	   return $this->_url;
+	}
+
+	// модели для карты сайта
+	public function forSitemap(){
+		$result = array();
+		$time = time();
+
+		$criteria = new CDbCriteria;
+		$criteria->group = 'subject_id'; 
+		$all = self::model()->findAll($criteria);
+		
+		foreach($all as $one){
+			$flag = false;
+			if($one->gdz_book){
+
+				foreach($one->gdz_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
 		return $result;
 	}
 }

@@ -50,26 +50,35 @@ $('.search-form form').submit(function(){
 		),
 		'owner',
 		'action',
+		'page_mode'=>array(
+			'name'=>'page_mode',
+			'value'=>'!empty($data->page_mode) ? $data->page_mode : "" ',
+			'header'=>'Вид сторінки',
+			'htmlOptions'=>array('width'=>'60px')
+		),
 		'clas_id'=>array(
 			'name'=>'clas_id',
-			'value'=>'$data->clas->title',
+			'value'=>'!empty($data->clas) ? $data->clas->slug : "" ',
 			'header'=>'Клас',
 			'htmlOptions'=>array('width'=>'30px')
 		),
+
+		'category_id'=>array(
+			'name'=>'category_id',
+			'value'=>'!empty($data->category_id) ? $data->category->title : "" ',
+			'header'=>'category',
+			'htmlOptions'=>array('width'=>'30px')
+		),
+
 		'subject_id'=>array(
 			'name'=>'subject_id',
-			'value'=>'$data->subject->title',
+			'value'=>'!empty($data->subject) ? $data->subject->slug : "" ',
 			'header'=>'Предмет',
 			'htmlOptions'=>array('width'=>'60px')
 		),
-		'create_time'=>array(
-			'name'=>'create_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->create_time)',
-			'htmlOptions'=>array('width'=>'150px')
-		),
 		'update_time'=>array(
 			'name'=>'update_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/mm/dd HH:mm\', $data->update_time)',
+			'value'=>'Yii::app()->dateFormatter->format("yyyy/MM/dd HH:mm", $data->update_time)',
 			'htmlOptions'=>array('width'=>'150px')
 		),
 		'description',

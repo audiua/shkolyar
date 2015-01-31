@@ -8,10 +8,13 @@ class TextbookController extends Controller{
 public $layout='';
 public $canonical;
 
+// 4 hour
+const CACHE_TIME = 14440;
+
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='Підручники для середніх загальноосвітніх шкіл України';
+public $keywords='Підручники, підручники онлайн, шкільні підручники';
 
 /**
  * @var string  мета тег описания страницы
@@ -53,28 +56,25 @@ public function filters() {
  */
 public function actionIndex(){
 
-	// print_r('textbook');
-	// die;
-
-
 	// TODO - закешировать на сутки
-	if($this->beginCache('main-textbook-page', array('duration'=>86400)) ){
+	if($this->beginCache('main-textbook-page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Підручники'
 		);
 
-		$this->allClasModel = TextbookClas::model()->findAll();
+		$this->allClasModel = TextbookClas::model()->cache(86400)->findAll();
 
-		// print_r($this->allClasModel);
-		// die;
+		$criteria = new CDbCriteria;
+		$criteria->condition= 't.public=1';
+		$criteria->addCondition('t.public_time<'.time());
 
-		// $textbooks = new CActiveDataProvider('TextboobBook',array('pagination'=>array('pageSize'=>12)));
+		$textbooks = new CActiveDataProvider('TextbookBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 
 		// кешируем сдесь всю страницу
-		$this->render('index');
+		$this->render('index', array('books'=>$textbooks));
 
 		$this->endCache(); 
 	}
@@ -88,12 +88,13 @@ public function actionIndex(){
 public function actionClas($clas){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('clas_textbook_page'.$clas, array('duration'=>86400, 'varyByParam'=>array('clas'))) ){
+	if($this->beginCache('clas_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->clasModel = $this->loadClas($clas);
 
 		$this->setMeta();
+		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$clas);
 		
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
@@ -101,19 +102,23 @@ public function actionClas($clas){
 		);
 
 
-		$this->keywords = 'Підручники '.$clas.' клас, гдз '.$clas. ' клас, Підручники онлайн '.$clas. ' клас, Підручники '.$clas. ' клас україна, Підручники '.$clas.' клас, Підручники '.$this->clasModel->clas->title.' клас';
+		$this->keywords = 'Підручники '.$clas.' клас, Підручники онлайн '.$clas. ' клас, Підручники '.$clas. ' клас україна, Підручники '.$this->clasModel->clas->title.' клас';
 		$this->description = 'Підручники для ' . $clas . ' класу середніх загальноосвітніх шкіл України.';
 
-		// $books = new CActiveDataProvider('GdzBook', 
-		// 	array(
-		// 		'criteria'=>array(
-		// 			'condition'=>'gdz_clas_id='.$this->clasModel->id,
-		// 		), 
-		// 		'pagination'=>array('pageSize'=>12),
-		// 	)
-		// );
 
-		$this->render('clas');
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
+
+		$books = new CActiveDataProvider('TextbookBook', 
+			array(
+				'criteria'=>$criteria, 
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
+			)
+		);
+
+		$this->render('clas', array('books'=>$books));
 
 
 		$this->endCache(); 
@@ -127,7 +132,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('subject_textbook_page'.$clas.$subject, array('duration'=>86400, 'varyByParam'=>array('clas', 'subject'))) ){
+	if($this->beginCache('subject_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -136,21 +141,25 @@ public function actionSubject($clas, $subject){
 		$this->subjectModel = $this->loadSubject($subject);
 
 		$this->setMeta();
+		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$clas.'/'.$subject);
 
 		$this->keywords = 'Підручники ' . $this->subjectModel->subject->title . ' ' 
-			.$clas.' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$clas.' клас, Підручники онлайн '
-			. $this->subjectModel->subject->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$clas. ' клас україна, Підручники '
-			. $this->subjectModel->subject->title . ' ' .$clas.' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$this->clasModel->clas->title.' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$this->clasModel->clas->title.' клас';
+			.$clas.' клас, Підручники онлайн '
+			. $this->subjectModel->subject->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$clas. ' клас Україна';
 
 		$this->description = 'Підручники ' 
 			. $this->subjectModel->subject->title . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
 
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.textbook_subject_id='.$this->subjectModel->id);
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
+
 		$books = new CActiveDataProvider('TextbookBook', 
 			array(
-				'criteria'=>array(
-					'condition'=>'textbook_clas_id='.$this->clasModel->id .' AND textbook_subject_id='.$this->subjectModel->id,
-				), 
-				'pagination'=>array('pageSize'=>12),
+				'criteria'=>$criteria, 
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
@@ -161,7 +170,7 @@ public function actionSubject($clas, $subject){
 		);
 
 
-		$this->render('subject');
+		$this->render('subject', array('books'=>$books));
 
 		$this->endCache(); 
 	}
@@ -172,14 +181,12 @@ public function actionSubject($clas, $subject){
  * @return [type]          [description]
  */
 public function actionCurrentSubject($subject){
-	// print_r($_POST);
-	// die;
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_current_subject_page'.$subject, array('duration'=>1000, 'varyByParam'=>array('subject'))) ){
+	if($this->beginCache('textbook_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		// все классы
-		$this->allClasModel = GdzClas::model()->findAll();
+		$this->allClasModel = TextbookClas::model()->cache(86400)->findAll();
 
 		$this->checkSubject($subject);
 
@@ -188,46 +195,43 @@ public function actionCurrentSubject($subject){
 			throw new CHttpException('404', 'немае такого предмету');
 		}
 
+		$description = $this->getDescription($subjectModel->id);
+
 		$criteria = new CDbCriteria;
 		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
 
 		if($subjectModel){
-			$curentSubjectModel = array_keys( CHtml::listData( GdzSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
+			$curentSubjectModel = array_keys( CHtml::listData( TextbookSubject::model()->findAllByAttributes(array('subject_id'=>$subjectModel->id)), 'id', 'id' ) );
 			// unset($subjectModel);
 			if($curentSubjectModel){
-				$criteria->addInCondition('gdz_subject_id', $curentSubjectModel);
+				$criteria->addInCondition('textbook_subject_id', $curentSubjectModel);
 				unset($curentSubjectModel);
 			}
 		}
 
-		$books = new CActiveDataProvider('GdzBook', 
+		$books = new CActiveDataProvider('TextbookBook', 
 			array(
 				'criteria'=>$criteria, 
-				'pagination'=>array('pageSize'=>12),
+				'pagination'=>array('pageSize'=>12,'pageVar'=>'page'),
 			)
 		);
 
-		// print_r($book);
-		// die;
+		$this->keywords = 'Підручники ' . $this->subjectModel->subject->title;
 
-		$this->keywords = 'ГДЗ - готові домашні завдання ' . $subjectModel->title . ', гдз '. $subjectModel->title . ', гдз онлайн '
-			. $subjectModel->title . ', гдз '. $subjectModel->title . ' україна, гдз решебники '
-			. $subjectModel->title . ', готові домашні завдання '. $subjectModel->title . ', гдз '. $subjectModel->title;
+		$this->description = 'Підручники ' 
+			. $this->subjectModel->subject->title . ' для середніх загальноосвітніх шкіл України.';
 
-		$this->description = 'ГДЗ - готові домашні завдання ' 
-			. $subjectModel->title . ', для середніх загальноосвітніх шкіл України.';
-
-		$this->h1 = 'ГДЗ '.$subjectModel->title;
+		$this->h1 = 'Підручники '.$subjectModel->title;
 		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
-		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
+		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$subject);
 
 		$this->breadcrumbs = array(
-			'ГДЗ' => $this->createUrl('/gdz'),
-			// $subjectModel->title => $this->createUrl('/gdz/'.$subject),
+			'Підручники' => $this->createUrl('/textbook'),
 			$subjectModel->title
 		);
 
-		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel));
+		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel, 'description'=>$description));
 
 		$this->endCache(); 
 	}
@@ -241,10 +245,12 @@ public function actionCurrentSubject($subject){
 public function actionBook( $clas, $subject, $book ){
 
 
-
 	// TODO - закешировать на сутка
-	if($this->beginCache('book_textbook_page'.$clas.$subject.$book, array('duration'=>86400, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
+	if($this->beginCache('book_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
 
+		$path = Yii::app()->theme->basePath;
+	    $mainAssets = Yii::app()->AssetManager->publish($path);
+		Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/panzoom.js', CClientScript::POS_END);
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -255,8 +261,11 @@ public function actionBook( $clas, $subject, $book ){
 		$this->bookModel = $this->loadBook($book);
 
 		$this->setMeta();
-		$this->keywords = '';
-		$this->description = '';
+		$this->keywords = 'Підручник ' . $this->subjectModel->subject->title . ' ' 
+			.$clas.' клас ' . $this->bookModel->author;
+
+		$this->description = 'Підручник ' 
+			. $this->subjectModel->subject->title . ' ' .$clas.' клас ' . $this->bookModel->author . ' для середніх загальноосвітніх шкіл України.';
 
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
@@ -279,7 +288,7 @@ public function actionBook( $clas, $subject, $book ){
 public function actionTask($clas, $subject, $book, $task){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('task_textbook_page'.$clas.$subject.$book.$task, array('duration'=>86400, 'varyByParam'=>array('clas', 'subject', 'book','task'))) ){
+	if($this->beginCache('task_textbook_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas','subject','book','task'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -289,36 +298,15 @@ public function actionTask($clas, $subject, $book, $task){
 		$this->subjectModel = $this->loadSubject($subject);
 		$this->bookModel = $this->loadBook($book);
 
-		if(isset($this->param['unit']) && $this->param['unit'] > 0){
-			$unit = 'unit_'.$this->param['unit'] . '/';
-		} else {
-			$unit = '';
-		}
 
-		if(isset($this->param['page'])){
-			$pathImg['path'] = 'textbook/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/' 
-			. $unit
-			. 'lesson_' . $this->param['lesson'] . '/' 
-			. $this->param['page'] . '_' 
-			. $this->param['task'] .'.png';
-		} elseif(isset($this->param['lesson'])){
-			$pathImg['path'] = 'textbook/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/' 
-			. $unit
-			. 'lesson_' . $this->param['lesson'] . '/' 
-			. $this->param['task'] .'.png';
-		} else {
-			$pathImg['path'] = 'textbook/' . $this->param['clas'] . '/' 
-			. $this->param['subject'] . '/' 
-			. $this->param['book'] . '/task/'
-			. $this->param['task'] .'.png';
-		}
+		$pathImg['path'] = 'textbook/' . $clas . '/' 
+		. $subject . '/' 
+		. $book . '/task/'
+		. $task .'.png';
+		
 
 		if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
-			throw new CHttpException('404', 'такого завдання у цьому пидручнику немае');
+			throw new CHttpException('404');
 		}
 
 		$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
@@ -328,8 +316,19 @@ public function actionTask($clas, $subject, $book, $task){
 
 		if(Yii::app()->request->isAjaxRequest){
 				
-			echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], '',
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'], 'title'=> ''));
+			echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], 
+			'Підручник '
+			. $this->subjectModel->subject->title . ' '
+			. $clas . ' клас ' 
+			. $this->bookModel->author
+			. ' сторінка '
+			. $task,
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'], 'title'=> 'Підручник '
+			. $this->subjectModel->subject->title . ' '
+			. $clas . ' клас ' 
+			. $this->bookModel->author
+			. ' сторінка '
+			. $task));
 
 			$this->endCache(); 
 			
@@ -339,136 +338,11 @@ public function actionTask($clas, $subject, $book, $task){
 	    	$this->render('task', array('task'=>$pathImg));
 	    }
 
-
-
 		$this->endCache(); 
 	
 	}
 
 }	
-
-/**
- * 
- * @return [type] [description]
- */
-public function actionNestedOne(){
-
-	$path = 'gdz/' . $this->param['clas'] 
-	. '/' . $this->param['subject'] 
-	. '/' . $this->param['book'] . '/task/';
-
-	
-
-	$sections = scandir('img/' . $path);
-	foreach($sections as $section){
-
-		if($this->param['subject']=='lang_en'){
-			$section = (int)$section . '_Урок ' . (int)$section;
-		}
-
-		if((int)$section == (int)$this->param['section']){
-			$pathImg['path'] = $path . $section . '/' . $this->param['task'] . '.png';
-		}
-	}
-
-	if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
-		$_GET = null;
-		throw new CHttpException('404', 'такого задания в этом учебнике нету');
-	}
-
-	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
-	$pathImg['width'] = $imgSize[0];
-	// print_r($pathImg['width']);
-	// die;
-
-	// echo $path;
-	// die;
-
-	if(Yii::app()->request->isAjaxRequest){
-			
-		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
-		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'] ));
-		
-		Yii::app()->end();
-
-    } else {
-    	$this->render('task', array('task'=>$pathImg));
-    }
-
-	// $this->render('task',['task'=>$pathImg]);
-}
-
-
-/**
- * 
- * @return [type] [description]
- */
-public function actionNestedTwo(){
-
-	$img = $this->param['task'] . '.png';
-
-	if( isset($this->param['section']) ){
-
-		$path = 'gdz/' . $this->param['clas'] 
-		. '/' . $this->param['subject'] 
-		. '/' . $this->param['book'] . '/task/';
-
-		$sections = scandir('img/' . $path);
-		foreach($sections as $section){
-			
-			if((int)$section == (int)$this->param['section']){
-
-				$parags =  scandir('img/' . $path . '/' . $section);
-				foreach($parags as $p => $parag){
-
-					if( (int)$parag == $this->param['paragraph'] ){
-						$pathImg['path'] =$path . $section . '/' . $parag . '/' . $this->param['task'] . '.png';
-					}
-				}
-			}
-		}
-	}
-
-	if( ! file_exists(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path'])){
-		$_GET = null;
-		throw new CHttpException('404', 'такого задания в этом учебнике нету');
-	}
-
-	$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
-	$pathImg['width'] = $imgSize[0];
-	// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
-
-
-	if(Yii::app()->request->isAjaxRequest){
-			
-		echo  CHtml::image(Yii::app()->baseUrl . '/img/' . $pathImg['path'], ' ' ,
-		array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'] ));
-		
-		Yii::app()->end();
-
-    } else {
-    	$this->render('task', array('task'=>$pathImg));
-    }
-
-}
-
-
-
-
-/**
- * This is the action to handle external exceptions.
- */
-public function actionError(){
-	
-	if($error=Yii::app()->errorHandler->error){
-		if(Yii::app()->request->isAjaxRequest){
-			echo $error['message'];
-		} else {
-			$this->clasModel = Clas::model()->findAll();
-			$this->render('error'.$error['code'], array('error'=>$error['message']));
-		}
-	}
-}
 
 /**
  * [loadGdzClas description]
@@ -528,6 +402,8 @@ private function loadBook($book, $category='textbook'){
 	$criteria->condition=$category.'_clas_id=:classId';
 	$criteria->addCondition($category.'_subject_id=:subjectId');
 	$criteria->addCondition('slug=:slug');
+	$criteria->addCondition('t.public_time<'.time());
+	$criteria->addCondition('t.public=1');
 	$criteria->params = array(
 	    ':classId'=>$this->clasModel->id, 
 	    ':subjectId'=>$this->subjectModel->id,
@@ -578,7 +454,8 @@ private function checkBook($book){
 
 private function setMeta(){
 	if($this->clasModel){
-		$this->h1 = 'Підручники '. $this->clasModel->clas->slug.' клас';
+		$book = $this->action->id == 'book' ? 'Підручник ' : 'Підручники ' ;
+		$this->h1 = $book . $this->clasModel->clas->slug.' клас';
 		$this->canonical = '/textbook/'.$this->clasModel->clas->slug;
 
 	}
@@ -596,27 +473,23 @@ private function setMeta(){
 	$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
 }
 
+public function getDescription($subject=null){
 
-public function checkerBook($clas, $subject, $book){
-
-	$bookClas = $this->loadClas($clas, 'gdz');
-   	$bookSubject = $this->loadSubject($subject, 'gdz');
- 
 	$criteria = new CDbCriteria;
-	$criteria->condition='gdz_clas_id=:classId';
-	$criteria->addCondition('gdz_subject_id=:subjectId');
-	$criteria->addCondition('slug=:slug');
-	$criteria->params = array(
-	    ':classId' => $bookClas->id, 
-	    ':subjectId' => $bookSubject->id,
-	    ':slug' => $book
-	);
+	$criteria->condition = 't.owner="'.$this->id.'"';
+	$criteria->addCondition('t.action="'.$this->action->id.'"');
 
+	if($subject){
+		$criteria->addCondition('t.subject_id="'.$subject.'"');
+	}
 
-	return GdzBook::model()->count($criteria);
+	$model = Description::model()->find($criteria);
+	if($model){
+		return $model->description;
+	}
+
+	return '';
 
 }
-
-
 
 }

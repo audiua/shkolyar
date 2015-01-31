@@ -17,6 +17,8 @@
  */
 class TextbookSubject extends CActiveRecord
 {
+
+	private $_url;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -33,8 +35,9 @@ class TextbookSubject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('description, create_time, update_time, subject_id, textbook_clas_id', 'required'),
+			array('subject_id, textbook_clas_id', 'required'),
 			array('create_time, update_time, subject_id, textbook_clas_id', 'length', 'max'=>10),
+			array('description,', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, description, create_time, update_time, subject_id, textbook_clas_id', 'safe', 'on'=>'search'),
@@ -52,6 +55,17 @@ class TextbookSubject extends CActiveRecord
 			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
 			'textbook_clas' => array(self::BELONGS_TO, 'TextbookClas', 'textbook_clas_id'),
 			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_subject_id'),
+		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
 		);
 	}
 
@@ -111,14 +125,92 @@ class TextbookSubject extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public static function getAll(){
+	public static function getAll($clas=null){
 
-		$all = self::model()->findAll();
+		$result = array();
+		$criteria = new CDbCriteria;
+		if($clas){
+			$criteria->condition = 'textbook_clas_id='.$clas;
+		}
+
+		$all = self::model()->findAll($criteria);
+
 		if($all){
 			foreach($all as $one){
 				$result[$one->id]=$one->subject->title;
 			}
 		}
+		return $result;
+	}
+
+	public function afterSave(){
+
+		// создам папку для картинок
+		$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug;
+		$clasDir = $dir.'/'.$this->subject->slug;
+
+		if(file_exists($dir)){
+
+			if(! is_writable($dir)){
+				chmod($dir, 0777);
+			}
+
+			if(!file_exists($clasDir)){
+				mkdir($clasDir);
+				chmod($clasDir, 0777);
+			}
+
+			if(! is_writable($clasDir)){
+				chmod($clasDir, 0777);
+			}
+			
+		}
+
+		return parent::afterSave();
+	}
+
+	public function getUrl($clas=null){
+	   if ($this->_url === null){
+	   		$url = !empty($clas) ? $clas . '/'.$this->subject->slug : $this->subject->slug;
+	        $this->_url = Yii::app()->createUrl( '/textbook/'.$url );
+	        $this->_url .= '/';
+	   }
+	   return $this->_url;
+	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$time = time();
+		
+		$criteria = new CDbCriteria;
+		$criteria->group = 'subject_id'; 
+		$all = self::model()->findAll($criteria);
+		
+		foreach($all as $one){
+			
+			$flag = false;
+			if($one->textbook_book){
+
+				foreach($one->textbook_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+				
+
+			}
+
+			$flag = false;
+		}
+
 		return $result;
 	}
 }

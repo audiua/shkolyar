@@ -6,7 +6,7 @@ class DataWritingWidget extends CWidget{
 	public $model = null;
 
 	public function init(){
-		// $this->params = $this->controller->param;
+		$this->params = $this->controller->param;
         parent::init();
     }
 

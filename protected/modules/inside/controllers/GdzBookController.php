@@ -22,8 +22,12 @@ class GdzBookController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -50,14 +54,16 @@ class GdzBookController extends InsideController
 	{
 		$model=new GdzBook;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
 
-		if(isset($_POST['GdzBook']))
-		{
-			$model->attributes=$_POST['GdzBook'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if (!empty($data)) {
+			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('GdzBook_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -74,19 +80,33 @@ class GdzBookController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$data = Yii::app()->getRequest()->getPost('GdzBook', null);
 
-		if(isset($_POST['GdzBook']))
-		{
-			$model->attributes=$_POST['GdzBook'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		if (!empty($data)) {
+			$data['gdz_clas_id'] = Yii::app()->getRequest()->getPost('GdzBook_gdz_clas_id', null);
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('GdzBook_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+
+	public function actionUpdateFromCalendar($id){
+
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		}
+		
 	}
 
 	/**

@@ -4,25 +4,30 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<div class="info">Всезнайка</div>
+<!-- <div class="info">Всезнайка</div> -->
+<h3 class="info">Всезнайка</h3>
 <?php $this->widget('LastKnowallWidget'); ?>
 <div class="separator"></div>
 
-<div class="info">Підручники</div>
+<h3 class="info">Підручники</h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
 <div class="separator"></div>
 
-<div class="info">ГДЗ</div>
+<h3 class="info">ГДЗ</h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 <div class="separator"></div>
 
+<h3 class="info">Твори</h3>
+<?php $this->widget('LastWritingWidget'); ?>
+<div class="separator"></div>
+
+<h3 class="info">Художня література</h3>
+<?php $this->widget('LastLibraryWidget'); ?>
+<div class="separator"></div>
+
 <h1>Шкільний інформаційний портал <div class="logo-title">SHKOLYAR.INFO</div></h1>
-<p class="description">
 
-	&nbsp;&nbsp;&nbsp;&nbsp;Раді вітати Вас на виключно українському шкільному інформаційному порталі.
-	Данний портал створено з метою зібрати усі матеріали в одному місці, які потрібні для навчання в школі, 
-	щоб зберигти Ваш час та допомогти Вам у навчанні. Усі матеріали на данному порталі, збиралися з просторів інтернету з урахуванням шкільної програми для українських шкіл. Ми витратили надзвичайно багато часу та зусиль, 
-	щоб досягнути поставленої мети. Портал розділенний на декілька розділів для зручності пошуку потрібного матеріалу: <br> - у розділі <?php echo CHtml::link('ГДЗ',array('/gdz')); ?> представлені збірники готових домашніх завдань; <br> - у розділі <?php echo CHtml::link('Підручники',array('/textbook')); ?> знаходяться шкільні підручники для ураїнських шкіл;<br> - у розділі <?php echo CHtml::link('Художня література',array('/library')); ?> знаходяться повні тексти творів, які вивчаються на українській та зарубіжній літературах; <br> - у розділі <?php echo CHtml::link('Твори',array('/writing')); ?> находяться приклади написанних шкільних творів;<br> - у розділі <?php echo CHtml::link('Всезнайка',array('/knowall')); ?> знаходяться безліч цікавих статей та порад. <br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;Ми надіємося, що шкільний портал <strong>SHKOLYAR.INFO</strong> стане для Вас надійним помічником у швидкому та зручному пошуку правильних відповидей на домашні завдання, шкільних підручників онлайн, творів з художньої літературі, зразків написання шкільних творів. А також допоможе Вам розкрити великі таємниці навколишнього світу у розділі для всезнайок.
 
-</p>
+<div class="description">
+	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'index'))); ?>
+</div>

@@ -1,4 +1,35 @@
+$(document).ajaxSend(function(event, request, settings) {
+
+	$('.task-title').show();
+	$('.task-separator').show();
+	$('#inverted-contain').show();
+    $('.loading').show();
+    $('.darking').show();
+    $('body,html').animate({scrollTop:480},200);
+});
+
+$(document).ajaxComplete(function(event, request, settings) {
+    
+	var contHeight = $('.content').outerHeight();
+	var sidebarHeight = $('.sidebar').outerHeight();
+	// console.log('resize');
+	// console.log(sidebarHeight);
+	if(contHeight > sidebarHeight){
+		$('.sidebar').height(contHeight);
+	}
+	
+    $('.loading').hide();
+    $('.darking').hide();
+});
+
+
 $(document).ready(function () {
+
+$('.darking').click(function(){
+	$(this).hide();
+	$('.loading').hide();
+});
+
 
 //--------------------------------------
 // scroll to top page
@@ -124,7 +155,11 @@ $('.task-number').each(function(i,val){
 function getTask(e){
 	// alert(e.data.numb);
 	
-	// console.log(e.data.parent);
+
+	var numb= e.data.numb;
+	var parent = e.data.parent;
+	
+	// console.log(e);
 	// return;
 	
 	// var block = $('.panzoom-parent');
@@ -141,9 +176,9 @@ function getTask(e){
 	// определяем урл задания
 	var fullUrl = location.href;
 	if(fullUrl.indexOf('#') != -1){
-		var url = fullUrl.replace(/#.*/i,'') + '/'+e.data.numb;
+		var url = fullUrl.replace(/#.*/i,'') + '/'+numb;
 	} else {
-		var url = location.href + '/'+e.data.numb;
+		var url = location.href + '/'+numb;
 	}
 
 	// console.log(url);
@@ -160,24 +195,28 @@ function getTask(e){
 	 	url: url,
 	  	data: {'mode': ''},
 	  	dataType: "html",
-	  	success: function(data){
+	  	success: function(reponse){
+	  		// console.log(reponse);
+	  		// console.log(e);
 
 	  		// добавляем хэш тег задания
-	  		window.location.hash = e.data.numb;
+	  		window.location.hash = numb;
+
+	  		$('.page-number').text(numb);
 	  		
 	  		// вставляем картинку
-	  		$(book).html(data);
+	  		$(book).html(reponse);
 
 	  		// ширина картинки
-	  		var imgWidth = $(data).data('width');
-	  		var imgHeight = $(data).data('height');
+	  		var imgWidth = $(reponse).data('width');
+	  		var imgHeight = $(reponse).data('height');
 
 	  		// console.log(imgWidth);
 	  		var taskW = $('.task').width();
 	
-	  		$('.task-title').show();
-	  		$('.task-separator').show();
-	  		$('#inverted-contain').show();
+	  		// $('.task-title').show();
+	  		// $('.task-separator').show();
+	  		// $('#inverted-contain').show();
 
 	  		// если картинка решения больше блока
 			if( imgWidth > taskW){
@@ -203,7 +242,7 @@ function getTask(e){
 	  		});
 	  			
 	  		
-	  		$(e.data.parent)
+	  		$(parent)
 		  		.parents('.task-one')
 		  		.addClass('task-active')
 		  		.find('p')
@@ -234,9 +273,8 @@ function getTask(e){
 	  		// console.log(of);
 
 	  		// скролит к заданию
-	  		$('body,html').animate({scrollTop:480},200);
+	  		// $('body,html').animate({scrollTop:480},200);
 	  		// $('.task').animate({scrollTop: 0}, 400);
-	  		
 	  	}
 	});
 
@@ -279,10 +317,10 @@ resizeContentBlock();
 function resizeContentBlock(){
 	var contHeight = $('.content').outerHeight();
 	var sidebarHeight = $('.sidebar').outerHeight();
-	// console.log(contHeight);
+	// console.log('resize');
 	// console.log(sidebarHeight);
 	if(contHeight > sidebarHeight){
-		$('.sidebar').outerHeight(contHeight);
+		$('.sidebar').height(contHeight);
 	}
 }
 
@@ -299,7 +337,7 @@ function rotate(){
 	}, 10000 );
 }
 
-rotate();
+// rotate();
 
 // модальное окно лайков фб
 function showFb(){
@@ -313,28 +351,85 @@ function showFb(){
 }
 
 // проверяем по кукам 1 раз в сутки
-// if( ! $.cookie('showFb') ){
-// 	setTimeout(showFb, 10000);
-// }
+if( !$.cookie('showFb') ){
+	setTimeout(showFb, 10000);
+} else {
+	$.cookie('showFb', 'showFb', {
+	    expires: 1,
+	    path: '/',
+	});
+}
 
 // выделение выбраного пункта из таблицы
 $('td , th').hover(
 	function(){
 		var vertical = $(this).data('vertical');
-		console.log(vertical);
+		// console.log(vertical);
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 				$(item).css({'background':'#eee'}); 
 			
 		});
-		$(this).css({'background':'#d3e4ff'}).find('span').removeClass('small').addClass('big');
+		// $(this).css({'background':'#d3e4ff'}).find('span').removeClass('small').addClass('big');
+		$(this).css({'background':'#d3e4ff'});
 	},
 	function(){
 		var vertical = $(this).data('vertical');
 		$("[data-vertical='"+vertical+"']").each(function(i, item){
 			$(item).css({'background':'inherit'});
 		});
-		$(this).css({'background':'inherit'}).find('span').removeClass('big').addClass('small');
+		// $(this).css({'background':'inherit'}).find('span').removeClass('big').addClass('small');
+		$(this).css({'background':'inherit'});
 	}
 );
+
+
+
+// fix menu
+
+             
+$(window).scroll(function(){
+	
+    if ( $(this).scrollTop() > 45 && $('.header').hasClass("fixed-menu") == false ){
+        $('.header').fadeOut('fast',function(){
+            $(this).addClass("fixed-menu")
+                   .fadeIn('fast');
+        });
+    } else if($(this).scrollTop() <= 45 && $('.header').hasClass("fixed-menu")) {
+        $('.header').fadeOut('fast',function(){
+            $(this).removeClass("fixed-menu")
+                   .fadeIn('fast');
+        });
+    }
+});//scroll
+
+// slide task
+
+$('.b-left').click(function(){
+	var activeTask = $('.task-one').filter('.task-active');
+	var prevTask = $(activeTask).prev('.task-one');
+	if(activeTask && prevTask){
+		$(prevTask).find('.task-number').click();
+	}
+});
+
+$('.b-right').click(function(){
+	var activeTask = $('.task-one').filter('.task-active');
+	var nextTask = $(activeTask).next('.task-one');
+	if(activeTask && nextTask){
+		$(nextTask).find('.task-number').click();
+	}
+});
+
+
+
+// disabled padination buttons
+$('.yiiPager').find('.disabled').each(function(){
+	$(this).find('a').click(function(e){
+		e.preventDefault();
+	});
+});
+
+
+$('[data-url=1]').click();
 
 });

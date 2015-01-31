@@ -16,6 +16,10 @@
  */
 class LibraryAuthor extends CActiveRecord
 {
+
+	public $_url;
+
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -32,12 +36,15 @@ class LibraryAuthor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('author, biography, slug', 'required'),
+			array('author, description, slug', 'required'),
 			array('author, slug', 'length', 'max'=>255),
-			array('create_time, update_time', 'length', 'max'=>10),
+			array('public_time', 'unique'),
+			array('public, description', 'safe'),
+			array('create_time,length, update_time,public_time', 'length', 'max'=>10),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, author, create_time, update_time, biography, slug', 'safe', 'on'=>'search'),
+			array('id, author, nausea, length, create_time, update_time, description, slug,public_time,public', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,8 +56,19 @@ class LibraryAuthor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'libraryBooks' => array(self::HAS_MANY, 'LibraryBook', 'author_id'),
+			'library_book' => array(self::HAS_MANY, 'LibraryBook', 'library_author_id'),
 		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => 't.`public` = 1 AND t.`public_time`<'.time(),
+		);
+
+		return $scopes;
 	}
 
 	public function behaviors(){
@@ -74,8 +92,12 @@ class LibraryAuthor extends CActiveRecord
 			'author' => 'Author',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
-			'biography' => 'Biography',
+			'description' => 'description',
 			'slug' => 'Slug',
+			'length' => 'Длина',
+			'nausea'=>'Тошнота',
+			'public' => 'public',
+			'public_time' => 'public_time',
 		);
 	}
 
@@ -101,8 +123,10 @@ class LibraryAuthor extends CActiveRecord
 		$criteria->compare('author',$this->author,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('biography',$this->biography,true);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('public_time',$this->update_time);
+		$criteria->compare('public',$this->slug);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -119,4 +143,109 @@ class LibraryAuthor extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
+
+	public function beforeSave(){
+
+    	$this->length = Helper::getLength($this);
+    	$this->nausea = str_replace(',', '.', $this->nausea) ;
+
+    	return parent::beforeSave();
+    }
+
+    public static function getAll(){
+
+		return CHtml::listData(self::model()->findAll(), 'id', 'author');
+
+	}
+
+
+	public function afterSave(){
+
+		// создам папку для картинок
+		$dir = Yii::app()->basePath . '/../img/library';
+		if(	! file_exists($dir)){
+			mkdir($dir);
+			chmod($dir, 0777);
+		}
+
+		if( ! is_writable($dir)){
+			chmod($dir, 0777);
+		}
+
+		$descriptionDir = $dir . '/description';
+		if( ! file_exists($descriptionDir)){
+			mkdir($descriptionDir);
+			chmod($descriptionDir, 0777);
+		}
+		
+
+		$authorDir = $dir.'/'.$this->slug;
+		if( ! file_exists($authorDir)){
+			mkdir($authorDir);
+			chmod($authorDir, 0777);
+		}
+
+		return parent::afterSave();
+	}
+
+
+
+
+	public function getUrl(){
+	   if ($this->_url === null){
+	       $this->_url = Yii::app()->createUrl('/library/'.$this->slug);
+	       $this->_url .= '/';
+	   }
+	   return $this->_url;
+	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$all = self::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			
+			$flag = false;
+			if($one->textbook_book){
+
+				foreach($one->textbook_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+				
+
+			}
+
+			$flag = false;
+		}
+
+		return $result;
+	}
+
+
+
 }

@@ -26,6 +26,7 @@
  */
 class GdzBook extends CActiveRecord
 {
+	private $_url;
 
 	public $subject_id;
 
@@ -45,13 +46,15 @@ class GdzBook extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, author, gdz_clas_id, subject_id', 'required'),
-			array('title, author, slug, year, properties, pagination', 'length', 'max'=>255),
-			array('gdz_clas_id, subject_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
-			array('img, lang, public', 'safe'),
+			array('title, author, gdz_clas_id, gdz_subject_id', 'required'),
+			array('public_time', 'unique'),
+			array('title, edition, info, author, slug, year, properties, pagination', 'length', 'max'=>255),
+			array('gdz_clas_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
+			array('img, lang, public, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, author, gdz_clas_id, subject_id, slug, img, description, gdz_subject_id, year, properties, pagination, create_time, update_time, public_time, lang', 'safe', 'on'=>'search'),
+			array('id, title, edition, info, author, gdz_clas_id, slug, img, description, gdz_subject_id, year, properties, pagination, create_time, update_time, public_time, lang', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,7 +87,7 @@ class GdzBook extends CActiveRecord
 		$scopes = parent::scopes();
 
 		$scopes['public'] = array(
-			'condition' => '(t.public = 1)',
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
 		);
 
 		return $scopes;
@@ -100,8 +103,7 @@ class GdzBook extends CActiveRecord
 			'title' => 'Title',
 			'author' => 'Автор',
 			'gdz_clas_id' => 'Клас',
-			'subject_id' => 'Subject',
-			'gdz_subject_id' => 'GdzSubject',
+			'gdz_subject_id' => 'Предмет',
 			'slug' => 'Slug',
 			'img' => 'Img',
 			'description' => 'Description',
@@ -176,5 +178,32 @@ class GdzBook extends CActiveRecord
 
 
 		return parent::beforeValidate();
+	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
+
+    public function lastPublicTime(){
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'public_time DESC';
+    	$criteria->limit = 1;
+    	$last = self::model()->public()->find( $criteria );
+
+    	if( $last->update_time > $last->public_time ){
+    		return $last->update_time;
+    	}
+
+    	return $last->public_time;
+    }
+
+    public function getUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/gdz/' . $this->gdz_clas->clas->slug . '/'. $this->gdz_subject->subject->slug . '/'. $this->slug );
+	   }
+	   return $this->_url;
 	}
 }

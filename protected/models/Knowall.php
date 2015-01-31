@@ -21,6 +21,8 @@
  */
 class Knowall extends CActiveRecord
 {
+
+	private $_url;
 	public $thumbnail;
 	public $deleteImage;
 	/**
@@ -43,6 +45,7 @@ class Knowall extends CActiveRecord
 			array('id, create_time, update_time, public_time, knowall_category_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('slug', 'unique', 'on' => 'insert'),
+			array('public_time', 'unique'),
 			array('title', 'length', 'max'=>255),
 			array('public, deleteImage', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
@@ -50,6 +53,17 @@ class Knowall extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('id, create_time, nausea, length, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
+		);
+
+		return $scopes;
 	}
 
 	/**
@@ -87,9 +101,9 @@ class Knowall extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
-			'title' => 'Title',
+			'title' => 'Заголовок',
 			'text' => 'Text',
-			'knowall_category_id' => 'Knowall Category',
+			'knowall_category_id' => 'Категорія',
 			'public' => 'Public',
 			'thumbnail' => 'thumbnail',
 			'deleteImage' => 'Удалить изображение',
@@ -144,9 +158,13 @@ class Knowall extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function getUrl() {
-		return Yii::app()->baseUrl . '/knowall/' . $this->knowall_category->slug . '/' . $this->slug;
-    }
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
 
     public function beforeSave(){
 
@@ -236,5 +254,12 @@ class Knowall extends CActiveRecord
 		$this->_deleteImage();
 
         return parent::beforeDelete();
+    }
+
+    public function getUrl(){
+       if ($this->_url === null){
+            $this->_url = Yii::app()->createUrl( '/knowall/' .  $this->knowall_category->slug . '/' . $this->slug );
+       }
+       return $this->_url;
     }
 }

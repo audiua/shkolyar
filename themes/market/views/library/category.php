@@ -7,9 +7,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
 
 <div class="info">Біографія <?php echo $category->author; ?></div> 
-<p class="description">
-<?php echo $category->biography; ?>
-</p>
+<div class="description">
+<?php echo $category->description; ?>
+</div>
 
-<div class="info">Твори <?php echo $category->author; ?></div>
+<div class="info">Твори автора</div>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

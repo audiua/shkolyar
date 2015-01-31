@@ -12,7 +12,6 @@ class DataBookWidget extends CWidget{
 
 	public function run(){
 
-		$title = 'Збірники ГДЗ';
 		// if( !empty($this->controller->clasModel) ){
 		// 	$title .= ' ' . $this->controller->clasModel->clas->slug . ' клас';
 		// }
@@ -26,7 +25,7 @@ class DataBookWidget extends CWidget{
 		// }
 
        // передаем данные в представление виджета
-       $this->render('index',array('dataProvider' => $this->model, 'title'=>$title));
+       $this->render('index',array('dataProvider' => $this->model));
    }
 
 }

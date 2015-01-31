@@ -25,6 +25,10 @@ class KnowallCategoryController extends InsideController
 				'actions'=>array('index','view', 'create', 'update', 'delete'),
 				'roles'=>array('admin'),
 			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -50,20 +54,22 @@ class KnowallCategoryController extends InsideController
 	{
 		$model=new KnowallCategory;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
+		if (!empty($data)) {
 
-		if(isset($_POST['KnowallCategory']))
-		{
-			$model->attributes=$_POST['KnowallCategory'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model->attributes = $data;
+			if($model->save()){
+				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		
 	}
+
 
 	/**
 	 * Updates a particular model.
@@ -74,21 +80,20 @@ class KnowallCategoryController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['KnowallCategory']))
-		{
-			$model->attributes=$_POST['KnowallCategory'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('KnowallCategory', null);
+		if (!empty($data)) {
+			$model->attributes = $data;
+			if($model->save()){
+				Yii::app()->user->setFlash('KnowallCategory_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
-	}
 
+	}
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.

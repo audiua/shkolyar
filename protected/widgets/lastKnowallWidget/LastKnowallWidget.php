@@ -21,9 +21,9 @@ class LastKnowallWidget extends CWidget{
 
 	private function lastKnowallArticles(){
 		$criteria = new CDbCriteria;
-		// $criteria->condition = 't.public=1';
-		// $criteria->addCondition = 't.public_time > '.time();
-		$criteria->order = 'create_time DESC';
+		$criteria->condition = 't.public=1';
+		$criteria->addCondition('t.public_time < '.time() );
+		$criteria->order = 'public_time DESC';
 		$criteria->limit = 4;
 
 		return Knowall::model()->findAll($criteria);

@@ -14,20 +14,24 @@ $this->widget('zii.widgets.CListView', array(
     'itemView'=>'_item',
     'summaryText' => '',
     'sorterHeader' => 'Сортувати по: ',
-    'pager'=>array(
-    	'header' => '',
-    	'firstPageLabel'=>'<<',
-        'prevPageLabel'=>'<',
-        'nextPageLabel'=>'>',
-        'lastPageLabel'=>'>>',
-        'cssFile'=>false,
-		'internalPageCssClass'=>'pager_li',
-	),
+ //    'pager'=>array(
+ //    	'header' => '',
+ //    	'firstPageLabel'=>'<<',
+ //        'prevPageLabel'=>'<',
+ //        'nextPageLabel'=>'>',
+ //        'lastPageLabel'=>'>>',
+ //        'cssFile'=>false,
+	// 	'internalPageCssClass'=>'pager_li',
+	// ),
+    'pager'=>'LinkPager',
 	'emptyText'=>'No article!',
     'sortableAttributes'=>array(
         'title',
-        'update_time',
+        'clas_id',
+        'subject_id',
     ),
+    'template'=>"{items}\n{pager}",
+    'ajaxUpdate'=>false,
 ));
 ?>
 </div>

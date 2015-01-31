@@ -22,8 +22,12 @@ class TextbookBookController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -53,11 +57,17 @@ class TextbookBookController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TextbookBook']))
-		{
-			$model->attributes=$_POST['TextbookBook'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('TextbookBook', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$data['textbook_clas_id'] = Yii::app()->getRequest()->getPost('TextbookBook_textbook_clas_id', null);
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('TextbookBook_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -74,19 +84,35 @@ class TextbookBookController extends InsideController
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$data = Yii::app()->getRequest()->getPost('TextbookBook', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$data['textbook_clas_id'] = Yii::app()->getRequest()->getPost('TextbookBook_textbook_clas_id', null);
+			$model->attributes = $data;
 
-		if(isset($_POST['TextbookBook']))
-		{
-			$model->attributes=$_POST['TextbookBook'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if($model->save()){
+				Yii::app()->user->setFlash('TextbookBook_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionUpdateFromCalendar($id){
+		// print_r($_POST);
+		// die;
+
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		}
+		
 	}
 
 	/**

@@ -35,9 +35,6 @@ foreach( $model as $i => $one ):
   					echo '<div class="desc"><p>'.$one->properties.'<p></div>';
   				}
   			?>
-  			<div class="desc">
-  				<p><?php echo $one->description; ?></p>
-  			</div>
 
   		</div>
 		<div class="gdz-link">

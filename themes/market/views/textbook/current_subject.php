@@ -1,7 +1,7 @@
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
-    'homeLink'=>CHtml::link('Головна', Yii::app()->homeUrl),
+    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
     'inactiveLinkTemplate'=>'<span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span>',
 ));
 ?>
@@ -65,6 +65,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 </div>
 <h1><?php echo $this->h1; ?></h1>
+<div class="description">
+  <?php  echo $description; ?>
+</div>
 
 <div class="info">Виберіть клас для предмета <?php echo $subject->title ?> </div>
 

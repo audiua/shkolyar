@@ -21,8 +21,8 @@
 	<?php echo CHtml::encode($data->update_time); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('biography')); ?>:</b>
-	<?php echo CHtml::encode($data->biography); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('descripiton')); ?>:</b>
+	<?php echo CHtml::encode($data->descripiton); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('slug')); ?>:</b>

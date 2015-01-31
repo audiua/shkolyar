@@ -1,17 +1,46 @@
-<?php
-/* @var $this DefaultController */
+<?php $helper = new AdminHelper; ?>
+<div class="admin-content">
+	<div class="cache">
+		cache - 
+		<span class="cache-size">
+			<?php echo $helper->sizeFormat( $helper->sizeDir( Yii::app()->basePath.'/runtime/cache/' ) ); ?>
+		</span>
+	
+		<a href="#" id="clearCache" class="btn btn-default">clear cache</a>
+	</div>
 
-$this->breadcrumbs=array(
-	$this->module->id,
-);
-?>
-<?php echo $this->uniqueId . '/' . $this->action->id; ?>
+	<div class="assets">
+		assets - 
+		<span class="assets-size">
+			<?php echo $helper->sizeFormat( $helper->sizeDir( Yii::app()->assetManager->basePath ) ); ?>
+		</span>
+	
+		<a href="#" id="clearAssets" class="btn btn-default">clear assets</a>
+	</div>
 
-<p>
-This is the view content for action "<?php echo $this->action->id; ?>".
-The action belongs to the controller "<?php echo get_class($this); ?>"
-in the "<?php echo $this->module->id; ?>" module.
-</p>
-<p>
-You may customize this page by editing <tt><?php echo __FILE__; ?></tt>
-</p>
+</div>
+
+<script>
+	
+$('#clearCache').click(function(e){
+	e.preventDefault();
+
+	$.post('/ajax/admin/clearCache', {'cashe':'clear'}, function(responce){
+	        if(responce.success){
+	            $('.cache-size').text('0 bytes');
+	        }
+	    }, 'json');
+});
+
+$('#clearAssets').click(function(e){
+	e.preventDefault();
+
+	$.post('/ajax/admin/clearAssets', {'assets':'clear'}, function(responce){
+		console.log(responce);
+	        if(responce.success){
+	            $('.assets-size').text('0 bytes');
+	        }
+	    }, 'json');
+});
+
+</script>

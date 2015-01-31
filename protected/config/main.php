@@ -43,23 +43,34 @@ return array(
 		'application.helpers.*',
 		'application.widgets.clasNumbWidget.*',
 		'application.widgets.clasNumbCurrentSubjectWidget.*',
+		'application.widgets.clasNumbWritingCurrentSubjectWidget.*',
 		'application.widgets.subjectWidget.*',
 		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
+		'application.widgets.libraryBookWidget.*',
+		'application.widgets.libraryTaskWidget.*',
 		'application.widgets.taskWidget.*',
+		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.writingSidebarMenuWidget.*',
+		'application.widgets.librarySidebarMenuWidget.*',
+		'application.widgets.knowallSidebarMenuWidget.*',
+		'application.widgets.sidebarMenuWidget.*',
 		'application.widgets.nestedWidget.*',
 		'application.widgets.lastBookWidget.*',
 		'application.widgets.lastKnowallWidget.*',
+		'application.widgets.lastLibraryWidget.*',
+		'application.widgets.lastWritingWidget.*',
 		'application.widgets.dataArticleWidget.*',
 		'application.widgets.dataWritingWidget.*',
 		'application.widgets.dataLibraryWidget.*',
 		'application.widgets.libraryAuthorWidget.*',
 		'application.widgets.writingClasWidget.*',
+		'application.widgets.descriptionWidget.*',
 		'application.widgets.knowallCategoryWidget.*',
 
 		'ext.ExtendedClientScript.jsmin.*',
@@ -113,6 +124,9 @@ return array(
 			'showScriptName'=>false,
 			'rules'=>array(
 
+
+				'position/<token:[a-z0-9-]+>'=>'position/index',
+				'vk/<hash:[a-z0-9-]+>/<mode:[a-z]+>'=>'vk/index',
 				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>'=>'inside/<controller>/index',
@@ -120,21 +134,34 @@ return array(
 				'/ajax/<controller:\w+>/<action:\w+>'=>'ajax/<controller>/<action>',
 
 				'<action:about|advertiser|rules|rightholder|contacts>'=>'site/page',
+				'/jewel' => 'site/jewel',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
+				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
+
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
+				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
+				'<controller:\w+>'=> '<controller>/index',
 				
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z-]+>'=>'<controller>/book',
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
+				
+				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
+				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
+				'<controller:library>/<category:\w+>/<article:[a-z-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
-				'<controller:\w+>/<category:\w+>'=>'<controller>/category',
-				'<controller:\w+>'=> '<controller>/index',
+				
+				'<controller:knowall|library|writing>/<category:\w+>/page/<page:\d+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
+				
 
 				// 'tizer'=>'tizer/index',
 				// 'position'=>'position/index',
@@ -173,7 +200,8 @@ return array(
 		),
 
 		'cache'=>array(
-            'class'=>'system.caching.CDummyCache',
+            // 'class'=>'system.caching.CDummyCache',
+            'class'=>'system.caching.CFileCache',
         ),
 
         'clientScript'=>array(
@@ -182,7 +210,15 @@ return array(
             'compressCss'=>false,
             'combineJs'=>false,
             'compressJs'=>false,
+			'scriptMap'=>array(
+				'jquery.js'=>'/js/jquery1.11.1.min.js',
+				// 'jquery.cookie.js'=>'/js/jquery1.11.1.min.js',
+				'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js',
+			)
         ),
+
+  //       'clienScript'=>array(
+		// );
 
         'file' => array(
             'class'=>'application.extensions.file.CFile',

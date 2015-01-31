@@ -25,6 +25,10 @@ class TextbookSubjectController extends InsideController
 				'actions'=>array('index','view', 'create', 'update', 'delete'),
 				'roles'=>array('admin'),
 			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -53,11 +57,16 @@ class TextbookSubjectController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TextbookSubject']))
-		{
-			$model->attributes=$_POST['TextbookSubject'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('TextbookSubject', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('TextbookSubject_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -77,11 +86,16 @@ class TextbookSubjectController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['TextbookSubject']))
-		{
-			$model->attributes=$_POST['TextbookSubject'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		$data = Yii::app()->getRequest()->getPost('TextbookSubject', null);
+		if (!empty($data)) {
+			// print_r($data);
+			// die;
+			$model->attributes = $data;
+
+			if($model->save()){
+				Yii::app()->user->setFlash('TextbookSubject_FLASH', 'Збережено');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('update',array(

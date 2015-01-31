@@ -20,16 +20,16 @@ class Subject extends CActiveRecord
 	}
 
 	private $_url;
-    
-	public function getUrl(){
 
-		// print_r($this);
-		// die;
-
-
-		if ($this->_url === null)
-		   $this->_url = Yii::app()->createUrl('/'.$this->classes->slug .'/'.$this->slug);
-		return $this->_url;
+	public function getUrl($mode=null){
+	   if ($this->_url === null){
+	   		if($mode){
+	        	$this->_url = Yii::app()->createUrl('/'.$mode.'/'.$this->slug);
+	   		} else {
+	        	$this->_url = Yii::app()->createUrl('/'.$this->slug);
+	   		}
+	   }
+	   return $this->_url;
 	}
 
 	/**
@@ -58,7 +58,9 @@ class Subject extends CActiveRecord
 		return array(
 			'gdz_book' => array(self::HAS_MANY, 'GdzBook', 'subject_id'),
 			'gdz_subject' => array(self::HAS_MANY, 'GdzSubject', 'subject_id'),
+			'textbook_subject' => array(self::HAS_MANY, 'TextbookSubject', 'subject_id'),
 			'description' => array(self::HAS_MANY, 'Description', 'subject_id'),
+			'writing' => array(self::HAS_MANY, 'Writing', 'subject_id'),
 			// 'classes' => array(self::BELONGS_TO, 'Clas', 'class_id'),
 		);
 	}

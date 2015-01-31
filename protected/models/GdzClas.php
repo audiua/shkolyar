@@ -15,6 +15,8 @@
  */
 class GdzClas extends CActiveRecord
 {
+	private $_url;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -50,6 +52,7 @@ class GdzClas extends CActiveRecord
 		return array(
 			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
 			'gdz_subject'=>array(self::HAS_MANY, 'GdzSubject', 'gdz_clas_id'),
+			'gdz_book'=>array(self::HAS_MANY, 'GdzBook', 'gdz_clas_id'),
 		);
 	}
 
@@ -120,12 +123,51 @@ class GdzClas extends CActiveRecord
 
 	public static function getAll(){
 
+		$result = array();
 		$all = self::model()->findAll();
 		if($all){
 			foreach($all as $one){
-				$result[$one->id]=$one->clas->title;
+				if($one->gdz_book){
+					$result[$one->id]=$one->clas->title;
+				}
 			}
 		}
+		return $result;
+	}
+
+	public function getUrl(){
+	   if ($this->_url === null){
+	       $this->_url = Yii::app()->createUrl('/gdz/'.$this->clas->slug);
+	       $this->_url .= '/';
+	   }
+	   return $this->_url;
+	}
+
+	// модели для карты сайта
+	public function forSitemap($full=null){
+		$result = array();
+		$all = self::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			$flag = false;
+			if($one->gdz_book){
+
+				foreach($one->gdz_book as $book){
+
+					// isset published book
+					if($book->public && $book->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
 		return $result;
 	}
 }

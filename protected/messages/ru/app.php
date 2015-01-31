@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
 	'submit'=>'Отправить',
 	'Home'=>'Главная',
 	'About'=>'О нас',
@@ -23,4 +23,10 @@ return [
 	'how'=>'Як',
 	'why'=>'Чому',
 	'nature'=>'Природа',
-];
+	'planeta'=>'Планета',
+	'about'=>'Про нас',
+	'rightholder'=>'Правовласникам',
+	'advertiser'=>'Рекламодавцям',
+	'contacts'=>'Контакти',
+	'money'=>'Заробіток',
+);

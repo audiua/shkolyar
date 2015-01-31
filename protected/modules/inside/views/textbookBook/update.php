@@ -7,13 +7,6 @@ $this->breadcrumbs=array(
 	$model->title=>array('view','id'=>$model->id),
 	'Update',
 );
-
-$this->menu=array(
-	array('label'=>'List TextbookBook', 'url'=>array('index')),
-	array('label'=>'Create TextbookBook', 'url'=>array('create')),
-	array('label'=>'View TextbookBook', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage TextbookBook', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Update TextbookBook <?php echo $model->id; ?></h1>

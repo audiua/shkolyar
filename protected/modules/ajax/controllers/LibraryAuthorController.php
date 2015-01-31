@@ -1,6 +1,6 @@
 <?php
 
-class LibraryController extends Controller
+class LibraryAuthorController extends InsideController
 {
 
 public function filters()
@@ -16,7 +16,7 @@ public function actionTranslit(){
 		$title = Yii::app()->request->getPost('title');
 
 		if($title){
-			$knowall = new Knowall;
+			$knowall = new LibraryAuthor;
 			$knowall->slug = $title;
 			if($knowall->validate(array('slug'))){
 				echo json_encode(array('success'=>true, 'translit'=>$knowall->slug));
@@ -33,10 +33,10 @@ public function actionTranslit(){
 public function actionImageUpload(){
 	$image=CUploadedFile::getInstanceByName('file');
 	$filename = uniqid().'.'.$image->extensionName;
-	$path = Yii::app()->basePath.'/../img/library/biography/'.$filename;
+	$path = Yii::app()->basePath.'/../img/library/description/'.$filename;
 	// echo $path;
 	// die;
-	$image->saveAs(Yii::app()->basePath.'/../img/library/biography/'.$filename);
+	$image->saveAs(Yii::app()->basePath.'/../img/library/description/'.$filename);
 
 
 	// $image_open = Yii::app()->image->load(Yii::app()->basePath.'/../img/knowall/article/'.$filename); 
@@ -52,7 +52,7 @@ public function actionImageUpload(){
 
 
 	$array = array( 
-	 	'filelink' => Yii::app()->baseUrl.'/img/library/biography/'.$filename, 
+	 	'filelink' => Yii::app()->baseUrl.'/img/library/description/'.$filename, 
 	 	'filename' => $filename 
  	); 
 	echo stripslashes(json_encode($array)); 

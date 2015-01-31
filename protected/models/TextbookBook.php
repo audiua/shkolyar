@@ -27,6 +27,9 @@
  */
 class TextbookBook extends CActiveRecord
 {
+
+	private $_url;
+
 	public $subject_id;
 	/**
 	 * @return string the associated database table name
@@ -45,12 +48,15 @@ class TextbookBook extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, author, textbook_clas_id, textbook_subject_id, slug', 'required'),
-			array('title, author, slug, year, properties', 'length', 'max'=>255),
+			array('title, edition, info, author, slug, year, properties', 'length', 'max'=>255),
+			array('description,', 'length', 'max'=>1000),
 			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('public', 'length', 'max'=>1),
+			array('img, lang, public, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, author, textbook_clas_id, textbook_subject_id, slug, img, description, year, properties, pagination, lang, public, create_time, update_time, public_time', 'safe', 'on'=>'search'),
+			array('id, title, edition, info, author, textbook_clas_id, textbook_subject_id, slug, img, description, year, properties, pagination, lang, public, create_time, update_time, public_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +77,7 @@ class TextbookBook extends CActiveRecord
 		$scopes = parent::scopes();
 
 		$scopes['public'] = array(
-			'condition' => '(t.public = 1)',
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
 		);
 
 		return $scopes;
@@ -96,9 +102,9 @@ class TextbookBook extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Title',
-			'author' => 'Author',
-			'textbook_clas_id' => 'Textbook Clas',
-			'textbook_subject_id' => 'Textbook Subject',
+			'author' => 'Автор',
+			'textbook_clas_id' => 'Клас',
+			'textbook_subject_id' => 'Предмет',
 			'slug' => 'Slug',
 			'img' => 'Img',
 			'description' => 'Description',
@@ -174,4 +180,51 @@ class TextbookBook extends CActiveRecord
 
 		return parent::beforeValidate();
 	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
+
+    public function afterSave(){
+
+    	// создам папку для картинок
+    	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->subject->slug;
+    	$clasDir = $dir.'/'.$this->slug;
+
+    	if(file_exists($dir)){
+
+    		if(! is_writable($dir)){
+    			chmod($dir, 0777);
+    		}
+
+    		if(! file_exists($clasDir)){
+    			mkdir($clasDir);
+    			chmod($clasDir, 0777);
+
+    			mkdir($clasDir.'/book');
+    			chmod($clasDir, 0777);
+
+    			mkdir($clasDir.'/task');
+    			chmod($clasDir, 0777);
+
+    		}
+
+    		if(! is_writable($clasDir)){
+    			chmod($clasDir, 0777);
+    		}
+    		
+    	}
+
+    	return parent::afterSave();
+    }
+
+        public function getUrl(){
+    	   if ($this->_url === null){
+    	        $this->_url = Yii::app()->createUrl( '/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug );
+    	   }
+    	   return $this->_url;
+    	}
 }

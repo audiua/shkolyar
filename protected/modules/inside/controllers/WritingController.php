@@ -22,8 +22,12 @@ class WritingController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete', 'updateFromCalendar'),
 				'roles'=>array('admin'),
+			),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('moderator'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -54,8 +58,6 @@ class WritingController extends InsideController
 		if (!empty($data)) {
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
-
-			$model->public_time = strtotime($model->public_time);
 
 			if($model->save()){
 				Yii::app()->user->setFlash('WRITING_FLASH', 'Збережено');
@@ -91,7 +93,6 @@ class WritingController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->public_time = strtotime($model->public_time);
 			$model->nausea = $data['nausea'];
 
 			if($model->save()){
@@ -103,6 +104,17 @@ class WritingController extends InsideController
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionUpdateFromCalendar($id){
+
+		$model=$this->loadModel($id);
+		$model->public_time = Yii::app()->getRequest()->getPost('public_time', 1);
+
+		if($model->save()){
+			echo json_encode(array('success'=>true));
+		}
+		
 	}
 
 	/**

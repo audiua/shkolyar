@@ -24,6 +24,7 @@
 class Writing extends CActiveRecord
 {
 
+	private $_url;
 	public $thumbnail;
 	public $deleteImage;
 	/**
@@ -45,14 +46,38 @@ class Writing extends CActiveRecord
 			array('clas_id, subject_id, text, title, slug', 'required'),
 			array('length', 'numerical', 'integerOnly'=>true),
 			array('nausea', 'numerical'),
+			array('public_time', 'unique'),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('clas_id, subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
 			array('title, slug', 'length', 'max'=>255),
-			array('deleteImage', 'length', 'max'=>1),
+			array('deleteImage,public', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, clas_id, thumbnail_ext, deleteImage, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
+			array('id, clas_id, thumbnail_ext, deleteImage, public, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'create_time',
+				'updateAttribute' => 'update_time',
+				'setUpdateOnCreate'=>true,
+			)
+		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => 't.public = 1 AND t.public_time<'.time(),
+		);
+
+		return $scopes;
 	}
 
 	/**
@@ -75,15 +100,16 @@ class Writing extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'clas_id' => 'Clas',
-			'subject_id' => 'Subject',
+			'clas_id' => 'Клас',
+			'subject_id' => 'Предмет',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
 			'text' => 'text',
-			'title' => 'Title',
+			'title' => 'Заголовок',
 			'slug' => 'Slug',
 			'length' => 'Length',
+			'public' => 'Public',
 			'nausea' => 'Nausea',
 			'thumbnail_ext' => 'Img Ext',
 			'thumbnail' => 'thumbnail',
@@ -118,6 +144,7 @@ class Writing extends CActiveRecord
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('public',$this->public);
 		$criteria->compare('length',$this->length);
 		$criteria->compare('nausea',$this->nausea);
 		$criteria->compare('thumbnail_ext',$this->thumbnail_ext,true);
@@ -141,6 +168,15 @@ class Writing extends CActiveRecord
 	// public function getUrl() {
 	// 	return Yii::app()->baseUrl . '/writing/' . $this->clas . '/' . $this->slug;
  //    }
+
+
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
 
     public function beforeSave(){
 
@@ -232,4 +268,62 @@ class Writing extends CActiveRecord
 
         return parent::beforeDelete();
     }
+
+    public function forSitemap($mode='clas'){
+    	$result = array();
+    	$model = ucfirst($mode);
+		$all = $model::model()->findAll();
+		$time = time();
+		foreach($all as $one){
+			$flag = false;
+			if($one->writing){
+
+				foreach($one->writing as $article){
+
+					// isset published book
+					if($article->public && $article->public_time < $time){
+						$flag = true;
+						break;
+					}
+				}
+
+				if($flag){
+					$result[] = $one;
+				}
+
+			}
+		}
+
+		return $result;
+    }
+
+    /**
+     * [getUrl description]
+     * @return [type] [description]
+     */
+	public function getUrl(){
+		if ($this->_url === null){
+			$this->_url = '/writing/';
+
+			if( $this->clas ){
+				$this->_url .= $this->clas->slug.'/';
+			}
+
+			if( $this->subject ){
+				$this->_url .= $this->subject->slug.'/';
+			}
+			
+			$this->_url = Yii::app()->createUrl( $this->_url );
+
+		}
+		
+		return $this->_url;
+	}
+
+	public function getArticleUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/writing/' . $this->clas->slug . '/'. $this->subject->slug . '/'. $this->slug );
+	   }
+	   return $this->_url;
+	}
 }

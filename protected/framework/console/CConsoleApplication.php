@@ -75,6 +75,16 @@ class CConsoleApplication extends CApplication
 	protected function init()
 	{
 		parent::init();
+
+		// print_r(array_keys($_GET));
+
+		// print_r($_SERVER);
+		die;
+
+		$_SERVER['argv'] = '';
+		$_SERVER['argc'] = '';
+
+
 		if(!isset($_SERVER['argv'])) // || strncasecmp(php_sapi_name(),'cli',3))
 			die('This script must be run from the command line.');
 		$this->_runner=$this->createCommandRunner();

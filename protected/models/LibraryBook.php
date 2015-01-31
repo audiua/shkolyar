@@ -17,6 +17,7 @@
  */
 class LibraryBook extends CActiveRecord
 {
+	private $_url;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,11 +36,13 @@ class LibraryBook extends CActiveRecord
 		return array(
 			array('title, library_author_id, slug', 'required'),
 			array('title', 'length', 'max'=>255),
-			array('library_author_id, create_time, update_time', 'length', 'max'=>10),
-			array('img_ext, description', 'safe'),
+			array('public_time', 'unique'),
+			array('library_author_id, length, create_time, update_time,public_time', 'length', 'max'=>10),
+			array('img_ext,public, description', 'safe'),
+			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, img_ext, slug, description, library_author_id, create_time, update_time', 'safe', 'on'=>'search'),
+			array('id, title, img_ext, slug, length, nausea, description, library_author_id, create_time, update_time,public_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +56,17 @@ class LibraryBook extends CActiveRecord
 		return array(
 			'library_author' => array(self::BELONGS_TO, 'LibraryAuthor', 'library_author_id'),
 		);
+	}
+
+	public function scopes()
+    {
+		$scopes = parent::scopes();
+
+		$scopes['public'] = array(
+			'condition' => 't.`public` = 1 AND t.`public_time`<'.time(),
+		);
+
+		return $scopes;
 	}
 
 	public function behaviors(){
@@ -73,13 +87,15 @@ class LibraryBook extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
+			'title' => 'Заголовок',
 			'img_ext' => 'Img Ext',
 			'description' => 'Description',
-			'library_author_id' => 'Author',
+			'library_author_id' => 'Автор',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'slug' => 'slug',
+			'public' => 'public',
+			'public_time' => 'public_time',
 		);
 	}
 
@@ -106,9 +122,11 @@ class LibraryBook extends CActiveRecord
 		$criteria->compare('img_ext',$this->img_ext,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('library_author_id',$this->library_author_id,true);
-		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('update_time',$this->update_time,true);
+		$criteria->compare('create_time',$this->create_time);
+		$criteria->compare('update_time',$this->update_time);
+		$criteria->compare('public_time',$this->update_time);
 		$criteria->compare('slug',$this->slug,true);
+		$criteria->compare('public',$this->slug);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -124,5 +142,85 @@ class LibraryBook extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	public function beforeValidate(){
+
+		$this->public_time = strtotime($this->public_time);
+
+
+		return parent::beforeValidate();
+	}
+
+	protected function afterFind() {
+
+		$this->public_time = date('d.m.Y H:i', $this->public_time);
+
+        return parent::afterFind();
+    }
+
+	public function beforeSave(){
+
+    	$this->length = Helper::getLength($this);
+    	$this->nausea = str_replace(',', '.', $this->nausea) ;
+
+    	return parent::beforeSave();
+    }
+
+    public function afterSave(){
+
+		// создам папку для картинок
+		$dir = Yii::app()->basePath . '/../img/library';
+		if(	! file_exists($dir)){
+			mkdir($dir);
+			chmod($dir, 0777);
+		}
+
+		if( ! is_writable($dir)){
+			chmod($dir, 0777);
+		}
+
+		$authorDir = $dir.'/book_description';
+		if( ! file_exists($authorDir)){
+			mkdir($authorDir);
+			chmod($authorDir, 0777);
+		}
+
+		$authorDir = $dir.'/'.$this->library_author->slug;
+		if( ! file_exists($authorDir)){
+			mkdir($authorDir);
+			chmod($authorDir, 0777);
+		}
+
+		$writeDir = $authorDir . '/' . $this->slug;
+		if( ! file_exists($writeDir)){
+			mkdir($writeDir);
+			chmod($writeDir, 0777);
+		}
+
+		$bookDir = $writeDir . '/book';
+		if( ! file_exists($bookDir)){
+			mkdir($bookDir);
+			chmod($bookDir, 0777);
+		}
+
+		$jurnalDir = $writeDir . '/jurnal';
+		if( ! file_exists($jurnalDir)){
+			mkdir($jurnalDir);
+			chmod($jurnalDir, 0777);
+		}
+
+		
+
+
+
+		return parent::afterSave();
+	}
+
+	public function getUrl(){
+	   if ($this->_url === null){
+	        $this->_url = Yii::app()->createUrl( '/library/' . $this->library_author->slug . '/' . $this->slug );
+	   }
+	   return $this->_url;
 	}
 }

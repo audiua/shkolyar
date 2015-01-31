@@ -23,7 +23,7 @@ class LastBookWidget extends CWidget{
 	private function lastBooks(){
 		$model = ucfirst($this->mode).'Book';
 		$criteria = new CDbCriteria;
-		$criteria->order = 'update_time DESC';
+		$criteria->order = 'public_time DESC';
 		$criteria->limit = 5;
 
 		return $model::model()->public()->findAll($criteria);

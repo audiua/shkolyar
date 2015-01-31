@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 ?>
 
 
-<div class="title">Manage Gdz Clases</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
+<div class="title">Управление гдз классами</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
 <div class="clear"></div>
 
 
@@ -73,11 +73,11 @@ $('.search-form form').submit(function(){
 		),
 		'create_time'=>array(
 			'name'=>'create_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'HH:mm:ss d MMMM yyyy\', $data->create_time)',
+			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/MM/dd HH:mm\', $data->create_time)',
 		),
 		'update_time'=>array(
 			'name'=>'update_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'HH:mm:ss d MMMM yyyy\', $data->update_time)'
+			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/MM/dd HH:mm\', $data->update_time)'
 		),
 		array(
 			'class'=>'CButtonColumn',
