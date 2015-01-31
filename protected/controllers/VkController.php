@@ -17,7 +17,7 @@ class VkController extends Controller{
 		$method = 'get'.ucfirst($mode);
 		$model = $this->$method();
 
-		d($model);
+		// d($model);
 
 		if($model){
 
