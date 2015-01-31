@@ -17,6 +17,8 @@ class VkController extends Controller{
 		$method = 'get'.ucfirst($mode);
 		$model = $this->$method();
 
+		d($model);
+
 		if($model){
 
 			$str = '';
@@ -118,182 +120,208 @@ class VkController extends Controller{
 	private function getGdz(){
 
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->gdz_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
-		$gdz = GdzBook::model()->find($criteria);
-		if($gdz){
-			$lastTime->gdz_last_public_time = strtotime($gdz->public_time);
-			if( ! $lastTime->update()){
-				die($lastTime->gerErrors);
+		if($lastTime->gdz_last_public_time < $time){
+
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->gdz_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
+			$gdz = GdzBook::model()->find($criteria);
+			if($gdz){
+				$lastTime->gdz_last_public_time = strtotime($gdz->public_time);
+				if( ! $lastTime->update()){
+					die($lastTime->gerErrors);
+				}
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'gdz', 'owner_id'=>$gdz->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'gdz';
+					$public->owner_id = $gdz->id;
+					$public->save();
+				}
 			}
-
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'gdz', 'owner_id'=>$gdz->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'gdz';
-				$public->owner_id = $gdz->id;
-				$public->save();
-			}
-
 			
+			return $gdz;
 		}
-		
-		return $gdz;
+
+		return null;
+
 	}
 
 	private function getTextbook(){
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->textbook_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
-		$textbook = TextbookBook::model()->find($criteria);
-		if($textbook){
-			$lastTime->textbook_last_public_time = strtotime($textbook->public_time);
-			$lastTime->update();
+		if($lastTime->textbook_last_public_time < $time){
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'textbook', 'owner_id'=>$textbook->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'textbook';
-				$public->owner_id = $textbook->id;
-				$public->save();
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->textbook_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
+			$textbook = TextbookBook::model()->find($criteria);
+			if($textbook){
+				$lastTime->textbook_last_public_time = strtotime($textbook->public_time);
+				$lastTime->update();
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'textbook', 'owner_id'=>$textbook->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'textbook';
+					$public->owner_id = $textbook->id;
+					$public->save();
+				}
 			}
+			
+			return $textbook;
 		}
-		
-		return $textbook;
+
+		return null;
 	}
 
 	private function getWriting(){
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->writing_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
+		if($lastTime->writing_last_public_time < $time){
 
-		$writing = Writing::model()->public()->find($criteria);
-		if($writing){
-			$lastTime->writing_last_public_time = strtotime( $writing->public_time );
-			$lastTime->update();
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'writing', 'owner_id'=>$writing->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'writing';
-				$public->owner_id = $writing->id;
-				$public->save();
+			$writing = Writing::model()->public()->find($criteria);
+			if($writing){
+				$lastTime->writing_last_public_time = strtotime( $writing->public_time );
+				$lastTime->update();
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'writing', 'owner_id'=>$writing->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'writing';
+					$public->owner_id = $writing->id;
+					$public->save();
+				}
 			}
+			
+			return $writing;
 		}
-		
 
-		return $writing;
+		return null;
 	}
 
 	private function getLibrary(){
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->library_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
+		if($lastTime->library_last_public_time < $time){
 
-		$library = LibraryBook::model()->public()->find($criteria);
-		if($library){
-			$lastTime->library_last_public_time = strtotime( $library->public_time );
-			$lastTime->update();
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->library_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'library', 'owner_id'=>$library->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'library';
-				$public->owner_id = $library->id;
-				$public->save();
+			$library = LibraryBook::model()->public()->find($criteria);
+			if($library){
+				$lastTime->library_last_public_time = strtotime( $library->public_time );
+				$lastTime->update();
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'library', 'owner_id'=>$library->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'library';
+					$public->owner_id = $library->id;
+					$public->save();
+				}
 			}
+			
+			return $library;
 		}
-		
 
-		return $library;
+		return null;
 	}
 
 	private function getAuthor(){
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->author_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
+		if($lastTime->author_last_public_time < $time){
 
-		$author = LibraryAuthor::model()->find($criteria);
-		if($author){
-			$lastTime->author_last_public_time = strtotime( $author->public_time );
-			$lastTime->update();
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->author_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'author', 'owner_id'=>$author->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'author';
-				$public->owner_id = $author->id;
-				$public->save();
+			$author = LibraryAuthor::model()->find($criteria);
+			if($author){
+				$lastTime->author_last_public_time = strtotime( $author->public_time );
+				$lastTime->update();
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'author', 'owner_id'=>$author->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'author';
+					$public->owner_id = $author->id;
+					$public->save();
+				}
 			}
+			
+			return $author;
 		}
-		
 
-		return $author;
+		return null;
 	}
 
 	private function getKnowall(){
 		$lastTime = VkTimePosting::model()->findByPk(1);
+		$time = time() - 14400;
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 'public=1';
-		$criteria->addCondition('public_time > '.$lastTime->writing_last_public_time);
-		$criteria->addCondition('public_time < '.time() - 14400);
-		$criteria->order = 'public_time ASC';
+		if($lastTime->knowall_last_public_time < $time){
 
-		$writing = Knowall::model()->public()->find($criteria);
-		if($writing){
-			$lastTime->writing_last_public_time = strtotime( $writing->public_time );
-			$lastTime->update();
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'public=1';
+			$criteria->addBetweenCondition('public_time', $lastTime->knowall_last_public_time+1, $time);
+			$criteria->order = 'public_time ASC';
 
-			$public = VkPosting::model()->findbyAttributes(array('owner'=>'knowall', 'owner_id'=>$writing->id));
-			if($public){
-				$public->update();
-				$this->_p = true;
-			} else {
-				$public = new VkPosting;
-				$public->owner = 'knowall';
-				$public->owner_id = $writing->id;
-				$public->save();
+			$knowall = Knowall::model()->public()->find($criteria);
+			if($knowall){
+				$lastTime->knowall_last_public_time = strtotime( $knowall->public_time );
+				$lastTime->update();
+
+				$public = VkPosting::model()->findbyAttributes(array('owner'=>'knowall', 'owner_id'=>$knowall->id));
+				if($public){
+					$public->update();
+					$this->_p = true;
+				} else {
+					$public = new VkPosting;
+					$public->owner = 'knowall';
+					$public->owner_id = $knowall->id;
+					$public->save();
+				}
 			}
-		}
-		
+			
 
-		return $writing;
+			return $knowall;
+		}
+
+		return null;
 	}
 
 
