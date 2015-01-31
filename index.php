@@ -1,5 +1,10 @@
 <?php
-
+function d($data){
+	echo '<pre>';
+	print_r($_REQUEST);
+	print_r($data);
+	die;
+}
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/protected/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
