@@ -7,10 +7,6 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Keyword', 'url'=>array('index')),
-	array('label'=>'Manage Keyword', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Create Keyword</h1>

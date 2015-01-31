@@ -1,31 +1,39 @@
-<?php
-/* @var $this KeywordController */
-/* @var $model Keyword */
+<h1>``<?php echo $model->keyword; ?>``</h1>
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<th></th> <th><?php echo date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")-35, date("Y")) ); ?></th> 
+		<th><?php echo date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")-28, date("Y")) ); ?></th> 
+		<th><?php echo date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")-21, date("Y")) ); ?></th> 
+		<th><?php echo date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")-14, date("Y")) ); ?></th> 
+		<th><?php echo date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")-7, date("Y")) ); ?></th> 
+		<th><?php echo date('Y-m-d', time()) ?></th>
+	</thead>
+	<tbody>
 
-$this->breadcrumbs=array(
-	'Keywords'=>array('index'),
-	$model->id,
-);
+		<tr>
+			<td>google position</td>
+			<?php $i=5; while($i>=0): ?>
+				<td><?= isset($item[$i]->google_position) ? $item[$i]->google_position : '--' ?></td>
+			<?php $i--; endwhile; ?>
+		</tr>
+		
+		<tr>
+			<td>yandex position</td>
+			<?php $i=5; while($i>=0): ?>
+				<td><?= isset($item[$i]->yandex_position) ? $item[$i]->yandex_position : '--' ?></td>
+			<?php $i--; endwhile; ?>
+		</tr>
 
-$this->menu=array(
-	array('label'=>'List Keyword', 'url'=>array('index')),
-	array('label'=>'Create Keyword', 'url'=>array('create')),
-	array('label'=>'Update Keyword', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Keyword', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Keyword', 'url'=>array('admin')),
-);
-?>
+		<tr>
+			<td>links count</td><td>---</td><td>0</td><td>1</td><td>3</td><td>4</td><td>6</td>
+		</tr>
+		<tr>
+			<td>twitter links</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td>
+		</tr>
+		<tr>
+			<td>vk links</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td>
+		</tr>
 
-<h1>View Keyword #<?php echo $model->id; ?></h1>
+	</tbody>
+</table>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'keyword',
-		'create_time',
-		'update_time',
-		'g_view',
-		'y_view',
-	),
-)); ?>

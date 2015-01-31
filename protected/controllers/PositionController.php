@@ -17,6 +17,7 @@ class PositionController extends Controller{
 
 		$this->keyword = $this->nextKeyword();
 
+
 		// print_r($this->keyword);
 		// die;
 
@@ -27,8 +28,13 @@ class PositionController extends Controller{
 		
 		$newPosition = new KeywordPosition;
 
-		$newPosition->google_position = $this->google();
-		$newPosition->yandex_position = $this->yandex();
+		// $newPosition->google_position = $this->google();
+		// $newPosition->yandex_position = $this->yandex();
+		// $newPosition->keyword_id = $this->keyword->id;
+		// $newPosition->create_time = time();
+
+		$newPosition->google_position = mt_rand(1,100);
+		$newPosition->yandex_position = mt_rand(1,100);
 		$newPosition->keyword_id = $this->keyword->id;
 		$newPosition->create_time = time();
 		
@@ -96,14 +102,15 @@ class PositionController extends Controller{
 		$keyword->update();
 
 		return $keyword;
-		
 	}
 
 	protected function checkKeyword(){
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'keyword_id='.$this->keyword->id;
-		$criteria->condition = 'create_time>'.time()-self::PERIOD;
+		// $criteria->addCondition('create_time>'.time()-self::PERIOD);
+		$criteria->addCondition('create_time>'.time());
 		$checkPosition = KeywordPosition::model()->find($criteria);
+
 		if($checkPosition){
 			return true;
 		}

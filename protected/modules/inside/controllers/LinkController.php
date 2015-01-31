@@ -1,11 +1,6 @@
 <?php
 
-class KeywordController extends InsideController
-{
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
+class LinkController extends InsideController{
 
 
 	/**
@@ -28,7 +23,7 @@ class KeywordController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'position','view', 'create', 'update', 'delete'),
+				'actions'=>array('index','view', 'create', 'update', 'delete'),
 				'roles'=>array('admin'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -48,8 +43,7 @@ class KeywordController extends InsideController
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'item'=>$this->loadModel($id)->six(),
-			'model'=>$this->loadModel($id)
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -59,17 +53,16 @@ class KeywordController extends InsideController
 	 */
 	public function actionCreate()
 	{
-		$model=new Keyword;
+		$model=new Link;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Keyword']))
+		if(isset($_POST['Link']))
 		{
-			$model->attributes=$_POST['Keyword'];
-			if($model->save()){
+			$model->attributes=$_POST['Link'];
+			if($model->save())
 				$this->redirect(array('index'));
-			}
 		}
 
 		$this->render('create',array(
@@ -89,9 +82,9 @@ class KeywordController extends InsideController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Keyword']))
+		if(isset($_POST['Link']))
 		{
-			$model->attributes=$_POST['Keyword'];
+			$model->attributes=$_POST['Link'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -120,10 +113,10 @@ class KeywordController extends InsideController
 	 */
 	public function actionIndex()
 	{
-		$model=new Keyword('search');
+		$model=new Link('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Keyword']))
-			$model->attributes=$_GET['Keyword'];
+		if(isset($_GET['Link']))
+			$model->attributes=$_GET['Link'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -134,12 +127,12 @@ class KeywordController extends InsideController
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Keyword the loaded model
+	 * @return Link the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Keyword::model()->findByPk($id);
+		$model=Link::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -147,11 +140,11 @@ class KeywordController extends InsideController
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Keyword $model the model to be validated
+	 * @param Link $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='keyword-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='link-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

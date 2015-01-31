@@ -13,44 +13,45 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array(
+		'class'=>"form-horizontal",
+	),
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'keyword'); ?>
-		<?php echo $form->textField($model,'keyword',array('size'=>60,'maxlength'=>255)); ?>
+
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'keyword', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->textField($model,'keyword',array('size'=>60,'maxlength'=>255,'class'=>'col-md-8 col-lg-8 control-label')); ?>
 		<?php echo $form->error($model,'keyword'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'create_time'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'url', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>255,'class'=>'col-md-8 col-lg-8 control-label')); ?>
+		<?php echo $form->error($model,'url'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_time'); ?>
-		<?php echo $form->textField($model,'update_time',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'update_time'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'google_view', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->textField($model,'google_view',array('size'=>10,'maxlength'=>10,'class'=>'col-md-8 col-lg-8 control-label')); ?>
+		<?php echo $form->error($model,'google_view'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'g_view'); ?>
-		<?php echo $form->textField($model,'g_view',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'g_view'); ?>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'yandex_view', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->textField($model,'yandex_view',array('size'=>10,'maxlength'=>10,'class'=>'col-md-8 col-lg-8 control-label')); ?>
+		<?php echo $form->error($model,'yandex_view'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'y_view'); ?>
-		<?php echo $form->textField($model,'y_view',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'y_view'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="clear"></div>
+	<div class="form-group">
+		<div class="col-md-offset-9 col-lg-offset-9 col-md-2 col-lg-2">
+			<?php echo CHtml::submitButton($model->isNewRecord ? 'Створити' : 'Обновити',array('class'=>'btn btn-success', )); ?>
+			<?php echo CHtml::link('Вiдмiнити', '/inside/keyword/index',array('class'=>'btn btn-default')); ?>
+		</div>
 	</div>
 
 <?php $this->endWidget(); ?>

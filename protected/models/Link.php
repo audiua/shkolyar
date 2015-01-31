@@ -1,30 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "keyword".
+ * This is the model class for table "link".
  *
- * The followings are the available columns in table 'keyword':
+ * The followings are the available columns in table 'link':
  * @property string $id
- * @property string $keyword
+ * @property string $from_url
+ * @property string $on_url
+ * @property string $keyword_id
  * @property string $create_time
  * @property string $update_time
- * @property string $g_view
- * @property string $y_view
+ * @property string $check
+ * @property string $ankor
+ * @property string $links_on_donor
+ *
+ * The followings are the available model relations:
+ * @property Keyword $keyword
  */
-class Keyword extends CActiveRecord
+class Link extends CActiveRecord
 {
-
-	public $google_position = 0;
-	public $yandex_position = 0;
-	public $links_count = 0;
-
-
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'keyword';
+		return 'link';
 	}
 
 	/**
@@ -35,29 +35,16 @@ class Keyword extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('keyword, url', 'required'),
-			array('keyword, url', 'length', 'max'=>255),
-			array('create_time, update_time, google_view, yandex_view', 'length', 'max'=>10),
-			array('check_keyword', 'safe'),
+			array('from_url, keyword_id, ankor', 'required'),
+			array('from_url, on_url, ankor', 'length', 'max'=>255),
+			array('keyword_id, create_time,check_time, update_time', 'length', 'max'=>10),
+			array('check_link', 'length', 'max'=>1),
+			array('links_on_donor', 'length', 'max'=>2),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, keyword, create_time, update_time, url, google_view, yandex_view, check_keyword', 'safe', 'on'=>'search'),
+			array('id, from_url, on_url, keyword_id, create_time,check_time, update_time, check_link, ankor, links_on_donor', 'safe', 'on'=>'search'),
 		);
 	}
-
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		return array(
-			'position' => array(self::HAS_MANY, 'KeywordPosition', 'keyword_id'),
-			'link' => array(self::HAS_MANY, 'Link', 'keyword_id'),
-			'last' => array(self::HAS_MANY, 'KeywordPosition', 'keyword_id', 'scopes'=>'lastPosition'),
-			'six' => array(self::HAS_MANY, 'KeywordPosition', 'keyword_id', 'scopes'=>'sixWeeks'),
-		);
-	}
-
 
 	public function behaviors(){
 		return array(
@@ -71,22 +58,33 @@ class Keyword extends CActiveRecord
 	}
 
 	/**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+			'keyword' => array(self::BELONGS_TO, 'Keyword', 'keyword_id'),
+		);
+	}
+
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
 		return array(
 			'id' => 'ID',
-			'keyword' => 'Keyword',
+			'from_url' => 'From Url',
+			'on_url' => 'On Url',
+			'keyword_id' => 'Keyword',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
-			'url' => 'url',
-			'check_keyword' => 'check keyword',
-			'yandex_view' => 'Yandex View',
-			'yandex_position' => 'Yandex Position',
-			'google_view' => 'Gooble View',
-			'google_position' => 'Gooble Position',
-			'links_count' => 'links count',
+			'check_link' => 'Check link',
+			'check_time' => 'Check time',
+			'ankor' => 'Ankor',
+			'links_on_donor' => 'Links On Donor',
 		);
 	}
 
@@ -109,19 +107,18 @@ class Keyword extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('keyword',$this->keyword,true);
+		$criteria->compare('from_url',$this->from_url,true);
+		$criteria->compare('on_url',$this->on_url,true);
+		$criteria->compare('keyword_id',$this->keyword_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('google_view',$this->google_view,true);
-		$criteria->compare('yandex_view',$this->yandex_view,true);
-		$criteria->compare('url',$this->url,true);
-		$criteria->compare('check_keyword',$this->check_keyword,true);
+		$criteria->compare('check_link',$this->check_link,true);
+		$criteria->compare('check_time',$this->check_time,true);
+		$criteria->compare('ankor',$this->ankor,true);
+		$criteria->compare('links_on_donor',$this->links_on_donor,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize' => 100
-			)
 		));
 	}
 
@@ -129,7 +126,7 @@ class Keyword extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Keyword the static model class
+	 * @return Link the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -138,21 +135,18 @@ class Keyword extends CActiveRecord
 
 	public function beforeSave(){
 
-		$page = file_get_contents( Yii::app()->createAbsoluteUrl($this->url) );
+		$page = file_get_contents( $this->from_url );
 		$page = mb_strtolower($page,'utf8');
 		if($page){
-			if( mb_substr_count($page, mb_strtolower($this->keyword,'utf8')) ){
-				$this->check_keyword = 1;
+			if( mb_substr_count($page, mb_strtolower(Yii::app()->createAbsoluteUrl($this->keyword->url),'utf8')) ){
+				$this->check_link = 1;
+				$this->check_time = time();
 
 			}
 		}
 
+
+
 		return parent::beforeSave();
-	}
-
-	public static function getAll(){
-
-		return CHtml::listData(self::model()->findAll(), 'id', 'keyword');
-
 	}
 }

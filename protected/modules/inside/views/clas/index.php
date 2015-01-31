@@ -68,11 +68,11 @@ $this->widget('zii.widgets.grid.CGridView',array(
 		'slug',
 		'create_time'=>array(
 			'name'=>'create_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'HH:mm:ss d MMMM yyyy\', $data->create_time)',
+			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/MM/dd HH:mm\', $data->create_time)',
 		),
 		'update_time'=>array(
 			'name'=>'update_time',
-			'value'=>'Yii::app()->dateFormatter->format(\'HH:mm:ss d MMMM yyyy\', $data->update_time)'
+			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/MM/dd HH:mm\', $data->update_time)'
 		),
 array(
 'class'=>'CButtonColumn',

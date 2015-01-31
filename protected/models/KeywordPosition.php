@@ -48,35 +48,20 @@ class KeywordPosition extends CActiveRecord
 		);
 	}
 
-	public function scopes()
-    {
-		$scopes = parent::scopes();
-
-		$time = time();
-		$todayEnd = $time - 25200;
-		$oneEnd = $time - 25200*2;
-		$twoEnd = $time - 25200*3;
-		$threeEnd = $time - 25200*4;
 
 
-		$scopes['today'] = array(
-			'condition' => 'position.create_time<'.$time.' AND position.create_time > '.$todayEnd,
-		);
-
-
-		$scopes['one'] = array(
-			'condition' => 'position.create_time<'.$todayEnd.' AND position.create_time>'.$oneEnd,
-		);
-
-		$scopes['two'] = array(
-			'condition' => 'position.create_time<'.$oneEnd.' AND position.create_time>'.$twoEnd,
-		);
-
-		$scopes['three'] = array(
-			'condition' => 'position.create_time<'.$twoEnd.' AND position.create_time>'.$threeEnd,
-		);
-
-		return $scopes;
+	public function lastPosition()
+	{
+		$this->getDbCriteria()->order = 'last.create_time DESC';
+		$this->getDbCriteria()->limit = 2;
+		return $this;
+	}
+	
+	public function sixWeeks()
+	{
+		$this->getDbCriteria()->order = 'six.create_time DESC';
+		$this->getDbCriteria()->limit = 6;
+		return $this;
 	}
 
 	/**

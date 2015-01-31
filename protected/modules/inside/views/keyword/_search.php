@@ -32,13 +32,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'g_view'); ?>
-		<?php echo $form->textField($model,'g_view',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->label($model,'google_view'); ?>
+		<?php echo $form->textField($model,'google_view',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'y_view'); ?>
-		<?php echo $form->textField($model,'y_view',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->label($model,'yandex_view'); ?>
+		<?php echo $form->textField($model,'yandex_view',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row buttons">
