@@ -32,7 +32,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
     	<div class="modal-header">
-    		<h5 class="modal-title" id="myModalLabel">Нажимай «Нравится» и отримуй усе необхідне для навчання у школі в соціальних мережах <span class="shkolyar blue">Facebook</span> і <span class="shkolyar blue">Vkontakte</span>:</h5>
+    		<div class="modal-title" id="myModalLabel">Нажимай «Нравится» и отримуй усе необхідне для навчання у школі в соціальних мережах <span class="shkolyar blue">Facebook</span> і <span class="shkolyar blue">Vkontakte</span>:</div>
       	</div>
 
       	<div class="fb-like-widget">
