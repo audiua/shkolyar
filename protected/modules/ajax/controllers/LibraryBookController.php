@@ -13,7 +13,7 @@ public function filters()
 public function actionTranslit(){
 
 	if (Yii::app()->request->isAjaxRequest) {
-		$slug = Yii::app()->request->getPost('slug');
+		$slug = Yii::app()->request->getPost('slug', null);
 
 		if($slug){
 			$gdzBook = new LibraryBook;
