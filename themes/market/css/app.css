@@ -492,13 +492,14 @@
     text-align: justify;
   }
   .sidebar {
-    padding: 15px;
+    padding: 0px;
     padding-top: 30px;
     float: left;
     width: 330px;
     border-left: 2px dotted #ccc;
   }
   .sidebar-block {
+    padding: 15px;
     margin-bottom: 15px;
   }
   .sidebar-block:last-child {
@@ -508,6 +509,14 @@
     color: #4169E1;
     text-align: center;
     font-weight: bold;
+  }
+  .sidebar-block .info {
+    margin-top: 0px;
+  }
+  .ref {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
   }
   .clear {
     clear: both;
