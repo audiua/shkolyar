@@ -1,9 +1,9 @@
 <?php
 
-class RelativeGdzWidget extends CWidget{
+class RelativeWritingWidget extends CWidget{
 
 	public $params = array();
-
+	public $article;
 	public $countBook = 3;
 
 	public function init(){
@@ -12,26 +12,26 @@ class RelativeGdzWidget extends CWidget{
     }
 
 	public function run(){
-		if($this->beginCache('relative_gdz_books_'.$this->controller->bookModel->id) ){
+		if($this->beginCache('relative_writing_article_'. $this->article->id) ){
 
 			// передаем данные в представление виджета
-	        $this->render('index',array('model' => $this->relativeBooks($this->countBook)));
+	        $this->render('index',array('model' => $this->relativeArticle($this->countBook)));
 
 	        $this->endCache(); 
 		}
     }
 
-	private function relativeBooks($count){
+	private function relativeArticle($count){
 		$books = array();
-		$activeBook = $this->controller->bookModel->id;
+		$activeBook = $this->article->id;
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.id>'.$activeBook;
-		$criteria->addCondition('t.gdz_clas_id ='.$this->controller->bookModel->gdz_clas_id);
+		$criteria->addCondition('t.clas_id ='.$this->article->clas_id);
 		$criteria->order = 'id';
 		$criteria->limit = $this->countBook;
 
-		$result = GdzBook::model()->public()->findAll($criteria);
+		$result = Writing::model()->public()->findAll($criteria);
 		if($result){
 			$books = array_merge($books,$result);	
 		}
@@ -39,11 +39,11 @@ class RelativeGdzWidget extends CWidget{
 		if(count($books) < $this->countBook){
 			$criteria = new CDbCriteria;
 			$criteria->condition = 't.id<'.$activeBook;
-			$criteria->addCondition('t.gdz_clas_id ='.$this->controller->bookModel->gdz_clas_id);
+			$criteria->addCondition('t.clas_id ='.$this->article->clas_id);
 			$criteria->order = 'id';
 			$criteria->limit = $this->countBook-count($books);
 
-			$result = GdzBook::model()->public()->findAll($criteria);
+			$result = Writing::model()->public()->findAll($criteria);
 			if($result){
 				$books = array_merge($books,$result);	
 			}

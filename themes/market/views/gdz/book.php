@@ -88,7 +88,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 
 <div class="clear"></div>
 <div class="separator"></div>
-<div class="info">Схожі збірники гдз для класу</div>
+<div class="info">Схожі збірники гдз для <?= $this->param['clas'] ?> класу</div>
 <div class="task-block">
 	<?php 
 	Yii::import( 'application.widgets.relativeGdzWidget.RelativeGdzWidget');

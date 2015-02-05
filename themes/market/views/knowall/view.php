@@ -13,3 +13,13 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php echo  $model->text; ?>
 	
 </div>
+
+
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі статті</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeKnowallWidget.RelativeKnowallWidget');
+	$this->widget('RelativeKnowallWidget', array('article'=>$model)); ?>
+</div>

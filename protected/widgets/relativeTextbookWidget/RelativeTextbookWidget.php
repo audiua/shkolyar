@@ -1,6 +1,6 @@
 <?php
 
-class RelativeGdzWidget extends CWidget{
+class RelativeTextbookWidget extends CWidget{
 
 	public $params = array();
 
@@ -12,7 +12,7 @@ class RelativeGdzWidget extends CWidget{
     }
 
 	public function run(){
-		if($this->beginCache('relative_gdz_books_'.$this->controller->bookModel->id) ){
+		if($this->beginCache('relative_textbook_books_'.$this->controller->bookModel->id) ){
 
 			// передаем данные в представление виджета
 	        $this->render('index',array('model' => $this->relativeBooks($this->countBook)));
@@ -27,11 +27,11 @@ class RelativeGdzWidget extends CWidget{
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.id>'.$activeBook;
-		$criteria->addCondition('t.gdz_clas_id ='.$this->controller->bookModel->gdz_clas_id);
+		$criteria->addCondition('t.textbook_clas_id ='.$this->controller->bookModel->textbook_clas_id);
 		$criteria->order = 'id';
 		$criteria->limit = $this->countBook;
 
-		$result = GdzBook::model()->public()->findAll($criteria);
+		$result = TextbookBook::model()->public()->findAll($criteria);
 		if($result){
 			$books = array_merge($books,$result);	
 		}
@@ -39,11 +39,11 @@ class RelativeGdzWidget extends CWidget{
 		if(count($books) < $this->countBook){
 			$criteria = new CDbCriteria;
 			$criteria->condition = 't.id<'.$activeBook;
-			$criteria->addCondition('t.gdz_clas_id ='.$this->controller->bookModel->gdz_clas_id);
+			$criteria->addCondition('t.textbook_clas_id ='.$this->controller->bookModel->textbook_clas_id);
 			$criteria->order = 'id';
 			$criteria->limit = $this->countBook-count($books);
 
-			$result = GdzBook::model()->public()->findAll($criteria);
+			$result = TextbokBook::model()->public()->findAll($criteria);
 			if($result){
 				$books = array_merge($books,$result);	
 			}

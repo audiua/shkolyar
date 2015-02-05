@@ -13,3 +13,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php echo  $model->text; ?>
 	
 </div>
+
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі твори для <?= $this->param['clas'] ?> класу</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeWritingWidget.RelativeWritingWidget');
+	$this->widget('RelativeWritingWidget', array('article'=>$model)); ?>
+</div>

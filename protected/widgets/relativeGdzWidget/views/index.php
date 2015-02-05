@@ -24,26 +24,10 @@
 
 			</div>
 
-				<?php 
-					if($this->controller->id == 'gdz'):
-				?>
-
-				<div class="gdz-link">
-					<?php echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
-				</div>
-
-				<?php 
-					else:
-				?>
-
-				<div class="textbook-link">
-					<?php echo CHtml::link( 'Підручник', array('/textbook/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-sm')); ?>
-				</div>
-
-				<?php 
-					endif;
-				?>
-								
+			<div class="gdz-link">
+				<?php echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
+			</div>
+							
 		</div>
 
 	<?php endforeach; ?>
