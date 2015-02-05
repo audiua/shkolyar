@@ -463,6 +463,7 @@
 <!-- <div class="search"> -->
 	<form action="/site/search" class="search">
 
+		
 		<script>
 		  (function() {
 		    var cx = '006022602701960109764:drx4nhjaekq';
@@ -476,8 +477,6 @@
 		  })();
 		</script>
 		<gcse:searchbox-only></gcse:searchbox-only>
-
-
 		
 		<!-- <div class="show-filters"><span class="blue glyphicon glyphicon-chevron-left"></span></div> -->
 		<!-- <input type="text" name="c" value="" class="search-clas" placeholder="Клас" >

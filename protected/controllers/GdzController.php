@@ -429,7 +429,8 @@ public function actionNestedOne($clas, $subject, $book, $section, $task){
 				.' клас '.$this->bookModel->author
 				.' рішення до завдяння '
 				. $section . '/' . $task,
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=>'ГДЗ - ' .$this->subjectModel->subject->title . ' '
+				. $clas .' клас '.$this->bookModel->author.' рішення до завдяння '. $task ));
 			
 
 			$this->endCache(); 
@@ -507,7 +508,8 @@ public function actionNestedTwo($clas, $subject, $book, $section, $paragraph ,$t
 				.' клас '.$this->bookModel->author
 				.' рішення до завдяння '
 				. $section . '/' . $paragraph . '/' . $task,
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'] ));
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=>'ГДЗ - ' .$this->subjectModel->subject->title . ' '
+				. $clas .' клас '.$this->bookModel->author.' рішення до завдяння '. $task ));
 			
 			$this->endCache(); 
 

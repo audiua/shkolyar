@@ -1,10 +1,12 @@
 <?php 
 $categoryClas = $this->controller->id . '_clas';
-$path = 'img/'.$this->controller->id.'/'.$this->params['clas'].'/'.$this->params['subject'].'/'.$this->model->slug.'/book';?>
+$path = 'img/'.$this->controller->id.'/'.$this->params['clas'].'/'.$this->params['subject'].'/'.$this->model->slug.'/book';
+$controller = ($this->controller->id=='gdz') ? 'ГДЗ ':'Підручник ';
+?>
 
 <div class="">
-<?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$this->model->slug.'.'.$this->model->img, $this->controller->id=='gdz'? 'Підручник' : 'ГДЗ' . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author, 
-	array('class'=>'img-middle-book thumbnail')); 
+<?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$this->model->slug.'.'.$this->model->img, $controller . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author, 
+	array('class'=>'img-middle-book thumbnail', 'title'=>$controller . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author)); 
 ?> 
 </div>
 	<div class="">

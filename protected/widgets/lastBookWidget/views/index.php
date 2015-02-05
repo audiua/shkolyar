@@ -2,6 +2,7 @@
 
 <?php 
 $first = true;
+$controller = ($this->mode=='gdz') ? 'ГДЗ ':'Підручник ';
 foreach( $model as $i => $one ):
 	// книги закрыта для публикации
 	if( ! $one->public){
@@ -19,9 +20,10 @@ foreach( $model as $i => $one ):
 		<div class=""> 
 		<?php 
 			echo CHtml::image(
-				Yii::app()->baseUrl . '/' . $path.'/'.$one->slug.'.'.$one->img, 'ГДЗ '. $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author, 
+				Yii::app()->baseUrl . '/' . $path.'/'.$one->slug.'.'.$one->img, $controller . $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author, 
 				array(
 					'class'=>($first == true) ? 'thumbnail img-last-big-book' : 'thumbnail img-last-small-book',
+					'title'=> $controller . $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author,
 				)
 			);
 		?> 
