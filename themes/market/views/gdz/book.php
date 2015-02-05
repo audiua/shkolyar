@@ -85,3 +85,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="task-block">
 	<?php $this->widget('TaskWidget'); ?>
 </div>
+
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі збірники гдз для класу</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeGdzWidget.RelativeGdzWidget');
+	$this->widget('RelativeGdzWidget'); ?>
+</div>

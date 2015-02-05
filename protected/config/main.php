@@ -54,7 +54,6 @@ return array(
 		'application.widgets.taskWidget.*',
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
-		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
 		'application.widgets.writingSidebarMenuWidget.*',
 		'application.widgets.librarySidebarMenuWidget.*',
