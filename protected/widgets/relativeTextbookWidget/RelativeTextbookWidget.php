@@ -43,7 +43,7 @@ class RelativeTextbookWidget extends CWidget{
 			$criteria->order = 'id';
 			$criteria->limit = $this->countBook-count($books);
 
-			$result = TextbokBook::model()->public()->findAll($criteria);
+			$result = TextbookBook::model()->public()->findAll($criteria);
 			if($result){
 				$books = array_merge($books,$result);	
 			}
