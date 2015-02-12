@@ -301,26 +301,26 @@ class Writing extends CActiveRecord
      * [getUrl description]
      * @return [type] [description]
      */
-	public function getUrl(){
-		if ($this->_url === null){
-			$this->_url = '/writing/';
+	// public function getUrl(){
+	// 	if ($this->_url === null){
+	// 		$this->_url = '/writing/';
 
-			if( $this->clas ){
-				$this->_url .= $this->clas->slug.'/';
-			}
+	// 		if( $this->clas ){
+	// 			$this->_url .= $this->clas->slug.'/';
+	// 		}
 
-			if( $this->subject ){
-				$this->_url .= $this->subject->slug.'/';
-			}
+	// 		if( $this->subject ){
+	// 			$this->_url .= $this->subject->slug.'/';
+	// 		}
 			
-			$this->_url = Yii::app()->createUrl( $this->_url );
+	// 		$this->_url = Yii::app()->createUrl( $this->_url );
 
-		}
+	// 	}
 		
-		return $this->_url;
-	}
+	// 	return $this->_url;
+	// }
 
-	public function getArticleUrl(){
+	public function getUrl(){
 	   if ($this->_url === null){
 	        $this->_url = Yii::app()->createUrl( '/writing/' . $this->clas->slug . '/'. $this->subject->slug . '/'. $this->slug );
 	   }
