@@ -312,7 +312,7 @@ $(document).ready(function () {
 
 
 	// одинаковая высота сайдбара и контента
-	// resizeContentBlock();
+	resizeContentBlock();
 
 	function resizeContentBlock(){
 		var contHeight = $('.content').outerHeight();
