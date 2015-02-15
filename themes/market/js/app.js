@@ -320,7 +320,7 @@ $(document).ready(function () {
 		// console.log('resize');
 		// console.log(sidebarHeight);
 		if(contHeight > sidebarHeight){
-			$('.sidebar').height(contHeight);
+			$('.sidebar').outerHeight(contHeight);
 		}
 	}
 

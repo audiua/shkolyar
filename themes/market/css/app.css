@@ -1407,5 +1407,5 @@ a > .small-book > .img-small-book {
 }
 
 .social{
-  height: 300px
+  min-height: 320px
 }
