@@ -317,11 +317,13 @@ $(document).ready(function () {
 	function resizeContentBlock(){
 		var contHeight = $('.content').outerHeight();
 		var sidebarHeight = $('.sidebar').outerHeight();
-		// console.log('resize');
-		// console.log(sidebarHeight);
+		console.log('resize');
+		console.log(sidebarHeight);
+		console.log(contHeight);
 		if(contHeight > sidebarHeight){
-			$('.sidebar').outerHeight(contHeight);
+			$('.sidebar').height(contHeight);
 		}
+		console.log($('.sidebar').outerHeight());
 	}
 
 
