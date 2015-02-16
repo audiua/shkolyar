@@ -136,20 +136,21 @@ return array(
 				'/jewel' => 'site/jewel',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
+
 				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
 
+				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
 				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
-				'<controller:\w+>'=> '<controller>/index',
 				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
 				
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
-				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
@@ -167,6 +168,7 @@ return array(
 				'sitemap.xml'=>'sitemap/index',
 				
 				
+				'<controller:\w+>'=> '<controller>/index',
 				
 				
 
