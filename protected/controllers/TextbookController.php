@@ -217,10 +217,10 @@ public function actionCurrentSubject($subject){
 			)
 		);
 
-		$this->keywords = 'Підручники ' . $this->subjectModel->title;
+		$this->keywords = 'Підручники ' . $subjectModel->title;
 
 		$this->description = 'Підручники ' 
-			. $this->subjectModel->title . ' для середніх загальноосвітніх шкіл України.';
+			. $subjectModel->title . ' для середніх загальноосвітніх шкіл України.';
 
 		$this->h1 = 'Підручники '.$subjectModel->title;
 		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
