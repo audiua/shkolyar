@@ -155,8 +155,8 @@ return array(
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
-				'<controller:library>/<category:\w+>/<article:[a-z-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
+				'<controller:library>/<category:\w+>/<article:[0-9a-z-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<category:\w+>/<article:[0-9a-z-]+>'=>'<controller>/view',
 				
 				'<controller:knowall|library|writing>/<category:\w+>/page/<page:\d+>'=>'<controller>/category',
 				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
