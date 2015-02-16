@@ -139,6 +139,8 @@ public function actionView($category, $article){
 
 		);
 
+		$this->keywords = 'Всезнайка, '.$categoryModel->title . ', '. $article->title;
+		$this->description = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title . ' '. $article->title;
 		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка '.$catModel->title . ' ' . $article->title;
 
 		$this->render('view', array('model'=>$article));
