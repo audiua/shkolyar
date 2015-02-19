@@ -166,7 +166,7 @@ public function addWritingModels($models, $changeFreq=self::DAILY, $priority=0.5
         }
 
         $item = array(
-            'loc' => $this->siteUrl . $model->getArticleUrl(),
+            'loc' => $this->siteUrl . $model->getUrl(),
             'changefreq' => $changeFreq,
             'priority' => $priority
         );
