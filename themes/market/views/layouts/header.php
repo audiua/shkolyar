@@ -426,8 +426,9 @@
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
 			    			<li><a class="library-subcategory" href="/library/vingranovskyy">Вінграновський М.С.</a></li>
+			    			<li><a class="library-subcategory" href="/library/gutsalo">Гуцало Євген</a></li>
+			    			<li><a class="library-subcategory" href="/library/nestayko">Нестайко Всеволод</a></li>
 			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/nestayko">Всеволод Нестайко</a></li>
 			    		</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="lit-w">
