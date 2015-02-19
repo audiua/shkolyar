@@ -2,9 +2,10 @@
 
 	<noindex>
 		<!-- <a href="http://api.hostinger.com.ua/redir/586518" target="_blank"><img src="http://hostinger.com.ua/banners/ru/hostinger-300x250-2.gif" alt="Хостинг" border="0" width="300" height="250" /></a> -->
-	
+		
+		<a href="http://www.wmmail.ru/index.php?ref=audiua" rel="nofollow"><img src="http://www.wmmail.ru/banners/wmmail240x400x2.gif" alt="WMmail.ru - сервис почтовых рассылок" border=0></a>
 
-	<object id="textru-flash-1" type="application/x-shockwave-flash" data="http://text.ru/images/partner/banner-1.swf" width="316" height="381">
+	<!-- <object id="textru-flash-1" type="application/x-shockwave-flash" data="http://text.ru/images/partner/banner-1.swf" width="316" height="381">
 		<param name="quality" value="high">
 	    <param name="wmode" value="transparent">
 		<p>Баннер text.ru</p>
@@ -28,7 +29,7 @@
 			document.getElementById("textru-form-home").submit();
 			return false;
 		});
-	</script>
+	</script> -->
 </noindex>
 
 </div>
