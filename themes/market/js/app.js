@@ -356,7 +356,7 @@ $(document).ready(function () {
 	if( ! $.cookie('showFb') ){
 		setTimeout(showFb, 10000);
 	}
-		setTimeout(showFb, 10000);
+		// setTimeout(showFb, 10000);
 
 
 	// выделение выбраного пункта из таблицы
