@@ -991,9 +991,9 @@ img.img-middle-book {
   font-weight: bold;
   font-size: 16px;
 }
-#fb-modal iframe {
+/*#fb-modal iframe {
   height: 80px !important;
-}
+}*/
 .last-book {
   padding-bottom: 15px;
   padding-top: 10px;
@@ -1327,7 +1327,7 @@ img.img-middle-book {
 }
 .vk-like-widget {
   float: right;
-  width: 250px;
+  width: 300px;
   margin-top: 30px;
 }
 .fb-like-widget {
@@ -1408,4 +1408,14 @@ a > .small-book > .img-small-book {
 
 .social{
   min-height: 320px
+}
+.social-shared{
+  position: fixed;
+  z-index: 10;
+  left: 0px;
+  top: 25px;
+}
+#vk_like{
+  float: left;
+  margin-right: 30px;
 }

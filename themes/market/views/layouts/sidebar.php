@@ -3,7 +3,17 @@
 	<noindex>
 		<!-- <a href="http://api.hostinger.com.ua/redir/586518" target="_blank"><img src="http://hostinger.com.ua/banners/ru/hostinger-300x250-2.gif" alt="Хостинг" border="0" width="300" height="250" /></a> -->
 		
-		<a href="http://www.wmmail.ru/index.php?ref=audiua" rel="nofollow"><img src="http://www.wmmail.ru/banners/wmmail240x400x2.gif" alt="WMmail.ru - сервис почтовых рассылок" border=0></a>
+		<?php 
+			$ar = array(
+				'<a href="http://www.wmmail.ru/index.php?ref=audiua" rel="nofollow"><img src="http://www.wmmail.ru/banners/wmmail240x400x2.gif" alt="WMmail.ru - сервис почтовых рассылок" border=0></a>',
+				'<a href="http://www.seosprint.net/?ref=5507638" target="_blank"><img src="http://www.seosprint.net/baners/seo4x240x400.gif" width="240" height="400" border="0" alt="SEO sprint - Всё для максимальной раскрутки!" /></a>'
+
+			);
+
+			echo $ar[array_rand($ar,1)];
+		?>
+
+		
 
 	<!-- <object id="textru-flash-1" type="application/x-shockwave-flash" data="http://text.ru/images/partner/banner-1.swf" width="316" height="381">
 		<param name="quality" value="high">
@@ -80,12 +90,12 @@
 		  <!-- Tab panes -->
 		  <div class="tab-content">
 		    <div role="tabpanel" class="tab-pane active" id="vk">
-				<script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
+				<script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
 
 				<!-- VK Widget -->
 				<div id="vk_groups"></div>
 				<script type="text/javascript">
-					VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "250", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81422422);
+				VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "320", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81422422);
 				</script>
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="fb">

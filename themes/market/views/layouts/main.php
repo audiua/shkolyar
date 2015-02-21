@@ -62,8 +62,8 @@
             <div class="black"></div> -->
 
             <div class="content">
-               
 
+                
             <!-- <div class="h-direct">
                 <img src="/images/hor.jpeg"> 
             </div> -->        
@@ -82,6 +82,7 @@
                 <div class="red"></div>
                 <div class="black"></div>
                 <?php $this->renderPartial('//layouts/footer'); ?>
+                <?php $this->renderPartial('//layouts/social'); ?>
             </div>
 
         </div>
