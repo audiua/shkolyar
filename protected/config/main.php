@@ -160,8 +160,8 @@ return array(
 				'<controller:library>/<category:\w+>/<article:[0-9a-z-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<category:\w+>/<article:[0-9a-z-]+>'=>'<controller>/view',
 				
-				'<controller:knowall|library|writing>/<category:\w+>/page/<page:\d+>'=>'<controller>/category',
-				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:[0-9a-z-]+>/page/<page:\d+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:[0-9a-z-]+>'=>'<controller>/category',
 				
 
 				// 'tizer'=>'tizer/index',
