@@ -12,7 +12,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
   <?php  echo $description; ?>
 </div>
 <?php $this->widget('LikeWidget'); ?>
-
+<div class="clear"></div>
 <div class="separator"></div>
 <div class="info">Виберіть твір</div>
 <?php $this->widget('DataWritingWidget', array('model'=>$model)); ?>
