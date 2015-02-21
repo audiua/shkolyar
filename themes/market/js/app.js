@@ -353,9 +353,10 @@ $(document).ready(function () {
 	}
 
 	// проверяем по кукам 1 раз в сутки
-	// if( ! $.cookie('showFb') ){
-	// 	setTimeout(showFb, 10000);
-	// }
+	if( ! $.cookie('showFb') ){
+		setTimeout(showFb, 10000);
+	}
+		setTimeout(showFb, 10000);
 
 
 	// выделение выбраного пункта из таблицы

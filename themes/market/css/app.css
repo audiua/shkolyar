@@ -1328,11 +1328,12 @@ img.img-middle-book {
 .vk-like-widget {
   float: right;
   width: 300px;
-  margin-top: 30px;
+  margin-right: 10px;
 }
 .fb-like-widget {
   float: left;
-  width: 250px;
+  width: 300px;
+  margin-left: 10px;
 }
 .main-menu {
   margin-bottom: 15px;
@@ -1431,4 +1432,18 @@ a > .small-book > .img-small-book {
   width: 100px !important;
   float: right;
   padding-right: 20px;
+}
+
+#vk_groups2{
+  height: 320px;
+  width: 300px;
+}
+
+#vk_groups2 iframe{
+  height: 320px !important;
+  width: 300px !important;
+}
+
+.modal-dialog{
+  width: 650px;
 }

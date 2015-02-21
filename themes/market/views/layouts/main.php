@@ -47,6 +47,16 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <!-- Start Facebook Opengraph -->
+        <meta property="fb:app_id" content="919200554758445">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="школяр">
+        <meta property="og:site_name" content="школяр">
+        <meta property="og:description" content="школяр">
+        <meta property="og:url" content="http://shkolyar.info">
+        <!-- <meta property="og:image" content="<зображення запису>"/> -->
+        <!-- End Facebook Opengraph -->
         
     </head>
     <body>
