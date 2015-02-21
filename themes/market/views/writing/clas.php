@@ -11,6 +11,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
   <?php  echo $description; ?>
 </div>
+<?php $this->widget('LikeWidget'); ?>
 
 <div class="separator"></div>
 <div class="info">Виберіть предмет</div>

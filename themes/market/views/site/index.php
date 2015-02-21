@@ -31,3 +31,5 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'index'))); ?>
 </div>
+
+<?php $this->widget('LikeWidget'); ?>

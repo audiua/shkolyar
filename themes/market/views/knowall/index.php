@@ -11,6 +11,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'knowall', 'action'=>'index'))); ?>
 </div>
 
+<?php $this->widget('LikeWidget'); ?>
+
 <div class="separator"></div>
 <div class="info">Виберіть категорію</div>
 

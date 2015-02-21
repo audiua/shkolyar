@@ -19,7 +19,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		планшету чи телефона або комп’ютера.
 	</p>
 </div>
-
+<?php $this->widget('LikeWidget'); ?>
 
 <div class="separator"></div>
 <div class="info">Виберіть клас</div>

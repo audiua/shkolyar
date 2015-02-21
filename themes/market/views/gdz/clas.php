@@ -41,6 +41,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
   <?php  echo $this->clasModel->description; ?>
 </div>
+
+<?php $this->widget('LikeWidget'); ?>
   
 
 <div class="separator"></div>
