@@ -18,6 +18,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	
 </div>
 
+<?php $this->widget('LikeWidget'); ?>
+
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 <div class="task">
