@@ -138,7 +138,7 @@ return array(
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
 
-				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
+				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
 
 				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
@@ -157,8 +157,8 @@ return array(
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
-				'<controller:library>/<category:\w+>/<article:[0-9a-z-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<category:\w+>/<article:[0-9a-z-]+>'=>'<controller>/view',
+				'<controller:library>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'<controller>/view',
 				
 				'<controller:knowall|library|writing>/<category:[0-9a-z-]+>/page/<page:\d+>'=>'<controller>/category',
 				'<controller:knowall|library|writing>/<category:[0-9a-z-]+>'=>'<controller>/category',
