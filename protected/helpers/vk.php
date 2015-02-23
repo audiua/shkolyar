@@ -1,4 +1,7 @@
 <?php
+//http://dudev.ru/blog/57_Primyer-ispolzovaniya-klassa-avtopublikacii-postov-vkontaktye.html
+//http://dudev.ru/blog/20_styena-vk.html
+
 class vk {
 	private $token;
 	private $app_id;

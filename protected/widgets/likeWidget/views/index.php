@@ -8,17 +8,17 @@
 
 	<!-- VK Widget -->
 	<div class="vk-subscribe">
-		<div id="vk_subscribe"></div>
+		<div id="vk_subscribe<?=$id?>"></div>
 		<script type="text/javascript">
-		VK.Widgets.Subscribe("vk_subscribe", {soft: 1}, -81422422);
+		VK.Widgets.Subscribe("vk_subscribe<?=$id?>", {soft: 1}, -81422422);
 		</script>
 	</div>
 	
 	<!-- Put this div tag to the place, where the Like block will be -->
 	<div class="vk-like">
-		<div id="vk_like"></div>
+		<div id="vk_like<?=$id?>"></div>
 		<script type="text/javascript">
-		VK.Widgets.Like("vk_like", {type: "button"});
+		VK.Widgets.Like("vk_like<?=$id?>", {type: "button"});
 		</script>
 	</div>
 
