@@ -52,6 +52,7 @@ class Writing extends CActiveRecord
 			array('title, slug', 'length', 'max'=>255),
 			array('deleteImage,public', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
+			array('vk_img', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, clas_id, thumbnail_ext, deleteImage, public, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
@@ -114,6 +115,7 @@ class Writing extends CActiveRecord
 			'thumbnail_ext' => 'Img Ext',
 			'thumbnail' => 'thumbnail',
 			'deleteImage' => 'Удалить изображение',
+			'vk_img' => 'vk img',
 		);
 	}
 

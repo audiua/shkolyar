@@ -48,11 +48,6 @@ class VkController extends Controller{
 				} else {
 					$str .= $this->normalDate(strtotime($model->public_time)).' добавлено новий збірник готових домашніх завдань ';
 				}
-
-				// $path = 'img/gdz/'.$model->gdz_clas->clas->slug.'/'.$model->gdz_subject->subject->slug.'/'.$model->slug.'/book';
-				// $file = Yii::app()->basePath . '/' . $path.'/'.$model->slug.'.'.$model->img;
-
-				// $vk = new VkApi(self::CLIENT_ID, self::ACCESS_TOKEN, $file);
 				
 				if(!$model->vk_img){
 					$path = 'img/gdz/'.$model->gdz_clas->clas->slug.'/'.$model->gdz_subject->subject->slug.'/'.$model->slug.'/book';
@@ -75,15 +70,37 @@ class VkController extends Controller{
 					$str .= $this->normalDate(strtotime($model->public_time)).' добавлено новий підручник ';
 				}
 
+				if(!$model->vk_img){
+					$path = 'img/textbook/'.$model->textbook_clas->clas->slug.'/'.$model->textbook_subject->subject->slug.'/'.$model->slug.'/book';
+					$file = Yii::app()->basePath . '/../' . $path.'/'.$model->slug.'.'.$model->img;
+					// d($file);
+
+
+					$model->vk_img = $vk->upload_photo( $file, $this->textbook_album, 'підручник '.$model->title.' '.$model->author.' '.$model->textbook_clas->clas->slug.' клас', $model->slug.'.'.$model->img, $model->img );
+					$model->update();
+				}
+
 				$str .= $model->textbook_clas->clas->slug . ' клас ' . $model->textbook_subject->subject->title . ' ' . $model->author  . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				break;
 
 				case 'writing': 
 
+				// d($model);
+
 				if($this->_p){
 					$str = $this->normalDate(strtotime($model->public_time)).' обновлено шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				} else {
 					$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий шкільний твір по предмету '.$model->subject->title .' для ' . $model->clas->slug . ' класу на тему: '. $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+				}
+
+				if(!$model->vk_img){
+					
+					$file = $model->getThumb(337,470,'crop');
+					// d($file);
+
+
+					$model->vk_img = $vk->upload_photo( $file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
+					$model->update();
 				}
 
 				break;
@@ -232,7 +249,7 @@ class VkController extends Controller{
 
 			$criteria = new CDbCriteria;
 			$criteria->condition = 'public=1';
-			$criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
+			// $criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
 			$criteria->order = 'public_time ASC';
 
 			$writing = Writing::model()->public()->find($criteria);

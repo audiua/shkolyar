@@ -87,15 +87,15 @@ class vk {
 			return $this->error( $data );
 		}
 
-		/* 5.5
-		$cfile['file'] = curl_file_create($file,'image/jpeg','test_name.jpg');
-		$ch = curl_init( $data->response->upload_url );
-		curl_setopt ( $ch, CURLOPT_HEADER, false );
-		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
-		curl_setopt ( $ch, CURLOPT_POST, true );
-		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $cfile );
-		*/
+		// 5.5
+		// $cfile['file'] = curl_file_create($file,'image/jpeg','test_name.jpg');
+		// $ch = curl_init( $data->response->upload_url );
+		// curl_setopt ( $ch, CURLOPT_HEADER, false );
+		// curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		// curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
+		// curl_setopt ( $ch, CURLOPT_POST, true );
+		// curl_setopt ( $ch, CURLOPT_POSTFIELDS, $cfile );
+		
 	
 		$ch = curl_init( $data->response->upload_url );
 		curl_setopt ( $ch, CURLOPT_HEADER, false );
