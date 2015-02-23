@@ -249,7 +249,7 @@ class VkController extends Controller{
 
 			$criteria = new CDbCriteria;
 			$criteria->condition = 'public=1';
-			// $criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
+			$criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
 			$criteria->order = 'public_time ASC';
 
 			$writing = Writing::model()->public()->find($criteria);
