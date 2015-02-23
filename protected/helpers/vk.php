@@ -84,6 +84,7 @@ class vk {
 			return $this->error( $data );
 		}
 
+		/* 5.5
 		$cfile['file'] = curl_file_create($file,'image/jpeg','test_name.jpg');
 		$ch = curl_init( $data->response->upload_url );
 		curl_setopt ( $ch, CURLOPT_HEADER, false );
@@ -91,22 +92,14 @@ class vk {
 		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
 		curl_setopt ( $ch, CURLOPT_POST, true );
 		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $cfile );
-
-
-
-		// $link = $upl_url["response"]["upload_url"];
-		//     $lala = dirname(__FILE__)."/112.jpg";
-		//     $cfile = curl_file_create($lala,'image/jpeg','test_name.jpg');
-		     
-		//     $curl=curl_init();
-		//       curl_setopt_array($curl, array(
-		//         CURLOPT_RETURNTRANSFER => 1,
-		//         CURLOPT_URL => $link,
-		//         CURLOPT_POST => 1,
-		//         CURLOPT_POSTFIELDS => array("photo" => $cfile)
-		//       ));
-
-
+		*/
+	
+		$ch = curl_init( $data->response->upload_url );
+		curl_setopt ( $ch, CURLOPT_HEADER, false );
+		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, false );
+		curl_setopt ( $ch, CURLOPT_POST, true );
+		curl_setopt ( $ch, CURLOPT_POSTFIELDS, array( 'file1' => '@' . $file ) );
 
 		$data = curl_exec($ch);
 		// d(curl_error($ch));
