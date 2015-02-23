@@ -51,7 +51,7 @@ class GdzBook extends CActiveRecord
 			array('title, edition, info, author, slug, year, properties, pagination', 'length', 'max'=>255),
 			array('gdz_clas_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
-			array('img, lang, public, description', 'safe'),
+			array('img, lang, public, description, vk_img', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, edition, info, author, gdz_clas_id, slug, img, description, gdz_subject_id, year, properties, pagination, create_time, update_time, public_time, lang', 'safe', 'on'=>'search'),
@@ -106,6 +106,7 @@ class GdzBook extends CActiveRecord
 			'gdz_subject_id' => 'Предмет',
 			'slug' => 'Slug',
 			'img' => 'Img',
+			'vk_img' => 'Vk Img',
 			'description' => 'Description',
 			'year' => 'Year',
 			'properties' => 'Properties',

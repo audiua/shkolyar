@@ -1,8 +1,8 @@
 <?php
-function d($data){
+function d($data=null){
 	echo '<pre>';
 	print_r($_REQUEST);
-	print_r($data);
+	var_dump($data);
 	die;
 }
 // change the following paths if necessary

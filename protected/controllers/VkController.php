@@ -4,11 +4,27 @@ class VkController extends Controller{
 
 	const CLIENT_ID = '4745114';
 	const ACCESS_TOKEN = '5b378f79854d54f466309da9ccf2183fe1722e390639e503fcd615efd91b5a2bd7b0d76ed60fd2add21b0';
+	const OWNER_ID = 81422422;
+
+	// альбомы
+	public $gdz_album = '211693147';
+	public $textbook_album = '211693182';
+	public $writing_album = '211693260';
+	public $library_album = '211693239';
+	public $knowall_album = '211693279';
+
+	// $default_album = '206468671';
+
+
+	
 
 	// флаг что есть публ
 	private $_p=false;
 
 	public function actionIndex($hash=null, $mode=null){
+
+		
+
 
 		if($hash !== '5b717f9e843de36448780e90f00942fc'){
 			Yii::app()->end();
@@ -21,6 +37,8 @@ class VkController extends Controller{
 
 		if($model){
 
+			$vk = new vk(self::ACCESS_TOKEN, 100, self::CLIENT_ID, 81422422);
+
 			$str = '';
 			switch($mode){
 				case 'gdz': 
@@ -29,6 +47,21 @@ class VkController extends Controller{
 					$str .= $this->normalDate(time()).' обновлено збірник готових домашніх завдань ';
 				} else {
 					$str .= $this->normalDate(strtotime($model->public_time)).' добавлено новий збірник готових домашніх завдань ';
+				}
+
+				// $path = 'img/gdz/'.$model->gdz_clas->clas->slug.'/'.$model->gdz_subject->subject->slug.'/'.$model->slug.'/book';
+				// $file = Yii::app()->basePath . '/' . $path.'/'.$model->slug.'.'.$model->img;
+
+				// $vk = new VkApi(self::CLIENT_ID, self::ACCESS_TOKEN, $file);
+				
+				if(!$model->vk_img){
+					$path = 'img/gdz/'.$model->gdz_clas->clas->slug.'/'.$model->gdz_subject->subject->slug.'/'.$model->slug.'/book';
+					$file = Yii::app()->basePath . '/../' . $path.'/'.$model->slug.'.'.$model->img;
+					// d($file);
+
+
+					$model->vk_img = $vk->upload_photo( $file, $this->gdz_album, 'гдз '.$model->title.' '.$model->author.' '.$model->gdz_clas->clas->slug.' клас', $model->slug.'.'.$model->img, $model->img );
+					$model->update();
 				}	
 
 				$str .= $model->gdz_clas->clas->slug . ' клас ' . $model->gdz_subject->subject->title . ' ' . $model->author  . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
@@ -86,6 +119,10 @@ class VkController extends Controller{
 				break;
 
 			}
+
+			$vk->post($str, $model->vk_img, Yii::app()->createAbsoluteUrl( $model->getUrl()) );
+
+			die;
 
 			$this->invoke('wall.post', array(
 			    'owner_id' => -81422422,
