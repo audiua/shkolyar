@@ -99,7 +99,7 @@ class VkController extends Controller{
 					// d($file);
 
 
-					$model->vk_img = $vk->upload_photo( $file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
+					$model->vk_img = $vk->upload_photo( Yii::app()->basePath.'/../'.$file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
 					$model->update();
 				}
 
