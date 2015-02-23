@@ -95,7 +95,7 @@ class VkController extends Controller{
 
 				if(!$model->vk_img){
 					
-					$file = $model->getThumb(337,470,'crop');
+					$file = $model->getThumb();
 					// d($file);
 
 
