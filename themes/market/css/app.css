@@ -67,6 +67,9 @@ body {
   width: 1140px;
   position: relative;
 }
+.header-wrap {
+  height: 75px;
+}
 .shkolyar {
   font-family: 'Cabin Sketch', cursive, Arial, Verdana;
 }

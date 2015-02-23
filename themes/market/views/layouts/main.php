@@ -53,8 +53,10 @@
 
         <div class="wrap">
 
-            <div class="header">
-                <?php $this->renderPartial('//layouts/header'); ?>
+            <div class="header-wrap">
+                <div class="header">
+                    <?php $this->renderPartial('//layouts/header'); ?>
+                </div>
             </div>
 
            <!--  <div class="black"></div>
