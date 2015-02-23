@@ -138,7 +138,7 @@ return array(
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
 
-				'writing/<clas:\d+>/page/<page:\d+>'=>'<controller>/clas',
+				'writing/<clas:\d+>/page/<page:\d+>'=>'writing/clas',
 				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
 
 				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
