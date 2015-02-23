@@ -5,6 +5,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
 
 <?php $this->widget('LikeWidget'); ?>
+<div class="clear"></div>
 
 <!-- <div class="info">Всезнайка</div> -->
 <h3 class="info">Всезнайка</h3>

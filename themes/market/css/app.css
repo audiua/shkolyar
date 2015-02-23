@@ -1447,3 +1447,7 @@ a > .small-book > .img-small-book {
 .modal-dialog{
   width: 650px;
 }
+.like-btn{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
