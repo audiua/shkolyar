@@ -56,8 +56,10 @@ class VkController extends Controller{
 
 
 					$model->vk_img = $vk->upload_photo( $file, $this->gdz_album, 'гдз '.$model->title.' '.$model->author.' '.$model->gdz_clas->clas->slug.' клас', $model->slug.'.'.$model->img, $model->img );
-					$model->update();
 				}	
+
+				$model->vk_public_time = time();
+				$model->update();
 
 				$str .= $model->gdz_clas->clas->slug . ' клас ' . $model->gdz_subject->subject->title . ' ' . $model->author  . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				break;
