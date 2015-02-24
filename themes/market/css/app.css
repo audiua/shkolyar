@@ -369,13 +369,12 @@ ul.nav-tabs li.active a a:focus {
 }
 .tab-content ul li {
   display: inline-block;
-  width: 185px;
+  width: 180px;
 }
 .tab-content ul li a.library-subcategory {
   border-bottom: 0px !important;
   text-decoration: none !important;
   display: inline;
-  /*margin-right: 50px;*/
   line-height: 25px;
   color: #214cce;
   font-weight: normal !important;
@@ -641,6 +640,16 @@ p.description a:hover {
 }
 .subject-list .subject h3 {
   font-size: 20px;
+}
+.library-author-list .library-author {
+  text-align: left;
+  padding: 10px;
+  width: 25%;
+  height: 35px;
+  float: left;
+}
+.library-author-list .library-author h3 {
+  font-size: 16px;
 }
 .book-list {
   position: relative;
