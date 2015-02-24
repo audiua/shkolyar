@@ -120,9 +120,9 @@ class VkController extends Controller{
 
 					if(!$model->vk_img){
 						
-						// d($file);
 
-						$path = Yii::app()->baseUrl . '/../img/library/'.$model->library_author->slug.'/'.$model->slug.'/book/first.'.$data->img_ext;
+						$path = Yii::app()->basePath . '/../img/library/'.$model->library_author->slug.'/'.$model->slug.'/book/first.'.$model->img_ext;
+						d($path);
 						
 						$model->vk_img = $vk->upload_photo( $path, $this->library_album, 'твір '.$model->library_author->author , $model->title );
 					}
