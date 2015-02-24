@@ -104,7 +104,7 @@ class VkController extends Controller{
 
 					$model->vk_public_time = time();
 					$model->update();
-					
+
 				break;
 
 				case 'library': 
@@ -175,39 +175,26 @@ class VkController extends Controller{
 
 	private function getGdz(){
 
-		$lastTime = VkTimePosting::model()->findByPk(1);
-		$time = time() - 14400;
+		$criteria = new CDbCriteria;
+		$criteria->order = 'vk_public_time ASC';
 
-		if($lastTime->gdz_last_public_time < $time){
+		$gdz = GdzBook::model()->public()->find($criteria);
+		if($gdz){
 
-			$criteria = new CDbCriteria;
-			$criteria->condition = 'public=1';
-			$criteria->addBetweenCondition('public_time', $lastTime->gdz_last_public_time+1, $time);
-			$criteria->order = 'public_time ASC';
-			$gdz = GdzBook::model()->find($criteria);
-			if($gdz){
-				$lastTime->gdz_last_public_time = strtotime($gdz->public_time);
-				if( ! $lastTime->update()){
-					die($lastTime->gerErrors);
-				}
-
-				$public = VkPosting::model()->findbyAttributes(array('owner'=>'gdz', 'owner_id'=>$gdz->id));
-				if($public){
-					$public->update();
-					$this->_p = true;
-				} else {
-					$public = new VkPosting;
-					$public->owner = 'gdz';
-					$public->owner_id = $gdz->id;
-					$public->save();
-				}
+			$public = SocialPosting::model()->findbyAttributes(array('social'=>'vk','owner'=>'gdz', 'owner_id'=>$gdz->id));
+			if($public){
+				$this->_p = true;
 			}
-			
-			return $gdz;
+
+			$posting = new SocialPosting;
+			$posting->social = 'vk';
+			$posting->owner = 'gdz';
+			$posting->owner_id = $gdz->id;
+			$posting->save();
+
 		}
-
-		return null;
-
+		
+		return $gdz;
 	}
 
 	private function getTextbook(){

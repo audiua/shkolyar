@@ -49,7 +49,7 @@ class GdzBook extends CActiveRecord
 			array('title, author, gdz_clas_id, gdz_subject_id', 'required'),
 			array('public_time', 'unique'),
 			array('title, edition, info, author, slug, year, properties, pagination', 'length', 'max'=>255),
-			array('gdz_clas_id, create_time, update_time, public_time, gdz_subject_id', 'length', 'max'=>10),
+			array('gdz_clas_id, create_time, update_time, public_time, vk_public_time, gdz_subject_id', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('img, lang, public, description, vk_img', 'safe'),
 			// The following rule is used by search().
@@ -113,6 +113,7 @@ class GdzBook extends CActiveRecord
 			'pagination' => 'Pagination',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
+			'vk_public_time' => 'vk public time',
 			'public_time' => 'Public Time',
 			'lang' => 'Lang',
 			'public'=>'Public',
@@ -151,6 +152,7 @@ class GdzBook extends CActiveRecord
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('public_time',$this->public_time,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
 		$criteria->compare('lang',$this->lang,true);
 
 
