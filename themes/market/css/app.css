@@ -1101,9 +1101,9 @@ img.img-middle-book {
 .knowall-large-block .knowall-category-link {
   position: absolute;
   top: 267px;
-  left: 100px;
+  left: 25px;
   padding-top: 3px;
-  width: 150px;
+  width: 300px;
   height: 26px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -1212,8 +1212,8 @@ img.img-middle-book {
 .knowall-small-block .knowall-small-one-block .knowall-category-link {
   position: absolute;
   top: 97px;
-  left: 40px;
-  width: 80px;
+  left: 15px;
+  width: 120px;
   height: 16px;
   background-color: #fff;
   border: 1px solid #ccc;
