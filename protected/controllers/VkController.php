@@ -133,9 +133,9 @@ class VkController extends Controller{
 				case 'knowall': 
 
 					if($this->_p){
-						$str = $this->normalDate(strtotime($model->public_time)).' обновленно статтю у розділі Всезнайка '.$model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' обновленно статтю у розділі Всезнайка - "'.$model->title . '" ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					} else {
-						$str = $this->normalDate(strtotime($model->public_time)).' добавлено нову цікаву статтю у розділ Всезнайка '.$model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
+						$str = $this->normalDate(strtotime($model->public_time)).' добавлено нову цікаву статтю у розділ Всезнайка - "'.$model->title . '" ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					}
 
 					if(!$model->vk_img){

@@ -39,8 +39,8 @@ class LibraryAuthor extends CActiveRecord
 			array('author, description, slug', 'required'),
 			array('author, slug', 'length', 'max'=>255),
 			array('public_time', 'unique'),
-			array('public, description', 'safe'),
-			array('create_time,length, update_time,public_time', 'length', 'max'=>10),
+			array('public, description,vk_img', 'safe'),
+			array('create_time,length, update_time,public_time,vk_public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -97,7 +97,9 @@ class LibraryAuthor extends CActiveRecord
 			'length' => 'Длина',
 			'nausea'=>'Тошнота',
 			'public' => 'public',
-			'public_time' => 'public_time',
+			'public_time' => 'public time',
+			'vk_public_time' => 'vk public time',
+			'vk_img' => 'vk img',
 		);
 	}
 
@@ -126,6 +128,8 @@ class LibraryAuthor extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('slug',$this->slug,true);
 		$criteria->compare('public_time',$this->update_time);
+		$criteria->compare('vk_img',$this->vk_img);
+		$criteria->compare('vk_public_time',$this->vk_public_time);
 		$criteria->compare('public',$this->slug);
 
 		return new CActiveDataProvider($this, array(
