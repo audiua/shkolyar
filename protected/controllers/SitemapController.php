@@ -5,6 +5,11 @@
  */
 class SitemapController extends Controller{
 
+public $keywords='Шкільний інформаційний портал, гдз, гдз онлайн, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
+public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
+public $canonical;
+public $param;
+
 private $siteUrl = 'http://shkolyar.info';
 private $lastModify = array();
 
@@ -83,6 +88,15 @@ public function actionIndex() {
 
         $this->endCache(); 
     } 
+}
+
+public function actionSitemap(){
+    if($this->beginCache('sitemapHtml', array('duration'=>self::CACHE_TIME)) ){
+
+
+        $this->render('sitemap');
+        $this->endCache(); 
+    }
 }
 
  /**

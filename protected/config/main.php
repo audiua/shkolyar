@@ -167,7 +167,8 @@ return array(
 
 				// 'tizer'=>'tizer/index',
 				// 'position'=>'position/index',
-				'sitemap.xml'=>'sitemap/index',
+				'/sitemap.xml'=>'sitemap/index',
+				'/sitemap'=>'sitemap/sitemap',
 				
 				
 				'<controller:\w+>'=> '<controller>/index',
