@@ -36,7 +36,7 @@ foreach( $allClas as $clas ):?>
 	<?php echo CHtml::link($clas->clas->slug, '/textbook/'.$clas->clas->slug, array('style'=>'margin-left:20px;')); ?><br>
 
 	<?php foreach($clas->textbook_subject as $subject):
-		if( $subject->subject->slug == 'lang-ua' || $subject->subject->slug == 'lit-ua' ):?>
+		if( $subject->subject->slug == 'math' || $subject->subject->slug == 'algebra' ):?>
 		<?php echo CHtml::link($subject->subject->title, '/textbook/'.$clas->clas->slug.'/'.$subject->subject->slug, array('style'=>'margin-left:40px;')); ?><br>
 
 		<?php 
