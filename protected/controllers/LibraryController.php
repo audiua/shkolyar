@@ -52,7 +52,10 @@ public function actionIndex(){
 		$criteria->condition = 't.public=1';
 		$criteria->addCondition('t.public_time<'.time());
 		$books = new CActiveDataProvider('LibraryBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12)));
-		$authors = LibraryAuthor::model()->findAll();
+		
+		$criteria = new CDbCriteria;
+		$criteria->order = 'author ASC';
+		$authors = LibraryAuthor::model()->findAll($criteria);
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/library');
 		$this->pageTitle = 'SHKOLYAR.INFO - Художня література';
