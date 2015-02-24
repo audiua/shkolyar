@@ -35,15 +35,17 @@ $allClas = TextbookClas::model()->findAll($criteria);
 foreach( $allClas as $clas ):?>
 	<?php echo CHtml::link($clas->clas->slug, '/textbook/'.$clas->clas->slug, array('style'=>'margin-left:20px;')); ?><br>
 
-	<?php foreach($clas->textbook_subject as $subject):?>
+	<?php foreach($clas->textbook_subject as $subject):
+		if( $subject->subject->slug == 'lang-ua' || $subject->subject->slug == 'lit-ua' ):?>
 		<?php echo CHtml::link($subject->subject->title, '/textbook/'.$clas->clas->slug.'/'.$subject->subject->slug, array('style'=>'margin-left:40px;')); ?><br>
 
-		<?php foreach($subject->textbook_book as $book):
+		<?php 
+		foreach($subject->textbook_book as $book):
 			if($book->public_time > $time || ! $book->public ) continue; ?>
 			<?php echo CHtml::link($book->author, '/textbook/'.$clas->clas->slug.'/'.$subject->subject->slug . '/'.$book->slug, array('style'=>'margin-left:60px;')); ?><br>
 		<?php endforeach;?>
 
-	<?php endforeach;?>
+	<?php endif; endforeach;?>
 
 
 <?php endforeach;?>
