@@ -425,10 +425,9 @@
 				  <div class="tab-content">
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
-			    			<li><a class="library-subcategory" href="/library/vingranovskyy">Вінграновський М.С.</a></li>
-			    			<li><a class="library-subcategory" href="/library/gutsalo">Гуцало Євген</a></li>
-			    			<li><a class="library-subcategory" href="/library/nestayko">Нестайко Всеволод</a></li>
-			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
+			    			<?php foreach( LibraryAuthor::model()->findAll() as $author ): ?>
+			    			<li><a class="library-subcategory" href="/library/<?php echo $author->slug; ?>"><?php echo $author->author; ?></a></li>
+			    		<?php endforeach; ?>
 			    		</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="lit-w">
