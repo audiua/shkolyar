@@ -16,7 +16,7 @@ foreach( $allClas as $clas ):?>
 		<?php echo CHtml::link($subject->subject->title, '/gdz/'.$clas->clas->slug.'/'.$subject->subject->slug, array('style'=>'margin-left:40px;')); ?><br>
 
 		<?php foreach($subject->gdz_book as $book):
-			if($book->public_time > $time || ! $book->public ) continue; ?>
+			if( strtotime($book->public_time) > $time || ! $book->public ) continue; ?>
 			<?php echo CHtml::link($book->author, '/gdz/'.$clas->clas->slug.'/'.$subject->subject->slug . '/'.$book->slug, array('style'=>'margin-left:60px;')); ?><br>
 		<?php endforeach;?>
 
@@ -41,7 +41,7 @@ foreach( $allClas as $clas ):?>
 
 		<?php 
 		foreach($subject->textbook_book as $book):
-			if($book->public_time > $time || ! $book->public ) continue; ?>
+			if( strtotime($book->public_time) > $time || ! $book->public ) continue; ?>
 			<?php echo CHtml::link($book->author, '/textbook/'.$clas->clas->slug.'/'.$subject->subject->slug . '/'.$book->slug, array('style'=>'margin-left:60px;')); ?><br>
 		<?php endforeach;?>
 
@@ -69,7 +69,7 @@ foreach( $allClas as $clas ):?>
 		$criteria->addCondition('t.subject_id='.$subject->id);
 		$allWriting = Writing::model()->findAll($criteria);
 		foreach($allWriting as $writing):
-			if($writing->public_time > $time || ! $writing->public ) continue; ?>
+			if( strtotime($writing->public_time) > $time || ! $writing->public ) continue; ?>
 			<?php echo CHtml::link($writing->title, '/writing/'.$clas->slug.'/'.$subject->slug . '/'.$writing->slug, array('style'=>'margin-left:60px;')); ?><br>
 		<?php endforeach;?>
 
@@ -85,7 +85,7 @@ foreach( $allClas as $clas ):?>
 	<?php echo CHtml::link($author->author, '/library/'.$author->slug, array('style'=>'margin-left:20px;')); ?><br>
 
 	<?php foreach($author->library_book as $book):
-		if($book->public_time > $time || ! $book->public ) continue; ?>
+		if( strtotime($book->public_time) > $time || ! $book->public ) continue; ?>
 		<?php echo CHtml::link($book->title, '/library/'.$author->slug.'/'.$book->slug, array('style'=>'margin-left:40px;')); ?><br>
 
 	<?php endforeach;?>
@@ -100,7 +100,7 @@ foreach( $allClas as $clas ):?>
 	<?php echo CHtml::link($category->title, '/knowall/'.$category->slug, array('style'=>'margin-left:20px;')); ?><br>
 
 	<?php foreach($category->knowall as $knowall):
-		if($knowall->public_time > $time || ! $knowall->public ) continue; ?>
+		if( strtotime($knowall->public_time) > $time || ! $knowall->public ) continue; ?>
 		<?php echo CHtml::link($knowall->title, '/knowall/'.$category->slug.'/'.$knowall->slug, array('style'=>'margin-left:40px;')); ?><br>
 
 	<?php endforeach;?>
