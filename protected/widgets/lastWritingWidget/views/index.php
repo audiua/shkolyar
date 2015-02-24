@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="knowall-category-link">
-			<?php echo CHtml::link($one->clas->slug, '/writing/'.$one->clas->slug,array('class'=>''));
+			<?php echo CHtml::link($one->clas->slug .' клас', '/writing/'.$one->clas->slug,array('class'=>''));
 			echo '<span>, </span>'.  CHtml::link(Helper::getShort($one->subject->title), '/writing/'.$one->clas->slug . '/'.$one->subject->slug ,array('class'=>''));  ?>
 		</div>
 
