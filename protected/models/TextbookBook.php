@@ -50,7 +50,7 @@ class TextbookBook extends CActiveRecord
 			array('title, author, textbook_clas_id, textbook_subject_id, slug', 'required'),
 			array('title, edition, info, author, slug, year, properties', 'length', 'max'=>255),
 			array('description,', 'length', 'max'=>1000),
-			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
+			array('textbook_clas_id, textbook_subject_id, create_time, update_time, public_time,vk_public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('public', 'length', 'max'=>1),
 			array('img, lang, public, description, vk_img', 'safe'),
@@ -117,6 +117,7 @@ class TextbookBook extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
+			'vk_public_time' => 'vk Public Time',
 		);
 	}
 
@@ -154,6 +155,7 @@ class TextbookBook extends CActiveRecord
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('public_time',$this->public_time,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

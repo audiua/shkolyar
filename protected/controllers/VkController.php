@@ -79,8 +79,9 @@ class VkController extends Controller{
 
 
 					$model->vk_img = $vk->upload_photo( $file, $this->textbook_album, 'підручник '.$model->title.' '.$model->author.' '.$model->textbook_clas->clas->slug.' клас', $model->slug.'.'.$model->img, $model->img );
-					$model->update();
 				}
+				$model->vk_public_time = time();
+				$model->update();
 
 				$str .= $model->textbook_clas->clas->slug . ' клас ' . $model->textbook_subject->subject->title . ' ' . $model->author  . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 				break;
@@ -200,36 +201,26 @@ class VkController extends Controller{
 	}
 
 	private function getTextbook(){
-		$lastTime = VkTimePosting::model()->findByPk(1);
-		$time = time() - 14400;
+		
 
-		if($lastTime->textbook_last_public_time < $time){
-
-			$criteria = new CDbCriteria;
-			$criteria->condition = 'public=1';
-			$criteria->addBetweenCondition('public_time', $lastTime->textbook_last_public_time+1, $time);
-			$criteria->order = 'public_time ASC';
-			$textbook = TextbookBook::model()->find($criteria);
-			if($textbook){
-				$lastTime->textbook_last_public_time = strtotime($textbook->public_time);
-				$lastTime->update();
-
-				$public = VkPosting::model()->findbyAttributes(array('owner'=>'textbook', 'owner_id'=>$textbook->id));
-				if($public){
-					$public->update();
-					$this->_p = true;
-				} else {
-					$public = new VkPosting;
-					$public->owner = 'textbook';
-					$public->owner_id = $textbook->id;
-					$public->save();
-				}
+		$criteria = new CDbCriteria;
+		$criteria->order = 'vk_public_time ASC';
+		$textbook = TextbookBook::model()->public()->find($criteria);
+		if($textbook){
+			$public = SocialPosting::model()->findbyAttributes(array('social'=>'vk','owner'=>'textbook', 'owner_id'=>$textbook->id));
+			if($public){
+				$this->_p = true;
 			}
-			
-			return $textbook;
-		}
 
-		return null;
+			$posting = new SocialPosting;
+			$posting->social = 'vk';
+			$posting->owner = 'textbook';
+			$posting->owner_id = $textbook->id;
+			$posting->save();
+		}
+		
+		return $textbook;
+		
 	}
 
 	private function getWriting(){
