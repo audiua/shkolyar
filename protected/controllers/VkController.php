@@ -120,7 +120,6 @@ class VkController extends Controller{
 
 					if(!$model->vk_img){
 						
-						$file = $model->getThumb();
 						// d($file);
 
 						$path = Yii::app()->baseUrl . '/../img/library/'.$model->library_author->slug.'/'.$model->slug.'/book/first.'.$data->img_ext;
