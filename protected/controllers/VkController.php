@@ -118,15 +118,41 @@ class VkController extends Controller{
 						$str = $this->normalDate(strtotime($model->public_time)).' добавлено новий твір художньої літератури '.$model->library_author->author .' ' . $model->title . ' ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					}
 
+					if(!$model->vk_img){
+						
+						$file = $model->getThumb();
+						// d($file);
+
+						$path = Yii::app()->baseUrl . '/../img/library/'.$model->library_author->slug.'/'.$model->slug.'/book/first.'.$data->img_ext;
+						
+						$model->vk_img = $vk->upload_photo( $path, $this->library_album, 'твір '.$model->library_author->author , $model->title );
+					}
+
+					$model->vk_public_time = time();
+					$model->update();
+
 				break;
 
 				case 'author': 
+					Yii::app()->end();
 
 					if($this->_p){
 						$str = $this->normalDate(strtotime($model->public_time)).' обновлено данні автора '.$model->author.' у розділі художня література - ' . Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					} else {
 						$str = $this->normalDate(strtotime($model->public_time)).' добавлений новий автор '.$model->author.' з біографією та творами у розділ художня література '. Yii::app()->createAbsoluteUrl( $model->getUrl() );
 					}
+
+					if(!$model->vk_img){
+						
+						$file = $model->getThumb();
+						// d($file);
+
+
+						$model->vk_img = $vk->upload_photo( Yii::app()->basePath.'/../'.$file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
+					}
+
+					$model->vk_public_time = time();
+					$model->update();
 
 				break;
 
