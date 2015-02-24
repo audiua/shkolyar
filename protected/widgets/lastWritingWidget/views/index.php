@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="knowall-category-link">
-			<?php echo CHtml::link($first->clas->slug, '/writing/'.$first->clas->slug,array('class'=>''));
+			<?php echo CHtml::link($first->clas->slug .' клас', '/writing/'.$first->clas->slug,array('class'=>''));
 			echo '<span>, </span>'.  CHtml::link(Helper::getShort($first->subject->title), '/writing/'.$first->clas->slug . '/'.$first->subject->slug ,array('class'=>''));  ?>
 	</div>
 </div>
