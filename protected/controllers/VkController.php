@@ -100,10 +100,11 @@ class VkController extends Controller{
 
 
 					$model->vk_img = $vk->upload_photo( Yii::app()->basePath.'/../'.$file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
-					$model->vk_public_time = time();
-					$model->update();
 				}
 
+					$model->vk_public_time = time();
+					$model->update();
+					
 				break;
 
 				case 'library': 
