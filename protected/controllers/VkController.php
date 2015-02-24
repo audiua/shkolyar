@@ -100,6 +100,7 @@ class VkController extends Controller{
 
 
 					$model->vk_img = $vk->upload_photo( Yii::app()->basePath.'/../'.$file, $this->writing_album, 'твір '.$model->subject->title.' '.$model->clas->slug.' клас', $model->title );
+					$model->vk_public_time = time();
 					$model->update();
 				}
 
@@ -248,25 +249,21 @@ class VkController extends Controller{
 		if($lastTime->writing_last_public_time < $time){
 
 			$criteria = new CDbCriteria;
-			$criteria->condition = 'public=1';
-			$criteria->addBetweenCondition('public_time', $lastTime->writing_last_public_time+1, $time);
-			$criteria->order = 'public_time ASC';
+			$criteria->order = 'vk_public_time ASC';
 
 			$writing = Writing::model()->public()->find($criteria);
 			if($writing){
-				$lastTime->writing_last_public_time = strtotime( $writing->public_time );
-				$lastTime->update();
-
-				$public = VkPosting::model()->findbyAttributes(array('owner'=>'writing', 'owner_id'=>$writing->id));
+				
+				$public = SocialPosting::model()->findbyAttributes(array('social'=>'vk','owner'=>'writing', 'owner_id'=>$writing->id));
 				if($public){
-					$public->update();
 					$this->_p = true;
-				} else {
-					$public = new VkPosting;
-					$public->owner = 'writing';
-					$public->owner_id = $writing->id;
-					$public->save();
 				}
+
+				$posting = new SocialPosting;
+				$posting->social = 'vk';
+				$posting->owner = 'writing';
+				$posting->owner_id = $writing->id;
+				$posting->save();
 			}
 			
 			return $writing;
