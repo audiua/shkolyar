@@ -243,33 +243,27 @@ class VkController extends Controller{
 	}
 
 	private function getWriting(){
-		$lastTime = VkTimePosting::model()->findByPk(1);
-		$time = time() - 14400;
 
-		if($lastTime->writing_last_public_time < $time){
+		$criteria = new CDbCriteria;
+		$criteria->order = 'vk_public_time ASC';
 
-			$criteria = new CDbCriteria;
-			$criteria->order = 'vk_public_time ASC';
-
-			$writing = Writing::model()->public()->find($criteria);
-			if($writing){
-				
-				$public = SocialPosting::model()->findbyAttributes(array('social'=>'vk','owner'=>'writing', 'owner_id'=>$writing->id));
-				if($public){
-					$this->_p = true;
-				}
-
-				$posting = new SocialPosting;
-				$posting->social = 'vk';
-				$posting->owner = 'writing';
-				$posting->owner_id = $writing->id;
-				$posting->save();
-			}
+		$writing = Writing::model()->public()->find($criteria);
+		if($writing){
 			
-			return $writing;
-		}
+			$public = SocialPosting::model()->findbyAttributes(array('social'=>'vk','owner'=>'writing', 'owner_id'=>$writing->id));
+			if($public){
+				$this->_p = true;
+			}
 
-		return null;
+			$posting = new SocialPosting;
+			$posting->social = 'vk';
+			$posting->owner = 'writing';
+			$posting->owner_id = $writing->id;
+			$posting->save();
+		}
+		
+		return $writing;
+		
 	}
 
 	private function getLibrary(){
