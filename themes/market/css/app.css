@@ -1339,6 +1339,9 @@ img.img-middle-book {
   width: 300px;
   margin-right: 10px;
 }
+.vk-like-widget iframe {
+  height: 320px !important;
+}
 .fb-like-widget {
   float: left;
   width: 300px;
