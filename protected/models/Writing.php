@@ -48,13 +48,14 @@ class Writing extends CActiveRecord
 			array('nausea', 'numerical'),
 			array('public_time', 'unique'),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
-			array('clas_id, subject_id, create_time, update_time, public_time', 'length', 'max'=>10),
+			array('clas_id, subject_id, create_time, update_time, public_time, vk_public_time', 'length', 'max'=>10),
 			array('title, slug', 'length', 'max'=>255),
 			array('deleteImage,public', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
+			array('vk_img', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, clas_id, thumbnail_ext, deleteImage, public, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext', 'safe', 'on'=>'search'),
+			array('id, clas_id, thumbnail_ext, deleteImage, public, subject_id, create_time, update_time, public_time, text, title, slug, length, nausea, img_ext, vk_public_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -105,6 +106,7 @@ class Writing extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
+			'vk_public_time' => 'vk Public Time',
 			'text' => 'text',
 			'title' => 'Заголовок',
 			'slug' => 'Slug',
@@ -114,6 +116,7 @@ class Writing extends CActiveRecord
 			'thumbnail_ext' => 'Img Ext',
 			'thumbnail' => 'thumbnail',
 			'deleteImage' => 'Удалить изображение',
+			'vk_img' => 'vk img',
 		);
 	}
 
@@ -141,6 +144,7 @@ class Writing extends CActiveRecord
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('public_time',$this->public_time,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('slug',$this->slug,true);
@@ -301,26 +305,26 @@ class Writing extends CActiveRecord
      * [getUrl description]
      * @return [type] [description]
      */
-	public function getUrl(){
-		if ($this->_url === null){
-			$this->_url = '/writing/';
+	// public function getUrl(){
+	// 	if ($this->_url === null){
+	// 		$this->_url = '/writing/';
 
-			if( $this->clas ){
-				$this->_url .= $this->clas->slug.'/';
-			}
+	// 		if( $this->clas ){
+	// 			$this->_url .= $this->clas->slug.'/';
+	// 		}
 
-			if( $this->subject ){
-				$this->_url .= $this->subject->slug.'/';
-			}
+	// 		if( $this->subject ){
+	// 			$this->_url .= $this->subject->slug.'/';
+	// 		}
 			
-			$this->_url = Yii::app()->createUrl( $this->_url );
+	// 		$this->_url = Yii::app()->createUrl( $this->_url );
 
-		}
+	// 	}
 		
-		return $this->_url;
-	}
+	// 	return $this->_url;
+	// }
 
-	public function getArticleUrl(){
+	public function getUrl(){
 	   if ($this->_url === null){
 	        $this->_url = Yii::app()->createUrl( '/writing/' . $this->clas->slug . '/'. $this->subject->slug . '/'. $this->slug );
 	   }

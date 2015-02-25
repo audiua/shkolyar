@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="<?php echo CHtml::encode($this->description); ?>" />
         <meta name="keywords" content="<?php echo CHtml::encode($this->keywords); ?>" />
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
@@ -26,6 +25,8 @@
             $mainAssets = Yii::app()->AssetManager->publish($path);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/addtocopy.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/base64.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
@@ -52,8 +53,10 @@
 
         <div class="wrap">
 
-            <div class="header">
-                <?php $this->renderPartial('//layouts/header'); ?>
+            <div class="header-wrap">
+                <div class="header">
+                    <?php $this->renderPartial('//layouts/header'); ?>
+                </div>
             </div>
 
            <!--  <div class="black"></div>
@@ -61,8 +64,8 @@
             <div class="black"></div> -->
 
             <div class="content">
-               
 
+                
             <!-- <div class="h-direct">
                 <img src="/images/hor.jpeg"> 
             </div> -->        
@@ -81,6 +84,7 @@
                 <div class="red"></div>
                 <div class="black"></div>
                 <?php $this->renderPartial('//layouts/footer'); ?>
+                <?php $this->renderPartial('//layouts/social'); ?>
             </div>
 
         </div>

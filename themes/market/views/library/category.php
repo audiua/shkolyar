@@ -10,6 +10,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
 <?php echo $category->description; ?>
 </div>
-
+<?php $this->widget('LikeWidget'); ?>
+<div class="clear"></div>
+<div class="separator"></div>
 <div class="info">Твори автора</div>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

@@ -15,9 +15,11 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </div>
 
 
+<?php $this->widget('LikeWidget'); ?>
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
+
 
 <div class="task">
 	<div class="task-title info">Повний текст твору: 
@@ -47,4 +49,14 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="info">Виберіть сторінку</div>
 <div class="task-block">
 	<?php $this->widget('LibraryTaskWidget'); ?>
+</div>
+
+
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі твори художньої літератури:</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeLibraryWidget.RelativeLibraryWidget');
+	$this->widget('RelativeLibraryWidget', array('book'=>$model)); ?>
 </div>

@@ -12,7 +12,9 @@ class LibrarySidebarMenuWidget extends CWidget{
 
 	public function run(){
 
-		$models = LibraryAuthor::model()->findAll();
+		$criteria = new CDbCriteria;
+		$criteria->order = 'author ASC';
+		$models = LibraryAuthor::model()->findAll($criteria);
 		$categories = array();
 		if($models){
 			foreach($models as $model){

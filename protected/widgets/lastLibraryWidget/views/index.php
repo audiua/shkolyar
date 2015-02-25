@@ -9,6 +9,7 @@
 	</div>
 
 	<div class="knowall-category-link">
+			<?php // echo SeoHide::link('/library/'.$first->library_author->slug, Helper::getShortAuthor($first->library_author->author))?>
 			<?php echo CHtml::link( Helper::getShortAuthor($first->library_author->author),'/library/'.$first->library_author->slug ,array('class'=>'')); ?>
 	</div>
 </div>
@@ -26,7 +27,10 @@
 		</div>
 
 		<div class="knowall-category-link">
-			<?php echo CHtml::link( Helper::getShortAuthor($one->library_author->author),'/library/'.$one->library_author->slug ,array('class'=>'')); ?>
+			<?php // echo SeoHide::link('/library/'.$first->library_author->slug, Helper::getShortAuthor($first->library_author->author))?>
+			<?php // echo CHtml::link( Helper::getShortAuthor($one->library_author->author),'/library/'.$one->library_author->slug ,array('class'=>'')); ?>
+			<?php echo CHtml::link( $one->library_author->author,'/library/'.$one->library_author->slug ,array('class'=>'')); ?>
+			
 		</div>
 
 	</div>

@@ -47,6 +47,7 @@ return array(
 		'application.widgets.subjectWidget.*',
 		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
+		'application.widgets.likeWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
 		'application.widgets.libraryBookWidget.*',
@@ -54,7 +55,6 @@ return array(
 		'application.widgets.taskWidget.*',
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
-		'application.widgets.relativeGdzWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
 		'application.widgets.writingSidebarMenuWidget.*',
 		'application.widgets.librarySidebarMenuWidget.*',
@@ -137,37 +137,41 @@ return array(
 				'/jewel' => 'site/jewel',
 				'/site/login' => 'site/login',
 				'/site/logout' => 'site/logout',
-				'writing/<clas:\d+>/<category:[a-z-]+>/<article:[a-z-]+>'=>'writing/view',
 
+				'writing/<clas:\d+>/page/<page:\d+>'=>'writing/clas',
+				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
+
+				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
 				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
-				'<controller:\w+>'=> '<controller>/index',
 				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
 				
+				
 				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
-				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
 
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
 
-				'<controller:library>/<category:\w+>/<article:[a-z-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<category:\w+>/<article:[a-z-]+>'=>'<controller>/view',
+				'<controller:library>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'<controller>/view',
 				
-				'<controller:knowall|library|writing>/<category:\w+>/page/<page:\d+>'=>'<controller>/category',
-				'<controller:knowall|library|writing>/<category:\w+>'=>'<controller>/category',
+				// '<controller:knowall|library|writing>/<category:[0-9a-z-]+>/page/<page:\d+>'=>'<controller>/category',
+				'<controller:knowall|library|writing>/<category:[0-9a-z-]+>'=>'<controller>/category',
 				
 
 				// 'tizer'=>'tizer/index',
 				// 'position'=>'position/index',
-				'sitemap.xml'=>'sitemap/index',
+				'/sitemap.xml'=>'sitemap/index',
+				'/sitemap'=>'sitemap/sitemap',
 				
 				
+				'<controller:\w+>'=> '<controller>/index',
 				
 				
 

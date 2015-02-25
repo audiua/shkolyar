@@ -37,6 +37,13 @@ public function filters() {
  * when an action is not explicitly requested by users.
  */
 public function actionIndex(){
+
+
+	// $image = new TextInImgHelper;
+	// $image->create();
+	// die;
+
+
 	// TODO - закешировать на сутки
 	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
 

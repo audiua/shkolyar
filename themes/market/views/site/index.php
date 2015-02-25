@@ -4,6 +4,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
+<?php $this->widget('LikeWidget'); ?>
+<div class="clear"></div>
+
 <!-- <div class="info">Всезнайка</div> -->
 <h3 class="info">Всезнайка</h3>
 <?php $this->widget('LastKnowallWidget'); ?>
@@ -31,3 +34,5 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'index'))); ?>
 </div>
+
+<?php $this->widget('LikeWidget', array('params'=>array('id'=>2))); ?>

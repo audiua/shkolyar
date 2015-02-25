@@ -41,8 +41,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
   <?php  echo $this->clasModel->description; ?>
 </div>
-  
 
+<?php $this->widget('LikeWidget'); ?>
+  
+<div class="clear"></div>
 <div class="separator"></div>
 <div class="info">Виберіть предмет для <?php  echo $this->clasModel->clas->slug; ?> класу</div>
 <?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->gdz_subject)); ?>

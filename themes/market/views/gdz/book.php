@@ -35,6 +35,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	
 </div>
 
+<?php $this->widget('LikeWidget'); ?>
+
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 
@@ -84,4 +86,13 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="info">Виберіть <?php echo  $this->bookModel->pagination == 'page' ? 'сторінку' : 'завдання' ; ?></div>
 <div class="task-block">
 	<?php $this->widget('TaskWidget'); ?>
+</div>
+
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі збірники гдз для <?= $this->param['clas'] ?> класу</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeGdzWidget.RelativeGdzWidget');
+	$this->widget('RelativeGdzWidget'); ?>
 </div>

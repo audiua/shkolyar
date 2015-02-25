@@ -69,7 +69,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="description">
   <?php  echo $this->subjectModel->description; ?>
 </div>
-
+<?php $this->widget('LikeWidget'); ?>
+<div class="clear"></div>
+<div class="separator"></div>
 <div class="info">Збірники ГДЗ</div> 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 

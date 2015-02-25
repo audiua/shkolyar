@@ -37,8 +37,8 @@ class LibraryBook extends CActiveRecord
 			array('title, library_author_id, slug', 'required'),
 			array('title', 'length', 'max'=>255),
 			array('public_time', 'unique'),
-			array('library_author_id, length, create_time, update_time,public_time', 'length', 'max'=>10),
-			array('img_ext,public, description', 'safe'),
+			array('library_author_id, length, create_time, update_time,public_time, vk_public_time', 'length', 'max'=>10),
+			array('img_ext,public, description,vk_img', 'safe'),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -95,7 +95,9 @@ class LibraryBook extends CActiveRecord
 			'update_time' => 'Update Time',
 			'slug' => 'slug',
 			'public' => 'public',
-			'public_time' => 'public_time',
+			'public_time' => 'public time',
+			'vk_public_time' => 'vk public time',
+			'vk_img' => 'vk_img',
 		);
 	}
 
@@ -125,6 +127,8 @@ class LibraryBook extends CActiveRecord
 		$criteria->compare('create_time',$this->create_time);
 		$criteria->compare('update_time',$this->update_time);
 		$criteria->compare('public_time',$this->update_time);
+		$criteria->compare('vk_public_time',$this->vk_public_time);
+		$criteria->compare('vk_img',$this->vk_img);
 		$criteria->compare('slug',$this->slug,true);
 		$criteria->compare('public',$this->slug);
 

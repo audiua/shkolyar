@@ -9,14 +9,14 @@
  * @property string $owner_id
  * @property string $create_time
  */
-class VkPosting extends CActiveRecord
+class SocialPosting extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'vk_posting';
+		return 'social_posting';
 	}
 
 	/**
@@ -27,12 +27,12 @@ class VkPosting extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('owner, owner_id', 'required'),
+			array('owner, owner_id, social', 'required'),
 			array('owner', 'length', 'max'=>255),
-			array('owner_id, create_time, update_time', 'length', 'max'=>10),
+			array('owner_id, create_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, owner, owner_id, create_time,update_time', 'safe', 'on'=>'search'),
+			array('id, owner, owner_id, create_time, social', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,9 +51,7 @@ class VkPosting extends CActiveRecord
 		return array(
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
-				'createAttribute' => 'create_time',
-				'updateAttribute' => 'update_time',
-				'setUpdateOnCreate'=>true,
+				'createAttribute' => 'create_time'
 			)
 		);
 	}
@@ -66,9 +64,9 @@ class VkPosting extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'owner' => 'Owner',
+			'social' => 'social',
 			'owner_id' => 'Owner',
 			'create_time' => 'Create Time',
-			'update_time' => 'Update time',
 		);
 	}
 
@@ -92,9 +90,9 @@ class VkPosting extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('owner',$this->owner,true);
+		$criteria->compare('social',$this->social,true);
 		$criteria->compare('owner_id',$this->owner_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('update_time',$this->update_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

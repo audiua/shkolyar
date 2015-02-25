@@ -42,16 +42,17 @@ class Knowall extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, text, knowall_category_id', 'required'),
-			array('id, create_time, update_time, public_time, knowall_category_id', 'length', 'max'=>10),
+			array('id, create_time, update_time, public_time, knowall_category_id, vk_public_time', 'length', 'max'=>10),
 			array('slug', 'ext.yiiext.components.translit.ETranslitFilter', 'translitAttribute' => 'slug', 'setOnEmpty' => false),
 			array('slug', 'unique', 'on' => 'insert'),
 			array('public_time', 'unique'),
+			array('vk_img', 'safe'),
 			array('title', 'length', 'max'=>255),
 			array('public, deleteImage', 'length', 'max'=>1),
 			array('thumbnail','file','types'=>'jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, create_time, nausea, length, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
+			array('vk_img, id, create_time, nausea, length, deleteImage, update_time,public_time, title, text, knowall_category_id, public,thumbnail', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -101,6 +102,7 @@ class Knowall extends CActiveRecord
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 			'public_time' => 'Public Time',
+			'vk_public_time' => 'vk Public Time',
 			'title' => 'Заголовок',
 			'text' => 'Text',
 			'knowall_category_id' => 'Категорія',
@@ -109,6 +111,7 @@ class Knowall extends CActiveRecord
 			'deleteImage' => 'Удалить изображение',
 			'length' => 'Длина',
 			'nausea'=>'Тошнота',
+			'vk_img'=>'vk img',
 		);
 	}
 
@@ -134,11 +137,13 @@ class Knowall extends CActiveRecord
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('public_time',$this->public_time,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('text',$this->text,true);
 		$criteria->compare('knowall_category_id',$this->knowall_category_id,true);
 		$criteria->compare('public',$this->public,true);
 		$criteria->compare('nausea',$this->nausea,true);
+		$criteria->compare('vk_img',$this->vk_img,true);
 		
 		$criteria->order = 'id DESC';
 

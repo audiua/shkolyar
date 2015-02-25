@@ -18,6 +18,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	
 </div>
 
+<?php $this->widget('LikeWidget'); ?>
+
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 <div class="task">
@@ -69,7 +71,11 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </div>
 
 
-
-
-
-
+<div class="clear"></div>
+<div class="separator"></div>
+<div class="info">Схожі підручники для <?= $this->param['clas'] ?> класу</div>
+<div class="task-block">
+	<?php 
+	Yii::import( 'application.widgets.relativeTextbookWidget.RelativeTextbookWidget');
+	$this->widget('RelativeTextbookWidget'); ?>
+</div>

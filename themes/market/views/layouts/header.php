@@ -425,8 +425,9 @@
 				  <div class="tab-content">
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
-			    			<li><a class="library-subcategory" href="/library/shevchenko">Шевченко Т.Г.</a></li>
-			    			<li><a class="library-subcategory" href="/library/vingranovskyy">Вінграновський М.С.</a></li>
+			    			<?php foreach( LibraryAuthor::model()->findAll() as $author ): ?>
+			    			<li><a class="library-subcategory" href="/library/<?php echo $author->slug; ?>"><?php echo $author->author; ?></a></li>
+			    		<?php endforeach; ?>
 			    		</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="lit-w">
@@ -463,6 +464,7 @@
 <!-- <div class="search"> -->
 	<form action="/site/search" class="search">
 
+		
 		<script>
 		  (function() {
 		    var cx = '006022602701960109764:drx4nhjaekq';
@@ -476,8 +478,6 @@
 		  })();
 		</script>
 		<gcse:searchbox-only></gcse:searchbox-only>
-
-
 		
 		<!-- <div class="show-filters"><span class="blue glyphicon glyphicon-chevron-left"></span></div> -->
 		<!-- <input type="text" name="c" value="" class="search-clas" placeholder="Клас" >
