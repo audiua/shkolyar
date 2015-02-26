@@ -20,9 +20,9 @@
 		<li><?php  echo CHtml::link('Карта сайта', array('/sitemap'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
     <li><?php  echo CHtml::link('sitemap.xml', array('/sitemap.xml'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
 		<?php if (! Yii::app()->user->isGuest) {
-      echo '<li>';
-      echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
-      echo '</li>';
+      // echo '<li>';
+      // echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
+      // echo '</li>';
     } ?>
     
 	</ul>

@@ -13,7 +13,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php echo  $model->text; ?>
 
 <?php if (! Yii::app()->user->isGuest) {
-	echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
+	// echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
 } ?>
 	
 </div>
