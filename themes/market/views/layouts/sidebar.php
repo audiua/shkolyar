@@ -1,45 +1,15 @@
 <div class="sidebar-block ref">
 
 	<noindex>
-		<!-- <a href="http://api.hostinger.com.ua/redir/586518" target="_blank"><img src="http://hostinger.com.ua/banners/ru/hostinger-300x250-2.gif" alt="Хостинг" border="0" width="300" height="250" /></a> -->
-		
-		<?php 
-			$ar = array(
-				'<a href="http://www.wmmail.ru/index.php?ref=audiua" rel="nofollow"><img src="http://www.wmmail.ru/banners/wmmail240x400x2.gif" alt="WMmail.ru - сервис почтовых рассылок" border=0></a>',
-				'<a href="http://www.seosprint.net/?ref=5507638" target="_blank"><img src="http://www.seosprint.net/baners/seo4x240x400.gif" width="240" height="400" border="0" alt="SEO sprint - Всё для максимальной раскрутки!" /></a>'
-
-			);
-
-			echo $ar[array_rand($ar,1)];
-		?>
-
-		
-
-	<!-- <object id="textru-flash-1" type="application/x-shockwave-flash" data="http://text.ru/images/partner/banner-1.swf" width="316" height="381">
-		<param name="quality" value="high">
-	    <param name="wmode" value="transparent">
-		<p>Баннер text.ru</p>
-	</object>
-	<script type='text/javascript'>
-		var flash = document.getElementById("textru-flash-1");
-		var linkParent = flash.parentNode;
-		var innerForm = document.createElement("form");
-		innerForm.id = "textru-form-home";
-		innerForm.action = "http://text.ru/";
-		innerForm.method = "post";
-		innerForm.target = "_blank";
-		innerForm.style.display = "none";
-		var innerInput = document.createElement("input");
-		innerInput.type = "hidden";
-		innerInput.value = "audiua";
-		innerInput.name = "ref";
-		innerForm.appendChild(innerInput);
-		linkParent.appendChild(innerForm);
-		flash.addEventListener('mousedown', function() {
-			document.getElementById("textru-form-home").submit();
-			return false;
-		});
-	</script> -->
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- sh небоскреб -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:300px;height:600px"
+		     data-ad-client="ca-pub-9657826060070920"
+		     data-ad-slot="7767864696"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
 </noindex>
 
 </div>
