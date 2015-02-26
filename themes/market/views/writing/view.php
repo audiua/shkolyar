@@ -11,6 +11,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="knowall-article">
 	
 <?php echo  $model->text; ?>
+
+<?php if (Yii::app()->user) {
+	echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
+} ?>
 	
 </div>
 

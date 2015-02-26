@@ -202,7 +202,7 @@ public function actionCurrentSubject($subject){
 
 public function actionView($clas, $category, $article){
 
-	if($this->beginCache('article_knowall_page', array('duration'=>86400, 'varyByParam'=>array('clas, category', 'article'))) ){
+	if($this->beginCache('article_writing_page', array('duration'=>86400, 'varyByParam'=>array('clas, category', 'article'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($category);

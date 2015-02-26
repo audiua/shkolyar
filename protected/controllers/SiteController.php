@@ -42,6 +42,21 @@ public function actionIndex(){
 	// $image = new TextInImgHelper;
 	// $image->create();
 	// die;
+	// 
+	// 
+	
+
+	// $curl = curl_init('http://webmaster.yandex.ru/api/v2/hosts/');
+ //        curl_setopt_array($curl,array(
+ //           CURLINFO_HEADER_OUT=>1,
+ //           CURLOPT_HTTPHEADER => $headers,
+ //           CURLOPT_RETURNTRANSFER => 1,
+ //           CURLOPT_POST => 1,
+ //           CURLOPT_POSTFIELDS => $data,
+ //        ));
+ //        $result = curl_exec($curl);
+ //        file_put_contents('filename', $result);
+ //        die;
 
 
 	// TODO - закешировать на сутки
@@ -231,5 +246,56 @@ public function actionJewel(){
 		}
 	}
 }
+
+
+public function actionOauth()
+{
+
+    $code = Yii::app()->request->getParam('code');
+    if(!empty($code))
+    {
+        Yii::import('ext.ya.YaUniqueText');
+
+        $params = array(
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+            'client_id' => YaUniqueText::APP_ID,
+            'client_secret' => YaUniqueText::APP_PASSWORD,
+        );
+
+        $curl = curl_init('http://oauth.yandex.ru/token');
+        curl_setopt_array($curl,array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_POSTFIELDS => $params,
+        ));
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        if(!empty($result))
+        {
+            $data = json_decode($result);
+
+            Yii::app()->request->cookies['ya_access_token'] = new CHttpCookie('ya_access_token',$data->access_token,
+                array(
+                    'expire'=>time()+$data->expires_in
+                )
+            );
+        }
+
+        $state = Yii::app()->request->getParam('state');
+        if(!empty($state))
+        {
+            $state = base64_decode($state);
+            $this->redirect($state);
+        }
+    }
+}
+
+
+
+
+
 
 }

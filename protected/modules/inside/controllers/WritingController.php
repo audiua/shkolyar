@@ -93,10 +93,20 @@ class WritingController extends InsideController
 			$model->thumbnail = CUploadedFile::getInstance($model, 'thumbnail');
 			$model->attributes = $data;
 
-			$model->nausea = $data['nausea'];
+			// проверка академической тошноты
+			if(	! $model->nausea ){
+				$uniq = new UniqueText;
+				$uniqText =  $uniq->check($model->text);
+				if($uniqText['nausea']){
+					$model->nausea = $uniqText['nausea'];
+				}
+			}
+
+			// $model->text = Spelling::correct($model->text);
 
 			if($model->save()){
-				Yii::app()->user->setFlash('WRITING_FLASH', 'Збережено');
+				Yii::app()->cache->flush();
+				Yii::app()->user->setFlash('Writing_FLASH', 'Твір - ['.$model->title.'] успішно бережено');
 				$this->redirect(array('index'));
 			}
 		}
