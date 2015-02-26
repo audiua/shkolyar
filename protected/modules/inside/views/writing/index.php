@@ -83,6 +83,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>(Yii::app()->user->role==="moderator")?'{view}{update}':'{view}{update}{delete}',
 			'htmlOptions'=>array('width'=>'80px')
 		),
 	),
