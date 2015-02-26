@@ -19,8 +19,12 @@
 		<li><?php  echo CHtml::link('Контакти', array('/contacts'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/contacts'?'active':'')); ?></li>
 		<li><?php  echo CHtml::link('Карта сайта', array('/sitemap'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
     <li><?php  echo CHtml::link('sitemap.xml', array('/sitemap.xml'), array('rel'=>'nofollow', 'target'=>'_blank')); ?></li>
-		<li><?php  echo CHtml::link(Yii::app()->user->role, array('/inside/admin'), array('target'=>'_blank', 'class'=>'btn btn-default'), array('visible'=>!Yii::app()->user->isGuest)); ?></li>
-
+		<?php if (! Yii::app()->user->isGuest) {
+      echo '<li>';
+      echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
+      echo '</li>';
+    } ?>
+    
 	</ul>
 </div>
 
