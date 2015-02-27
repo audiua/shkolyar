@@ -1,6 +1,6 @@
 <?php
 
-class KnowallController extends Controller{
+class KnowallController extends FrontController{
 
 public $layout='';
 public $canonical;

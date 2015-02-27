@@ -1,6 +1,6 @@
 <?php
 
-class PositionController extends Controller{
+class PositionController extends FrontController{
 
 	const TOKEN = 'token';
 	const PERIOD = 25200;

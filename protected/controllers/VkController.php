@@ -1,6 +1,6 @@
 <?php
 
-class VkController extends Controller{
+class VkController extends FrontController{
 
 	const CLIENT_ID = '4745114';
 	const ACCESS_TOKEN = '5b378f79854d54f466309da9ccf2183fe1722e390639e503fcd615efd91b5a2bd7b0d76ed60fd2add21b0';

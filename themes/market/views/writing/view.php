@@ -11,11 +11,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="knowall-article">
 	
 <?php echo  $model->text; ?>
-
-<?php if (! Yii::app()->user->isGuest) {
-	// echo CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$model->id), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
-} ?>
-	
+<?php $this->renderDynamic('getUpdateBtn', array('id'=>$model->id)); ?>
 </div>
 
 <?php $this->widget('LikeWidget'); ?>

@@ -1,6 +1,6 @@
 <?php
 
-class GdzController extends Controller{
+class GdzController extends FrontController{
 
 // кеш на сутки 86400
 const CACHE_TIME = 14400;

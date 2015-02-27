@@ -13,6 +13,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		<?php $this->widget('LibraryBookWidget', array('model'=>$model)); ?>	
 	</div>
 </div>
+<?php $this->renderDynamic('getUpdateBookBtn', array('id'=>$model->id)); ?>
 
 
 <?php $this->widget('LikeWidget'); ?>

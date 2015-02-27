@@ -1,6 +1,7 @@
 <div class="sidebar-block ref">
 
 	<noindex>
+	<?php if( stripos(Yii::app()->request->hostInfo, 'shkolyar.loc') === false ): ?>
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- sh небоскреб -->
 		<ins class="adsbygoogle"
@@ -10,6 +11,9 @@
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
+	<?php else : ?>
+		<img src="/images/big.jpeg" alt="">
+	<?php endif; ?>
 </noindex>
 
 </div>

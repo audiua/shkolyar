@@ -207,6 +207,9 @@ return array(
             // 'class'=>'system.caching.CDummyCache',
             'class'=>'system.caching.CFileCache',
         ),
+        'cacheDummy'=>array(
+            'class'=>'system.caching.CDummyCache',
+        ),
 
         'clientScript'=>array(
             'class'=>'ext.ExtendedClientScript.ExtendedClientScript',

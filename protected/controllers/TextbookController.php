@@ -3,7 +3,7 @@
 /**
  * конроллер учебников
  */
-class TextbookController extends Controller{
+class TextbookController extends FrontController{
 
 public $layout='';
 public $canonical;

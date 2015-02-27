@@ -1,6 +1,6 @@
 <?php
 
-class LibraryController extends Controller{
+class LibraryController extends FrontController{
 
 // кеш на сутки 86400, 100 дней = 8640000
 const CACHE_TIME = 14400;
@@ -209,6 +209,22 @@ public function loadCategory($category){
 
 	return $model;
 
+}
+
+public function getUpdateAuthorBtn($id){
+	if (Yii::app()->user->isGuest) {
+		return '';
+	}
+
+	return CHtml::link('Редагувати', array('/inside/libraryAuthor/update/'.$id['id']), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
+}
+
+public function getUpdateBookBtn($id){
+	if (Yii::app()->user->isGuest) {
+		return '';
+	}
+
+	return CHtml::link('Редагувати', array('/inside/libraryBook/update/'.$id['id']), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
 }
 
 

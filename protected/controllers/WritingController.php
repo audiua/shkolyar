@@ -1,6 +1,6 @@
 <?php
 
-class WritingController extends Controller{
+class WritingController extends FrontController{
 
 const CACHE_TIME = 14400;
 
@@ -21,7 +21,6 @@ public $keywords='твори, шкільні твори';
  */
 public $description='Шкільні твори для учнів 5-11 класів';
 
-public $param;
 
 
 public function init(){
@@ -239,21 +238,6 @@ public function actionView($clas, $category, $article){
 }
 	
 
-	
-/**
- * This is the action to handle external exceptions.
- */
-public function actionError()
-{
-	if($error=Yii::app()->errorHandler->error)
-	{
-		if(Yii::app()->request->isAjaxRequest)
-			echo $error['message'];
-		else
-			$this->render('error', $error);
-	}
-}
-
 public function loadCategory($category){
 
 	$criteria = new CDbCriteria;
@@ -343,6 +327,16 @@ private function loadSubject($subject){
 	}
 
 	return $subjectModel;
+}
+
+
+
+public function getUpdateBtn($id){
+	if (Yii::app()->user->isGuest) {
+		return '';
+	}
+
+	return CHtml::link('Редагувати', array('/inside/'.$this->id.'/update/'.$id['id']), array('class'=>'btn btn-success btn-lg', 'target'=>'_blank'));
 }
 
 
