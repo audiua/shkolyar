@@ -190,6 +190,13 @@ class GdzBook extends CActiveRecord
         return parent::afterFind();
     }
 
+    public function beforeSave(){
+
+    	$this->public_time = strtotime($this->public_time);
+
+    	return parent::beforeSave();
+    }
+
     public function lastPublicTime(){
     	$criteria=new CDbCriteria;
     	$criteria->order = 'public_time DESC';

@@ -191,6 +191,13 @@ class TextbookBook extends CActiveRecord
         return parent::afterFind();
     }
 
+    public function beforeSave(){
+
+    	$this->public_time = strtotime($this->public_time);
+
+    	return parent::beforeSave();
+    }
+
     public function afterSave(){
 
     	// создам папку для картинок
