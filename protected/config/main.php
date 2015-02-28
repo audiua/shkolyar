@@ -47,6 +47,7 @@ return array(
 		'application.widgets.subjectWidget.*',
 		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
+		'application.widgets.bannerWidget.*',
 		'application.widgets.likeWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',

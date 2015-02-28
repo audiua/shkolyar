@@ -71,6 +71,8 @@
 			    <li> <?php echo CHtml::link('Keywords', '/inside/keyword'); ?></li>
 			    <li class="divider"></li>
 			    <li> <?php echo CHtml::link('Links', '/inside/link'); ?></li>
+			    <li class="divider"></li>
+			    <li> <?php echo CHtml::link('Banner', '/inside/banner'); ?></li>
 			  </ul>
 			</li>
 

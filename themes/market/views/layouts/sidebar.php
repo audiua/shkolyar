@@ -1,21 +1,5 @@
-<div class="sidebar-block ref">
-
-	<noindex>
-	<?php if( stripos(Yii::app()->request->hostInfo, 'shkolyar.loc') === false ): ?>
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- sh небоскреб -->
-		<ins class="adsbygoogle"
-		     style="display:inline-block;width:300px;height:600px"
-		     data-ad-client="ca-pub-9657826060070920"
-		     data-ad-slot="7767864696"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-	<?php else : ?>
-		<img src="/images/big.jpeg" alt="">
-	<?php endif; ?>
-</noindex>
-
+<div class="sidebar-block">
+	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
 </div>
 
 <div class="separator"></div>
