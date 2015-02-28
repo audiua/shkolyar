@@ -138,7 +138,7 @@ class Keyword extends CActiveRecord
 
 	public function beforeSave(){
 
-		$page = file_get_contents( Yii::app()->createAbsoluteUrl($this->url) );
+		$page = $this->curl( Yii::app()->createAbsoluteUrl($this->url) );
 		$page = mb_strtolower($page,'utf8');
 		if($page){
 			if( mb_substr_count($page, mb_strtolower($this->keyword,'utf8')) ){
@@ -154,5 +154,14 @@ class Keyword extends CActiveRecord
 
 		return CHtml::listData(self::model()->findAll(), 'id', 'keyword');
 
+	}
+
+	private function curl($url){
+		$curl = curl_init();
+		curl_setopt($curl,CURLOPT_URL,$url);
+		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+		// curl_setopt($curl,CURLOPT_FOLLOWLOCATION,true);
+		curl_setopt($curl,CURLOPT_CONNECTTIMEOUT,30);
+		return curl_exec($curl);
 	}
 }
