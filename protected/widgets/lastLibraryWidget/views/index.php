@@ -10,7 +10,8 @@
 
 	<div class="knowall-category-link">
 			<?php // echo SeoHide::link('/library/'.$first->library_author->slug, Helper::getShortAuthor($first->library_author->author))?>
-			<?php echo CHtml::link( Helper::getShortAuthor($first->library_author->author),'/library/'.$first->library_author->slug ,array('class'=>'')); ?>
+			<?php // echo CHtml::link( Helper::getShortAuthor($first->library_author->author),'/library/'.$first->library_author->slug ,array('class'=>'')); ?>
+			<?php echo CHtml::link( $first->library_author->author, '/library/'.$first->library_author->slug ,array('class'=>'')); ?>
 	</div>
 </div>
 

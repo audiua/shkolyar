@@ -46,6 +46,21 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
   
 <div class="clear"></div>
 <div class="separator"></div>
+
+
+<div class="full-banner">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- sh полный баннер -->
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-9657826060070920"
+       data-ad-slot="7589407895"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+
 <div class="info">Виберіть предмет для <?php  echo $this->clasModel->clas->slug; ?> класу</div>
 <?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->gdz_subject)); ?>
 

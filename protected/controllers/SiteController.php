@@ -38,26 +38,9 @@ public function filters() {
  */
 public function actionIndex(){
 
-
 	// $image = new TextInImgHelper;
 	// $image->create();
 	// die;
-	// 
-	// 
-	
-
-	// $curl = curl_init('http://webmaster.yandex.ru/api/v2/hosts/');
- //        curl_setopt_array($curl,array(
- //           CURLINFO_HEADER_OUT=>1,
- //           CURLOPT_HTTPHEADER => $headers,
- //           CURLOPT_RETURNTRANSFER => 1,
- //           CURLOPT_POST => 1,
- //           CURLOPT_POSTFIELDS => $data,
- //        ));
- //        $result = curl_exec($curl);
- //        file_put_contents('filename', $result);
- //        die;
-
 
 	// TODO - закешировать на сутки
 	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
@@ -71,8 +54,6 @@ public function actionIndex(){
 	}
 
 }
-	
-
 	
 /**
  * This is the action to handle external exceptions.
