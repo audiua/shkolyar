@@ -21,13 +21,13 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
 <div class="info">Виберіть предмет для <?php  echo $this->clasModel->clas->slug; ?> класу</div>
 <?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->gdz_subject)); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
