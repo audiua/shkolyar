@@ -22,7 +22,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 <div class="info">Виберіть автора</div> 
 <?php $this->widget('LibraryAuthorWidget', array('model'=>$authors)); ?>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
