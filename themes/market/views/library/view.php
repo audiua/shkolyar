@@ -5,6 +5,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <h1><?php echo  $model->title ; ?> </h1>
 
 <div class="info"></div>

@@ -7,6 +7,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php $this->widget('LikeWidget'); ?>
 <div class="clear"></div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <!-- <div class="info">Всезнайка</div> -->
 <h3 class="info">Всезнайка</h3>
 <?php $this->widget('LastKnowallWidget'); ?>

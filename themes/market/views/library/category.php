@@ -6,6 +6,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
+
 <div class="info">Біографія <?php echo $category->author; ?></div> 
 <div class="description">
 <?php echo $category->description; ?>
