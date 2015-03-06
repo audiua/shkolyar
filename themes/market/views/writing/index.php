@@ -1,3 +1,6 @@
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
@@ -6,8 +9,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
 
 <h1><?php echo $this->h1; ?></h1>
 
@@ -20,14 +21,14 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
-
 <div class="info">Виберіть клас</div>
 
 <?php $this->widget('WritingClasWidget'); ?>
 <div class="clear"></div>
 <div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+
 <div class="info">Виберіть твір</div>
 
 <?php $this->widget('DataWritingWidget', array('model'=>$model)); ?>

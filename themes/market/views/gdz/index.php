@@ -1,3 +1,6 @@
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
     'links'=>$this->breadcrumbs,
@@ -7,8 +10,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
 
 <!-- <img src="/images/horisont.png" alt=""> -->
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
 
 <h1>ГДЗ (Готові домашні завдання)</h1>
 <div class="description">

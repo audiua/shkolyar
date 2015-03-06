@@ -1,3 +1,6 @@
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <?php  
 
 $this->widget('zii.widgets.CBreadcrumbs', array(
@@ -7,8 +10,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
 
 <h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->subject->title; ?></h1>
 

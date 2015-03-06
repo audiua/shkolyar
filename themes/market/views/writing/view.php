@@ -17,13 +17,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php $this->renderDynamic('getUpdateBtn', array('id'=>$model->id)); ?>
 </div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+
 <?php $this->widget('LikeWidget'); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
-
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
 
 <div class="info">Схожі твори для <?= $this->param['clas'] ?> класу</div>
 <div class="task-block">
