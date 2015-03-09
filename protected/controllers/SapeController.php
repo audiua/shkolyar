@@ -138,6 +138,8 @@ class SapeController extends FrontController{
 			return false;
 		}
 
+		echo $page;
+
 		echo $link->on_url;
 
 		return ( stripos($page, $link->on_url) !== false );
