@@ -44,3 +44,10 @@ $('#clearAssets').click(function(e){
 });
 
 </script>
+
+<div class="clear"></div>
+
+<div class="sape-info">
+	Баланс sape - <?php echo $sape; ?> руб<br>
+	Расход в день - <?php echo $sapeDay; ?> руб<br>
+</div>

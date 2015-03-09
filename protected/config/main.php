@@ -28,6 +28,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.extensions.*',
+		'application.extensions.sape.*',
 		'application.components.*',
 		// 'application.components.widgets.*',
 		// 'application.components.widgets.subjectWidget.*',
@@ -127,6 +128,10 @@ return array(
 
 
 				'position/<token:[a-z0-9-]+>'=>'position/index',
+				'sape/<token:[a-z0-9-]+>'=>'sape/index',
+				'sape/<token:[a-z0-9-]+>/url'=>'sape/sapeUrlToKeyword',
+				'sape/<token:[a-z0-9-]+>/link'=>'sape/keywordLink',
+				'sape/<token:[a-z0-9-]+>/check'=>'sape/checkSapeLink',
 				'vk/<hash:[a-z0-9-]+>/<mode:[a-z]+>'=>'vk/index',
 				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',

@@ -2,7 +2,7 @@
 function d($data=null){
 	echo '<pre>';
 	print_r($_REQUEST);
-	var_dump($data);
+	print_r($data);
 	die;
 }
 // change the following paths if necessary

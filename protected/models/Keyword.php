@@ -38,10 +38,10 @@ class Keyword extends CActiveRecord
 			array('keyword, url', 'required'),
 			array('keyword, url', 'length', 'max'=>255),
 			array('create_time, update_time, google_view, yandex_view', 'length', 'max'=>10),
-			array('check_keyword', 'safe'),
+			array('check_keyword, sape_url_id, sape_get_links_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, keyword, create_time, update_time, url, google_view, yandex_view, check_keyword', 'safe', 'on'=>'search'),
+			array('id, keyword, create_time, update_time, url, google_view, yandex_view, check_keyword, sape_url_id,sape_get_links_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -87,6 +87,8 @@ class Keyword extends CActiveRecord
 			'google_view' => 'Gooble View',
 			'google_position' => 'Gooble Position',
 			'links_count' => 'links count',
+			'sape_url_id' => 'sape_url_id',
+			'sape_get_links_time' => 'sape_get_links_time',
 		);
 	}
 
@@ -116,6 +118,8 @@ class Keyword extends CActiveRecord
 		$criteria->compare('yandex_view',$this->yandex_view,true);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('check_keyword',$this->check_keyword,true);
+		$criteria->compare('sape_url_id',$this->sape_url_id,true);
+		$criteria->compare('sape_get_links_time',$this->sape_get_links_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

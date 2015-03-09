@@ -38,7 +38,11 @@ class AdminController extends InsideController{
 	}
 
 	public function actionIndex(){
-		$this->render('index');
+
+		$sapeBalance = Setting::model()->findByAttributes(array('field'=>'sape_balance'));
+		$sapeDay = Setting::model()->findByAttributes(array('field'=>'sape_day'));
+
+		$this->render('index', array('sape'=>$sapeBalance->value, 'sapeDay'=>$sapeDay->value));
 	}
 
 	public function actionCalendar(){
