@@ -40,10 +40,10 @@ class Link extends CActiveRecord
 			array('keyword_id, create_time,check_time, update_time', 'length', 'max'=>10),
 			array('check_link', 'length', 'max'=>1),
 			array('links_on_donor', 'length', 'max'=>2),
-			array('link_source,sape_link_id', 'safe'),
+			array('link_source,sape_link_id,vk_public_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, from_url, on_url, keyword_id, create_time,check_time, update_time, check_link, ankor, links_on_donor,link_source,sape_link_id', 'safe', 'on'=>'search'),
+			array('id, from_url, on_url, keyword_id, create_time,check_time, update_time, check_link, ankor, links_on_donor,link_source,sape_link_id,vk_public_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -88,6 +88,7 @@ class Link extends CActiveRecord
 			'links_on_donor' => 'Links On Donor',
 			'link_source' => 'link source',
 			'sape_link_id' => 'sape_link_id',
+			'vk_public_time' => 'vk_public_time',
 		);
 	}
 
@@ -121,6 +122,7 @@ class Link extends CActiveRecord
 		$criteria->compare('links_on_donor',$this->links_on_donor,true);
 		$criteria->compare('sape_link_id',$this->sape_link_id,true);
 		$criteria->compare('link_source',$this->link_source,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

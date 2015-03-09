@@ -91,6 +91,7 @@ class SapeController extends FrontController{
 	public function actionCheckSapeLink(){
 		
 		$criteria = new CDbCriteria;
+		$criteria->condition = "`link_source`='sape'";
 		$criteria->order = 'check_time ASC';
 		$link = Link::model()->find($criteria);
 		if( ! $link){
@@ -138,9 +139,7 @@ class SapeController extends FrontController{
 			return false;
 		}
 
-		echo $link->on_url;
-		echo '   ';
-		echo $link->from_url;
+		echo $page;
 
 		return ( stripos($page, $link->on_url) !== false );
 	}
