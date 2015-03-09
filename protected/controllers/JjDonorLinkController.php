@@ -1,59 +1,44 @@
 <?php
 
-class VkDonorLinkController extends FrontController{
-
-	const CLIENT_ID = '4819475';
-	const ACCESS_TOKEN = 'c14334e3d45fa0d27d3d16a716093b0b463bb1f46849f4d36a65303cb6ebd6da0b814b004dd5dd466e02f';
-	const OWNER_ID = 89242065;
-	public $host= 'http://shkolyar.info';
-
+class JjDonorLinkController extends FrontController{
 
 	public function actionIndex($token=null){
+
+		// d();
 
 		if($token !== 'token'){
 			Yii::app()->end();
 		}
 
 		$str = $this->getStr();
-		if(!$str){
-			Yii::app()->end();
+
+		$post = new ELivejournal('rompetrom', 'zmnxcbv123');
+		$post->subject = 'Анонс '.$this->normalDate(time());
+		$post->body = $str['description'] . $str['url'];
+		if ($post->save())
+		{
+			echo "Entry's id: ".$post->id;
+			echo "<br />Entry's url: ".$post->url;
 		}
-
-		$vk = new vk(self::ACCESS_TOKEN, 100, self::CLIENT_ID, self::OWNER_ID);
-		
-		$vk->post($str['description'], '', $str['url'] );
-
-		// 	$this->invoke('wall.post', array(
-		// 	    'owner_id' => -81422422,
-		// 	    'message' => $str,
-		// 	    'from_group' => 1
-		// 	));
-		// }
+		else
+		{
+			echo '<b>Error (code '.$post->errorCode.'): </b>';
+			echo $post->error;
+		}
 
 		Yii::app()->end();
 	}
-
-	private function invoke($name, array $params = array()){
-		$params['access_token'] = self::ACCESS_TOKEN;
-		$content = file_get_contents('https://api.vkontakte.ru/method/'.$name.'?'.http_build_query($params));
-		$result = json_decode($content);
-		print_r($result);
-	}
-
 
 	private function getStr(){
 		$time=time()-(7*24*60*60);
 		$str =array();
 		$criteria = new CDbCriteria;
-		$criteria->condition='vk_public_time<'.$time;
+		// $criteria->condition='jj_public_time<'.$time;
 		$criteria->addCondition('check_link=1');
-		$criteria->order='vk_public_time ASC';
+		$criteria->order='jj_public_time ASC';
 
 		$link = Link::model()->find($criteria);
-		if(!$link){
-			return false;
-		}
-		$link->vk_public_time = time();
+		$link->jj_public_time = time();
 		$link->update();
 		$str['url']=$link->from_url;
 

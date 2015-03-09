@@ -1,59 +1,49 @@
 <?php
 
-class VkDonorLinkController extends FrontController{
+class TwDonorLinkController extends FrontController{
 
-	const CLIENT_ID = '4819475';
-	const ACCESS_TOKEN = 'c14334e3d45fa0d27d3d16a716093b0b463bb1f46849f4d36a65303cb6ebd6da0b814b004dd5dd466e02f';
-	const OWNER_ID = 89242065;
-	public $host= 'http://shkolyar.info';
-
+	public $costumer_key = 'gSD6pWs1zZnJPHRHFvYVTg';
+	public $costumer_secret = 't4Y64ig7pPcRUQKP0jMUEpJWeVF5K6XzDwg6GeHZQ';
+	public $access_token = '702736716-f4ifmBjUQLU1IyUOPzDGUdPCsah89LVpZrOix50G';
+	public $access_token_secret = 'Nfr8XZtFJcKKCYxZfSzEhtewp4M2axwxSn3fvNt2x0';
 
 	public function actionIndex($token=null){
+
+		// d();
 
 		if($token !== 'token'){
 			Yii::app()->end();
 		}
 
 		$str = $this->getStr();
-		if(!$str){
-			Yii::app()->end();
-		}
 
-		$vk = new vk(self::ACCESS_TOKEN, 100, self::CLIENT_ID, self::OWNER_ID);
+
+		// соединяемся с сервером твиттера 
+		$twitter = new TwitterOAuth( 
+			$this->costumer_key,
+			$this->costumer_secret,
+			$this->access_token,
+			$this->access_token_secret
+		);
+		$twitter->host = 'https://api.twitter.com/1.1/';
+
+		$twitter->post( 'statuses/update', array( 'status' => $this->normalDate(time()) . ' ' .  $str['url'] ) );
+
 		
-		$vk->post($str['description'], '', $str['url'] );
-
-		// 	$this->invoke('wall.post', array(
-		// 	    'owner_id' => -81422422,
-		// 	    'message' => $str,
-		// 	    'from_group' => 1
-		// 	));
-		// }
 
 		Yii::app()->end();
 	}
-
-	private function invoke($name, array $params = array()){
-		$params['access_token'] = self::ACCESS_TOKEN;
-		$content = file_get_contents('https://api.vkontakte.ru/method/'.$name.'?'.http_build_query($params));
-		$result = json_decode($content);
-		print_r($result);
-	}
-
 
 	private function getStr(){
 		$time=time()-(7*24*60*60);
 		$str =array();
 		$criteria = new CDbCriteria;
-		$criteria->condition='vk_public_time<'.$time;
+		// $criteria->condition='tw_public_time<'.$time;
 		$criteria->addCondition('check_link=1');
-		$criteria->order='vk_public_time ASC';
+		$criteria->order='tw_public_time ASC';
 
 		$link = Link::model()->find($criteria);
-		if(!$link){
-			return false;
-		}
-		$link->vk_public_time = time();
+		$link->tw_public_time = time();
 		$link->update();
 		$str['url']=$link->from_url;
 
