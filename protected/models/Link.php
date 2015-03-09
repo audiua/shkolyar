@@ -137,21 +137,4 @@ class Link extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
-	public function beforeSave(){
-
-		$page = file_get_contents( $this->from_url );
-		$page = mb_strtolower($page,'utf8');
-		if($page){
-			if( mb_substr_count($page, mb_strtolower(Yii::app()->createAbsoluteUrl($this->keyword->url),'utf8')) ){
-				$this->check_link = 1;
-				$this->check_time = time();
-
-			}
-		}
-
-
-
-		return parent::beforeSave();
-	}
 }
