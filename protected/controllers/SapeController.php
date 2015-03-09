@@ -129,10 +129,10 @@ class SapeController extends FrontController{
 	 * @return [type] [description]
 	 */
 	private function checkLink($link){
-		$page = file_get_contents($link->from_url);
-		if(! $page){
-			$page = $this->curl($link->from_url);
-		}
+		// $page = file_get_contents($link->from_url);
+		// if(! $page){
+		// }
+		$page = $this->curl($link->from_url);
 
 		if( ! $page){
 			return false;
