@@ -38,7 +38,7 @@ class TwDonorLinkController extends FrontController{
 		$time=time()-(7*24*60*60);
 		$str =array();
 		$criteria = new CDbCriteria;
-		// $criteria->condition='tw_public_time<'.$time;
+		$criteria->condition='tw_public_time<'.$time;
 		$criteria->addCondition('check_link=1');
 		$criteria->order='tw_public_time ASC';
 

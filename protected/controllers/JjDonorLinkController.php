@@ -33,7 +33,7 @@ class JjDonorLinkController extends FrontController{
 		$time=time()-(7*24*60*60);
 		$str =array();
 		$criteria = new CDbCriteria;
-		// $criteria->condition='jj_public_time<'.$time;
+		$criteria->condition='jj_public_time<'.$time;
 		$criteria->addCondition('check_link=1');
 		$criteria->order='jj_public_time ASC';
 
