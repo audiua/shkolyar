@@ -100,6 +100,7 @@ class SapeController extends FrontController{
 
 		// проверка ссылки на сайте донора
 		$checkLink = $this->checkLink($link);
+		// d($link->keyword);
 
 		// ссылки урла на сапе
 		$links = $this->_sape->get_url_links($link->keyword->sape_url_id);
@@ -133,7 +134,10 @@ class SapeController extends FrontController{
 		// $page = file_get_contents($link->from_url);
 		// if(! $page){
 		// }
-		$page = $this->curl($link->from_url);
+		// $page = $this->curl($link->from_url);
+		Yii::import('application.helpers.curl.CurlHelper');
+		$curl = new CurlHelper();
+		$page = $curl->connect($link->from_url);
 
 		if( ! $page){
 			return false;
@@ -144,16 +148,16 @@ class SapeController extends FrontController{
 		echo '<br>';
 		echo $link->on_url;
 
-		return ( stripos($page, $link->on_url) !== false );
+		return ( strpos($page, trim($link->on_url)) !== false );
 	}
 
 
 	protected function curl($url){
 		$curl = curl_init();
 		curl_setopt($curl,CURLOPT_URL,$url);
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+		// curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
 		// curl_setopt($curl,CURLOPT_FOLLOWLOCATION,true);
-		curl_setopt($curl,CURLOPT_CONNECTTIMEOUT,30);
+		// curl_setopt($curl,CURLOPT_CONNECTTIMEOUT,20);
 		return curl_exec($curl);
 	}
 
