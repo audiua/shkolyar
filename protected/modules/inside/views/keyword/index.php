@@ -45,6 +45,7 @@ $this->breadcrumbs=array(
 			'value'=>'count($data->link)',
 			'htmlOptions'=>array('width'=>'30px')
 		),
+		'sape_url_id',
 		'google_position'=>array(
 			'name'=>'google_position',
 			'value'=>'( $data->last[1]->google_position > $data->last[0]->google_position ) ? $data->last[0]->google_position . "<sup style=\"color:green\">+".($data->last[1]->google_position - $data->last[0]->google_position)."&uarr;</sup>" : $data->last[0]->google_position . "<sup style=\"color:red\">".($data->last[1]->google_position - $data->last[0]->google_position)."&darr; </sup>" ',

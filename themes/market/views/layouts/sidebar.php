@@ -41,8 +41,8 @@
 		  <ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="active"><a href="#vk" aria-controls="vk" role="tab" data-toggle="tab">vk</a></li>
 		    <li role="presentation"><a href="#fb" aria-controls="fb" role="tab" data-toggle="tab">fb</a></li>
-		    <li role="presentation"><a href="#ok" aria-controls="ok" role="tab" data-toggle="tab">ok</a></li>
-		    <li role="presentation"><a href="#tw" aria-controls="tw" role="tab" data-toggle="tab">tw</a></li>
+		    <!-- <li role="presentation"><a href="#ok" aria-controls="ok" role="tab" data-toggle="tab">ok</a></li>
+		    <li role="presentation"><a href="#tw" aria-controls="tw" role="tab" data-toggle="tab">tw</a></li> -->
 		  </ul>
 
 		  <!-- Tab panes -->
@@ -65,7 +65,7 @@
 				</div>
 		    </div>
 
-		    <div role="tabpanel" class="tab-pane" id="ok">
+		    <!-- <div role="tabpanel" class="tab-pane" id="ok">
 	    		<div id="ok_group_widget"></div>
 	    		<script>
 	    		!function (d, id, did, st) {
@@ -89,7 +89,7 @@
 	            <a rel="nofollow" class="twitter-timeline"  href="https://twitter.com/shkolyar_info" data-widget-id="553267900979896320">Твіти @shkolyar_info</a>
 	            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	          
-		    </div>
+		    </div> -->
 
 		  </div>
 
