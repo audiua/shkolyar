@@ -21,6 +21,10 @@
 	<?php echo CHtml::encode($data->code); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('on')); ?>:</b>
+	<?php echo CHtml::encode($data->on); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
 	<?php echo CHtml::encode($data->create_time); ?>
 	<br />

@@ -27,6 +27,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'on'); ?>
+		<?php echo $form->textField($model,'on',array('size'=>60,'maxlength'=>255)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'code'); ?>
 		<?php echo $form->textArea($model,'code',array('rows'=>6, 'cols'=>50)); ?>
 	</div>

@@ -31,10 +31,10 @@ class Banner extends CActiveRecord
 			array('name, title', 'required'),
 			array('name, title', 'length', 'max'=>255),
 			array('create_time, update_time', 'length', 'max'=>10),
-			array('code', 'safe'),
+			array('code, on', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, code, create_time, update_time, title', 'safe', 'on'=>'search'),
+			array('id, name, code, create_time, update_time, title, on', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +70,7 @@ class Banner extends CActiveRecord
 			'title' => 'title',
 			'name' => 'Name',
 			'code' => 'Code',
+			'on' => 'On',
 			'create_time' => 'Create Time',
 			'update_time' => 'Update Time',
 		);
@@ -97,6 +98,7 @@ class Banner extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('code',$this->code,true);
+		$criteria->compare('on',$this->on,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 

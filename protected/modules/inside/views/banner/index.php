@@ -32,6 +32,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		'name',
 		'title',
 		'code',
+		'on',
 		'create_time',
 		'update_time',
 		array(

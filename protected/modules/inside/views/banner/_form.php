@@ -33,6 +33,11 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255,'class'=>'col-md-4 col-lg-4 control-label')); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'on', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
+		<?php echo $form->textField($model,'on',array('size'=>60,'maxlength'=>255,'class'=>'col-md-4 col-lg-4 control-label')); ?>
+		<?php echo $form->error($model,'on'); ?>
+	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'code', array('class'=>"col-md-2 col-lg-2 control-label")); ?>

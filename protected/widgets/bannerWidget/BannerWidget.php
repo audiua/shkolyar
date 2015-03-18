@@ -17,6 +17,11 @@ class BannerWidget extends CWidget{
 
 	public function run(){
 
+		if(!$this->model->on)
+		{
+			return;
+		}
+
        // передаем данные в представление виджета
        $this->render('index');
    }

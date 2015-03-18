@@ -25,6 +25,7 @@ $this->menu=array(
 		'name',
 		'title',
 		'code',
+		'on',
 		'create_time',
 		'update_time',
 	),
