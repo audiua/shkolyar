@@ -7,7 +7,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<?php $this->widget('LikeWidget'); ?>
+<?php // $this->widget('LikeWidget'); ?>
 <div class="clear"></div>
 
 
@@ -40,4 +40,4 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'index'))); ?>
 </div>
 
-<?php $this->widget('LikeWidget', array('params'=>array('id'=>2))); ?>
+<?php // $this->widget('LikeWidget', array('params'=>array('id'=>2))); ?>

@@ -1,9 +1,9 @@
-<div class="sidebar-block">
-	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
-</div>
+<!-- <div class="sidebar-block">
+	<?php // $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
+</div> -->
 
-<div class="separator"></div>
-<div class="clear"></div>
+<!-- <div class="separator"></div> -->
+<!-- <div class="clear"></div> -->
 
 <div class="sidebar-block">
 	<div class="menu">
@@ -40,7 +40,7 @@
 		  <!-- Nav tabs -->
 		  <ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="active"><a href="#vk" aria-controls="vk" role="tab" data-toggle="tab">vk</a></li>
-		    <li role="presentation"><a href="#fb" aria-controls="fb" role="tab" data-toggle="tab">fb</a></li>
+		    <!-- <li role="presentation"><a href="#fb" aria-controls="fb" role="tab" data-toggle="tab">fb</a></li> -->
 		    <!-- <li role="presentation"><a href="#ok" aria-controls="ok" role="tab" data-toggle="tab">ok</a></li>
 		    <li role="presentation"><a href="#tw" aria-controls="tw" role="tab" data-toggle="tab">tw</a></li> -->
 		  </ul>
@@ -56,14 +56,14 @@
 				VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "320", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81422422);
 				</script>
 		    </div>
-		    <div role="tabpanel" class="tab-pane" id="fb">
-	    		<div class="facebook-group">
+		    <!-- <div role="tabpanel" class="tab-pane" id="fb">
+	    		<div class="facebook-group"> -->
 					<!-- <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=250&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false" style="border:none; overflow:hidden; width:300px; height:250px;" allowTransparency="true"></iframe> -->
 
-					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=320&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false&amp;appId=1565122747059411" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:320px;" allowTransparency="true"></iframe>
+					<!-- <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fshkolyar.info.page&amp;width=300&amp;height=320&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=false&amp;appId=1565122747059411" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:320px;" allowTransparency="true"></iframe>
 
 				</div>
-		    </div>
+		    </div> -->
 
 		    <!-- <div role="tabpanel" class="tab-pane" id="ok">
 	    		<div id="ok_group_widget"></div>
