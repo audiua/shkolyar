@@ -46,7 +46,7 @@ public function actionIndex(){
 	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
-		$this->pageTitle = 'SHKOLYAR.INFO - Шкільний інформаційний портал.';
+		$this->pageTitle = 'Шкільний інформаційний портал. Гдз, підручники, твори, художня література, всезнайка';
 		// кешируем сдесь всю страницу
 		$this->render('index');
 

@@ -35,7 +35,7 @@ public $h1='';
 
 public function init(){
 	$this->param = $this->getActionParams();
-	$this->pageTitle = 'SHKOLYAR.INFO - Підручники';
+	$this->pageTitle = 'Підручники, підручники онлайн, шкільні підручники';
 
 }
 
@@ -223,7 +223,7 @@ public function actionCurrentSubject($subject){
 			. $subjectModel->title . ' для середніх загальноосвітніх шкіл України.';
 
 		$this->h1 = 'Підручники '.$subjectModel->title;
-		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+		$this->pageTitle = $this->h1;
 		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$subject);
 
 		$this->breadcrumbs = array(
@@ -470,7 +470,7 @@ private function setMeta(){
 		$this->canonical .= '/'.$this->bookModel->slug;
 	}
 
-	$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+	$this->pageTitle = $this->h1;
 }
 
 public function getDescription($subject=null){

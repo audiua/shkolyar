@@ -11,7 +11,7 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz';
+public $keywords='готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz, гдз скачать';
 
 /**
  * @var string  мета тег описания страницы
@@ -71,7 +71,7 @@ public function actionIndex(){
 		// все классы
 		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
 
-		$this->pageTitle = 'SHKOLYAR.INFO - ГДЗ';
+		$this->pageTitle = 'ГДЗ, готові домашні завдання, гдз онлайн Україна';
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
 
 		$criteria = new CDbCriteria;
@@ -248,7 +248,7 @@ public function actionCurrentSubject($subject){
 			. $subjectModel->title . ', для середніх загальноосвітніх шкіл України.';
 
 		$this->h1 = 'ГДЗ '.$subjectModel->title;
-		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+		$this->pageTitle = $this->h1;
 		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
 
 		$this->breadcrumbs = array(
@@ -665,7 +665,7 @@ private function setMeta(){
 		$this->canonical .= '/'.$this->bookModel->slug;
 	}
 
-	$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+	$this->pageTitle = $this->h1;
 }
 
 
