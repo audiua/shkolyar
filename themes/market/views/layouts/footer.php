@@ -33,7 +33,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
     	<div class="modal-header">
-    		<div class="modal-title" id="myModalLabel">Підписуйся на публічні сторінки <span class="shkolyar blue">shkolyar.info</span> в соціальних мережах <span class="shkolyar blue">Facebook</span> і <span class="shkolyar blue">Vkontakte</span></div>
+    		<div class="modal-title" id="myModalLabel">Підписуйся на публічні сторінки <span class="shkolyar blue">shkolyar.info</span> в соціальних мережах <!-- <span class="shkolyar blue">Facebook</span> і --> <span class="shkolyar blue">Vkontakte</span></div>
       	</div>
 
       	<!-- <div class="fb-like-widget">
@@ -56,9 +56,9 @@
 
 		<div class="clear"></div>
 
-    	<div class="modal-footer">
+    	<!-- <div class="modal-footer">
     		<button type="button" class="btn btn-default" data-dismiss="modal">Мені вже подобається <span>SHKOLYAR.INFO</span></button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
