@@ -20,19 +20,4 @@
 	</p>
 	
 </div>
-
-<div class="clear"></div>
-<div class="separator"></div>
-
-<div class="info">Всезнайка</div>
-<?php $this->widget('LastKnowallWidget'); ?>
-<div class="separator"></div>
-
-<div class="info">Підручники</div>
-<?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
-<div class="separator"></div>
-
-<div class="info">ГДЗ</div>
-<?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
-<div class="separator"></div>
 	
