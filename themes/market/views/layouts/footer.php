@@ -74,18 +74,6 @@
 
 </script>
 
-<!-- Yandex.Metrika informer -->
-<a href="https://metrika.yandex.ru/stat/?id=31373293&amp;from=informer"
-target="_blank" rel="nofollow"><img src="https://mc.yandex.ru/informer/31373293/1_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:80px; height:15px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры)" /></a>
-<!-- /Yandex.Metrika informer -->
-
-<!-- Yandex.Metrika informer -->
-<a href="https://metrika.yandex.ru/stat/?id=31373293&amp;from=informer"
-target="_blank" rel="nofollow"><img src="https://mc.yandex.ru/informer/31373293/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
-<!-- /Yandex.Metrika informer -->
-
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
