@@ -13,9 +13,11 @@
 				?> 
 			</div>
 			<div class="">
+				<?php echo Chtml::link('ГДЗ '. $data->gdz_clas->clas->slug . ' клас '. $data->gdz_subject->subject->title . ' ' .$data->author) ?>
 				<div class="book-author"> <?php echo $data->author; ?></div>
 				<div class="book-subject"> <?php echo $data->title; ?></div>
 				<div class="book-clas"><?php echo $data->gdz_clas->clas->slug; ?> клас</div>
+				
 				<?php 
 					if( !empty($data->properties) ){
 						echo '<div class="desc">'.$data->properties.'</div>';
@@ -24,9 +26,9 @@
 
 			</div>
 
-			<div class="gdz-link">
-				<?php echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
-			</div>
+			<!-- <div class="gdz-link">
+				<?php // echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
+			</div> -->
 							
 		</div>
 
