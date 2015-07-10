@@ -13,10 +13,8 @@
 				?> 
 			</div>
 			<div class="">
-				<?php echo Chtml::link('ГДЗ '. $data->gdz_clas->clas->slug . ' клас '. $data->gdz_subject->subject->title . ' ' .$data->author) ?>
-				<div class="book-author"> <?php echo $data->author; ?></div>
-				<div class="book-subject"> <?php echo $data->title; ?></div>
-				<div class="book-clas"><?php echo $data->gdz_clas->clas->slug; ?> клас</div>
+				<?php echo Chtml::link('ГДЗ '. $data->gdz_clas->clas->slug . ' клас '. $data->gdz_subject->subject->title . ' ' .$data->author, array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug)) ?>
+				
 				
 				<?php 
 					if( !empty($data->properties) ){
