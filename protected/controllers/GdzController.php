@@ -68,11 +68,17 @@ public function actionIndex(){
 			'ГДЗ'
 		);
 
+
 		// все классы
 		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
 
 		$this->pageTitle = 'ГДЗ, готові домашні завдання, гдз онлайн Україна';
-		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
+		$page = Yii::app()->getRequest()->getParam('page', null);
+		if($page){
+			$this->pageTitle .= ' / Сторінка '.$page;
+			$this->description .= ' / Сторінка '.$page;
+		}
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.public=1';
@@ -81,7 +87,7 @@ public function actionIndex(){
 		$books = new CActiveDataProvider('GdzBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		// кешируем сдесь html страницы
-		$this->render('index', array('books'=>$books));
+		$this->render('index', array('books'=>$books, 'page'=>$page));
 
 		$this->endCache(); 
 	}
@@ -107,6 +113,15 @@ public function actionClas($clas){
 
 		);
 
+		$this->setMeta();
+		$this->description = 'ГДЗ - готові домашні завдання для ' . $clas . ' класу середніх загальноосвітніх шкіл України.';
+
+		$page = Yii::app()->getRequest()->getParam('page', null);
+		if($page){
+			$this->pageTitle .= ' / Сторінка '.$page;
+			$this->description .= ' / Сторінка '.$page;
+		}
+
 		$this->keywords = 
 			'ГДЗ - готові домашні завдання '.$clas.' клас, 
 			гдз '.$clas. ' клас, 
@@ -116,12 +131,10 @@ public function actionClas($clas){
 			готові домашні завдання '.$this->clasModel->clas->title.' клас, 
 			гдз '.$this->clasModel->clas->title.' клас';
 
-		$this->description = 'ГДЗ - готові домашні завдання для ' . $clas . ' класу середніх загальноосвітніх шкіл України.';
 		// $this->h1 = 'ГДЗ '.(int)$clas.' клас';
 		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
 		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$clas);
 
-		$this->setMeta();
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.gdz_clas_id='.$this->clasModel->id;
@@ -168,6 +181,12 @@ public function actionSubject($clas, $subject){
 		// $this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
 		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$clas.'/'.$subject);
 		$this->setMeta();
+
+		$page = Yii::app()->getRequest()->getParam('page', null);
+		if($page){
+			$this->pageTitle .= ' / Сторінка '.$page;
+			$this->description .= ' / Сторінка '.$page;
+		}
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.gdz_clas_id='.$this->clasModel->id;
@@ -249,7 +268,14 @@ public function actionCurrentSubject($subject){
 
 		$this->h1 = 'ГДЗ '.$subjectModel->title;
 		$this->pageTitle = $this->h1;
-		$this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
+
+		$page = Yii::app()->getRequest()->getParam('page', null);
+		if($page){
+			$this->pageTitle .= ' / Сторінка '.$page;
+			$this->description .= ' / Сторінка '.$page;
+		}
+		
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz/'.$subject);
 
 		$this->breadcrumbs = array(
 			'ГДЗ' => $this->createUrl('/gdz'),
@@ -652,17 +678,17 @@ private function checkBook($book){
 private function setMeta(){
 	if($this->clasModel){
 		$this->h1 = 'ГДЗ '. $this->clasModel->clas->slug.' клас';
-		$this->canonical = '/gdz/'.$this->clasModel->clas->slug;
+		// $this->canonical = '/gdz/'.$this->clasModel->clas->slug;
 	}
 
 	if($this->subjectModel){
 		$this->h1 .= ' ' . $this->subjectModel->subject->title . ' ';
-		$this->canonical .= '/'.$this->subjectModel->subject->slug;
+		// $this->canonical .= '/'.$this->subjectModel->subject->slug;
 	}
 
 	if($this->bookModel){
 		$this->h1 .= $this->bookModel->author;
-		$this->canonical .= '/'.$this->bookModel->slug;
+		// $this->canonical .= '/'.$this->bookModel->slug;
 	}
 
 	$this->pageTitle = $this->h1;
