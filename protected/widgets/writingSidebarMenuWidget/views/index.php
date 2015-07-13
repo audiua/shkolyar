@@ -142,7 +142,7 @@
 					echo '<span class="active">'.$oneSubject->title.'</span>';
 				} else {
 					echo SeoHide::link($urlSubject, $oneSubject->title);
-					echo CHtml::link( $oneSubject->title, array($urlSubject)); 
+					// echo CHtml::link( $oneSubject->title, array($urlSubject)); 
 				} ?>
 
 
