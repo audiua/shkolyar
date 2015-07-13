@@ -10,8 +10,12 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ?>
 
 <!-- <img src="/images/horisont.png" alt=""> -->
+<?php 
+$pageStr='';
+if($page){$pageStr=' Cторінка '.$page;} ?>
+<h1>ГДЗ (Готові домашні завдання) <?= $pageStr; ?></h1>
 
-<h1>ГДЗ (Готові домашні завдання)</h1>
+<?php if(!$page): ?>
 <div class="description">
 	
 	<p>
@@ -22,6 +26,9 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	</p>
 	
 </div>
+
+<?php endif; ?>
+
 <?php $this->widget('LikeWidget'); ?>
 <div class="clear"></div>
 <div class="separator"></div>
@@ -36,6 +43,8 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
+
+<?php if(!$page): ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
@@ -57,3 +66,5 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		Команда <strong>SHKOLYAR.INFO</strong> намагається перевіряти правильність готових рішень, але ми не несемо відповідальності за отримані оцінки при повному копіюванні готових розв'язків домашніх завдань.
 	</p>
 </div>
+
+<?php endif; ?>

@@ -9,11 +9,17 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<h1><?php echo $this->h1; ?></h1>
+<?php 
+$pageStr='';
+if($page){$pageStr=' Cторінка '.$page;} ?>
+<h1><?php echo $this->h1.$pageStr; ?></h1>
 
+<?php if(!$page): ?>
 <div class="description">
   <?php  echo $this->subjectModel->description; ?>
 </div>
+<?php endif; ?>
+
 <?php $this->widget('LikeWidget'); ?>
 <div class="clear"></div>
 <div class="separator"></div>
