@@ -12,6 +12,7 @@
 	 <div class="black"></div> -->
 </div>
 
+<?php if( $this->action->id =='index' && $this->id == 'site' ): ?>
 <div class="footer-menu">
 	<ul>
 		<li><?php  echo CHtml::link('Про нас', array('/about'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/about'?'active':'')); ?></li>
@@ -22,7 +23,21 @@
 	 <?php $this->renderDynamic('getInsideLink'); ?>	
 	</ul>
 </div>
+<?php else: ?>
 
+<div class="footer-menu">
+  <ul>
+    <li><?= SeoHide::link("/about", 'Про нас', array('class'=>Yii::app()->request->requestUri=='/about'?'active':'')); ?></li>
+    <li><?= SeoHide::link("/rightholder", 'Правовласникам', array('class'=>Yii::app()->request->requestUri=='/rightholder'?'active':'')); ?></li>
+    <li><?= SeoHide::link("/contacts", 'Контакти', array('class'=>Yii::app()->request->requestUri=='/contacts'?'active':'')); ?></li>
+    <li><?= SeoHide::link("/sitemap", 'Карта сайта', array('target'=>'_blank')); ?></li>
+    <li><?= SeoHide::link("/sitemap.xml", 'sitemap.xml', array('target'=>'_blank')); ?></li>
+    
+   <?php $this->renderDynamic('getInsideLink'); ?>  
+  </ul>
+</div>
+
+<?php endif; ?>
 
 <div class="scroll_up">
     <div id="toTop"> <span class="blue glyphicon glyphicon-chevron-up"></span> Наверх </div>
