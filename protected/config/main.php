@@ -112,10 +112,7 @@ return array(
 
        'image'=>array(
             'class'=>'application.extensions.image.CImageComponent',
-            // GD or ImageMagick
             'driver'=>'GD',
-            // ImageMagick setup path
-           // 'params'=>array('directory'=>'D:/Program Files/ImageMagick-6.4.8-Q16'),
         ),
 
 		'request'=>array(
@@ -215,8 +212,8 @@ return array(
 		),
 
 		'cache'=>array(
-            // 'class'=>'system.caching.CDummyCache',
-            'class'=>'system.caching.CFileCache',
+            'class'=>'system.caching.CDummyCache',
+            // 'class'=>'system.caching.CFileCache',
         ),
         'cacheDummy'=>array(
             'class'=>'system.caching.CDummyCache',
@@ -249,5 +246,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'audiua@yandex.ru',
+		
 	),
 );
