@@ -76,10 +76,7 @@ class BreadcrumbsWidget extends CBreadcrumbs{
 		foreach($this->links as $label=>$url)
 		{
 			if(is_string($label) || is_array($url))
-				$links[]=strtr($this->activeLinkTemplate,array(
-					'{url}'=>CHtml::normalizeUrl($url),
-					'{label}'=>$this->encodeLabel ? CHtml::encode($label) : $label,
-				));
+				$links[]=Seohide::link(CHtml::encode($url), $label);
 			else
 				$links[]=str_replace('{label}',$this->encodeLabel ? CHtml::encode($url) : $url,$this->inactiveLinkTemplate);
 		}
