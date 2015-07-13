@@ -21,20 +21,23 @@
 					<thead>
 						<tr>
 							<th data-vertical="0"></th>
-							<th class="clas-5" data-vertical="1"><a href="/gdz/5" class="clas-5">5 <br><span>клас</span></a></th>
-							<th class="clas-6" data-vertical="2"><a href="/gdz/6" class="clas-6">6 <br><span>клас</span></a></th>
-							<th class="clas-7" data-vertical="3"><a href="/gdz/7" class="clas-7">7 <br><span>клас</span></a></th>
-							<th class="clas-8" data-vertical="4"><a href="/gdz/8" class="clas-8">8 <br><span>клас</span></a></th>
-							<th class="clas-9" data-vertical="5"><a href="/gdz/9" class="clas-9">9 <br><span>клас</span></a></th>
-							<th class="clas-10" data-vertical="6"><a href="/gdz/10" class="clas-10">10 <br><span>клас</span></a></th>
-							<th class="clas-11" data-vertical="7"><a href="/gdz/11" class="clas-11">11 <br><span>клас</span></a></th>
+							<th class="clas-5" data-vertical="1"><?= SeoHide::link("/gdz/5", '5 <br><span>клас</span>', array('class'=>'clas-5')); ?></th>
+							<th class="clas-5" data-vertical="2"><?= SeoHide::link("/gdz/6", '6 <br><span>клас</span>', array('class'=>'clas-6')); ?></th>
+							<th class="clas-5" data-vertical="3"><?= SeoHide::link("/gdz/7", '7 <br><span>клас</span>', array('class'=>'clas-7')); ?></th>
+							<th class="clas-5" data-vertical="4"><?= SeoHide::link("/gdz/8", '8 <br><span>клас</span>', array('class'=>'clas-8')); ?></th>
+							<th class="clas-5" data-vertical="5"><?= SeoHide::link("/gdz/9", '9 <br><span>клас</span>', array('class'=>'clas-9')); ?></th>
+							<th class="clas-5" data-vertical="6"><?= SeoHide::link("/gdz/10", '10 <br><span>клас</span>', array('class'=>'clas-10')); ?></th>
+							<th class="clas-5" data-vertical="7"><?= SeoHide::link("/gdz/11", '11 <br><span>клас</span>', array('class'=>'clas-11')); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/math">математика</a></td>
-							<td data-vertical="1"><a href="/gdz/5/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<!-- <td data-vertical="0"><a href="/gdz/math">математика</a></td> -->
+							<td data-vertical="0"><?= SeoHide::link("/gdz/math", 'математика'); ?></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/math", '<span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/gdz/6/math", '<span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<!-- <td data-vertical="1"><a href="/gdz/5/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span></a></td> -->
+							<!-- <td data-vertical="2"><a href="/gdz/6/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-6"></span></a></td> -->
 							<td data-vertical="3"></td>
 							<td data-vertical="4"></td>
 							<td data-vertical="5"></td>
@@ -43,7 +46,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lang-ua">українська мова</a></td>
+							<!-- <td data-vertical="0"><a href="/gdz/lang-ua">українська мова</a></td> -->
+							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-ua", 'українська мова'); ?></td>
 							<td data-vertical="1"><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -54,7 +58,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lang-en">англійська мова</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-en", 'англійська мова'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/lang-en">англійська мова</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/lang-en"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/lang-en"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lang-en"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -65,7 +70,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lang-ru">російська мова</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-ru", 'російська мова'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/lang-ru">російська мова</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/lang-ru"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lang-ru"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lang-ru"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -76,7 +82,8 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/lit-ua", 'українська література'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -88,7 +95,8 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/gdz/lit-w">світова література</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/lit-w", 'світова література'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/lit-w">світова література</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/lit-w"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -100,7 +108,8 @@
 						</tr>
 						
 						<tr>
-							<td data-vertical="0"><a href="/gdz/fizika">фізика</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/fizika", 'фізика'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/fizika">фізика</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/gdz/7/fizika"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -110,7 +119,8 @@
 							<td data-vertical="7"><!-- <a href="/gdz/11/fizika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/algebra">алгебра</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/algebra", 'алгебра'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/algebra">алгебра</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/gdz/7/algebra"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -120,7 +130,8 @@
 							<td data-vertical="7"><a href="/gdz/11/algebra"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/geom">геометрія</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/geom", 'геометрія'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/geom">геометрія</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/gdz/7/geom"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -130,7 +141,8 @@
 							<td data-vertical="7"><a href="/gdz/11/geom"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/him">хімія</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/him", 'хімія'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/him">хімія</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"></td>
@@ -140,7 +152,8 @@
 							<td data-vertical="7"><!-- <a href="/gdz/11/him"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/bio">біологія</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/bio", 'біологія'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/bio">біологія</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"><a href="/gdz/7/bio"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -150,7 +163,8 @@
 							<td data-vertical="7"><!-- <a href="/gdz/11/bio"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
 						<tr>
-							<td data-vertical="0"><a href="/gdz/geogr">географія</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/geogr", 'географія'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/geogr">географія</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"><a href="/gdz/6/geogr"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/geogr"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -161,7 +175,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/info">інформатика</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/info", 'інформатика'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/info">інформатика</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/info"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/info"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/info"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -172,7 +187,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/health">основи здоров'я</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/health", 'основи здоров`я'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/health">основи здоров'я</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/health"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/health"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/gdz/7/health"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
@@ -183,7 +199,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/etika">етика</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/etika", 'етика'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/etika">етика</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/etika"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/etika"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/etika"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -194,7 +211,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/nature">природознавство</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/nature", 'природознавство'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/nature">природознавство</a></td> -->
 							<td data-vertical="1"><a href="/gdz/5/nature"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/gdz/6/nature"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/nature"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
@@ -205,7 +223,8 @@
 						</tr>
 
 						<tr>
-							<td data-vertical="0"><a href="/gdz/history-ua">історія України</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/gdz/history-ua", 'історія України'); ?></td>
+							<!-- <td data-vertical="0"><a href="/gdz/history-ua">історія України</a></td> -->
 							<td data-vertical="1"></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/history-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><a href="/gdz/7/history-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
