@@ -1,11 +1,9 @@
 <div class="logo">
-	<a href="/">
-		<div class="logo-img">
-			<img src="/images/strupko.png" alt="">
-		</div>
-		<div class="logo-title">SHKOLYAR.INFO</div>
-		<div class="logo-description">шкільний інформаційний портал</div>
-	</a>
+	<?php echo SeoHide::link('/', '<div class="logo-img">
+      <img src="/images/strupko.png" alt="">
+    </div>
+    <div class="logo-title">SHKOLYAR.INFO</div>
+    <div class="logo-description">шкільний інформаційний портал</div>'); ?>
 
 	<div class="black"></div>
 	<div class="red"></div>

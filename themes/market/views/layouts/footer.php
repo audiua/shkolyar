@@ -1,18 +1,18 @@
 <div class="logo">
-	<a href="/">
-		<div class="logo-img">
-			<img src="/images/strupko.png" alt="">
-		</div>
-		<div class="logo-title">SHKOLYAR.INFO</div>
-		<div class="logo-description">шкільний інформаційний портал</div>
-	</a>
+<?php echo SeoHide::link('/', '<div class="logo-img">
+      <img src="/images/strupko.png" alt="">
+    </div>
+    <div class="logo-title">SHKOLYAR.INFO</div>
+    <div class="logo-description">шкільний інформаційний портал</div>'); ?>
 
-	 <!-- <div class="black"></div>
-	 <div class="red"></div>
-	 <div class="black"></div> -->
+   <!-- <div class="black"></div>
+   <div class="red"></div>
+   <div class="black"></div> -->
 </div>
 
 <?php if( $this->action->id =='index' && $this->id == 'site' ): ?>
+
+
 <div class="footer-menu">
 	<ul>
 		<li><?php  echo CHtml::link('Про нас', array('/about'), array('rel'=>'nofollow', 'class'=>Yii::app()->request->requestUri=='/about'?'active':'')); ?></li>
