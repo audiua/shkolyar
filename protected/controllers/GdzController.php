@@ -148,7 +148,7 @@ public function actionClas($clas){
 			)
 		);
 
-		$this->render('clas', array('books'=>$books));
+		$this->render('clas', array('books'=>$books, 'page'=>$page));
 
 		$this->endCache(); 
 	}
@@ -207,7 +207,7 @@ public function actionSubject($clas, $subject){
 			$this->subjectModel->subject->title
 		);
 
-		$this->render('subject', array('books'=>$books));
+		$this->render('subject', array('books'=>$books, 'page'=>$page));
 
 		$this->endCache(); 
 	}
@@ -283,7 +283,7 @@ public function actionCurrentSubject($subject){
 			$subjectModel->title
 		);
 
-		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel, 'description'=>$description));
+		$this->render('current_subject', array('books' => $books, 'subject'=>$subjectModel, 'description'=>$description, 'page'=>$page));
 
 		$this->endCache(); 
 	}
