@@ -15,7 +15,7 @@
 <div class="header-menu">
 	<ul>
 		<li class="<?php echo Yii::app()->controller->getId() == 'gdz' ? 'active' : '' ; ?> gdz" >
-			<a href="/gdz">ГДЗ<!-- <span class="blue glyphicon glyphicon-chevron-down small"></span> --></a>
+			<?= SeoHide::link("/gdz", 'ГДЗ'); ?>
 			<div class="gdz-table">
 				<table>
 					<thead>
@@ -244,26 +244,26 @@
 		</li>
 
 		<li  class="<?php  echo Yii::app()->controller->getId() == 'textbook' ? 'active' : '' ; ?> textbook" >
-			<a href="/textbook">Підручники<!-- <span class="blue glyphicon glyphicon-chevron-down small"></span> --></a>
+			<?= SeoHide::link("/textbook", 'Підручники'); ?>
 			<div class="textbook-table">
 				<table>
 					<thead>
 						<tr>
 							<th data-vertical="0"></th>
-							<th class="clas-5" data-vertical="1"><a href="/textbook/5" class="clas-5">5 <br><span>клас</span></a></th>
-							<th class="clas-6" data-vertical="2"><a href="/textbook/6" class="clas-6">6 <br><span>клас</span></a></th>
-							<th class="clas-7" data-vertical="3"><a href="/textbook/7" class="clas-7">7 <br><span>клас</span></a></th>
-							<th class="clas-8" data-vertical="4"><a href="/textbook/8" class="clas-8">8 <br><span>клас</span></a></th>
-							<th class="clas-9" data-vertical="5"><a href="/textbook/9" class="clas-9">9 <br><span>клас</span></a></th>
-							<th class="clas-10" data-vertical="6"><a href="/textbook/10" class="clas-10">10 <br><span>клас</span></a></th>
-							<th class="clas-11" data-vertical="7"><a href="/textbook/11" class="clas-11">11 <br><span>клас</span></a></th>
+							<th class="clas-5" data-vertical="1"><?= SeoHide::link("/textbook/5", '5 <br><span>клас</span>', array('class'=>'clas-5')); ?></th>
+							<th class="clas-6" data-vertical="2"><?= SeoHide::link("/textbook/6", '6 <br><span>клас</span>', array('class'=>'clas-6')); ?></th>
+							<th class="clas-7" data-vertical="3"><?= SeoHide::link("/textbook/7", '7 <br><span>клас</span>', array('class'=>'clas-7')); ?></th>
+							<th class="clas-8" data-vertical="4"><?= SeoHide::link("/textbook/8", '8 <br><span>клас</span>', array('class'=>'clas-8')); ?></th>
+							<th class="clas-9" data-vertical="5"><?= SeoHide::link("/textbook/9", '9 <br><span>клас</span>', array('class'=>'clas-9')); ?></th>
+							<th class="clas-10" data-vertical="6"><?= SeoHide::link("/textbook/10", '10 <br><span>клас</span>', array('class'=>'clas-10')); ?></th>
+							<th class="clas-11" data-vertical="7"><?= SeoHide::link("/textbook/11", '11 <br><span>клас</span>', array('class'=>'clas-11')); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td data-vertical="0"><a href="/textbook/math">математика</a></td>
-							<td data-vertical="1"><a href="/textbook/5/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="0"><?= SeoHide::link("/textbook/math", 'математика'); ?></td>
+							<td data-vertical="1"><?= SeoHide::link("/textbook/5/math", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/textbook/6/math", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
 							<td data-vertical="3"></td>
 							<td data-vertical="4"></td>
 							<td data-vertical="5"></td>
@@ -328,14 +328,14 @@
 							<td data-vertical="7"><a href="/textbook/10/fizika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr> -->
 						<tr>
-							<td data-vertical="0"><a href="/textbook/algebra">алгебра</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/textbook/algebra", 'алгебра'); ?></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/algebra"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/algebra"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/algebra"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/algebra"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/algebra"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="3"><?= SeoHide::link("/textbook/7/algebra", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/textbook/8/algebra", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/textbook/9/algebra", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/textbook/10/algebra", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/textbook/11/algebra", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
 						</tr>
 						<!-- <tr>
 							<td data-vertical="0"><a href="/textbook/geom">геометрія</a></td>
@@ -385,36 +385,36 @@
 		</li>
 
 		<li  class="<?php  echo Yii::app()->controller->getId() == 'writing' ? 'active' : '' ; ?> writing" >
-			<a href="/writing">Твори</a>
+			<?= SeoHide::link("/writing", 'Твори'); ?>
 			<div class="writing-table">
 				<table>
 					<thead>
 						<tr>
 							<th data-vertical="0"></th>
-							<th class="clas-5" data-vertical="1"><a href="/writing/5" class="clas-5">5 <br><span>клас</span></a></th>
-							<th class="clas-6" data-vertical="2"><a href="/writing/6" class="clas-6">6 <br><span>клас</span></a></th>
-							<th class="clas-7" data-vertical="3"><a href="/writing/7" class="clas-7">7 <br><span>клас</span></a></th>
-							<th class="clas-8" data-vertical="4"><a href="/writing/8" class="clas-8">8 <br><span>клас</span></a></th>
-							<th class="clas-9" data-vertical="5"><a href="/writing/9" class="clas-9">9 <br><span>клас</span></a></th>
-							<th class="clas-10" data-vertical="6"><a href="/writing/10" class="clas-10">10 <br><span>клас</span></a></th>
-							<th class="clas-11" data-vertical="7"><a href="/writing/11" class="clas-11">11 <br><span>клас</span></a></th>
+							<th class="clas-5" data-vertical="1"><?= SeoHide::link("/writing/5", '5 <br><span>клас</span>', array('class'=>'clas-5')); ?></th>
+							<th class="clas-6" data-vertical="2"><?= SeoHide::link("/writing/6", '6 <br><span>клас</span>', array('class'=>'clas-6')); ?></th>
+							<th class="clas-7" data-vertical="3"><?= SeoHide::link("/writing/7", '7 <br><span>клас</span>', array('class'=>'clas-7')); ?></th>
+							<th class="clas-8" data-vertical="4"><?= SeoHide::link("/writing/8", '8 <br><span>клас</span>', array('class'=>'clas-8')); ?></th>
+							<th class="clas-9" data-vertical="5"><?= SeoHide::link("/writing/9", '9 <br><span>клас</span>', array('class'=>'clas-9')); ?></th>
+							<th class="clas-10" data-vertical="6"><?= SeoHide::link("/writing/10", '10 <br><span>клас</span>', array('class'=>'clas-10')); ?></th>
+							<th class="clas-11" data-vertical="7"><?= SeoHide::link("/writing/11", '11 <br><span>клас</span>', array('class'=>'clas-11')); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 					
 						<tr>
-							<td data-vertical="0"><a href="/writing/lang-ua">українська мова</a></td>
-							<td data-vertical="1"><a href="/writing/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/writing/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/writing/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/writing/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/writing/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/writing/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/writing/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="0"><?= SeoHide::link("/writing/lang-ua", 'українська мова'); ?></td>
+							<td data-vertical="1"><?= SeoHide::link("/writing/5/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/writing/6/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/writing/7/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/writing/8/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/writing/9/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/writing/10/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/writing/11/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
 						</tr>
 				
 						<tr>
-							<td data-vertical="0"><a href="/writing/lit-ua">українська література</a></td>
+							<td data-vertical="0"><?= SeoHide::link("/writing/lit-ua", 'українська література'); ?></td>
 							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
 							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
 							<td data-vertical="3"><a href="/writing/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
