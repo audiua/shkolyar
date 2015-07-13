@@ -6,7 +6,7 @@
         <meta name="description" content="<?php echo CHtml::encode($this->description); ?>" />
         <meta name="keywords" content="<?php echo CHtml::encode($this->keywords); ?>" />
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
-        <link rel="canonical" href="<?php echo $this->canonical; ?>">
+        <!-- <link rel="canonical" href="<?php // echo $this->canonical; ?>"> -->
 
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
