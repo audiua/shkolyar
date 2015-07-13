@@ -4,15 +4,15 @@
 	<ul class="sidebar-menu-category">
 
 		<li>
-			<?php echo CHtml::link( 'ГДЗ', array('/gdz'));  ?>
+			<?= SeoHide::link("/gdz", 'ГДЗ'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Підручники', array('/textbook'));  ?>
+			<?= SeoHide::link("/textbook", 'Підручники'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Всезнайка', array('/knowall'));  ?>
+			<?= SeoHide::link("/knowall", 'Всезнайка'); ?>
 		</li>
 
 		<?php if($this->controller->id=='library'): ?>
@@ -21,12 +21,12 @@
 			</li>
 		<?php else : ?>
 			<li>
-			<?php echo CHtml::link( 'Художня література', array('/library'));  ?>
+			<?= SeoHide::link("/library", 'Художня література'); ?>
 			</li>
 		<?php endif; ?>
 
 		<li>
-			<?php echo CHtml::link( 'Твори', array('/writing'));  ?>
+			<?= SeoHide::link("/writing", 'Твори'); ?>
 		</li>
 
 	</ul>
@@ -43,7 +43,8 @@
 				if( is_null($category) ){
 					echo '<span class="active">Всі автори</span>';
 				} else {
-					echo CHtml::link( 'Всі автори', array($url)); 
+					echo SeoHide::link($url, 'Всі автори');
+					// echo CHtml::link( 'Всі автори', array($url)); 
 				}
 			?>
 		</li>
@@ -61,7 +62,8 @@
 				if( ! is_null($category) && $category == $one->slug ){
 					echo '<span class="active">'.$one->author.'</span>';
 				} else {
-					echo CHtml::link( $one->author, array($url)); 
+					echo SeoHide::link($url, $one->author);
+					// echo CHtml::link( $one->author, array($url)); 
 				} ?>
 
 

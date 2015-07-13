@@ -5,19 +5,19 @@
 		
 
 		<li>
-			<?php echo CHtml::link( 'ГДЗ', array('/gdz'));  ?>
+			<?= SeoHide::link("/gdz", 'ГДЗ'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Підручники', array('/textbook'));  ?>
+			<?= SeoHide::link("/textbook", 'Підручники'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Всезнайка', array('/knowall'));  ?>
+			<?= SeoHide::link("/knowall", 'Всезнайка'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Художня література', array('/library'));  ?>
+			<?= SeoHide::link("/library", 'Художня література'); ?>
 		</li>
 
 		<?php if($this->controller->id=='writing'): ?>
@@ -26,7 +26,7 @@
 			</li>
 		<?php else : ?>
 			<li>
-			<?php echo CHtml::link( 'Твори', array('/writing'));  ?>
+			<?= SeoHide::link("/writing", 'Твори'); ?>
 			</li>
 		<?php endif; ?>
 
@@ -49,7 +49,8 @@
 				if( is_null($clas) ){
 					echo '<span class="active">Всі класи</span>';
 				} else {
-					echo CHtml::link( 'Всі класи', array($urlClas)); 
+					echo SeoHide::link($urlClas, 'Всі класи');
+					// echo CHtml::link( 'Всі класи', array($urlClas)); 
 				}
 			?>
 		</li>
@@ -89,7 +90,8 @@
 			if( !is_null($clas) && $clas->slug == $oneClas->slug){
 				echo '<span class="active">'.$oneClas->slug.'</span>';
 			} else {
-				echo CHtml::link( $oneClas->slug, array($urlClas)); 
+				echo SeoHide::link($urlClas, $oneClas->slug);
+				// echo CHtml::link( $oneClas->slug, array($urlClas)); 
 			} ?>
 		</li>
 			
@@ -113,7 +115,8 @@
 				if( is_null($subject) ){
 					echo '<span class="active">Всі предмети</span>';
 				} else {
-					echo CHtml::link( 'Всі предмети', array($urlClas)); 
+					echo SeoHide::link($urlClas, 'Всі предмети');
+					// echo CHtml::link( 'Всі предмети', array($urlClas)); 
 				}
 			?>
 		</li>
@@ -138,6 +141,7 @@
 				if( ! is_null($subject) && $subject->slug == $oneSubject->slug ){
 					echo '<span class="active">'.$oneSubject->title.'</span>';
 				} else {
+					echo SeoHide::link($urlSubject, $oneSubject->title);
 					echo CHtml::link( $oneSubject->title, array($urlSubject)); 
 				} ?>
 
