@@ -35,7 +35,7 @@
 							<!-- <td data-vertical="0"><a href="/gdz/math">математика</a></td> -->
 							<td data-vertical="0"><?= SeoHide::link("/gdz/math", 'математика'); ?></td>
 							<td data-vertical="1"><?= SeoHide::link("/gdz/5/math", '<span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
-							<td data-vertical="2"><?= SeoHide::link("/gdz/6/math", '<span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/gdz/6/math", '<span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
 							<!-- <td data-vertical="1"><a href="/gdz/5/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-5"></span></a></td> -->
 							<!-- <td data-vertical="2"><a href="/gdz/6/math"><span aria-hidden="true" class="green glyphicon glyphicon-ok small clas-6"></span></a></td> -->
 							<td data-vertical="3"></td>
@@ -48,19 +48,21 @@
 						<tr>
 							<!-- <td data-vertical="0"><a href="/gdz/lang-ua">українська мова</a></td> -->
 							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-ua", 'українська мова'); ?></td>
-							<td data-vertical="1"><a href="/gdz/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/gdz/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/gdz/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/gdz/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/gdz/6/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/gdz/7/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/gdz/8/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/gdz/9/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/gdz/10/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/gdz/11/lang-ua", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
+							
 						</tr>
 
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-en", 'англійська мова'); ?></td>
 							<!-- <td data-vertical="0"><a href="/gdz/lang-en">англійська мова</a></td> -->
-							<td data-vertical="1"><a href="/gdz/5/lang-en"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/lang-en", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<!-- <td data-vertical="1"><a href="/gdz/5/lang-en"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td> -->
 							<td data-vertical="2"><!-- <a href="/gdz/6/lang-en"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lang-en"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/lang-en"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
@@ -72,21 +74,21 @@
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/gdz/lang-ru", 'російська мова'); ?></td>
 							<!-- <td data-vertical="0"><a href="/gdz/lang-ru">російська мова</a></td> -->
-							<td data-vertical="1"><a href="/gdz/5/lang-ru"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lang-ru"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lang-ru"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/gdz/8/lang-ru"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/gdz/9/lang-ru"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/gdz/10/lang-ru"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/gdz/6/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/gdz/7/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/gdz/8/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/gdz/9/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/gdz/10/lang-ru", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
 							<td data-vertical="7"><!-- <a href="/gdz/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a> --></td>
 						</tr>
 						
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/gdz/lit-ua", 'українська література'); ?></td>
 							<!-- <td data-vertical="0"><a href="/gdz/lit-ua">українська література</a></td> -->
-							<td data-vertical="1"><a href="/gdz/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/gdz/6/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/gdz/7/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
 							<td data-vertical="5"><!-- <a href="/gdz/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a> --></td>
 							<td data-vertical="6"><!-- <a href="/gdz/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a> --></td>
@@ -97,7 +99,7 @@
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/gdz/lit-w", 'світова література'); ?></td>
 							<!-- <td data-vertical="0"><a href="/gdz/lit-w">світова література</a></td> -->
-							<td data-vertical="1"><a href="/gdz/5/lit-w"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="1"><?= SeoHide::link("/gdz/5/lit-w", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
 							<td data-vertical="2"><!-- <a href="/gdz/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a> --></td>
 							<td data-vertical="3"><!-- <a href="/gdz/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a> --></td>
 							<td data-vertical="4"><!-- <a href="/gdz/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a> --></td>
