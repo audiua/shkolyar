@@ -14,7 +14,7 @@ public $keywords='Шкільний інформаційний портал, гд
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
+public $description='Шкільний інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
 
 public $param;
 
@@ -41,6 +41,13 @@ public function actionIndex(){
 	// $image = new TextInImgHelper;
 	// $image->create();
 	// die;
+
+	// Yii::import('ext.qrcode.QRCode');
+	// $code=new QRCode(uniqid().md5(time()));
+	// to save the code to file
+	// d(Yii::getPathOfAlias('webroot').'/img/qr/file.png');
+	// $code->create();
+	// $code->create(Yii::getPathOfAlias('webroot').'/img/qr/file'.time().'.png');
 
 	// TODO - закешировать на сутки
 	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
@@ -193,6 +200,10 @@ public function actionLogout(){
 }
 
 public function actionPage($action){
+
+	$this->description = 'shkolyar.info '.$action;
+	$this->keywords = $action;
+	$this->pageTitle = 'shkolyar.info '.$action;
 
 	$description = $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'page', 'page_mode'=>$action)), true);
 	if($description){
