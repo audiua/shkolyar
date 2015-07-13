@@ -53,7 +53,7 @@ public function actionIndex(){
 		$criteria->addCondition('t.public_time<'.time());
 		$model = new CActiveDataProvider('Writing',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 		
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing');
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/writing');
 		$this->pageTitle = 'Твори, шкільні твори, твори онлайн';
 		$this->h1 = 'Твори';
 		// кешируем сдесь всю страницу
@@ -95,7 +95,7 @@ public function actionClas($clas){
 
 		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори';
 		$this->description = 'твори для '.$this->clasModel->slug . ' класу ';
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas);
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas);
 		$this->h1 = 'Твори '. $clas . ' клас';
 		$this->pageTitle = 'Твори '.$clas.' клас';
 		// кешируем сдесь всю страницу
@@ -146,7 +146,7 @@ public function actionSubject($clas, $subject){
 
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas.'/'.$subject);
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$clas.'/'.$subject);
 		$this->pageTitle = 'Твори '.$clas.' клас ' . $this->subjectModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('subject', array('model'=>$model, 'description'=>$description));
@@ -189,7 +189,7 @@ public function actionCurrentSubject($subject){
 			$this->subjectModel->title,
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->subjectModel->slug);
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->subjectModel->slug);
 		$this->pageTitle = 'Твори '.$this->subjectModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('current_subject', array('model'=>$model, 'description'=>$description));
@@ -225,10 +225,10 @@ public function actionView($clas, $category, $article){
 
 		);
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->clasModel->slug . '/'. $this->subjectModel->slug . '/' . $article->slug);
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/writing/'.$this->clasModel->slug . '/'. $this->subjectModel->slug . '/' . $article->slug);
 		$this->pageTitle = 'Твори '.$this->clasModel->slug . ' '. $this->subjectModel->title . ' ' . $article->title;
 
-		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори '.$this->subjectModel->title.', твори '.$this->clasModel->slug . ' клас '.$this->subjectModel->title;
+		$this->keywords = 'твори '.$this->clasModel->slug . ' клас, твори '.$this->subjectModel->title.', твори '.$this->clasModel->slug . ' клас '.$this->subjectModel->title . ' ' .$article->title;
 		$this->description = 'твір для '.$this->clasModel->slug . ' класу '.$this->subjectModel->title . ' на тему: '.$article->title ;
 
 		$this->render('view', array('model'=>$article));

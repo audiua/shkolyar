@@ -37,6 +37,10 @@ public function filters() {
 
 public function actionIndex() {
 
+    $this->pageTitle = 'sitemap.xml';
+    $this->description = 'sitemap.xml';
+    $this->keywords = 'sitemap.xml';
+
     header("Content-type: text/xml");
 
     if($this->beginCache('sitemap', array('duration'=>self::CACHE_TIME)) ){
@@ -93,7 +97,9 @@ public function actionIndex() {
 public function actionSitemap(){
     if($this->beginCache('sitemapHtml', array('duration'=>self::CACHE_TIME)) ){
 
-
+        $this->pageTitle = 'sitemap';
+        $this->description = 'sitemap';
+        $this->keywords = 'sitemap';
         $this->render('sitemap');
         $this->endCache(); 
     }
