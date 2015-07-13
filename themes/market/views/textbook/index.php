@@ -3,7 +3,7 @@
 
 
 <?php  
-$this->widget('zii.widgets.CBreadcrumbs', array(
+$this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
     'homeLink'=>SeoHide::link(Yii::app()->homeUrl, '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
