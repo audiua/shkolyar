@@ -199,7 +199,8 @@ class LinkPager extends CLinkPager
 			return '<li class="'.$class.'"><span>'.$label .'</span></li>';
 		}
 
-		return '<li class="'.$class.'">'. CHtml::link($label,$this->createPageUrl($page)).'</li>';
+		return '<li class="'.$class.'">'. SeoHide::link($this->createPageUrl($page), $label).'</li>';
+		// return '<li class="'.$class.'">'. CHtml::link($label,$this->createPageUrl($page)).'</li>';
 	}
 
 	/**
