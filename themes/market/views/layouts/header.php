@@ -415,14 +415,13 @@
 				
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/writing/lit-ua", 'українська література'); ?></td>
-							<td data-vertical="1"><a href="/writing/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/writing/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/writing/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/writing/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/writing/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/writing/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/writing/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-							
+							<td data-vertical="1"><?= SeoHide::link("/writing/5/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/writing/6/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/writing/7/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/writing/8/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/writing/9/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/writing/10/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/writing/11/lit-ua", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
 						</tr>
 						
 					</tbody>
@@ -447,7 +446,7 @@
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
 			    			<?php foreach( LibraryAuthor::model()->findAll() as $author ): ?>
-			    			<li><a class="library-subcategory" href="/library/<?php echo $author->slug; ?>"><?php echo $author->author; ?></a></li>
+			    			<li> <?php SeoHide::link("/library/".$author->slug, $author->author, array('class')=>'library-subcategory');?></li>
 			    		<?php endforeach; ?>
 			    		</ul>
 				    </div>
@@ -468,8 +467,8 @@
 		<li class="<?php echo Yii::app()->controller->getId() == 'knowall' ? 'active' : '' ; ?> knowall"  ><a href="/knowall">Всезнайка</a>
 			<div class="knowall-block">
 				<ul>
-					<li><a class="knowall-subcategory" href="/knowall/nature">Природа</a></li>
-					<li><a class="knowall-subcategory" href="/knowall/planeta">Планета</a></li>
+					<li><?= SeoHide::link("/knowall/nature", 'Природа', array('class'=>'knowall-subcategory')); ?></li>
+					<li><?= SeoHide::link("/knowall/planeta", 'Планета', array('class'=>'knowall-subcategory')); ?></li>
 					<!-- <li><a class="knowall-subcategory" href="/knowall/money">Заробіток</a></li>
 					<li><a class="knowall-subcategory" href="/knowall/men">Людина</a></li> -->
 				</ul>
