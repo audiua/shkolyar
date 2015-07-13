@@ -446,7 +446,7 @@
 				    <div role="tabpanel" class="tab-pane active" id="lit-ua">
 			    		<ul>
 			    			<?php foreach( LibraryAuthor::model()->findAll() as $author ): ?>
-			    			<li> <?php SeoHide::link("/library/".$author->slug, $author->author, array('class'=>'library-subcategory'));?></li>
+			    			<li> <?= SeoHide::link("/library/".$author->slug, $author->author, array('class'=>'library-subcategory'));?></li>
 			    		<?php endforeach; ?>
 			    		</ul>
 				    </div>
