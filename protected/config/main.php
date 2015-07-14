@@ -24,7 +24,7 @@ return array(
 	// 'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 
 	'onBeginRequest' => function($event){
-	    return ob_start('ob_gzhandler');
+	    return ob_start();
 	},
 
 	'onEndRequest' => function($event){
