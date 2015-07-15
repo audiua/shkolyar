@@ -39,12 +39,12 @@ public function filters() {
 public function actionIndex(){
 
 
-	foreach(Keyword::model()->findAll() as $item ){
-		echo $item->keyword;
-		echo '<br>';
-	}
+	// foreach(Keyword::model()->findAll() as $item ){
+	// 	echo $item->keyword;
+	// 	echo '<br>';
+	// }
 
-	die;
+	// die;
 
 
 	// $image = new TextInImgHelper;
