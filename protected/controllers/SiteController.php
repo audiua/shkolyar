@@ -38,6 +38,15 @@ public function filters() {
  */
 public function actionIndex(){
 
+
+	foreach(Keyword::model()->findAll() as $item ){
+		echo $item->keyword;
+		echo '<br>';
+	}
+
+	die;
+
+
 	// $image = new TextInImgHelper;
 	// $image->create();
 	// die;
@@ -283,6 +292,10 @@ public function actionOauth()
             $this->redirect($state);
         }
     }
+}
+
+public function actionRemovePage(){
+	throw new CHttpException('410');
 }
 
 
