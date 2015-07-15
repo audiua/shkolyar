@@ -33,6 +33,12 @@
     <li><?= SeoHide::link("/sitemap", 'Карта сайта', array('target'=>'_blank')); ?></li>
     <li><?= SeoHide::link("/sitemap.xml", 'sitemap.xml', array('target'=>'_blank')); ?></li>
     
+    <li><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=31373293&amp;from=informer"
+target="_blank" rel="nofollow"><img src="https://mc.yandex.ru/informer/31373293/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
+<!-- /Yandex.Metrika informer --></li>
+
    <?php $this->renderDynamic('getInsideLink'); ?>  
   </ul>
 </div>
@@ -98,7 +104,8 @@
                     id:31373293,
                     clickmap:true,
                     trackLinks:true,
-                    accurateTrackBounce:true
+                    accurateTrackBounce:true,
+                    webvisor:true
                 });
             } catch(e) { }
         });
