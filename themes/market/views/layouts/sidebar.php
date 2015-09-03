@@ -1,9 +1,9 @@
-<!-- <div class="sidebar-block">
+<div class="sidebar-block">
 	<?php // $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
-</div> -->
+</div>
 
-<!-- <div class="separator"></div> -->
-<!-- <div class="clear"></div> -->
+<div class="separator"></div>
+<div class="clear"></div>
 
 <div class="sidebar-block">
 	<div class="menu">
