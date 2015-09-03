@@ -1,5 +1,5 @@
 <div class="sidebar-block">
-	<?php // $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
+	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
 </div>
 
 <div class="separator"></div>
