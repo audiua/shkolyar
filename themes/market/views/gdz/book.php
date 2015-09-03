@@ -41,6 +41,11 @@ $this->widget('BreadcrumbsWidget', array(
 <?php $this->widget('LikeWidget'); ?>
 
 <div class="clear"></div>
+<div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+
+<div class="clear"></div>
 <div class="separator task-separator"></div>
 
 <div class="task">
@@ -81,13 +86,6 @@ $this->widget('BreadcrumbsWidget', array(
 	</section>
 </div>
 
-
-
-
-<div class="clear"></div>
-<div class="separator"></div>
-
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 <div class="info">Виберіть <?php echo  $this->bookModel->pagination == 'page' ? 'сторінку' : 'завдання' ; ?></div>
 <div class="task-block">
