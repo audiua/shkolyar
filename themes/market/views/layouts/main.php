@@ -12,7 +12,7 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <link async="" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <!-- <link rel="stylesheet" href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css"> -->
         <!-- <link rel="stylesheet/less" type="text/css" href="<?php // echo Yii::app()->theme->baseUrl; ?>/less/app.less" /> -->
         <link async="" href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
@@ -24,14 +24,14 @@
 
             $path = Yii::app()->theme->basePath;
             $mainAssets = Yii::app()->AssetManager->publish($path);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js', CClientScript::POS_END);
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.min.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/addtocopy.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/base64.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
-            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
+            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.min.css');
 
          ?>
 
