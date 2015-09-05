@@ -3,7 +3,7 @@
 	
 	<?php 
 
-	echo SeoHide::link('/knowall/'.$data->knowall_category->slug . '/'. $data->slug , CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('title'=>$data->title, 'class'=>'thumbnail')));
+	echo SeoHide::link('/knowall/'.$data->knowall_category->slug . '/'. $data->slug , CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('class'=>'thumbnail')));
 	
 
 	// echo CHtml::link(CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('title'=>$data->title, 'class'=>'thumbnail')),'/knowall/'.$data->knowall_category->slug . '/'. $data->slug ,array('class'=>'', 'rel'=>'noffolow')); 
