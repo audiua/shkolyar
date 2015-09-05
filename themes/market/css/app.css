@@ -809,6 +809,9 @@ img.img-middle-book {
   cursor: pointer;
   text-align: center;
 }
+.task-number:hover {
+  font-weight: bold;
+}
 .task-active {
   color: #4169E1;
   font-size: 18px;
