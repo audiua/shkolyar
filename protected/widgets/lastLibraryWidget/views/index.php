@@ -3,7 +3,11 @@
 	$imgPath = '/img/library/'.$first->library_author->slug.'/'.$first->slug.'/book/first.'.$first->img_ext;
 ?>
 <div class="knowall-large-block">
-	<?php echo CHtml::image($imgPath,$first->title, array('title'=>$first->title, 'class'=>'img-350x280')); ?>
+	<?php 
+	echo SeoHide::link('/library/'.$first->library_author->slug . '/'. $first->slug, CHtml::image($imgPath,$first->title, array('class'=>'img-350x280')));
+
+	// echo CHtml::image($imgPath,$first->title, array('title'=>$first->title, 'class'=>'img-350x280')); 
+	?>
 	<div class="knowall-link">
 		<?php echo CHtml::link($first->title,'/library/'.$first->library_author->slug . '/'. $first->slug,array('class'=>'')); ?>
 	</div>
@@ -21,7 +25,11 @@
 ?>
 
 	<div class='knowall-small-one-block'>
-		<?php echo CHtml::image($imgPath,$one->title, array('title'=>$one->title, 'class'=>'img-150x106')); ?>
+		<?php 
+
+		echo SeoHide::link('/library/'.$one->library_author->slug . '/'. $one->slug, CHtml::image($imgPath,$one->title, array('class'=>'img-150x106')));
+		// echo CHtml::image($imgPath,$one->title, array('title'=>$one->title, 'class'=>'img-150x106')); 
+		?>
 		
 		<div class="knowall-link">
 			<?php echo CHtml::link($one->title,'/library/'.$one->library_author->slug . '/'. $one->slug,array('class'=>'')); ?>
