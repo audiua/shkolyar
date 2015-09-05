@@ -16,17 +16,18 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'index'))); ?>
 </div>
 
-<h3 class="info">Підручники</h3>
-<?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
-<div class="separator"></div>
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
 <h3 class="info">ГДЗ</h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 <div class="separator"></div>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
+<div class="separator"></div>
 <h3 class="info">Твори</h3>
 <?php $this->widget('LastWritingWidget'); ?>
+<div class="separator"></div>
+
+<h3 class="info">Підручники</h3>
+<?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
 <div class="separator"></div>
 
 <h3 class="info">Художня література</h3>
