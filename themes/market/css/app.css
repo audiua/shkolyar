@@ -657,13 +657,15 @@ p.description a:hover {
   padding-top: 10px;
 }
 .middle-book-block {
-  width: 50%;
+  width: 33%;
   float: left;
   padding: 5px;
   position: relative;
+  margin-bottom: 45px;
 }
 .middle-book-block .desc {
   margin-top: 10px;
+  padding-right: 30px;
 }
 .middle-book-block .book-author,
 .middle-book-block .book-subject,
@@ -701,10 +703,14 @@ p.description a:hover {
   width: 150px;
 }
 img.img-middle-book {
-  float: left;
+  /*float: left;*/
   margin-right: 10px;
   height: 250px;
   width: 180px;
+}
+
+.one-book{
+  float: left;
 }
 .small-book-block {
   width: 33%;

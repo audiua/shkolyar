@@ -6,7 +6,7 @@ $controller = ($this->controller->id=='gdz') ? 'ГДЗ ':'Підручник ';
 
 <div class="">
 <?php echo CHtml::image(Yii::app()->baseUrl . '/' . $path.'/'.$this->model->slug.'.'.$this->model->img, $controller . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author, 
-	array('class'=>'img-middle-book thumbnail', 'title'=>$controller . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author)); 
+	array('class'=>'img-middle-book one-book thumbnail', 'title'=>$controller . $this->model->$categoryClas->clas->slug .' клас '. $this->model->title . ' ' . $this->model->author)); 
 ?> 
 </div>
 	<div class="">

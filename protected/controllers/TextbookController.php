@@ -311,6 +311,7 @@ public function actionTask($clas, $subject, $book, $task){
 
 		$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
 		$pathImg['width'] = $imgSize[0];
+		$pathImg['height'] = $imgSize[1];
 		// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
 
 
@@ -323,7 +324,7 @@ public function actionTask($clas, $subject, $book, $task){
 			. $this->bookModel->author
 			. ' сторінка '
 			. $task,
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'], 'title'=> 'Підручник '
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> 'Підручник '
 			. $this->subjectModel->subject->title . ' '
 			. $clas . ' клас ' 
 			. $this->bookModel->author
