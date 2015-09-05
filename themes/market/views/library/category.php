@@ -14,7 +14,7 @@ $this->widget('BreadcrumbsWidget', array(
 <?php echo $category->description; ?>
 <?php $this->renderDynamic('getUpdateAuthorBtn', array('id'=>$category->id)); ?>
 </div>
-<?php $this->widget('LikeWidget'); ?>
+
 <div class="clear"></div>
 <div class="separator"></div>
 

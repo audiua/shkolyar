@@ -20,7 +20,7 @@ $this->widget('BreadcrumbsWidget', array(
 <?php $this->renderDynamic('getUpdateBookBtn', array('id'=>$model->id)); ?>
 
 
-<?php $this->widget('LikeWidget'); ?>
+
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
