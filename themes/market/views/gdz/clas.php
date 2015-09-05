@@ -19,8 +19,6 @@ if($page){$pageStr=' Cторінка '.$page;} ?>
   <?php  echo $this->clasModel->description; ?>
 </div>
 <?php endif; ?>
-
-<?php $this->widget('LikeWidget'); ?>
   
 <div class="clear"></div>
 <div class="separator"></div>

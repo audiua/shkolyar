@@ -16,7 +16,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="description">
   <?php echo $this->subjectModel->description; ?>
 </div>
-<?php $this->widget('LikeWidget'); ?>
+
 <div class="clear"></div>
 <div class="separator"></div>
 

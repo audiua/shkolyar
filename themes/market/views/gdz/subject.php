@@ -20,7 +20,6 @@ if($page){$pageStr=' Cторінка '.$page;} ?>
 </div>
 <?php endif; ?>
 
-<?php $this->widget('LikeWidget'); ?>
 <div class="clear"></div>
 <div class="separator"></div>
 

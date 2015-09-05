@@ -14,7 +14,6 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="description">
 	<?php $this->widget('DescriptionWidget', array('params'=>array('owner'=>'knowall', 'action'=>'category', 'category_id'=>$category->id))); ?>
 </div>
-<?php $this->widget('LikeWidget'); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
