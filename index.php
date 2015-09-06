@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 function d($data=null){
 	echo '<pre>';
 	print_r($_REQUEST);
@@ -6,13 +9,26 @@ function d($data=null){
 	die;
 }
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/protected/framework/yii.php';
+$yii=dirname(__FILE__).'/protected/framework/yiilite.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode
-defined('YII_DEBUG') or define('YII_DEBUG',true);
+defined('YII_DEBUG') or define('YII_DEBUG',false);
 // specify how many levels of call stack should be shown in each log message
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once($yii);
-Yii::createWebApplication($config)->run();
+$app = Yii::createWebApplication($config)->run();
+
+// $app->onBeginRequest = function($event) {
+//     return ob_start();
+// };
+// $app->onEndRequest = function($event) {
+// 	$page = ob_get_flush();
+
+// 	file_put_contents('filename', $page);
+//     return $page;
+// };
+
+// $app->run();
+
