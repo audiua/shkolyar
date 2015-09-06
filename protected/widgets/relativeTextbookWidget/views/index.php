@@ -5,11 +5,16 @@
 		<div class="small-book-block">
 
 			<div class=""> 
-				<?php echo CHtml::image(
+				<?php 
+				echo SeoHide::link('/textbook/'.$data->textbook_clas->clas->slug.'/'.$data->textbook_subject->subject->slug.'/'.$data->slug, CHtml::image(
 					Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 
 					'SHKOLYAR.INFO - ГДЗ ' . $data->textbook_clas->clas->slug . ' клас ' . $data->textbook_subject->subject->title . ' ' .  $data->author, 
-					array('class'=>'img-middle-book thumbnail ', 
-						'title'=>'SHKOLYAR.INFO - ГДЗ ' . $data->textbook_clas->clas->slug . ' клас ' . $data->textbook_subject->subject->title . ' ' .  $data->author)); 
+					array('class'=>'img-middle-book thumbnail ')));
+
+				// echo CHtml::image(
+				// 	Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 
+				// 	'SHKOLYAR.INFO - ГДЗ ' . $data->textbook_clas->clas->slug . ' клас ' . $data->textbook_subject->subject->title . ' ' .  $data->author, 
+				// 	array('class'=>'img-middle-book thumbnail ')); 
 				?> 
 			</div>
 			<div class="">
