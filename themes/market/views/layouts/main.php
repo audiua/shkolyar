@@ -12,13 +12,15 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <!-- <link rel="stylesheet" href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css"> -->
+        <!-- <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" async="" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">
         <!-- <link rel="stylesheet/less" type="text/css" href="<?php // echo Yii::app()->theme->baseUrl; ?>/less/app.less" /> -->
         <link async="" href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
         <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
         
-        <?php Yii::app()->getClientScript()->registerCoreScript('jquery', CClientScript::POS_END); ?>
+        <?php 
+        Yii::app()->clientScript->coreScriptPosition = CClientScript::POS_END;
+        Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
 
         <?php 
 
