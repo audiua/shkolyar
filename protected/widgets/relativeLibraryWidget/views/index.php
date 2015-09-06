@@ -11,18 +11,11 @@
 	?> 
 	</div>
 		<div class="">
-			<div class="book-author"> <?php echo $data->library_author->author; ?></div>
-			<div class="book-subject"> <?php echo $data->title; ?></div>
-			<div class="desc">
-				<!-- <p><?php // echo $data->description; 
-				?></p> -->
-			</div>
-
-		</div>
-
-		<div class="gdz-link">
-			<?php echo CHtml::link( 'Перейти', array('/library/'.$data->library_author->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-xs')); ?>
-		</div>		
+			<?php echo CHtml::link('
+			<div class="book-author">'.$data->library_author->author.'</div>
+			<div class="book-subject">'.$data->title.'</div>', 
+			array('/library/'.$data->library_author->slug.'/'.$data->slug));?>
+		</div>	
 	</div>
 
 	<?php endforeach; ?>
