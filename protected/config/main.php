@@ -230,8 +230,8 @@ return array(
 		),
 
 		'cache'=>array(
-            'class'=>'system.caching.CDummyCache',
-            // 'class'=>'system.caching.CFileCache',
+            // 'class'=>'system.caching.CDummyCache',
+            'class'=>'system.caching.CFileCache',
         ),
         'cacheDummy'=>array(
             'class'=>'system.caching.CDummyCache',
