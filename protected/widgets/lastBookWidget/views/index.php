@@ -20,14 +20,14 @@ foreach( $model as $i => $one ):
 		<div class=""> 
 		<?php 
 
-			echo SeoHide::link('/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug, CHtml::image(
-				Yii::app()->baseUrl . '/' . $path.'/'.$one->slug.'.'.$one->img, $controller . $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author, 
+			echo SeoHide::link('/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$one->$mode_subject->subject->slug.'/'.$one->slug, CHtml::image( ($first == true) ? $one->getThumb(160,245,'resize') : $one->getThumb(100,135,'resize')
+				, $controller . $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author, 
 				array(
 					'class'=>($first == true) ? 'thumbnail img-last-big-book' : 'thumbnail img-last-small-book',
 					'title'=> $controller . $one->$mode_clas->clas->slug .' клас '. $one->title . ' ' . $one->author,
 				)
 			));
-
+			//Yii::app()->baseUrl . '/' . $path.'/'.$one->slug.'.'.$one->img
 			
 		?> 
 		</div>
@@ -51,5 +51,7 @@ $first = false;
 endforeach; ?>
 <div class="clear"></div>
 </div>
+
+
 
 
