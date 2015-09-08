@@ -1,12 +1,15 @@
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <?php  
-$this->widget('zii.widgets.CBreadcrumbs', array(
+
+$this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
-    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
+    'homeLink'=>SeoHide::link(Yii::app()->homeUrl, '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down"></span></span></noindex>',
 ));
 ?>
 
-<?php $this->widget('BreadcrumbsWidget'); ?>
 
 <h1><?php echo $this->h1; ?></h1>
 
@@ -35,7 +38,10 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	
 </div>
 
-<?php $this->widget('LikeWidget'); ?>
+<div class="clear"></div>
+<div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
@@ -79,10 +85,6 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 </div>
 
 
-
-
-<div class="clear"></div>
-<div class="separator"></div>
 <div class="info">Виберіть <?php echo  $this->bookModel->pagination == 'page' ? 'сторінку' : 'завдання' ; ?></div>
 <div class="task-block">
 	<?php $this->widget('TaskWidget'); ?>

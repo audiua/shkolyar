@@ -3,10 +3,10 @@
 /**
  * Генератор карты сайта
  */
-class SitemapController extends Controller{
+class SitemapController extends FrontController{
 
 public $keywords='Шкільний інформаційний портал, гдз, гдз онлайн, підручники, підручники онлайн, всезнайка, художня література, шкільні твори';
-public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
+public $description='Шкільний інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
 public $canonical;
 public $param;
 
@@ -36,6 +36,10 @@ public function filters() {
 
 
 public function actionIndex() {
+
+    $this->pageTitle = 'sitemap.xml';
+    $this->description = 'sitemap.xml';
+    $this->keywords = 'sitemap.xml';
 
     header("Content-type: text/xml");
 
@@ -93,7 +97,9 @@ public function actionIndex() {
 public function actionSitemap(){
     if($this->beginCache('sitemapHtml', array('duration'=>self::CACHE_TIME)) ){
 
-
+        $this->pageTitle = 'sitemap';
+        $this->description = 'sitemap';
+        $this->keywords = 'sitemap';
         $this->render('sitemap');
         $this->endCache(); 
     }

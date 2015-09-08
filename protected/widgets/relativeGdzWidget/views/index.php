@@ -5,17 +5,23 @@
 		<div class="small-book-block">
 
 			<div class=""> 
-				<?php echo CHtml::image(
+				<?php 
+
+				echo SeoHide::link('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug, CHtml::image(
 					Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 
 					'SHKOLYAR.INFO - ГДЗ ' . $data->gdz_clas->clas->slug . ' клас ' . $data->gdz_subject->subject->title . ' ' .  $data->author, 
-					array('class'=>'img-middle-book thumbnail ', 
-						'title'=>'SHKOLYAR.INFO - ГДЗ ' . $data->gdz_clas->clas->slug . ' клас ' . $data->gdz_subject->subject->title . ' ' .  $data->author)); 
+					array('class'=>'img-middle-book thumbnail ')));
+
+				// echo CHtml::image(
+				// 	Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 
+				// 	'SHKOLYAR.INFO - ГДЗ ' . $data->gdz_clas->clas->slug . ' клас ' . $data->gdz_subject->subject->title . ' ' .  $data->author, 
+				// 	array('class'=>'img-middle-book thumbnail ')); 
 				?> 
 			</div>
 			<div class="">
-				<div class="book-author"> <?php echo $data->author; ?></div>
-				<div class="book-subject"> <?php echo $data->title; ?></div>
-				<div class="book-clas"><?php echo $data->gdz_clas->clas->slug; ?> клас</div>
+				<?php echo Chtml::link('ГДЗ '. $data->gdz_clas->clas->slug . ' клас '. $data->gdz_subject->subject->title . ' ' .$data->author, array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug)) ?>
+				
+				
 				<?php 
 					if( !empty($data->properties) ){
 						echo '<div class="desc">'.$data->properties.'</div>';
@@ -24,9 +30,9 @@
 
 			</div>
 
-			<div class="gdz-link">
-				<?php echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
-			</div>
+			<!-- <div class="gdz-link">
+				<?php // echo CHtml::link( 'ГДЗ', array('/gdz/'.$data->gdz_clas->clas->slug.'/'.$data->gdz_subject->subject->slug.'/'.$data->slug), array('class'=>'btn btn-primary btn-sm')); ?>
+			</div> -->
 							
 		</div>
 

@@ -40,9 +40,10 @@ class Link extends CActiveRecord
 			array('keyword_id, create_time,check_time, update_time', 'length', 'max'=>10),
 			array('check_link', 'length', 'max'=>1),
 			array('links_on_donor', 'length', 'max'=>2),
+			array('link_source,sape_link_id,vk_public_time,jj_public_time,tw_public_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, from_url, on_url, keyword_id, create_time,check_time, update_time, check_link, ankor, links_on_donor', 'safe', 'on'=>'search'),
+			array('id, from_url, on_url, keyword_id, create_time,check_time, update_time, check_link, ankor, links_on_donor,link_source,sape_link_id,vk_public_time,jj_public_time,tw_public_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -85,6 +86,11 @@ class Link extends CActiveRecord
 			'check_time' => 'Check time',
 			'ankor' => 'Ankor',
 			'links_on_donor' => 'Links On Donor',
+			'link_source' => 'link source',
+			'sape_link_id' => 'sape_link_id',
+			'vk_public_time' => 'vk_public_time',
+			'jj_public_time' => 'jj_public_time',
+			'tw_public_time' => 'tw_public_time',
 		);
 	}
 
@@ -116,6 +122,11 @@ class Link extends CActiveRecord
 		$criteria->compare('check_time',$this->check_time,true);
 		$criteria->compare('ankor',$this->ankor,true);
 		$criteria->compare('links_on_donor',$this->links_on_donor,true);
+		$criteria->compare('sape_link_id',$this->sape_link_id,true);
+		$criteria->compare('link_source',$this->link_source,true);
+		$criteria->compare('vk_public_time',$this->vk_public_time,true);
+		$criteria->compare('jj_public_time',$this->jj_public_time,true);
+		$criteria->compare('tw_public_time',$this->tw_public_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -131,22 +142,5 @@ class Link extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function beforeSave(){
-
-		$page = file_get_contents( $this->from_url );
-		$page = mb_strtolower($page,'utf8');
-		if($page){
-			if( mb_substr_count($page, mb_strtolower(Yii::app()->createAbsoluteUrl($this->keyword->url),'utf8')) ){
-				$this->check_link = 1;
-				$this->check_time = time();
-
-			}
-		}
-
-
-
-		return parent::beforeSave();
 	}
 }

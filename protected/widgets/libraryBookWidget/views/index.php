@@ -4,7 +4,7 @@ $path = 'img/library/'.$this->model->library_author->slug . '/' . $this->model->
 
 <div class="">
 <?php echo CHtml::image(Yii::app()->baseUrl . $path . '/first' . '.' . $this->model->img_ext, '', 
-	array('class'=>'img-middle-book thumbnail')); 
+	array('class'=>'img-middle-book thumbnail one-book')); 
 ?> 
 </div>
 <div class="">

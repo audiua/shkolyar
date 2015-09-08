@@ -190,6 +190,13 @@ class GdzBook extends CActiveRecord
         return parent::afterFind();
     }
 
+    public function beforeSave(){
+
+    	$this->public_time = strtotime($this->public_time);
+
+    	return parent::beforeSave();
+    }
+
     public function lastPublicTime(){
     	$criteria=new CDbCriteria;
     	$criteria->order = 'public_time DESC';
@@ -209,4 +216,44 @@ class GdzBook extends CActiveRecord
 	   }
 	   return $this->_url;
 	}
+
+    public function getImgDir($mkdir = true){
+    	// $directory = Yii::app()->basePath . '/../img/gdz/thumbs/'.$this->uniqKnowallId();
+    	$directory = Yii::app()->basePath . '/../img/gdz/' . $this->gdz_clas->clas->slug . '/'. $this->gdz_subject->subject->slug . '/'. $this->slug .'/book';
+        if ($mkdir && file_exists($directory) == false) {
+            mkdir($directory, 0777, true);
+        }
+
+        return $directory;
+    }
+
+    public function getThumb($width=null, $height=null, $mode='origin')
+	{
+		$dir = $this->getImgDir(false) . '/';
+		$originFile = $dir . $this->slug . '.' . $this->img;
+		// d($originFile);
+
+		if (!is_file($originFile)) {
+			return "http://www.placehold.it/{$width}x{$height}/EFEFEF/AAAAAA";
+		}
+
+		if ($mode == 'origin') {
+			return '/img/gdz/' . $this->gdz_clas->clas->slug . '/'. $this->gdz_subject->subject->slug . '/'. $this->slug .'/book/'.$this->slug . '.' . $this->img;
+		}
+
+		$fileName = $this->slug . '_' . $width . 'x' . $height . '.' . $this->img;
+		$filePath = $dir . $fileName;
+		if (!is_file($filePath)) {
+			if ($mode == 'resize') {
+				Yii::app()->image->load($originFile)->resize($width, $height)->save($filePath);
+			} else {
+				Yii::app()->image->cropSave($originFile, $width, $height, $filePath);
+			}
+		}
+
+		// return '/img/writing/thumbs/'.$this->uniqKnowallId(). '/'. $fileName;
+		return '/img/gdz/' . $this->gdz_clas->clas->slug . '/'. $this->gdz_subject->subject->slug . '/'. $this->slug .'/book/'.$fileName;
+	}
+
+
 }

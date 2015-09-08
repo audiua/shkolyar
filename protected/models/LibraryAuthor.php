@@ -167,6 +167,7 @@ class LibraryAuthor extends CActiveRecord
 
     	$this->length = Helper::getLength($this);
     	$this->nausea = str_replace(',', '.', $this->nausea) ;
+    	$this->public_time = strtotime($this->public_time);
 
     	return parent::beforeSave();
     }

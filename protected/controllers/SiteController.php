@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller{
+class SiteController extends FrontController{
 
 public $layout='';
 public $canonical;
@@ -14,7 +14,7 @@ public $keywords='Шкільний інформаційний портал, гд
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
+public $description='Шкільний інформаційний портал, для середніх загальноосвітніх шкіл України. Даний портал створено з метою зібрати усі потрібні для навчання в школі матеріали, в одному місці.';
 
 public $param;
 
@@ -39,16 +39,30 @@ public function filters() {
 public function actionIndex(){
 
 
+	// foreach(Keyword::model()->findAll() as $item ){
+	// 	echo $item->keyword;
+	// 	echo '<br>';
+	// }
+
+	// die;
+
+
 	// $image = new TextInImgHelper;
 	// $image->create();
 	// die;
 
+	// Yii::import('ext.qrcode.QRCode');
+	// $code=new QRCode(uniqid().md5(time()));
+	// to save the code to file
+	// d(Yii::getPathOfAlias('webroot').'/img/qr/file.png');
+	// $code->create();
+	// $code->create(Yii::getPathOfAlias('webroot').'/img/qr/file'.time().'.png');
 
 	// TODO - закешировать на сутки
 	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
-		$this->pageTitle = 'SHKOLYAR.INFO - Шкільний інформаційний портал.';
+		$this->pageTitle = 'Шкільний інформаційний портал. Гдз, підручники, твори, художня література, всезнайка';
 		// кешируем сдесь всю страницу
 		$this->render('index');
 
@@ -56,8 +70,6 @@ public function actionIndex(){
 	}
 
 }
-	
-
 	
 /**
  * This is the action to handle external exceptions.
@@ -198,6 +210,10 @@ public function actionLogout(){
 
 public function actionPage($action){
 
+	$this->description = 'shkolyar.info '.$action;
+	$this->keywords = $action;
+	$this->pageTitle = 'shkolyar.info '.$action;
+
 	$description = $this->widget('DescriptionWidget', array('params'=>array('owner'=>'site', 'action'=>'page', 'page_mode'=>$action)), true);
 	if($description){
 		$this->render('page', array('title'=>Yii::t('app', $action), 'description'=>$description));
@@ -231,5 +247,60 @@ public function actionJewel(){
 		}
 	}
 }
+
+
+public function actionOauth()
+{
+
+    $code = Yii::app()->request->getParam('code');
+    if(!empty($code))
+    {
+        Yii::import('ext.ya.YaUniqueText');
+
+        $params = array(
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+            'client_id' => YaUniqueText::APP_ID,
+            'client_secret' => YaUniqueText::APP_PASSWORD,
+        );
+
+        $curl = curl_init('http://oauth.yandex.ru/token');
+        curl_setopt_array($curl,array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_POSTFIELDS => $params,
+        ));
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        if(!empty($result))
+        {
+            $data = json_decode($result);
+
+            Yii::app()->request->cookies['ya_access_token'] = new CHttpCookie('ya_access_token',$data->access_token,
+                array(
+                    'expire'=>time()+$data->expires_in
+                )
+            );
+        }
+
+        $state = Yii::app()->request->getParam('state');
+        if(!empty($state))
+        {
+            $state = base64_decode($state);
+            $this->redirect($state);
+        }
+    }
+}
+
+public function actionRemovePage(){
+	throw new CHttpException('410');
+}
+
+
+
+
+
 
 }

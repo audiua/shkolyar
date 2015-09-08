@@ -7,13 +7,11 @@ $this->breadcrumbs=array(
 	$model->title,
 );
 
-$this->menu=array(
-	array('label'=>'List Writing', 'url'=>array('index')),
-	array('label'=>'Create Writing', 'url'=>array('create')),
-	array('label'=>'Update Writing', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Writing', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Writing', 'url'=>array('admin')),
-);
+$this->widget('zii.widgets.CBreadcrumbs', array(
+    'links'=>$this->breadcrumbs,
+    'homeLink'=>CHtml::link('Головна', '/inside/admin/index'),
+    'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
+));
 ?>
 
 <h1>View Writing #<?php echo $model->id; ?></h1>

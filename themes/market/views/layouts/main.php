@@ -5,38 +5,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="<?php echo CHtml::encode($this->description); ?>" />
         <meta name="keywords" content="<?php echo CHtml::encode($this->keywords); ?>" />
+        <meta name='yandex-verification' content='4e83bfd325d49eca' />
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
-        <link rel="canonical" href="<?php echo $this->canonical; ?>">
+        <!-- <link rel="canonical" href="<?php // echo $this->canonical; ?>"> -->
 
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
-        <!-- <link rel="stylesheet" href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/bootstrap3.2.0.min.css"> -->
+        <!-- <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" async="" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">
         <!-- <link rel="stylesheet/less" type="text/css" href="<?php // echo Yii::app()->theme->baseUrl; ?>/less/app.less" /> -->
-        <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
+        <link async="" href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
         <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
         
-        <?php Yii::app()->getClientScript()->registerCoreScript('jquery', CClientScript::POS_END); ?>
+        <?php 
+        Yii::app()->clientScript->coreScriptPosition = CClientScript::POS_END;
+        Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
 
         <?php 
 
             $path = Yii::app()->theme->basePath;
             $mainAssets = Yii::app()->AssetManager->publish($path);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.js', CClientScript::POS_END);
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/jquery.cookie.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.min.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/addtocopy.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/base64.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
-            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
-            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
-            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.css');
+            // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
+            // Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');
+            Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/app.min.css');
 
          ?>
 
         <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script> -->
         <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+        
         <title>
             <?php echo CHtml::encode($this->pageTitle); ?>
         </title>
@@ -84,11 +87,11 @@
                 <div class="red"></div>
                 <div class="black"></div>
                 <?php $this->renderPartial('//layouts/footer'); ?>
-                <?php $this->renderPartial('//layouts/social'); ?>
+                <?php // $this->renderPartial('//layouts/social'); ?>
             </div>
 
         </div>
 
-
+    <script async="" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </body>
 </html>

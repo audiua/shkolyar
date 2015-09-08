@@ -1,14 +1,21 @@
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
+<div class="clear"></div>
+
 <?php  
-$this->widget('zii.widgets.CBreadcrumbs', array(
+$this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
-    'homeLink'=>CHtml::link('<span class="glyphicon glyphicon-home" aria-hidden="true"></span>', Yii::app()->homeUrl),
+    'homeLink'=>SeoHide::link(Yii::app()->homeUrl, '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'),
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
 
 <!-- <img src="/images/horisont.png" alt=""> -->
+<?php 
+$pageStr='';
+if($page){$pageStr=' Cторінка '.$page;} ?>
+<h1>ГДЗ (Готові домашні завдання) <?= $pageStr; ?></h1>
 
-<h1>ГДЗ (Готові домашні завдання)</h1>
+<?php if(!$page): ?>
 <div class="description">
 	
 	<p>
@@ -19,17 +26,24 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 	</p>
 	
 </div>
-<?php $this->widget('LikeWidget'); ?>
+
+<?php endif; ?>
+
 <div class="clear"></div>
 <div class="separator"></div>
+
+
 <div class="info">Виберіть клас</div>
 
 <?php $this->widget('ClasNumbWidget'); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
+
+<?php if(!$page): ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
@@ -51,3 +65,5 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 		Команда <strong>SHKOLYAR.INFO</strong> намагається перевіряти правильність готових рішень, але ми не несемо відповідальності за отримані оцінки при повному копіюванні готових розв'язків домашніх завдань.
 	</p>
 </div>
+
+<?php endif; ?>

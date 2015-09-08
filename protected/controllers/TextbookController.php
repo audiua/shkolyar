@@ -3,7 +3,7 @@
 /**
  * конроллер учебников
  */
-class TextbookController extends Controller{
+class TextbookController extends FrontController{
 
 public $layout='';
 public $canonical;
@@ -35,7 +35,7 @@ public $h1='';
 
 public function init(){
 	$this->param = $this->getActionParams();
-	$this->pageTitle = 'SHKOLYAR.INFO - Підручники';
+	$this->pageTitle = 'Підручники, підручники онлайн, шкільні підручники';
 
 }
 
@@ -223,7 +223,7 @@ public function actionCurrentSubject($subject){
 			. $subjectModel->title . ' для середніх загальноосвітніх шкіл України.';
 
 		$this->h1 = 'Підручники '.$subjectModel->title;
-		$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+		$this->pageTitle = $this->h1;
 		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$subject);
 
 		$this->breadcrumbs = array(
@@ -311,6 +311,7 @@ public function actionTask($clas, $subject, $book, $task){
 
 		$imgSize = getimagesize(Yii::app()->basePath . '/../' . 'img/' . $pathImg['path']);
 		$pathImg['width'] = $imgSize[0];
+		$pathImg['height'] = $imgSize[1];
 		// $pathImg['width'] = getimagesize($_SERVER['DOCUMENT_ROOT'] . 'images/' . $pathImg['path'])[0];
 
 
@@ -323,7 +324,7 @@ public function actionTask($clas, $subject, $book, $task){
 			. $this->bookModel->author
 			. ' сторінка '
 			. $task,
-			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'], 'title'=> 'Підручник '
+			array('class'=>' task-img panzoom ', 'data-width'=>$pathImg['width'],'data-height'=>$pathImg['height'], 'title'=> 'Підручник '
 			. $this->subjectModel->subject->title . ' '
 			. $clas . ' клас ' 
 			. $this->bookModel->author
@@ -470,7 +471,7 @@ private function setMeta(){
 		$this->canonical .= '/'.$this->bookModel->slug;
 	}
 
-	$this->pageTitle = 'SHKOLYAR.INFO - '.$this->h1;
+	$this->pageTitle = $this->h1;
 }
 
 public function getDescription($subject=null){

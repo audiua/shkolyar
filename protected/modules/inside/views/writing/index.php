@@ -3,7 +3,7 @@
 /* @var $model Writing */
 
 $this->breadcrumbs=array(
-	'Writings'=>array('index'),
+	'Writing'=>array('index'),
 	'Manage',
 );
 
@@ -13,29 +13,23 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#writing-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
-<div class="title">Manage Writings</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
+<div class="title">Manage Writing</div> <a class="btn btn-success" href="<?php echo $this->createUrl('create'); ?>" role="button"> + Створити</a>
 <div class="clear"></div>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+
+<?php if(Yii::app()->user->hasFlash('Writing_FLASH')):?>
+	<br>
+    <div class="alert alert-success" role="alert">
+	    <button type="button" class="close" data-dismiss="alert">
+		    <span aria-hidden="true">&times;</span>
+		    <span class="sr-only">Close</span>
+	    </button>
+    	<?php echo Yii::app()->user->getFlash('Writing_FLASH'); ?>
+    </div>
+<?php endif; ?>
+
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'writing-grid',
@@ -75,7 +69,11 @@ $('.search-form form').submit(function(){
 		'title',
 		'slug',
 		'length',
-		'nausea',
+		'nausea' => array(
+			'name'=>'nausea',
+			'value'=>'$data->nausea."%"',
+			'htmlOptions'=>array('width'=>'30px')
+		),
 		'public'=>array(
 			'name'=>'public',
 			'value'=>'$data->public==1 ? "Да":"Нет"',
@@ -85,6 +83,7 @@ $('.search-form form').submit(function(){
 		
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>(Yii::app()->user->role==="moderator")?'{view}{update}':'{view}{update}{delete}',
 			'htmlOptions'=>array('width'=>'80px')
 		),
 	),

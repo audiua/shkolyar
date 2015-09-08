@@ -20,6 +20,21 @@ return array(
 		// 'bootstrap'
 	),
 
+	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
+	// 'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
+
+	'onBeginRequest' => function($event){
+	    return ob_start();
+	},
+
+	'onEndRequest' => function($event){
+		$page = ob_get_flush();
+		// $page = preg_replace('/<!--\s+(.*?)\s+-->/', '', $page);
+		$page = preg_replace('~<!--\s+.*\s+-->~', '', $page);
+		// file_put_contents('filename3', $page);
+    	return $page;
+	},
+
 	//GZIP compress   
 	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
 	// 'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
@@ -28,6 +43,9 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.extensions.*',
+		'application.extensions.twitteroauth.*',
+		'application.extensions.sape.*',
+		'application.extensions.livejournal.ELivejournal',
 		'application.components.*',
 		// 'application.components.widgets.*',
 		// 'application.components.widgets.subjectWidget.*',
@@ -47,6 +65,7 @@ return array(
 		'application.widgets.subjectWidget.*',
 		'application.widgets.subjectWritingWidget.*',
 		'application.widgets.bookWidget.*',
+		'application.widgets.bannerWidget.*',
 		'application.widgets.likeWidget.*',
 		'application.widgets.dataBookWidget.*',
 		'application.widgets.oneBookWidget.*',
@@ -108,10 +127,7 @@ return array(
 
        'image'=>array(
             'class'=>'application.extensions.image.CImageComponent',
-            // GD or ImageMagick
             'driver'=>'GD',
-            // ImageMagick setup path
-           // 'params'=>array('directory'=>'D:/Program Files/ImageMagick-6.4.8-Q16'),
         ),
 
 		'request'=>array(
@@ -125,7 +141,17 @@ return array(
 			'rules'=>array(
 
 
+				'/qa.*?'=>'site/removePage',
+				
+
 				'position/<token:[a-z0-9-]+>'=>'position/index',
+				'sape/<token:[a-z0-9-]+>'=>'sape/index',
+				'sape/<token:[a-z0-9-]+>/url'=>'sape/sapeUrlToKeyword',
+				'sape/<token:[a-z0-9-]+>/link'=>'sape/keywordLink',
+				'sape/<token:[a-z0-9-]+>/check'=>'sape/checkSapeLink',
+				'donor/<token:[a-z0-9-]+>/jj'=>'jjDonorLink/index',
+				'donor/<token:[a-z0-9-]+>/vk'=>'vkDonorLink/index',
+				'donor/<token:[a-z0-9-]+>/tw'=>'twDonorLink/index',
 				'vk/<hash:[a-z0-9-]+>/<mode:[a-z]+>'=>'vk/index',
 				'/inside/<controller:\w+>/<action:\w+>/<id:\d+>'=>'inside/<controller>/<action>',
 				'/inside/<controller:\w+>/<action:\w+>'=>'inside/<controller>/<action>',
@@ -207,6 +233,9 @@ return array(
             // 'class'=>'system.caching.CDummyCache',
             'class'=>'system.caching.CFileCache',
         ),
+        'cacheDummy'=>array(
+            'class'=>'system.caching.CDummyCache',
+        ),
 
         'clientScript'=>array(
             'class'=>'ext.ExtendedClientScript.ExtendedClientScript',
@@ -215,9 +244,10 @@ return array(
             'combineJs'=>false,
             'compressJs'=>false,
 			'scriptMap'=>array(
-				'jquery.js'=>'/js/jquery1.11.1.min.js',
+				// 'jquery.js'=>'/js/jquery1.11.1.min.js',
+				'jquery.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
 				// 'jquery.cookie.js'=>'/js/jquery1.11.1.min.js',
-				'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js',
+				'jquery.min.js'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
 			)
         ),
 
@@ -234,5 +264,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'audiua@yandex.ru',
+		
 	),
 );

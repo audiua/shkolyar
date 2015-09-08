@@ -8,12 +8,11 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List Writing', 'url'=>array('index')),
-	array('label'=>'Create Writing', 'url'=>array('create')),
-	array('label'=>'View Writing', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Writing', 'url'=>array('admin')),
-);
+$this->widget('zii.widgets.CBreadcrumbs', array(
+    'links'=>$this->breadcrumbs,
+    'homeLink'=>CHtml::link('Головна', '/inside/admin/index'),
+    'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
+));
 ?>
 
 <h1>Update Writing <?php echo $model->id; ?></h1>

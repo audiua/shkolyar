@@ -45,6 +45,27 @@ $this->breadcrumbs=array(
 			'value'=>'Yii::app()->dateFormatter->format(\'yyyy/MM/dd HH:mm\', $data->check_time)',
 		),
 		'links_on_donor',
+		'vk_public_time'=>array(
+			'name'=>'vk_public_time',
+			'header'=>'vk',
+			'value'=>'($data->vk_public_time > 0)?"<span style=\"color:green\" class=\"glyphicon glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>":"<span style=\"color:red\" class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>"',
+			'htmlOptions'=>array('width'=>'20px'),
+			'type'=>'raw',
+		),
+		'jj_public_time'=>array(
+			'name'=>'jj_public_time',
+			'header'=>'jj',
+			'value'=>'($data->jj_public_time > 0)?"<span style=\"color:green\" class=\"glyphicon glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>":"<span style=\"color:red\" class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>"',
+			'htmlOptions'=>array('width'=>'20px'),
+			'type'=>'raw',
+		),
+		'tw_public_time'=>array(
+			'name'=>'tw_public_time',
+			'header'=>'tw',
+			'value'=>'($data->tw_public_time > 0)?"<span style=\"color:green\" class=\"glyphicon glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>":"<span style=\"color:red\" class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>"',
+			'htmlOptions'=>array('width'=>'20px'),
+			'type'=>'raw',
+		),
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('width'=>'80px')

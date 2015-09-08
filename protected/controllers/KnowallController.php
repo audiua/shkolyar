@@ -1,6 +1,6 @@
 <?php
 
-class KnowallController extends Controller{
+class KnowallController extends FrontController{
 
 public $layout='';
 public $canonical;
@@ -14,7 +14,7 @@ public $keywords='Всезнайка';
 /**
  * @var string  мета тег описания страницы
  */
-public $description='SHKOLYAR.INFO - Всезнайка';
+public $description='Всезнайка';
 
 public $param;
 
@@ -65,7 +65,7 @@ public function actionIndex(){
 		$category = KnowallCategory::model()->findAll();
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall');
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка';
+		$this->pageTitle = 'Всезнайка';
 		// кешируем сдесь всю страницу
 		$this->render('index', array('model'=>$model, 'category'=>$category));
 		
@@ -106,10 +106,10 @@ public function actionCategory($category){
 		$model = new CActiveDataProvider('Knowall',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
 		$this->keywords = 'Всезнайка, '.$categoryModel->title;
-		$this->description = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title;
+		$this->description = 'Всезнайка '.$categoryModel->title;
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/knowall/'.$category);
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка '.$categoryModel->title;
+		$this->pageTitle = 'Всезнайка '.$categoryModel->title;
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
@@ -140,8 +140,8 @@ public function actionView($category, $article){
 		);
 
 		$this->keywords = 'Всезнайка, ' . $catModel->title . ', '. $article->title;
-		$this->description = 'SHKOLYAR.INFO - Всезнайка '.$catModel->title . ' '. $article->title;
-		$this->pageTitle = 'SHKOLYAR.INFO - Всезнайка '.$catModel->title . ' ' . $article->title;
+		$this->description = 'Всезнайка '.$catModel->title . ' '. $article->title;
+		$this->pageTitle = 'Всезнайка '.$catModel->title . ' ' . $article->title;
 
 		$this->render('view', array('model'=>$article));
 

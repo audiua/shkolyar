@@ -9,7 +9,7 @@
 			</li>
 		<?php else : ?>
 			<li>
-			<?php echo CHtml::link( 'ГДЗ', array('/gdz'));  ?>
+			<?= SeoHide::link("/gdz", 'ГДЗ'); ?>
 			</li>
 		<?php endif; ?>
 
@@ -19,20 +19,20 @@
 			</li>
 		<?php else : ?>
 			<li>
-			<?php echo CHtml::link( 'Підручники', array('/textbook'));  ?>
+			<?= SeoHide::link("/textbook", 'Підручники'); ?>
 			</li>
 		<?php endif; ?>
 
 		<li>
-			<?php echo CHtml::link( 'Всезнайка', array('/knowall'));  ?>
+			<?= SeoHide::link("/knowall", 'Всезнайка'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Художня література', array('/library'));  ?>
+			<?= SeoHide::link("/library", 'Художня література'); ?>
 		</li>
 
 		<li>
-			<?php echo CHtml::link( 'Твори', array('/writing'));  ?>
+			<?= SeoHide::link("/writing", 'Твори'); ?>
 		</li>
 	</ul>
 
@@ -53,7 +53,8 @@
 				if( is_null($clas) ){
 					echo '<span class="active">Всі класи</span>';
 				} else {
-					echo CHtml::link( 'Всі класи', array($urlClas)); 
+					echo SeoHide::link($urlClas, 'Всі класи');
+					// echo CHtml::link( 'Всі класи', array($urlClas)); 
 				}
 			?>
 		</li>
@@ -99,7 +100,7 @@
 				if( !is_null($clas) && $clas->clas->slug == $oneClas->clas->slug){
 					echo '<span class="active">'.$oneClas->clas->slug.'</span>';
 				} else {
-					echo CHtml::link( $oneClas->clas->slug, array($urlClas)); 
+					echo SeoHide::link($urlClas, $oneClas->clas->slug);
 				} ?>
 			</li>
 			
@@ -120,7 +121,7 @@
 				if( is_null($subject) ){
 					echo '<span class="active">Всі предмети</span>';
 				} else {
-					echo CHtml::link( 'Всі предмети', array($urlClas)); 
+					echo SeoHide::link($urlClas, 'Всі предмети');
 				}
 			?>
 		</li>
@@ -161,7 +162,7 @@
 				if( ! is_null($subject) && $subject->slug == $oneSubject->subject->slug ){
 					echo '<span class="active">'.$oneSubject->subject->title.'</span>';
 				} else {
-					echo CHtml::link( $oneSubject->subject->title, array($urlSubject)); 
+					echo SeoHide::link($urlSubject, $oneSubject->subject->title);
 				} ?>
 
 

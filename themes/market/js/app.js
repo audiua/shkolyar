@@ -6,6 +6,7 @@ $(document).ajaxSend(function(event, request, settings) {
     $('.loading').show();
     $('.darking').show();
     $('body,html').animate({scrollTop:480},200);
+    // $('body,html').animate({scrollTop:0},200);
 });
 
 $(document).ajaxComplete(function(event, request, settings) {
@@ -353,9 +354,9 @@ $(document).ready(function () {
 	}
 
 	// проверяем по кукам 1 раз в сутки
-	if( ! $.cookie('showFb') ){
-		setTimeout(showFb, 10000);
-	}
+	// if( ! $.cookie('showFb') ){
+	// 	setTimeout(showFb, 10000);
+	// }
 		// setTimeout(showFb, 10000);
 
 

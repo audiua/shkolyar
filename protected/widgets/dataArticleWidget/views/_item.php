@@ -1,7 +1,13 @@
 <div class="middle-article-block col-md-4 col-lg-4">
 
 	
-	<?php echo CHtml::link(CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('title'=>$data->title, 'class'=>'thumbnail')),'/knowall/'.$data->knowall_category->slug . '/'. $data->slug ,array('class'=>'', 'rel'=>'noffolow')); ?>
+	<?php 
+
+	echo SeoHide::link('/knowall/'.$data->knowall_category->slug . '/'. $data->slug , CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('class'=>'thumbnail')));
+	
+
+	// echo CHtml::link(CHtml::image($data->getThumb(235,170,'crop'),$data->title, array('title'=>$data->title, 'class'=>'thumbnail')),'/knowall/'.$data->knowall_category->slug . '/'. $data->slug ,array('class'=>'', 'rel'=>'noffolow')); 
+	?>
 	
 	<div class="knowall-link">
 		<?php echo CHtml::link($data->title,'/knowall/'.$data->knowall_category->slug . '/'. $data->slug ,array('class'=>'')); ?>
