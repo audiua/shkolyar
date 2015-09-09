@@ -23,17 +23,17 @@ return array(
 	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
 	// 'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 
-	'onBeginRequest' => function($event){
-	    return ob_start();
-	},
+	// 'onBeginRequest' => function($event){
+	//     return ob_start();
+	// },
 
-	'onEndRequest' => function($event){
-		$page = ob_get_flush();
-		// $page = preg_replace('/<!--\s+(.*?)\s+-->/', '', $page);
-		$page = preg_replace('~<!--\s+.*\s+-->~', '', $page);
-		// file_put_contents('filename3', $page);
-    	return $page;
-	},
+	// 'onEndRequest' => function($event){
+	// 	$page = ob_get_flush();
+	// 	// $page = preg_replace('/<!--\s+(.*?)\s+-->/', '', $page);
+	// 	$page = preg_replace('~<!--\s+.*\s+-->~', '', $page);
+	// 	// file_put_contents('filename3', $page);
+ //    	return $page;
+	// },
 
 	//GZIP compress   
 	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
