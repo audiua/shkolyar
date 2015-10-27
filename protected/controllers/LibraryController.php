@@ -132,14 +132,12 @@ public function actionView($category, $article){
 
 		);
 
-
-		$this->h1 = 'Художня література' . $catModel->author . ' ’’' . $article->title. '’’';
-		$this->keywords = $catModel->author . ', Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
-		$this->description = 'Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
+		$this->keywords = $article->title . ' ' . $catModel->author.', '.$article->title .' повний текст твору, '.$article->title .' читати онлайн';
+		$this->description = $article->title . ' ' . $catModel->author.' повний текст твору, читати онлайн. Шкільна програма української літератури';
 
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category.'/'.$article->slug);
-		$this->pageTitle = 'Художня література '.$catModel->author . ' ' . $article->title;
+		$this->pageTitle = $article->title . ' ' . $catModel->author.' - '.' повний текст твору, '.' читати онлайн';
 
 		$this->render('view', array('model'=>$article));
 

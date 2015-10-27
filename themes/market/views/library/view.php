@@ -9,9 +9,9 @@ $this->widget('BreadcrumbsWidget', array(
 ));
 ?>
 
-<h1><?php echo  $model->title ; ?> </h1>
+<h1><?php echo  $model->title ; ?> </h1> 
 
-<div class="info"></div>
+<div class="info"><?php echo  $model->library_author->author ; ?></div>
 <div class="book-list">
 	<div class="big-book-block">
 		<?php $this->widget('LibraryBookWidget', array('model'=>$model)); ?>	
