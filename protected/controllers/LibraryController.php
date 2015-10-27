@@ -95,12 +95,11 @@ public function actionCategory($category){
 
 		);
 
-		$this->h1 = 'Художня література ' . $categoryModel->author;
-		$this->keywords = $categoryModel->author . ', Художня література '.$categoryModel->author;
-		$this->description = 'Художня література '.$categoryModel->author;
+		$this->keywords = $categoryModel->author . ', '.$categoryModel->author .' біографія, твори, шкільна програма, українська литература';
+		$this->description = $categoryModel->author.' біографія, твори автора. Все по шкільній програмі української літератури.';
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category);
-		$this->pageTitle = 'Художня література '.$categoryModel->author;
+		$this->pageTitle = $categoryModel->author . ' - біографія, твори, шкільна програма, українська литература';
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
