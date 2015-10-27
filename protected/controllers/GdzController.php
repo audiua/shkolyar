@@ -11,7 +11,7 @@ public $canonical;
 /**
  *  @var string  мета тег ключевых слов
  */
-public $keywords='готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz, гдз скачать';
+public $keywords='готові домашні завдання, гдз, гдз онлайн, гдз україна, гдз решебники, gdz, гдз скачать, збірники гдз';
 
 /**
  * @var string  мета тег описания страницы
@@ -72,7 +72,7 @@ public function actionIndex(){
 		// все классы
 		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
 
-		$this->pageTitle = 'ГДЗ, готові домашні завдання, гдз онлайн Україна';
+		$this->pageTitle = 'ГДЗ, готові домашні завдання, гдз онлайн Україна, збірники гдз';
 		// $this->canonical = Yii::app()->createAbsoluteUrl('/gdz');
 		$page = Yii::app()->getRequest()->getParam('page', null);
 		if($page){
