@@ -11,10 +11,8 @@
 	?> 
 	</div>
 		<div class="">
-			<?php echo CHtml::link('
-			<div class="book-author">'.$data->library_author->author.'</div>
-			<div class="book-subject">'.$data->title.'</div>', 
-			array('/library/'.$data->library_author->slug.'/'.$data->slug));?>
+			<?php echo CHtml::link($data->library_author->author.' - '.$data->title, 
+			array('/library/'.$data->library_author->slug.'/'.$data->slug), array('class'=>'info'));?>
 		</div>	
 	</div>
 
