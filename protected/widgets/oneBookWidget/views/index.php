@@ -30,8 +30,6 @@ $controller = ($this->controller->id=='gdz') ? 'ГДЗ ':'Підручник ';
 		<?php if($this->model->info): ?>
 		<div class="book-clas"><span class="gray small">особливысть: </span><?php echo $this->model->info; ?></div>
 		<?php endif; ?>
-
-		<div class="clear"></div>
 		
 		<div class="social-likes">
 			<div class="facebook" title="Поделиться ссылкой на Фейсбуке">Facebook</div>
