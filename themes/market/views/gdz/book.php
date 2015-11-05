@@ -79,7 +79,7 @@ $this->widget('BreadcrumbsWidget', array(
 	</section>
 </div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
