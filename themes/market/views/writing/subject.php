@@ -1,6 +1,3 @@
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
-
 <?php  
 $this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
