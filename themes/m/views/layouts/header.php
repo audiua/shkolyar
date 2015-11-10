@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<?php echo ($this->action->id != 'index') ? CHtml::link('ГДЗ Україна', '/', array('class'=>'navbar-brand')): '<span class="navbar-brand">SHKOLYAR.INFO</span>' ?>
+			<?php echo ($this->action->id != 'index') ? CHtml::link('SHKOLYAR.INFO', '/', array('class'=>'navbar-brand')): '<span class="navbar-brand">SHKOLYAR.INFO</span>' ?>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
