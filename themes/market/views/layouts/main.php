@@ -11,6 +11,11 @@
 
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <link rel="dns-prefetch" href="//vk.com">
+        <link rel="dns-prefetch" href="//vk.me">
+
 
         <!-- <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
         <link rel="stylesheet" async="" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">
