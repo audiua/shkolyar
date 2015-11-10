@@ -5,7 +5,7 @@ class CurlHelper
 
 	private $_cookieFile='cookie.txt';
 
-	public function connect( $url, array $param=array() )
+	public function connect( $url )
 	{
 		$curl = curl_init();
 		curl_setopt($curl,CURLOPT_URL,$url);
@@ -29,8 +29,11 @@ class CurlHelper
 		$headers = $this->getHeaders();
 		if($headers)
 		{
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 		}
+
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
+		curl_setopt($ch, CURLOPT_STDERR,  fopen('php://output', 'w'));
 		
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
 
@@ -38,7 +41,7 @@ class CurlHelper
 
 		$error = curl_error($curl);
 		curl_close($curl);
-		// d($page);
+		d($error);
 		d($page);
 
 
