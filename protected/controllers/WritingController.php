@@ -42,7 +42,7 @@ public function filters() {
 public function actionIndex(){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_writing_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
+	if($this->beginCache('main_writing_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Твори'
@@ -70,7 +70,7 @@ public function actionIndex(){
  */
 public function actionClas($clas){
 	// TODO - закешировать на сутки
-	if($this->beginCache('writing_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
+	if($this->beginCache('writing_clas_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 
 		$this->checkClas($clas);
 
@@ -113,7 +113,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
+	if($this->beginCache('writing_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -162,7 +162,7 @@ public function actionSubject($clas, $subject){
 public function actionCurrentSubject($subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('writing_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
+	if($this->beginCache('writing_current_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		$this->checkSubject($subject);
 		$this->subjectModel = $this->loadSubject($subject);
@@ -201,7 +201,7 @@ public function actionCurrentSubject($subject){
 
 public function actionView($clas, $category, $article){
 
-	if($this->beginCache('article_writing_page', array('duration'=>86400, 'varyByParam'=>array('clas, category', 'article'))) ){
+	if($this->beginCache('article_writing_page'.Yii::app()->theme->name, array('duration'=>86400, 'varyByParam'=>array('clas, category', 'article'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($category);

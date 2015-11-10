@@ -40,7 +40,7 @@ public function filters() {
 public function actionIndex(){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_knowall_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
+	if($this->beginCache('main_knowall_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка'
@@ -82,7 +82,7 @@ public function actionIndex(){
 public function actionCategory($category){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_knowall_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
+	if($this->beginCache('category_knowall_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
 
 		$this->breadcrumbs = array(
 			'Всезнайка' => $this->createUrl('/knowall/'),
@@ -121,7 +121,7 @@ public function actionCategory($category){
 
 public function actionView($category, $article){
 
-	if($this->beginCache('article_knowall_page_', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
+	if($this->beginCache('article_knowall_page_'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
 
 		$catModel = $this->loadCategory($category);
 

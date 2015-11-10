@@ -59,7 +59,7 @@ public function actionIndex(){
 	// $code->create(Yii::getPathOfAlias('webroot').'/img/qr/file'.time().'.png');
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 		$this->pageTitle = 'Гдз, готові домашні завдяння, гдз онлайн, підручники, твори, художня література, всезнайка';
