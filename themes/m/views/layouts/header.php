@@ -60,4 +60,4 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 ));
 ?>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh-adaptive-top'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_adaptive_top'))); ?>
