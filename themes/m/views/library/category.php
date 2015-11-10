@@ -7,7 +7,5 @@
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
 <h4 class="info">Твори автора</h4>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

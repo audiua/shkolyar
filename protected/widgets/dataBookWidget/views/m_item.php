@@ -14,12 +14,6 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$d
 
 	<div class=" desc">
 		<?php echo CHtml::link( $contr. $data->$categoryClas->clas->slug . ' клас '. $data->$categorySubject->subject->title . ' ' .$data->author, array('/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->subject->slug.'/'.$data->slug)); ?>
-
-		<?php 
-			// if( !empty($data->properties) ){
-			// 	echo '<div class="desc">'.$data->properties.'</div>';
-			// }
-		?>
 	</div>
 					
 </div>
