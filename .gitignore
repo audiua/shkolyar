@@ -10,5 +10,6 @@ protected/config/_db.php
 /protected/config/_local.php
 protected/yiic.log
 robots.txt
+moderator.txt
 sitemap.xml
 !/.gitignore
