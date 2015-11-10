@@ -6,7 +6,7 @@
 // Yii::setPathOfAlias('booster', dirname(__FILE__).DIRECTORY_SEPARATOR.'../vendor/clevertech/yii-booster/src');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-return array(
+return CMap::mergeArray( array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'SHKOLYAR.INFO',
 	'sourceLanguage'=>'en',
@@ -230,8 +230,8 @@ return array(
 		),
 
 		'cache'=>array(
-            // 'class'=>'system.caching.CDummyCache',
-            'class'=>'system.caching.CFileCache',
+            'class'=>'system.caching.CDummyCache',
+            // 'class'=>'system.caching.CFileCache',
         ),
         'cacheDummy'=>array(
             'class'=>'system.caching.CDummyCache',
@@ -266,4 +266,4 @@ return array(
 		'adminEmail'=>'audiua@yandex.ru',
 		
 	),
-);
+), file_exists(__DIR__ . '/_local.php') ? require __DIR__ .'/_local.php' : []);

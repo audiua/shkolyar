@@ -11,11 +11,11 @@ function d($data=null){
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/protected/framework/yiilite.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
-
+$debug = include dirname(__FILE__).'/protected/config/_debug.php';
 // remove the following lines when in production mode
-defined('YII_DEBUG') or define('YII_DEBUG',false);
+defined('YII_DEBUG') or define('YII_DEBUG',$debug['debug']);
 // specify how many levels of call stack should be shown in each log message
-defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
+defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',$debug['trace_level']);
 
 require_once($yii);
 $app = Yii::createWebApplication($config)->run();
