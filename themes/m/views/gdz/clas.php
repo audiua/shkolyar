@@ -11,7 +11,10 @@ if($page){$pageStr=' Cторінка '.$page;} ?>
 <div class="info">Виберіть предмет для <?php  echo $this->clasModel->clas->slug; ?> класу</div>
 <?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->gdz_subject)); ?>
 
-<div class="clear"></div>
+<div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+
 <div class="separator"></div>
 
 

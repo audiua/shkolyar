@@ -11,8 +11,8 @@
 <div class="info">Виберіть категорію</div>
 
 <?php $this->widget('KnowallCategoryWidget', array('model'=>$category)); ?>
-<div class="clear"></div>
-<div class="separator"></div>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <div class="info">Виберіть статтю</div>
 <?php $this->widget('DataArticleWidget', array('model'=>$model, 'params'=>array('linkCategory'=>true))); ?>

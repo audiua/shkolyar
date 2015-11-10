@@ -1,5 +1,13 @@
 <h1>Підручники</h1>
 
+<div class="info">Виберіть клас</div>
+<?php $this->widget('ClasNumbWidget'); ?>
+
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+
+<div class="info">Нові надходження</div>
+
+<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
 <div class="description">
 	<p>
@@ -11,17 +19,4 @@
 		планшету чи телефона або комп’ютера.
 	</p>
 </div>
-<div class="clear"></div>
-<div class="separator"></div>
-
-
-<div class="info">Виберіть клас</div>
-<?php $this->widget('ClasNumbWidget'); ?>
-<div class="clear"></div>
-<div class="separator"></div>
-
-<div class="info">Нові надходження</div>
-
-<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
-
 

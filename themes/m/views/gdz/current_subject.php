@@ -6,16 +6,11 @@ if($page){$pageStr=' Cторінка '.$page;} ?>
 <div class="clear"></div>
 <div class="separator"></div>
 
-
 <div class="info">Виберіть клас для предмета <?php echo $subject->title ?> </div>
 
 <?php $this->widget('ClasNumbCurrentSubjectWidget', array('subject'=>$subject)); ?>
 
-
-<div class="clear"></div>
-<div class="separator"></div>
-
-
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <?php $this->widget('DataBookWidget', array('model'=>$books, 'params'=>array('subject'=>$subject->title))); ?>
 <div class="clear"></div>

@@ -4,8 +4,7 @@
 <?php $this->renderDynamic('getUpdateAuthorBtn', array('id'=>$category->id)); ?>
 </div>
 
-<div class="clear"></div>
-<div class="separator"></div>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <h4 class="info">Твори автора</h4>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

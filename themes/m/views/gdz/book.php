@@ -14,6 +14,8 @@
 
 <div class="task"></div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+
 <div class="info">Виберіть <?php echo  $this->bookModel->pagination == 'page' ? 'сторінку' : 'завдання' ; ?></div>
 <div class="task-block">
 	<?php $this->widget('TaskWidget'); ?>

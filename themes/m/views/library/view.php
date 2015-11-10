@@ -11,7 +11,7 @@
 <div class="separator task-separator"></div>
 
 <div class="task"></div>
-
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 <div class="info">Виберіть сторінку</div>
 <div class="task-block">
 	<?php $this->widget('LibraryTaskWidget'); ?>

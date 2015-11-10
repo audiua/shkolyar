@@ -1,13 +1,12 @@
 <h1><?php echo  $model->title; ?> </h1>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+
 <div class="article">
 	
 <?php echo  $model->text; ?>
-<?php $this->renderDynamic('getUpdateBtn', array('id'=>$model->id)); ?>
+
 </div>
-
-
-
 
 <div class="clear"></div>
 <div class="separator"></div>
