@@ -266,4 +266,4 @@ return CMap::mergeArray( array(
 		'adminEmail'=>'audiua@yandex.ru',
 		
 	),
-), file_exists(__DIR__ . '/_local.php') ? require __DIR__ .'/_local.php' : []);
+), file_exists(__DIR__ . '/_local.php') ? require __DIR__ .'/_local.php' : array());
