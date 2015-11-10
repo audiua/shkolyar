@@ -95,12 +95,11 @@ public function actionCategory($category){
 
 		);
 
-		$this->h1 = 'Художня література ' . $categoryModel->author;
-		$this->keywords = $categoryModel->author . ', Художня література '.$categoryModel->author;
-		$this->description = 'Художня література '.$categoryModel->author;
+		$this->keywords = $categoryModel->author . ', '.$categoryModel->author .' біографія, твори, шкільна програма, українська литература';
+		$this->description = $categoryModel->author.' біографія, твори автора. Все по шкільній програмі української літератури.';
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category);
-		$this->pageTitle = 'Художня література '.$categoryModel->author;
+		$this->pageTitle = $categoryModel->author . ' - біографія, твори, шкільна програма, українська литература';
 		// кешируем сдесь всю страницу
 		$this->render('category', array('model'=>$model, 'category'=>$categoryModel));
 
@@ -133,14 +132,12 @@ public function actionView($category, $article){
 
 		);
 
-
-		$this->h1 = 'Художня література' . $catModel->author . ' ’’' . $article->title. '’’';
-		$this->keywords = $catModel->author . ', Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
-		$this->description = 'Художня література '.$catModel->author . ' ’’' . $article->title. '’’';
+		$this->keywords = $article->title . ' ' . $catModel->author.', '.$article->title .' повний текст твору, '.$article->title .' читати онлайн';
+		$this->description = $article->title . ' ' . $catModel->author.' повний текст твору, читати онлайн. Шкільна програма української літератури';
 
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/library/'.$category.'/'.$article->slug);
-		$this->pageTitle = 'Художня література '.$catModel->author . ' ' . $article->title;
+		$this->pageTitle = $article->title . ' ' . $catModel->author.' - '.' повний текст твору, '.' читати онлайн';
 
 		$this->render('view', array('model'=>$article));
 

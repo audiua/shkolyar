@@ -6,7 +6,10 @@ img/*
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/config/_db.php
+/protected/config/_debug.php
+/protected/config/_local.php
 protected/yiic.log
 robots.txt
+moderator.txt
 sitemap.xml
 !/.gitignore

@@ -17,7 +17,7 @@ class BannerWidget extends CWidget{
 
 	public function run(){
 
-		if(!$this->model->on)
+		if( empty($this->model) || !$this->model->on)
 		{
 			return;
 		}

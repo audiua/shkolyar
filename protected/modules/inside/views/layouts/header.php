@@ -73,6 +73,8 @@
 			    <li> <?php echo CHtml::link('Links', '/inside/link'); ?></li>
 			    <li class="divider"></li>
 			    <li> <?php echo CHtml::link('Banner', '/inside/banner'); ?></li>
+			    <li class="divider"></li>
+			    <li> <?php echo CHtml::link('Page Weight', '/inside/keyword/pageWeight'); ?></li>
 			  </ul>
 			</li>
 

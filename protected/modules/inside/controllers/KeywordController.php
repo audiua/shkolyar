@@ -28,7 +28,7 @@ class KeywordController extends InsideController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'position','view', 'create', 'update', 'delete'),
+				'actions'=>array('index', 'position','view', 'create', 'update', 'delete', 'pageWeight', 'pageWeightView'),
 				'roles'=>array('admin'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
@@ -50,6 +50,56 @@ class KeywordController extends InsideController
 		$this->render('view',array(
 			'item'=>$this->loadModel($id)->six(),
 			'model'=>$this->loadModel($id)
+		));
+	}
+
+	public function actionPageWeight() {
+
+		// d('oops');
+		$model = new PageWeight('search');
+		$model->unsetAttributes();
+
+		$data = Yii::app()->getRequest()->getParam('PageWeight', null);
+		if (!empty($data)) { $model->attributes = $data;}
+
+		$this->render('pageWeight', array(
+			'model' => $model,
+		));
+	}
+
+	public function actionPageWeightView($id) {
+
+		$pageModel = PageWeight::model()->findByPk($id);
+
+		// d('oops');
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.page_in='.$id;
+		$models = PageWeightList::model()->findAll($criteria);
+		$linksInIds = [];
+		foreach($models as $model){
+			$linksInIds[] = $model->page_out;
+		}
+		$criteria = new CDbCriteria;
+		$criteria->addInCondition('id', $linksInIds);;
+		$linksIn = PageWeight::model()->findAll($criteria);
+		
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.page_out='.$id;
+		$models = PageWeightList::model()->findAll($criteria);
+		$linksOutIds = [];
+		foreach($models as $model){
+			$linksOutIds[] = $model->page_in;
+		}
+		$criteria = new CDbCriteria;
+		$criteria->addInCondition('id',$linksOutIds);;
+		$linksOut = PageWeight::model()->findAll($criteria);
+
+
+		$this->render('pageWeightView', array(
+			'model'=>$pageModel,
+			'linksIn' => $linksIn,
+			'linksOut' => $linksOut,
 		));
 	}
 

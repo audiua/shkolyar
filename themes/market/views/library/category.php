@@ -8,8 +8,7 @@ $this->widget('BreadcrumbsWidget', array(
     'inactiveLinkTemplate'=>'<noindex><span class="sim-link">{label} <span class="glyphicon glyphicon-chevron-down small"></span></span></noindex>',
 ));
 ?>
-
-<div class="info">Біографія <?php echo $category->author; ?></div> 
+<h1><?php echo $category->author; ?> - Біографія</h1>
 <div class="description">
 <?php echo $category->description; ?>
 <?php $this->renderDynamic('getUpdateAuthorBtn', array('id'=>$category->id)); ?>
@@ -20,5 +19,5 @@ $this->widget('BreadcrumbsWidget', array(
 
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
 
-<div class="info">Твори автора</div>
+<h2 class="info">Твори автора <?php echo $category->author; ?></h2>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

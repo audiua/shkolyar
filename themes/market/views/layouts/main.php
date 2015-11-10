@@ -11,9 +11,15 @@
 
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <link rel="dns-prefetch" href="//vk.com">
+        <link rel="dns-prefetch" href="//vk.me">
+
 
         <!-- <link async="async" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
         <link rel="stylesheet" async="" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">
+        <link rel="stylesheet" async="" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/social-likes_flat.css">
         <!-- <link rel="stylesheet/less" type="text/css" href="<?php // echo Yii::app()->theme->baseUrl; ?>/less/app.less" /> -->
         <link async="" href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700,400' rel='stylesheet' type='text/css'>
         <!-- <link href="<?php // echo Yii::app()->theme->baseUrl; ?>/css/font" rel='stylesheet' type='text/css'> -->
@@ -30,6 +36,7 @@
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/app.min.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/addtocopy.js', CClientScript::POS_END);
             Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/base64.js', CClientScript::POS_END);
+            Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/social-likes.min.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/less.js');
             // Yii::app()->getClientScript()->registerScriptFile($mainAssets.'/js/bootstrap3.2.0.min.js', CClientScript::POS_END);
             // Yii::app()->getClientScript()->registerCssFile($mainAssets.'/css/bootstrap3.2.0.min.css');

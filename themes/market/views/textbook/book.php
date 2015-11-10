@@ -20,11 +20,6 @@ $this->widget('BreadcrumbsWidget', array(
 </div>
 
 <div class="clear"></div>
-<div class="separator"></div>
-
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
-
-<div class="clear"></div>
 <div class="separator task-separator"></div>
 <div class="task">
 	<div class="task-title info">Сторінка <span class='page-number'></span>
@@ -47,7 +42,10 @@ $this->widget('BreadcrumbsWidget', array(
 	</section>
 </div>
 
+<div class="clear"></div>
+<div class="separator"></div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">

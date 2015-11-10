@@ -9,9 +9,9 @@ $this->widget('BreadcrumbsWidget', array(
 ));
 ?>
 
-<h1><?php echo  $model->title ; ?> </h1>
+<h1><?php echo  $model->title ; ?> </h1> 
 
-<div class="info"></div>
+<div class="info"><?php echo  $model->library_author->author ; ?></div>
 <div class="book-list">
 	<div class="big-book-block">
 		<?php $this->widget('LibraryBookWidget', array('model'=>$model)); ?>	
@@ -51,7 +51,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <div class="info">Виберіть сторінку</div>
 <div class="task-block">
