@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/social-likes_flat.css">
         <!-- <link rel="stylesheet" href="/css/social-likes_flat.css"> -->
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
