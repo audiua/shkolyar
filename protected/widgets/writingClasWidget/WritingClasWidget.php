@@ -12,8 +12,13 @@ class WritingClasWidget extends CWidget{
 
 	public function run(){
 
+		$view = 'index';
+		if(Yii::app()->theme->name == 'm'){
+			$view = 'm_'.$view;
+		}
+
        // передаем данные в представление виджета
-       $this->render( 'index',array('model' => Clas::model()->findAll()) );
+       $this->render( $view,array('model' => Clas::model()->findAll()) );
    }
 
 }

@@ -13,7 +13,11 @@ class OneBookWidget extends CWidget{
 	public function run(){
 
        // передаем данные в представление виджета
-       $this->render('index');
+		$view = 'index';
+		if(Yii::app()->theme->name == 'm'){
+			$view = 'm_'.$view;
+		}
+       $this->render($view);
    }
 
 }

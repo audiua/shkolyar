@@ -16,16 +16,24 @@ class FrontController extends Controller{
 	public $description='';
 
 	public function init(){
+
 		$this->param = $this->getActionParams();
 		if( ! Yii::app()->user->isGuest){
 			$this->_cacheId = 'cacheDummy';
 		}
 
 		$this->cache = Yii::app()->getComponent($this->_cacheId);
+
 	}
 
 
 	public function beforeAction($action){
+
+		Yii::import('ext.mobileDetect.Mobile_Detect');
+	    $detect = new Mobile_Detect();
+	    if( $detect->isMobile() || $detect->isTablet() ){
+			Yii::app()->theme = 'm';
+	    }
 
 		// технические работы из админки
 		if( $action->id !== 'login'){

@@ -15,7 +15,7 @@ $subject = $this->controller->id.'_subject_id';
 $clas = $this->controller->id.'_clas_id';
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
-    'itemView'=>'_item',
+    'itemView'=>$item_view,
     'summaryText' => '',
     // 'sorterHeader' => 'Сортувати по: ',
  //    'pager'=>array(

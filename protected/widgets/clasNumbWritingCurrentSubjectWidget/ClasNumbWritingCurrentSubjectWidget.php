@@ -30,7 +30,11 @@ class ClasNumbWritingCurrentSubjectWidget extends CWidget{
 		}
 
        // передаем данные в представление виджета
-       $this->render( 'index',array('model' => $clasWithCurrentSubject) );
+		$view = 'index';
+		if(Yii::app()->theme->name == 'm'){
+			$view = 'm_'.$view;
+		}
+       $this->render( $view,array('model' => $clasWithCurrentSubject) );
    }
 
 }

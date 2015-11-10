@@ -26,7 +26,11 @@ class DataArticleWidget extends CWidget{
 		// }
 
        // передаем данные в представление виджета
-       $this->render('index',array('dataProvider' => $this->model));
+		$view = 'index';
+		if(Yii::app()->theme->name == 'm'){
+			$view = 'm_'.$view;
+		}
+       $this->render($view,array('dataProvider' => $this->model));
    }
 
 }

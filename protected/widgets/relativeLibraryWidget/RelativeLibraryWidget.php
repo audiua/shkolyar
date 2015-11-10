@@ -15,7 +15,11 @@ class RelativeLibraryWidget extends CWidget{
 		if($this->beginCache('relative_library_book'.$this->book->id) ){
 
 			// передаем данные в представление виджета
-	        $this->render('index',array('model' => $this->relativeBooks($this->countBook)));
+			$view = 'index';
+			if(Yii::app()->theme->name =='m'){
+				$view = 'm_'.$view;
+			}
+	        $this->render($view,array('model' => $this->relativeBooks($this->countBook)));
 
 	        $this->endCache(); 
 		}
