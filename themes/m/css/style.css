@@ -2,6 +2,8 @@ p.task-number{
 	font-size: 1.3em;
 }
 
+img{background:transparent url('/images/728.GIF') 50% 50% no-repeat}
+
 .row{
 	text-align: center;
 }
@@ -13,14 +15,20 @@ p.task-number{
 	clear: both;
 }
 
+.task-active{
+	color: blue;
+	font-weight: bold;
+}
+
 .item{
 	margin-bottom: 20px;
 }
 
 .task{
-
+	position: relative;
 	border: 1px solid blue;
 	margin-bottom: 10px;
+	min-height: 85px;
 }
 
 .task-img{
@@ -33,4 +41,24 @@ p.task-number{
 
 .article img{
 	width: 100% !important;
+}
+
+.loading {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 10%;
+  left: 40%;
+  z-index: 1001;
+  background-image: url('/images/728.GIF');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.darking {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #555;
+  opacity: 0.23;
+  z-index: 1000;
 }

@@ -12,7 +12,10 @@
 <div class="clear"></div>
 <div class="separator"></div>
 
-<div class="task"></div>
+<div class="task">
+	<div class="loading"></div>
+	<div class="darking"></div>
+</div>
 
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 

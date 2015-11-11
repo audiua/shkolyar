@@ -3,8 +3,7 @@ $(document).ajaxSend(function(event, request, settings) {
 	$('.task-title').show();
 	$('.task-separator').show();
 	$('#inverted-contain').show();
-    $('.loading').show();
-    $('.darking').show();
+    
     $('body,html').animate({scrollTop:480},200);
     // $('body,html').animate({scrollTop:0},200);
 });
@@ -19,8 +18,7 @@ $(document).ajaxComplete(function(event, request, settings) {
 		$('.sidebar').height(contHeight);
 	}
 	
-    $('.loading').hide();
-    $('.darking').hide();
+   
 });
 
 
@@ -30,6 +28,9 @@ $(document).ready(function () {
 		$(this).hide();
 		$('.loading').hide();
 	});
+
+	$('.loading').hide();
+    $('.darking').hide();
 
 
 	//--------------------------------------
@@ -59,7 +60,12 @@ $(document).ready(function () {
 	$('.task-number').each(function(i,val){
 		$(val).on('click',{'numb':$(val).data('url'), 'parent':val}, getTask);
 	});
-	$('.task').hide()
+	$('.task').hide();
+
+	// function imgLoaded(img){
+	// 	var img = $(img);
+	// 	console.log(img);
+	// }
 
 	// on('click',{'numb':this.text()},getTask);
 
@@ -85,9 +91,34 @@ $(document).ready(function () {
 		 	url: url,
 		  	data: {'mode': ''},
 		  	dataType: "html",
+	  	    beforeSend: function( xhr ) {
+			    // xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			    $('.task').show();
+		  		$('.loading').show();
+    			$('.darking').show();
+			},
 		  	success: function(reponse){
 		  		$('.task').show().html('<div class="title">Розв’язання: №'+numb+'</div><div class="separator"></div>'+reponse);
+		  	
+		  		$('.loading').hide();
+    			$('.darking').hide();
+
+			  	// красим в цвет класса
+			  		$('.task-one').filter('.task-active').each(function(){
+			  			$(this).removeClass('task-active')
+				  		.find('p').removeClass('bold');
+			  		});
+			  			
+			  		
+			  		$(parent)
+				  		.parents('.task-one')
+				  		.addClass('task-active')
+				  		.find('p')
+				  		.addClass('bold');
+
+
 		  	}
+
 		});
 
 		
