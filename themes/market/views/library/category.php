@@ -14,7 +14,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 
 <h2 class="info">Твори автора <?php echo $category->author; ?></h2>
 <?php $this->widget('DataLibraryWidget', array('model'=>$model)); ?>

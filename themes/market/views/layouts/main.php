@@ -73,7 +73,7 @@
             <div class="red"></div>
             <div class="black"></div> -->
 
-            <div class="top-b"><?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_top_panorama'))); ?></div>
+            <div class="top-b"><?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?></div>
             <div class="content">
 
                 
