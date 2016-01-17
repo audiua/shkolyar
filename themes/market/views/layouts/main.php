@@ -73,13 +73,13 @@
             <div class="red"></div>
             <div class="black"></div> -->
 
-            <div class="top-b"><?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?></div>
+            <!-- <div class="top-b"><?php // $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?></div> -->
             <div class="content">
 
                 
-            <!-- <div class="h-direct">
-                <img src="/images/hor.jpeg"> 
-            </div> -->        
+            <div class="h-direct">
+                <?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+            </div>        
 
 
                 
