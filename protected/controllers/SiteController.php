@@ -243,7 +243,7 @@ public function actionJewel(){
 		);
 
 		if($model->update()){
-			$this->redirect(Yii::app()->user->returnUrl);
+			$this->redirect('/login');
 		}
 	}
 }
