@@ -16,7 +16,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <h3 class="info"><?= SeoHide::link('/gdz', 'ГДЗ'); ?></h3>
 <?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 <div class="separator"></div>
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <div class="separator"></div>
 <h3 class="info"><?= SeoHide::link('/writing', 'Твори'); ?></h3>

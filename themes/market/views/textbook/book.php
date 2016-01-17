@@ -42,7 +42,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">

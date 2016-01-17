@@ -24,7 +24,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <div class="info">Виберіть статтю</div>
 <?php $this->widget('DataArticleWidget', array('model'=>$model, 'params'=>array('linkCategory'=>true))); ?>

@@ -14,7 +14,7 @@ $this->widget('BreadcrumbsWidget', array(
 <?php $this->renderDynamic('getUpdateBtn', array('id'=>$model->id)); ?>
 </div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 
 

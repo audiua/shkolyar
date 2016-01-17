@@ -23,7 +23,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <?php $this->widget('DataBookWidget', array('model'=>$books, 'params'=>array('subject'=>$subject->title))); ?>
 
