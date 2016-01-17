@@ -1,11 +1,4 @@
 <div class="sidebar-block">
-	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
-</div>
-
-<div class="separator"></div>
-<div class="clear"></div>
-
-<div class="sidebar-block">
 	<div class="menu">
 		<div class="info">Навігація</div>
 
@@ -26,6 +19,13 @@
 	<!-- <img src="/images/b_l.png">  -->
 
 	
+</div>
+
+<div class="separator"></div>
+<div class="clear"></div>
+
+<div class="sidebar-block">
+	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
 </div>
 
 <div class="separator"></div>
