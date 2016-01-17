@@ -24,14 +24,6 @@
 <div class="separator"></div>
 <div class="clear"></div>
 
-<div class="sidebar-block">
-	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
-</div>
-
-<div class="separator"></div>
-<div class="clear"></div>
-
-
 <div class="sidebar-block social">
 	<div class="info">Соц. мережі</div>
 	<noindex>
@@ -96,6 +88,13 @@
 		</div>
 	</noindex>
 
+</div>
+
+<div class="separator"></div>
+<div class="clear"></div>
+
+<div class="sidebar-block">
+	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
 </div>
 
 <div class="separator"></div>
