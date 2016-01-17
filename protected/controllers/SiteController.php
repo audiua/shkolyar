@@ -162,20 +162,20 @@ public function actionLogin(){
 
 
 	// авторизация только после получения куки на 1 мин
-	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
-	if( ! $model){
-		throw new CHttpException('404');
-	}
+	// $model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	// if( ! $model){
+	// 	throw new CHttpException('404');
+	// }
 
-	$token = Yii::app()->request->cookies['cookie_token'];
-	if( ! $token ){
-		throw new CHttpException('404');
-	}
+	// $token = Yii::app()->request->cookies['cookie_token'];
+	// if( ! $token ){
+	// 	throw new CHttpException('404');
+	// }
 
-	$value = unserialize($model->value);
-	if( $value['expire'] < time() || $token->value !== $value['token'] ){
-		throw new CHttpException('404');
-	}
+	// $value = unserialize($model->value);
+	// if( $value['expire'] < time() || $token->value !== $value['token'] ){
+	// 	throw new CHttpException('404');
+	// }
 
 
 	$this->layout = '//layouts/login';
@@ -193,7 +193,7 @@ public function actionLogin(){
 		$model->attributes=$_POST['LoginForm'];
 		// validate user input and redirect to the previous page if valid
 		if($model->validate() && $model->login()){
-			$this->redirect(Yii::app()->user->returnUrl);
+			$this->redirect('/inside/admin');
 		}
 	}
 	// display the login form
