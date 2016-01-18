@@ -48,7 +48,7 @@
 	</div>
 </nav>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_adaptive_top'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_big_top'))); ?>
 
 <?php  
 $this->widget('zii.widgets.CBreadcrumbs', array(
