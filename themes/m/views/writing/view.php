@@ -11,6 +11,8 @@
 <div class="clear"></div>
 <div class="separator"></div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
+
 <div class="info">Схожі твори для <?= $this->param['clas'] ?> класу</div>
 <div class="task-block">
 	<?php 

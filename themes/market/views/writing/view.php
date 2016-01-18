@@ -8,8 +8,6 @@ $this->widget('BreadcrumbsWidget', array(
 
 <h1><?php echo  $model->title; ?> </h1>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
-
 <div class="knowall-article">
 	
 <?php echo  $model->text; ?>

@@ -8,6 +8,8 @@
 	
 </div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
+
 <div class="info">Схожі статті</div>
 <div class="task-block">
 	<?php 

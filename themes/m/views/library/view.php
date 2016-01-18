@@ -1,5 +1,7 @@
 <h1><?php echo  $model->title ; ?> </h1> 
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
+
 <div class="info"><?php echo  $model->library_author->author ; ?></div>
 <div class="book-list">
 	<div class="big-book-block">

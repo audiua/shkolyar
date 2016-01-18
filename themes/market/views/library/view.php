@@ -16,8 +16,6 @@ $this->widget('BreadcrumbsWidget', array(
 </div>
 <?php $this->renderDynamic('getUpdateBookBtn', array('id'=>$model->id)); ?>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
-
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
