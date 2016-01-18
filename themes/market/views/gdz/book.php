@@ -38,6 +38,8 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
+
 <div class="task">
 	<div class="task-title info">Розвязання: 
 	</div>
