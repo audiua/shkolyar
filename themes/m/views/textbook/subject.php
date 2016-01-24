@@ -1,4 +1,4 @@
-<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->subject->title; ?></h1>
+<h1>Підручники <?php echo str_replace('-clas', '', $this->param['clas']) . ' клас ' . $this->subjectModel->name; ?></h1>
 
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
 

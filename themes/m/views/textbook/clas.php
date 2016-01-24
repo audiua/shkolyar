@@ -1,4 +1,4 @@
-<h1>Підручники <?php echo $this->param['clas'] . ' клас'; ?></h1>
+<h1>Підручники <?php echo str_replace('-clas', '', $this->param['clas']) . ' клас'; ?></h1>
 
 <div class="info">Виберіть предмет</div>
 <?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->textbook_subject)); ?>
