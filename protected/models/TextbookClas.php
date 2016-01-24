@@ -52,7 +52,7 @@ class TextbookClas extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'clas' => array(self::BELONGS_TO, 'Clas', 'clas_id'),
+			'clas' => array(self::BELONGS_TO, 'TClas', 'clas_id'),
 			'textbook_subject' => array(self::HAS_MANY, 'TextbookSubject', 'textbook_clas_id'),
 			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_clas_id'),
 		);
@@ -103,7 +103,6 @@ class TextbookClas extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('clas_id',$this->clas_id,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('update_time',$this->update_time,true);
 
@@ -130,9 +129,10 @@ class TextbookClas extends CActiveRecord
 		if($all){
 			foreach($all as $one){
 
-				if($one->textbook_book){
-					$result[$one->id]=$one->clas->title;
-				}
+				// if($one->textbook_book){
+				// 	$result[$one->id]=$one->clas->title;
+				// }
+					$result[$one->id]=$one->slug;
 			}
 		}
 		return $result;

@@ -22,11 +22,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'clas_id'); ?>
-		<?php echo $form->textField($model,'clas_id',array('size'=>10,'maxlength'=>10)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'create_time'); ?>
 		<?php echo $form->textField($model,'create_time',array('size'=>10,'maxlength'=>10)); ?>
 	</div>

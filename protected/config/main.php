@@ -167,19 +167,19 @@ return CMap::mergeArray( array(
 				'writing/<clas:\d+>/page/<page:\d+>'=>'writing/clas',
 				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
 
-				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/page/<page:\d>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
 				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
 				
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
 				
 				
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
-				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[a-z0-9-]+>'=>'<controller>/clas',
 
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',

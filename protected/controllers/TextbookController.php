@@ -64,6 +64,7 @@ public function actionIndex(){
 		);
 
 		$this->allClasModel = TextbookClas::model()->cache(86400)->findAll();
+		// d($this->allClasModel);
 
 		$criteria = new CDbCriteria;
 		$criteria->condition= 't.public=1';
@@ -71,7 +72,7 @@ public function actionIndex(){
 
 		$textbooks = new CActiveDataProvider('TextbookBook',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>12,'pageVar'=>'page')));
 
-		$this->canonical = Yii::app()->createAbsoluteUrl('/');
+		// $this->canonical = Yii::app()->createAbsoluteUrl('/');
 
 		// кешируем сдесь всю страницу
 		$this->render('index', array('books'=>$textbooks));
@@ -90,7 +91,9 @@ public function actionClas($clas){
 	// TODO - закешировать на сутки
 	if($this->beginCache('clas_textbook_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 
+
 		$this->checkClas($clas);
+		// d();
 		$this->clasModel = $this->loadClas($clas);
 
 		$this->setMeta();
@@ -134,21 +137,23 @@ public function actionSubject($clas, $subject){
 	// TODO - закешировать на сутка
 	if($this->beginCache('subject_textbook_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
+
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
 
 		$this->clasModel = $this->loadClas($clas);
+		// d();
 		$this->subjectModel = $this->loadSubject($subject);
 
 		$this->setMeta();
 		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$clas.'/'.$subject);
 
-		$this->keywords = 'Підручники ' . $this->subjectModel->subject->title . ' ' 
+		$this->keywords = 'Підручники ' . $this->subjectModel->title . ' ' 
 			.$clas.' клас, Підручники онлайн '
-			. $this->subjectModel->subject->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->subject->title . ' ' .$clas. ' клас Україна';
+			. $this->subjectModel->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->title . ' ' .$clas. ' клас Україна';
 
 		$this->description = 'Підручники ' 
-			. $this->subjectModel->subject->title . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
+			. $this->subjectModel->title . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
@@ -166,7 +171,7 @@ public function actionSubject($clas, $subject){
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
 			$clas . ' клас' => $this->createUrl('/textbook/'.$clas),
-			$this->subjectModel->subject->title
+			$this->subjectModel->title
 		);
 
 
@@ -261,20 +266,27 @@ public function actionBook( $clas, $subject, $book ){
 		$this->bookModel = $this->loadBook($book);
 
 		$this->setMeta();
-		$this->keywords = 'Підручник ' . $this->subjectModel->subject->title . ' ' 
+		$this->keywords = 'Підручник ' . $this->subjectModel->title . ' ' 
 			.$clas.' клас ' . $this->bookModel->author;
 
 		$this->description = 'Підручник ' 
-			. $this->subjectModel->subject->title . ' ' .$clas.' клас ' . $this->bookModel->author . ' для середніх загальноосвітніх шкіл України.';
+			. $this->subjectModel->title . ' ' .$clas.' клас ' . $this->bookModel->author . ' для середніх загальноосвітніх шкіл України.';
 
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
 			$clas . ' клас' => $this->createUrl('/textbook/'.$clas),
-			$this->subjectModel->subject->title => $this->createUrl('/textbook/'.$clas.'/'.$subject),
+			$this->subjectModel->title => $this->createUrl('/textbook/'.$clas.'/'.$subject),
 			$this->bookModel->author
 		);
 
-		$this->render('book');
+		$confiId = null;
+		if(!empty($this->bookModel->issue_embed)){
+
+			$embedCobfig = json_decode($this->bookModel->issue_embed);
+			$confiId = $embedCobfig->rsp->_content->documentEmbed->dataConfigId;
+		}
+
+		$this->render('book', array('embedConfigId'=>$confiId));
 		$this->endCache(); 
 	
 	}
@@ -353,7 +365,7 @@ public function actionTask($clas, $subject, $book, $task){
 private function loadClas($clas, $category = 'textbook'){
 
 	$model = ucfirst($category) . 'Clas';
-	$clasModel = Clas::model()->find('slug=:clas',array(':clas'=>(int)$clas));
+	$clasModel = TClas::model()->find('slug=:clas',array(':clas'=>$clas));
 	if( ! $clasModel ){
 		throw new CHttpException('404', 'not clas');
 	}
@@ -375,25 +387,25 @@ private function loadClas($clas, $category = 'textbook'){
 private function loadSubject($subject){
 
 
-	$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
+	$subjectModel = TSubject::model()->findByAttributes(array('slug'=>$subject));
 	// модель предмета
 	if( ! $subjectModel->id){
 		throw new CHttpException('404', 'нет такого предмета');
 	}
 
-	// модель предмета
-	$criteria=new CDbCriteria;
-	$criteria->condition='textbook_clas_id=:classId';
-	$criteria->addCondition('subject_id=:subjectId');
-	$criteria->params = array(':classId'=>$this->clasModel->id, ':subjectId'=>$subjectModel->id);
-	$bookSubjectModel = TextbookSubject::model()->find($criteria);
+	// // модель предмета
+	// $criteria=new CDbCriteria;
+	// $criteria->condition='textbook_clas_id=:classId';
+	// $criteria->addCondition('subject_id=:subjectId');
+	// $criteria->params = array(':classId'=>$this->clasModel->id, ':subjectId'=>$subjectModel->id);
+	// $bookSubjectModel = TextbookSubject::model()->find($criteria);
 
-	// проверка на наличие предмета
-	if( ! $bookSubjectModel){
-		throw new CHttpException( '404', 'нет такого предмета - ' .__FILE__. ' - ' .__LINE__ );
-	}
+	// // проверка на наличие предмета
+	// if( ! $bookSubjectModel){
+	// 	throw new CHttpException( '404', 'нет такого предмета - ' .__FILE__. ' - ' .__LINE__ );
+	// }
 	
-	return $bookSubjectModel;
+	return $subjectModel;
 }
 
 private function loadBook($book, $category='textbook'){
@@ -456,14 +468,14 @@ private function checkBook($book){
 private function setMeta(){
 	if($this->clasModel){
 		$book = $this->action->id == 'book' ? 'Підручник ' : 'Підручники ' ;
-		$this->h1 = $book . $this->clasModel->clas->slug.' клас';
+		$this->h1 = $book . str_replace('-clas','',$this->clasModel->clas->slug).' клас';
 		$this->canonical = '/textbook/'.$this->clasModel->clas->slug;
 
 	}
 
 	if($this->subjectModel){
-		$this->h1 .= ' ' . $this->subjectModel->subject->title . ' ';
-		$this->canonical .= '/'.$this->subjectModel->subject->slug;
+		$this->h1 .= ' ' . $this->subjectModel->name . ' ';
+		$this->canonical .= '/'.$this->subjectModel->slug;
 	}
 
 	if($this->bookModel){

@@ -8,7 +8,7 @@ $this->widget('BreadcrumbsWidget', array(
 ?>
 
 
-<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->subject->title; ?></h1>
+<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->title; ?></h1>
 
 <div class="description">
   <?php echo $this->subjectModel->description; ?>

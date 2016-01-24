@@ -17,6 +17,10 @@ class OneBookWidget extends CWidget{
 		if(Yii::app()->theme->name == 'm'){
 			$view = 'm_'.$view;
 		}
+		if($this->controller->id == 'textbook'){
+			$view = 't_'.$view;
+
+		}
        $this->render($view);
    }
 

@@ -25,13 +25,9 @@ $this->widget('BreadcrumbsWidget', array(
 
 
 <div class="info">Виберіть клас</div>
-<?php $this->widget('ClasNumbWidget'); ?>
-<div class="clear"></div>
-<div class="separator"></div>
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
+<?php $this->widget('ClasNumbWidget'); 
 
-<div class="info">Нові надходження</div>
+?>
 
-<?php $this->widget('DataBookWidget', array('model'=>$books)); ?>
 
 

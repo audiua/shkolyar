@@ -59,12 +59,6 @@ Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'clas_id', array('class'=>"col-md-2 col-lg-2 control-label")); ?>
-		<?php echo $form->dropDownList($model,'clas_id',Clas::getAll(), array('class'=>'col-md-2 col-lg-2 control-label')); ?>
-		<?php echo $form->error($model,'clas_id'); ?>
-	</div>
-
 	<div class="clear"></div>
 	<div class="form-group">
 		<div class="col-md-offset-9 col-lg-offset-9 col-md-2 col-lg-2">

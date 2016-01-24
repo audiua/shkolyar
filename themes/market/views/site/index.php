@@ -24,7 +24,7 @@ $this->widget('zii.widgets.CBreadcrumbs', array(
 <div class="separator"></div>
 
 <h3 class="info"><?= SeoHide::link('/textbook', 'Підручники'); ?></h3>
-<?php $this->widget('LastBookWidget', array('mode'=>'textbook')); ?>
+<?php $this->widget('LastBookWidget', array('mode'=>'gdz')); ?>
 <div class="separator"></div>
 
 <h3 class="info"><?= SeoHide::link('/library', 'Художня література'); ?></h3>

@@ -52,7 +52,7 @@ class TextbookSubject extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
+			'subject' => array(self::BELONGS_TO, 'TSubject', 'subject_id'),
 			'textbook_clas' => array(self::BELONGS_TO, 'TextbookClas', 'textbook_clas_id'),
 			'textbook_book' => array(self::HAS_MANY, 'TextbookBook', 'textbook_subject_id'),
 		);
@@ -146,7 +146,7 @@ class TextbookSubject extends CActiveRecord
 	public function afterSave(){
 
 		// создам папку для картинок
-		$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug;
+		$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->slug;
 		$clasDir = $dir.'/'.$this->subject->slug;
 
 		if(file_exists($dir)){

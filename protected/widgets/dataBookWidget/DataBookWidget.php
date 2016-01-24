@@ -31,6 +31,12 @@ class DataBookWidget extends CWidget{
 			$view = 'm_'.$view;
 		}
 
+
+		if($this->controller->id == 'textbook'){
+			$view = 't_'.$view;
+
+		}
+
        $this->render($view,array('dataProvider' => $this->model));
    }
 
