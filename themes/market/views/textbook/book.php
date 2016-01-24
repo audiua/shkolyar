@@ -25,7 +25,7 @@ $this->widget('BreadcrumbsWidget', array(
 
 <div class="clear"></div>
 <div class="separator"></div>
-<div class="info">Схожі підручники для <?= $this->param['clas'] ?> класу</div>
+<div class="info">Схожі підручники для <?= str_replace('-clas', '',$this->param['clas']);  ?> класу</div>
 <div class="task-block">
 	<?php 
 	Yii::import( 'application.widgets.relativeTextbookWidget.RelativeTextbookWidget');

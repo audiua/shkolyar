@@ -21,6 +21,8 @@ class TSubject extends CActiveRecord
 
 	private $_url;
 
+	public $textbook_book = true; 
+
 	public function getUrl($mode=null){
 	   if ($this->_url === null){
 	   		if($mode){

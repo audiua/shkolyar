@@ -1,6 +1,12 @@
 <?php 
 $categoryClas = $this->controller->id . '_clas';
 $categorySubject = $this->controller->id . '_subject';
+if($this->controller->id == 'gdz'){
+$subject = $data->$categorySubject->title;
+	
+} else {
+	$subject = $data->$categorySubject->name;
+}
 
 $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->slug.'/'.$data->$categorySubject->slug.'/'.$data->slug.'/book'; ?>
 
@@ -13,7 +19,7 @@ $path = 'img/'.$this->controller->id.'/'.$data->$categoryClas->slug.'/'.$data->$
 	</div>
 
 	<div class=" desc">
-		<?php echo CHtml::link( $contr. $data->$categoryClas->clas->slug . ' клас '. $data->$categorySubject->title . ' ' .$data->author, array('/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->slug.'/'.$data->slug)); ?>
+		<?php echo CHtml::link( $contr. str_replace('-clas', '', $data->$categoryClas->clas->slug) . ' клас '. $subject . ' ' .$data->author, array('/'.$this->controller->id.'/'.$data->$categoryClas->clas->slug.'/'.$data->$categorySubject->slug.'/'.$data->slug)); ?>
 
 		<?php 
 			// if( !empty($data->properties) ){

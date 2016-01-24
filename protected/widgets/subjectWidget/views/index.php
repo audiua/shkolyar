@@ -4,7 +4,10 @@
 	$field= $this->controller->id.'_book';
 	$showSubject = false;
 	foreach( $this->model as $i => $one ): 
-	    if( $one->$field ){
+	    
+		if($this->controller->id == 'textbook'){
+			$showSubject = true;
+		}elseif( $one->$field ){
     		foreach( $one->$field as $book ){
     			if($book->public){
     				$showSubject = true;
@@ -18,7 +21,13 @@
 		<div class="subject">
 		    <h3><?php 
 		    	// выводим только с книгами
+		    	if($this->controller->id == 'textbook'){
+
+			    	echo CHtml::link( $one->name, array('/'.$this->controller->id.'/'.$this->params['clas'].'/'.$one->slug), array('class'=>'clas-'.$class, 'title'=>'ГДЗ '.$this->params['clas'] . ' клас '. $one->name)); 
+		    	} else {
 			    	echo CHtml::link( $one->subject->title, array('/'.$this->controller->id.'/'.$this->params['clas'].'/'.$one->subject->slug), array('class'=>'clas-'.$class, 'title'=>'ГДЗ '.$this->params['clas'] . ' клас '. $one->subject->title)); 
+
+		    	}
 	    	?></h3>
 		</div>
 

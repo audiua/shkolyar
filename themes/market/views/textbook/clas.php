@@ -16,7 +16,7 @@ $this->widget('BreadcrumbsWidget', array(
 
 
 <div class="info">Виберіть предмет</div>
-<?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->textbook_subject)); ?>
+<?php $this->widget('SubjectWidget', array('model'=>$subjects)); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>

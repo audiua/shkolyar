@@ -101,7 +101,7 @@ public function actionClas($clas){
 		
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
-			$clas . ' клас'
+			str_replace('-clas', '', $clas) . ' клас'
 		);
 
 
@@ -121,7 +121,24 @@ public function actionClas($clas){
 			)
 		);
 
-		$this->render('clas', array('books'=>$books));
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
+		$criteria->group = 'textbook_subject_id';
+
+		$subjectsIds = TextbookBook::model()->findAll($criteria);
+		foreach($subjectsIds as $s){
+			$ids[] = $s->textbook_subject_id;
+		}
+
+		$criteria = new CDbCriteria;
+		$criteria->addInCondition('t.id', $ids);
+		
+		$subjects = TSubject::model()->findAll($criteria);
+
+		$this->render('clas', array('books'=>$books, 'subjects'=>$subjects));
 
 
 		$this->endCache(); 
@@ -149,7 +166,7 @@ public function actionSubject($clas, $subject){
 		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$clas.'/'.$subject);
 
 		$this->keywords = 'Підручники ' . $this->subjectModel->title . ' ' 
-			.$clas.' клас, Підручники онлайн '
+			.str_replace('-clas', '', $clas).' клас, Підручники онлайн '
 			. $this->subjectModel->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->title . ' ' .$clas. ' клас Україна';
 
 		$this->description = 'Підручники ' 
@@ -170,7 +187,7 @@ public function actionSubject($clas, $subject){
 
 		$this->breadcrumbs = array(
 			'Підручники' => $this->createUrl('/textbook'),
-			$clas . ' клас' => $this->createUrl('/textbook/'.$clas),
+			str_replace('-clas', '', $clas) . ' клас' => $this->createUrl('/textbook/'.$clas),
 			$this->subjectModel->title
 		);
 
