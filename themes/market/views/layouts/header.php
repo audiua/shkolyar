@@ -249,20 +249,20 @@
 					<thead>
 						<tr>
 							<th data-vertical="0"></th>
-							<th class="clas-5" data-vertical="1"><?= SeoHide::link("/textbook/5", '5 <br><span>клас</span>', array('class'=>'clas-5')); ?></th>
-							<th class="clas-6" data-vertical="2"><?= SeoHide::link("/textbook/6", '6 <br><span>клас</span>', array('class'=>'clas-6')); ?></th>
-							<th class="clas-7" data-vertical="3"><?= SeoHide::link("/textbook/7", '7 <br><span>клас</span>', array('class'=>'clas-7')); ?></th>
-							<th class="clas-8" data-vertical="4"><?= SeoHide::link("/textbook/8", '8 <br><span>клас</span>', array('class'=>'clas-8')); ?></th>
-							<th class="clas-9" data-vertical="5"><?= SeoHide::link("/textbook/9", '9 <br><span>клас</span>', array('class'=>'clas-9')); ?></th>
-							<th class="clas-10" data-vertical="6"><?= SeoHide::link("/textbook/10", '10 <br><span>клас</span>', array('class'=>'clas-10')); ?></th>
-							<th class="clas-11" data-vertical="7"><?= SeoHide::link("/textbook/11", '11 <br><span>клас</span>', array('class'=>'clas-11')); ?></th>
+							<th class="clas-5" data-vertical="1"><?= SeoHide::link("/textbook/5-clas", '5 <br><span>клас</span>', array('class'=>'clas-5')); ?></th>
+							<th class="clas-6" data-vertical="2"><?= SeoHide::link("/textbook/6-clas", '6 <br><span>клас</span>', array('class'=>'clas-6')); ?></th>
+							<th class="clas-7" data-vertical="3"><?= SeoHide::link("/textbook/7-clas", '7 <br><span>клас</span>', array('class'=>'clas-7')); ?></th>
+							<th class="clas-8" data-vertical="4"><?= SeoHide::link("/textbook/8-clas", '8 <br><span>клас</span>', array('class'=>'clas-8')); ?></th>
+							<th class="clas-9" data-vertical="5"><?= SeoHide::link("/textbook/9-clas", '9 <br><span>клас</span>', array('class'=>'clas-9')); ?></th>
+							<th class="clas-10" data-vertical="6"><?= SeoHide::link("/textbook/10-clas", '10 <br><span>клас</span>', array('class'=>'clas-10')); ?></th>
+							<th class="clas-11" data-vertical="7"><?= SeoHide::link("/textbook/11-clas", '11 <br><span>клас</span>', array('class'=>'clas-11')); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/textbook/math", 'математика'); ?></td>
-							<td data-vertical="1"><?= SeoHide::link("/textbook/5/math", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
-							<td data-vertical="2"><?= SeoHide::link("/textbook/6/math", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
+							<td data-vertical="1"><?= SeoHide::link("/textbook/5-clas/math", '<span class="green glyphicon glyphicon-ok small clas-5"></span>'); ?></td>
+							<td data-vertical="2"><?= SeoHide::link("/textbook/6-clas/math", '<span class="green glyphicon glyphicon-ok small clas-6"></span>'); ?></td>
 							<td data-vertical="3"></td>
 							<td data-vertical="4"></td>
 							<td data-vertical="5"></td>
@@ -270,112 +270,112 @@
 							<td data-vertical="7"></td>
 						</tr>
 
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/lang-ua">українська мова</a></td>
-							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+							<td data-vertical="1"><a href="/textbook/5-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
 				
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/lit-ua">українська література</a></td>
-							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
-						</tr> -->
+						</tr>
 						
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/lang-ua">російська мова</a></td>
-							<td data-vertical="1"><a href="/textbook/5/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+							<td data-vertical="1"><a href="/textbook/5-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/lang-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
 						
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/lit-ua">зарубіжна література</a></td>
-							<td data-vertical="1"><a href="/textbook/5/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/lit-ua"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
-						</tr> -->
+						</tr>
 						
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/fizika">фізика</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/fizika"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/fizika"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/fizika"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/fizika"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/10/fizika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+							<td data-vertical="3"><a href="/textbook/7-clas/fizika"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/fizika"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/fizika"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/fizika"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/10-clas/fizika"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/textbook/algebra", 'алгебра'); ?></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><?= SeoHide::link("/textbook/7/algebra", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
-							<td data-vertical="4"><?= SeoHide::link("/textbook/8/algebra", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
-							<td data-vertical="5"><?= SeoHide::link("/textbook/9/algebra", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
-							<td data-vertical="6"><?= SeoHide::link("/textbook/10/algebra", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
-							<td data-vertical="7"><?= SeoHide::link("/textbook/11/algebra", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/textbook/7-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/textbook/8-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/textbook/9-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/textbook/10-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/textbook/11-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
 						</tr>
-						<!-- <tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/geom">геометрія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/geom"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/geom"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/geom"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/geom"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/geom"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
-						<!-- <tr>
+							<td data-vertical="3"><a href="/textbook/7-clas/geom"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/geom"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/geom"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/geom"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/geom"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/him">хімія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"></td>
-							<td data-vertical="4"><a href="/textbook/8/him"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/him"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/him"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/him"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
-						<!-- <tr>
+							<td data-vertical="4"><a href="/textbook/8-clas/him"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/him"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/him"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/him"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/bio">біологія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/bio"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/bio"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/bio"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/bio"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/bio"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
-						<!-- <tr>
+							<td data-vertical="3"><a href="/textbook/7-clas/bio"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/bio"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/bio"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/bio"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/bio"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
+						<tr>
 							<td data-vertical="0"><a href="/textbook/geo">географія</a></td>
 							<td data-vertical="1"></td>
-							<td data-vertical="2"><a href="/textbook/6/geo"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/geo"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/geo"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/geo"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/geo"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/geo"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
-						</tr> -->
+							<td data-vertical="2"><a href="/textbook/6-clas/geo"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/geo"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/geo"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/geo"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/geo"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/geo"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+						</tr>
 
 					</tbody>
 				</table>
