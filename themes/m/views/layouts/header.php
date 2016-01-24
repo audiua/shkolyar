@@ -27,7 +27,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Підручники<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<?php foreach( TextbookClas::model()->findAll() as $clas ) : ?>
-							<li><a href="<?=Yii::app()->baseUrl.'/textbook/'.$clas->clas->slug; ?>"><?= $clas->clas->slug; ?> клас</a></li>
+							<li><a href="<?=Yii::app()->baseUrl.'/textbook/'.$clas->clas->slug; ?>"><?= str_replace('-clas', '', $clas->clas->slug); ?> клас</a></li>
 						<?php endforeach; ?>
 					</ul>
 				</li>
