@@ -272,47 +272,47 @@
 
 						<tr>
 							<td data-vertical="0"><a href="/textbook/ukrajinska-mova">українська мова</a></td>
-							<td data-vertical="1"><a href="/textbook/5/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/ukrajinska-mova"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 				
 						<tr>
 							<td data-vertical="0"><a href="/textbook/ukrajinska-literatura">українська література</a></td>
-							<td data-vertical="1"><a href="/textbook/5/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/ukrajinska-literatura"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
 						</tr>
 						
 						<tr>
 							<td data-vertical="0"><a href="/textbook/rosiyska-mova">російська мова</a></td>
-							<td data-vertical="1"><a href="/textbook/5/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/rosiyska-mova"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						
 						<tr>
 							<td data-vertical="0"><a href="/textbook/zarubizhna-literatura">зарубіжна література</a></td>
-							<td data-vertical="1"><a href="/textbook/5/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
-							<td data-vertical="2"><a href="/textbook/6/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="1"><a href="/textbook/5-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-5"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/zarubizhna-literatura"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 							
 						</tr>
 						
@@ -320,61 +320,61 @@
 							<td data-vertical="0"><a href="/textbook/fizyka">фізика</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/fizyka"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/fizyka"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/fizyka"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/fizyka"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/10/fizyka"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/fizyka"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/fizyka"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/fizyka"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/fizyka"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/10-clas/fizyka"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
 							<td data-vertical="0"><?= SeoHide::link("/textbook/algebra", 'алгебра'); ?></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><?= SeoHide::link("/textbook/7/algebra", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
-							<td data-vertical="4"><?= SeoHide::link("/textbook/8/algebra", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
-							<td data-vertical="5"><?= SeoHide::link("/textbook/9/algebra", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
-							<td data-vertical="6"><?= SeoHide::link("/textbook/10/algebra", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
-							<td data-vertical="7"><?= SeoHide::link("/textbook/11/algebra", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
+							<td data-vertical="3"><?= SeoHide::link("/textbook/7-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-7"></span>'); ?></td>
+							<td data-vertical="4"><?= SeoHide::link("/textbook/8-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-8"></span>'); ?></td>
+							<td data-vertical="5"><?= SeoHide::link("/textbook/9-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-9"></span>'); ?></td>
+							<td data-vertical="6"><?= SeoHide::link("/textbook/10-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-10"></span>'); ?></td>
+							<td data-vertical="7"><?= SeoHide::link("/textbook/11-clas/algebra", '<span class="green glyphicon glyphicon-ok small clas-11"></span>'); ?></td>
 						</tr>
 						<tr>
 							<td data-vertical="0"><a href="/textbook/geometriya">геометрія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/geometriya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/geometriya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/geometriya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/geometriya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/geometriya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/geometriya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/geometriya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/geometriya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/geometriya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/geometriya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
 							<td data-vertical="0"><a href="/textbook/khimiya">хімія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
 							<td data-vertical="3"></td>
-							<td data-vertical="4"><a href="/textbook/8/khimiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/khimiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/khimiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/khimiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/khimiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/khimiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/khimiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/khimiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
 							<td data-vertical="0"><a href="/textbook/biologiya">біологія</a></td>
 							<td data-vertical="1"></td>
 							<td data-vertical="2"></td>
-							<td data-vertical="3"><a href="/textbook/7/biologiya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/biologiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/biologiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/biologiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/biologiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/biologiya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/biologiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/biologiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/biologiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/biologiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 						<tr>
 							<td data-vertical="0"><a href="/textbook/geografiya">географія</a></td>
 							<td data-vertical="1"></td>
-							<td data-vertical="2"><a href="/textbook/6/geografiya"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
-							<td data-vertical="3"><a href="/textbook/7/geografiya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
-							<td data-vertical="4"><a href="/textbook/8/geografiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
-							<td data-vertical="5"><a href="/textbook/9/geografiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
-							<td data-vertical="6"><a href="/textbook/10/geografiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
-							<td data-vertical="7"><a href="/textbook/11/geografiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
+							<td data-vertical="2"><a href="/textbook/6-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-6"></span></a></td>
+							<td data-vertical="3"><a href="/textbook/7-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-7"></span></a></td>
+							<td data-vertical="4"><a href="/textbook/8-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-8"></span></a></td>
+							<td data-vertical="5"><a href="/textbook/9-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-9"></span></a></td>
+							<td data-vertical="6"><a href="/textbook/10-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-10"></span></a></td>
+							<td data-vertical="7"><a href="/textbook/11-clas/geografiya"><span class="green glyphicon glyphicon-ok small clas-11"></span></a></td>
 						</tr>
 
 					</tbody>
