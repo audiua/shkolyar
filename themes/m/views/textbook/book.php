@@ -13,14 +13,6 @@
 
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_m_above_task'))); ?>
 
-<div class="task"></div>
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
-<div class="info">Виберіть сторінку: </div>
-<div class="task-block">
-	<?php $this->widget('TaskWidget'); ?>
-</div>
-
-
 <div class="clear"></div>
 <div class="separator"></div>
 <div class="info">Схожі підручники для <?= $this->param['clas'] ?> класу</div>
