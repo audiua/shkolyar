@@ -42,7 +42,7 @@ foreach( $model as $i => $one ):
   			<?php echo CHtml::link('
   			<div class="book-author">'.$one->author.'</div>
   			<div class="book-subject">'.$title.'</div>
-  			<div class="book-clas">'.$one->$mode_clas->clas->slug.'клас</div>', array('/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$subject.'/'.$one->slug)
+  			<div class="book-clas">'. str_replace('-clas', '', $one->$mode_clas->clas->slug).' клас</div>', array('/'.$this->mode.'/'.$one->$mode_clas->clas->slug.'/'.$subject.'/'.$one->slug)
   			); ?>
   			<?php 
   				if( !empty($one->properties) ){
