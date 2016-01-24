@@ -8,6 +8,11 @@
 	
 </div>
 
+<?php if($embedConfigId): ?>
+<iframe width="700" height="500" src="//e.issuu.com/embed.html#<?= $embedConfigId; ?>" frameborder="0" allowfullscreen></iframe>
+<?php endif; ?>
+
+
 <div class="clear"></div>
 <div class="separator task-separator"></div>
 
