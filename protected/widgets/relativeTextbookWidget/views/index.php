@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="textbook-link">
-				<?php echo CHtml::link( 'Підручник', array('/textbook/'.$clas.'/'.$data->textbook_subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-xs')); ?>
+				<?php echo CHtml::link( 'Підручник', array('/textbook/'.$clas.'-clas/'.$data->textbook_subject->slug.'/'.$data->slug), array('class'=>'btn btn-warning btn-xs')); ?>
 			</div>
 								
 		</div>
