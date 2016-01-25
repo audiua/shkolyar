@@ -61,7 +61,7 @@ public function actionIndex() {
         
         $this->addUrl('/textbook/', self::WEEKLY, 0.5, Helper::lastTime('TextbookBook') );
         $this->addModels( TClas::model()->forSitemap(), self::WEEKLY, 0.3, 'textbook');
-        // $this->addModelsTextbook( TSubject::model()->forSitemap(5), self::WEEKLY, 0.5, 5);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(5), self::WEEKLY, 0.5, 5);
         // $this->addModelsTextbook( TSubject::model()->forSitemap(6), self::WEEKLY, 0.5, 6);
         // $this->addModelsTextbook( TSubject::model()->forSitemap(7), self::WEEKLY, 0.5, 7);
         // $this->addModelsTextbook( TSubject::model()->forSitemap(8), self::WEEKLY, 0.5, 8);
