@@ -107,7 +107,7 @@ class CErrorHandler extends CApplicationComponent
 			for($level=ob_get_level();$level>0;--$level)
 			{
 				if(!@ob_end_clean())
-					@ob_clean();
+					ob_clean();
 			}
 			// reset headers in case there was an ob_start("ob_gzhandler") before
 			if($gzHandler && !headers_sent() && ob_list_handlers()===array())
