@@ -6,7 +6,7 @@ $this->widget('BreadcrumbsWidget', array(
 ));
 ?>
 
-<h1><?php echo $this->h1; ?></h1>
+<h1><?php echo $this->h1 . ' ' .$this->bookModel->year . ' рік'; ?></h1>
 
 <div class="info"></div>
 <div class="book-list">
