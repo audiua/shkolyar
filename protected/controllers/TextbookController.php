@@ -216,12 +216,12 @@ public function actionSubject($clas, $subject){
 		$this->setMeta();
 		$this->canonical = Yii::app()->createAbsoluteUrl('/textbook/'.$clas.'/'.$subject);
 
-		$this->keywords = 'Підручники ' . $this->subjectModel->title . ' ' 
+		$this->keywords = 'Підручники ' . $this->subjectModel->name . ' ' 
 			.str_replace('-clas', '', $clas).' клас, Підручники онлайн '
-			. $this->subjectModel->title . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->title . ' ' .$clas. ' клас Україна';
+			. $this->subjectModel->name . ' ' .$clas. ' клас, Підручники '. $this->subjectModel->name . ' ' .$clas. ' клас Україна';
 
 		$this->description = 'Підручники ' 
-			. $this->subjectModel->title . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
+			. $this->subjectModel->name . ' ' .$clas.' клас, для середніх загальноосвітніх шкіл України.';
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.textbook_clas_id='.$this->clasModel->id;
