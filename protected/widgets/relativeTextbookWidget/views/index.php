@@ -7,7 +7,7 @@
 
 			<div class=""> 
 				<?php 
-				echo SeoHide::link('/textbook/'.$clas.'/'.$data->textbook_subject->slug.'/'.$data->slug, CHtml::image($data->getThumb(140,200,'resize')));
+				echo SeoHide::link('/textbook/'.$clas.'-clas/'.$data->textbook_subject->slug.'/'.$data->slug, CHtml::image($data->getThumb(140,200,'resize')));
 
 				// echo CHtml::image(
 				// 	Yii::app()->baseUrl . '/' . $path.'/'.$data->slug.'.'.$data->img, 
