@@ -402,4 +402,4 @@ protected function dateToW3C($date){
 }
 
 
-} // end class SitemapController
+}
