@@ -573,4 +573,21 @@ public function getDescription($subject=null){
 
 }
 
+public function actionSyncPost()
+    {
+    	// d('syncPost');
+    	$id = Yii::app()->request->getPost('id', null);
+    	$issue_id = Yii::app()->request->getPost('issue_id', null);
+    	$issue_embed = Yii::app()->request->getPost('issue_embed', null);
+    	// d($_POST);
+
+    	$textbook = TextbookBook::model()->findByPk($id);
+    	// d($textbook);
+    	$textbook->issue_id = $issue_id;
+    	$textbook->issue_embed = $issue_embed;
+    	$textbook->update();
+
+    	echo 1;
+    }
+
 }

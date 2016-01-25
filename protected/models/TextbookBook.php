@@ -198,38 +198,38 @@ class TextbookBook extends CActiveRecord
     	return parent::beforeSave();
     }
 
-    public function afterSave(){
+    // public function afterSave(){
 
-    	// создам папку для картинок
-    	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->subject->slug;
-    	$clasDir = $dir.'/'.$this->slug;
+    // 	// создам папку для картинок
+    // 	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->slug;
+    // 	$clasDir = $dir.'/'.$this->slug;
 
-    	if(file_exists($dir)){
+    // 	if(file_exists($dir)){
 
-    		if(! is_writable($dir)){
-    			chmod($dir, 0777);
-    		}
+    // 		if(! is_writable($dir)){
+    // 			chmod($dir, 0777);
+    // 		}
 
-    		if(! file_exists($clasDir)){
-    			mkdir($clasDir);
-    			chmod($clasDir, 0777);
+    // 		if(! file_exists($clasDir)){
+    // 			mkdir($clasDir);
+    // 			chmod($clasDir, 0777);
 
-    			mkdir($clasDir.'/book');
-    			chmod($clasDir, 0777);
+    // 			mkdir($clasDir.'/book');
+    // 			chmod($clasDir, 0777);
 
-    			mkdir($clasDir.'/task');
-    			chmod($clasDir, 0777);
+    // 			mkdir($clasDir.'/task');
+    // 			chmod($clasDir, 0777);
 
-    		}
+    // 		}
 
-    		if(! is_writable($clasDir)){
-    			chmod($clasDir, 0777);
-    		}
+    // 		if(! is_writable($clasDir)){
+    // 			chmod($clasDir, 0777);
+    // 		}
     		
-    	}
+    // 	}
 
-    	return parent::afterSave();
-    }
+    // 	return parent::afterSave();
+    // }
 
     public function getUrl(){
 	   if ($this->_url === null){

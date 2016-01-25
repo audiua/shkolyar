@@ -144,6 +144,7 @@ return CMap::mergeArray( array(
 				'/qa.*?'=>'site/removePage',
 				
 
+				'/textbook/syncPost'=>'textbook/syncPost',
 				'position/<token:[a-z0-9-]+>'=>'position/index',
 				'sape/<token:[a-z0-9-]+>'=>'sape/index',
 				'sape/<token:[a-z0-9-]+>/url'=>'sape/sapeUrlToKeyword',
