@@ -137,6 +137,7 @@ class TClas extends CActiveRecord
 	public function forSitemap($full=null){
 		$result = array();
 		$all = self::model()->findAll();
+		return $all;
 		$time = time();
 		foreach($all as $one){
 			$flag = false;

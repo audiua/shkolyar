@@ -233,7 +233,7 @@ class TextbookBook extends CActiveRecord
 
     public function getUrl(){
 	   if ($this->_url === null){
-	        $this->_url = Yii::app()->createUrl( '/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug );
+	        $this->_url = Yii::app()->createUrl( '/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->slug . '/'. $this->slug );
 	   }
 	   return $this->_url;
 	}

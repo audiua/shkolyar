@@ -137,4 +137,28 @@ class TSubject extends CActiveRecord
 		return CHtml::listData(self::model()->findAll(), 'id', 'name');
 
 	}
+
+	// модели для карты сайта
+	public function forSitemap($clasId){
+
+		$clas = TClas::model()->findByAttributes(array('slug'=>$clasId.'-clas'));
+
+		$criteria = new CDbCriteria;
+		$criteria->condition = 't.textbook_clas_id='.$clas->id;
+		$criteria->addCondition('t.public=1');
+		$criteria->addCondition('t.public_time<'.time());
+		$criteria->group = 'textbook_subject_id';
+
+		$subjectsIds = TextbookBook::model()->findAll($criteria);
+		foreach($subjectsIds as $s){
+			$ids[] = $s->textbook_subject_id;
+		}
+
+		$criteria = new CDbCriteria;
+		$criteria->addInCondition('t.id', $ids);
+		
+		$subjects = TSubject::model()->findAll($criteria);
+		return $subjects;
+		
+	}
 }
