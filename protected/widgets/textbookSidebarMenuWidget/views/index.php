@@ -104,6 +104,8 @@
 	
 	<div class="clear"></div>
 
+	<?php if($clas): ?>
+
 	<!-- <div class="title-sidebar-menu">Предмет</div> -->
 	<ul class="sidebar-menu-subject">
 		<li class="<?php echo (is_null($subject)) ? 'active' : '' ; ?>">
@@ -166,6 +168,6 @@
 	</ul>
 	<div class="clear"></div>
 
-
+	<?php endif; ?>
 
 </div>
