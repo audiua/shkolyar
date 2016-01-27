@@ -55,7 +55,7 @@ public function actionIndex() {
     	
         $this->addUrl('/gdz/', self::WEEKLY, 0.5, Helper::lastTime('GdzBook') );
         $this->addModels( GdzClas::model()->forSitemap(), self::WEEKLY, 0.3);
-        $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.5);
+        // $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModelsWithClas('gdz', GdzClas::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModels( GdzBook::model()->public()->findAll(), self::WEEKLY, 0.8);
         
@@ -77,7 +77,7 @@ public function actionIndex() {
         
         $this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
         $this->addModels( Writing::model()->forSitemap('clas'), self::WEEKLY, 0.5, 'writing');
-        $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.5, 'writing');
+        // $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.5, 'writing');
         $this->addWritingWithClas( Writing::model()->public()->findAll(), self::WEEKLY, 0.5);
         $this->addWritingModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
         // $this->addModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
