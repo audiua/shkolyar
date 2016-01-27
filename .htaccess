@@ -10,6 +10,46 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule . index.php
 
+Redirect 301 /textbook/10/algebra/burda http://shkolyar.info/textbook/10-clas/algebra/burda
+Redirect 301 /textbook/10-clas/bio /textbook/10-clas/biologiya
+Redirect 301 /textbook/10-clas/fizika /textbook/10-clas/fizyka
+Redirect 301 /textbook/10-clas/geo /textbook/10-clas/geografiya
+Redirect 301 /textbook/10-clas/geom /textbook/10-clas/geometriya
+Redirect 301 /textbook/10-clas/him /textbook/10-clas/khimiya
+Redirect 301 /textbook/10-clas/lang-ua /textbook/10-clas/ukrajinska-mova
+Redirect 301 /textbook/10-clas/lit-ua /textbook/10-clas/ukrajinska-literatura
+Redirect 301 /textbook/11-clas/bio /textbook/11-clas/biologiya 
+Redirect 301 /textbook/11-clas/geo /textbook/11-clas/geografiya 
+Redirect 301 /textbook/11-clas/geom /textbook/11-clas/geometriya 
+Redirect 301 /textbook/11-clas/him /textbook/11-clas/khimiya 
+Redirect 301 /textbook/11-clas/lang-ua /textbook/11-clas/ukrajinska-mova 
+Redirect 301 /textbook/11-clas/lit-ua /textbook/11-clas/ukrajinska-literatura
+Redirect 301 /textbook/5-clas/lang-ua /textbook/5-clas/ukrajinska-mova
+Redirect 301 /textbook/5-clas/lit-ua /textbook/5-clas/ukrajinska-literatura
+Redirect 301 /textbook/6-clas/geo /textbook/6-clas/geografiya 
+Redirect 301 /textbook/6-clas/lang-ua /textbook/6-clas/ukrajinska-mova 
+Redirect 301 /textbook/6-clas/lit-ua /textbook/6-clas/ukrajinska-literatura 
+Redirect 301 /textbook/7-clas/bio /textbook/7-clas/biologiya 
+Redirect 301 /textbook/7-clas/fizika /textbook/7-clas/fizyka 
+Redirect 301 /textbook/7-clas/geo /textbook/7-clas/geografiya 
+Redirect 301 /textbook/7-clas/geom /textbook/7-clas/geometriya
+Redirect 301 /textbook/7-clas/lang-ua /textbook/7-clas/ukrajinska-mova 
+Redirect 301 /textbook/7-clas/lit-ua /textbook/7-clas/ukrajinska-literatura 
+Redirect 301 /textbook/8-clas/bio /textbook/8-clas/biologiya 
+Redirect 301 /textbook/8-clas/fizika /textbook/8-clas/fizyka 
+Redirect 301 /textbook/8-clas/geo /textbook/8-clas/geografiya 
+Redirect 301 /textbook/8-clas/geom /textbook/8-clas/geometriya 
+Redirect 301 /textbook/8-clas/him /textbook/8-clas/khimiya 
+Redirect 301 /textbook/8-clas/lang-ua /textbook/8-clas/ukrajinska-mova 
+Redirect 301 /textbook/8-clas/lit-ua /textbook/8-clas/ukrajinska-literatura
+Redirect 301 /textbook/9-clas/bio /textbook/9-clas/biologiya 
+Redirect 301 /textbook/9-clas/fizika /textbook/9-clas/fizyka 
+Redirect 301 /textbook/9-clas/geo /textbook/9-clas/geografiya 
+Redirect 301 /textbook/9-clas/geom /textbook/9-clas/geometriya 
+Redirect 301 /textbook/9-clas/him /textbook/9-clas/khimiya 
+Redirect 301 /textbook/9-clas/lang-ua /textbook/9-clas/ukrajinska-mova 
+Redirect 301 /textbook/9-clas/lit-ua /textbook/9-clas/ukrajinska-literatura 
+
 <IfModule mod_deflate.c>
 SetOutputFilter DEFLATE
 Header append Vary User-Agent
