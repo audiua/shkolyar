@@ -182,6 +182,7 @@ return CMap::mergeArray( array(
 				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
 				'<controller:\w+>/<clas:[0-9]-clas>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[0-9]+>'=>'<controller>/clas',
 
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',
