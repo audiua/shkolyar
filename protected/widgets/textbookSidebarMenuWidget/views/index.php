@@ -95,7 +95,7 @@
 				if( !is_null($clas) && $clas->clas->slug == $oneClas->clas->slug){
 					echo '<span class="active">'.$shortCkas.'</span>';
 				} else {
-					echo SeoHide::link($urlClas, $shortCkas);
+					echo SeoHide::link($urlClas, $oneClas->clas->slug);
 				} ?>
 			</li>
 			
