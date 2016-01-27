@@ -90,12 +90,12 @@
 				// } else  {
 				// 	$urlClas .= '/'.$oneClas->clas->slug;
 				// }
-				$urlClas .= '/'.$shortCkas;
+				$urlClas .= '/'.$oneClas->clas->slug;
 
 				if( !is_null($clas) && $clas->clas->slug == $oneClas->clas->slug){
 					echo '<span class="active">'.$shortCkas.'</span>';
 				} else {
-					echo SeoHide::link($urlClas, $oneClas->clas->slug);
+					echo SeoHide::link($urlClas, $shortCkas);
 				} ?>
 			</li>
 			
