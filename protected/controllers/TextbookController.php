@@ -255,6 +255,13 @@ public function actionSubject($clas, $subject){
  */
 public function actionCurrentSubject($subject){
 
+	$subjectModel = TSubject::model()->findByAttributes(array('slug'=>$subject));
+	if(!$subjectModel){
+		throw new CHttpException('404', 'немае такого предмету');
+	} else {
+		throw new CHttpException('410', 'страница удалена');
+	}
+
 	// TODO - закешировать на сутка
 	if($this->beginCache('textbook_current_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
@@ -263,10 +270,13 @@ public function actionCurrentSubject($subject){
 
 		$this->checkSubject($subject);
 
-		$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
-		if(!$subjectModel){
-			throw new CHttpException('404', 'немае такого предмету');
-		}
+		// $subjectModel = TSubject::model()->findByAttributes(array('slug'=>$subject));
+		// if(!$subjectModel){
+		// 	throw new CHttpException('404', 'немае такого предмету');
+		// } else {
+		// 	header("HTTP/1.1 410 Gone");
+		// 	$this->render('410');
+		// }
 
 		$description = $this->getDescription($subjectModel->id);
 

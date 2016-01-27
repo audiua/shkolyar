@@ -221,6 +221,13 @@ public function actionCurrentSubject($subject){
 	// print_r($_POST);
 	// die;
 
+	$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
+	if(!$subjectModel){
+		throw new CHttpException('404', 'немае такого предмету');
+	} else {
+		throw new CHttpException('410', 'страница удалена');
+	}
+
 	// TODO - закешировать на сутка
 	if($this->beginCache('gdz_current_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
