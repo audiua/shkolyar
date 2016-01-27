@@ -261,6 +261,7 @@ public function actionCurrentSubject($subject){
 	} else {
 		throw new CHttpException('410', 'страница удалена');
 	}
+	Yii::app()->end();
 
 	// TODO - закешировать на сутка
 	if($this->beginCache('textbook_current_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){

@@ -1,5 +1,3 @@
-
-	
 <img class="error-image" src="/images/410.gif" alt="404 error">
 
 <div class="error-block">
