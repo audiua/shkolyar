@@ -2,8 +2,10 @@
 	<div class="menu">
 		<div class="info">Навігація</div>
 
-		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
+		<?php if( $this->id == 'gdz' ):  ?>
 			<?php $this->widget('BookSidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'textbook') : ?>
+			<?php $this->widget('TextbookSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'knowall') : ?>
 			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'library') : ?>

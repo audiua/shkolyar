@@ -64,44 +64,44 @@ public static function getCount()
  */
 public function actionIndex(){
 
-	$classes = TClas::model()->findAll();
-	foreach($classes as $clas){
+	// $classes = TClas::model()->findAll();
+	// foreach($classes as $clas){
 
-		$criteria = new CDbCriteria;
-		$criteria->condition = 't.textbook_clas_id='.$clas->id;
-		$criteria->addCondition('t.public=1');
-		$criteria->addCondition('t.public_time<'.time());
-		$criteria->group = 'textbook_subject_id';
+	// 	$criteria = new CDbCriteria;
+	// 	$criteria->condition = 't.textbook_clas_id='.$clas->id;
+	// 	$criteria->addCondition('t.public=1');
+	// 	$criteria->addCondition('t.public_time<'.time());
+	// 	$criteria->group = 'textbook_subject_id';
 
-		$subjectsIds = TextbookBook::model()->findAll($criteria);
-		foreach($subjectsIds as $s){
-			$ids[] = $s->textbook_subject_id;
-		}
+	// 	$subjectsIds = TextbookBook::model()->findAll($criteria);
+	// 	foreach($subjectsIds as $s){
+	// 		$ids[] = $s->textbook_subject_id;
+	// 	}
 
-		$criteria = new CDbCriteria;
-		$criteria->addInCondition('t.id', $ids);
+	// 	$criteria = new CDbCriteria;
+	// 	$criteria->addInCondition('t.id', $ids);
 		
-		$subjects = TSubject::model()->findAll($criteria);
+	// 	$subjects = TSubject::model()->findAll($criteria);
 
-		foreach($subjects as $subject){
-			file_put_contents('keywords', 'підручники ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . "\n", FILE_APPEND);
-			// echo 'підручники онлайн ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . '<br>';
-			// echo  $subject->name . ' ' . str_replace('-clas', '', $clas->slug) . ' клас ' . 'підручники онлайн' . '<br>';
+	// 	foreach($subjects as $subject){
+	// 		file_put_contents('keywords', 'підручники ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . "\n", FILE_APPEND);
+	// 		// echo 'підручники онлайн ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . '<br>';
+	// 		// echo  $subject->name . ' ' . str_replace('-clas', '', $clas->slug) . ' клас ' . 'підручники онлайн' . '<br>';
 			
 
-			$criteria = new CDbCriteria;
-			$criteria->condition = 't.textbook_clas_id='.$clas->id;
-			$criteria->addCondition('t.public=1');
-			$criteria->addCondition('t.public_time<'.time());
-			$criteria->addCondition('t.textbook_subject_id='.$subject->id);
-			$books = TextbookBook::model()->findAll($criteria);
+	// 		$criteria = new CDbCriteria;
+	// 		$criteria->condition = 't.textbook_clas_id='.$clas->id;
+	// 		$criteria->addCondition('t.public=1');
+	// 		$criteria->addCondition('t.public_time<'.time());
+	// 		$criteria->addCondition('t.textbook_subject_id='.$subject->id);
+	// 		$books = TextbookBook::model()->findAll($criteria);
 
-			foreach($books as $book){
-				// echo 'підручник ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . ' ' . $book->author.'<br>';
-				file_put_contents('keywords', 'підручник ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . ' ' . $book->author . "\n", FILE_APPEND);
-			}
-		}
-	}
+	// 		foreach($books as $book){
+	// 			// echo 'підручник ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . ' ' . $book->author.'<br>';
+	// 			file_put_contents('keywords', 'підручник ' . str_replace('-clas', '', $clas->slug) . ' клас ' . $subject->name . ' ' . $book->author . "\n", FILE_APPEND);
+	// 		}
+	// 	}
+	// }
 
 
 

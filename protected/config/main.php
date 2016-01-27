@@ -75,6 +75,7 @@ return CMap::mergeArray( array(
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.textbookSidebarMenuWidget.*',
 		'application.widgets.writingSidebarMenuWidget.*',
 		'application.widgets.librarySidebarMenuWidget.*',
 		'application.widgets.knowallSidebarMenuWidget.*',
