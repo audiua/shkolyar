@@ -168,6 +168,8 @@ return CMap::mergeArray( array(
 
 				'writing/<clas:\d+>/page/<page:\d+>'=>'writing/clas',
 				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
+				'library/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'library/view',
+				'knowall/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'knowall/view',
 
 				'<controller:\w+>/<clas:[a-z0-9-]+>/page/<page:\d>'=>'<controller>/clas',
 				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
