@@ -8,7 +8,7 @@
         <meta name='yandex-verification' content='4e83bfd325d49eca' />
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
         <!-- <link rel="canonical" href="<?php // echo $this->canonical; ?>"> -->
-
+        <meta name="verify-admitad" content="edbcdfe0b6" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
