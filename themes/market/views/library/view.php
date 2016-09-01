@@ -46,6 +46,13 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
+<!-- admitad.banner: 4ss1yy7fyeedbcdfe0b68753afd1f1 Letyshops -->
+<a target="_blank" rel="nofollow" href="https://lenkmio.com/g/4ss1yy7fyeedbcdfe0b68753afd1f1/?i=4&subid=sh"><img width="500" height="500" border="0" src="https://ad.admitad.com/b/4ss1yy7fyeedbcdfe0b68753afd1f1/" alt="Letyshops"/></a>
+<!-- /admitad.banner -->
+
+<div class="clear"></div>
+<div class="separator"></div>
+
 <?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <div class="info">Виберіть сторінку</div>
