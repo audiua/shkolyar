@@ -1,6 +1,3 @@
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
-
 <?php  
 $this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
@@ -19,11 +16,11 @@ $this->widget('BreadcrumbsWidget', array(
 
 
 <div class="info">Виберіть предмет</div>
-<?php $this->widget('SubjectWidget', array('model'=>$this->clasModel->textbook_subject)); ?>
+<?php $this->widget('SubjectWidget', array('model'=>$subjects)); ?>
 
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <?php $this->widget('DataBookWidget', array('model'=>$books)); ?>

@@ -8,10 +8,10 @@
         <meta name='yandex-verification' content='4e83bfd325d49eca' />
         <base href="<?php  echo Yii::app()->createAbsoluteUrl('/'); ?>">
         <!-- <link rel="canonical" href="<?php // echo $this->canonical; ?>"> -->
-
+        <meta name="verify-admitad" content="edbcdfe0b6" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        
+
         <meta http-equiv="x-dns-prefetch-control" content="on">
         <link rel="dns-prefetch" href="//vk.com">
         <link rel="dns-prefetch" href="//vk.me">
@@ -73,12 +73,13 @@
             <div class="red"></div>
             <div class="black"></div> -->
 
+            <!-- <div class="top-b"><?php // $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?></div> -->
             <div class="content">
 
                 
-            <!-- <div class="h-direct">
-                <img src="/images/hor.jpeg"> 
-            </div> -->        
+            <div class="h-direct">
+                <?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+            </div>        
 
 
                 

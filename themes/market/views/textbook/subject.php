@@ -1,6 +1,3 @@
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
-
 <?php  
 
 $this->widget('BreadcrumbsWidget', array(
@@ -11,7 +8,7 @@ $this->widget('BreadcrumbsWidget', array(
 ?>
 
 
-<h1>Підручники <?php echo $this->param['clas'] . ' клас ' . $this->subjectModel->subject->title; ?></h1>
+<h1>Підручники <?php echo str_replace('-clas', '', $this->param['clas']) . ' клас ' . $this->subjectModel->name; ?></h1>
 
 <div class="description">
   <?php echo $this->subjectModel->description; ?>
@@ -20,7 +17,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <div class="info">Виберіть підручник</div> 
  

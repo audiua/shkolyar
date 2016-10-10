@@ -55,17 +55,21 @@ public function actionIndex() {
     	
         $this->addUrl('/gdz/', self::WEEKLY, 0.5, Helper::lastTime('GdzBook') );
         $this->addModels( GdzClas::model()->forSitemap(), self::WEEKLY, 0.3);
-        $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.5);
+        // $this->addModels( GdzSubject::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModelsWithClas('gdz', GdzClas::model()->forSitemap(), self::WEEKLY, 0.5);
         $this->addModels( GdzBook::model()->public()->findAll(), self::WEEKLY, 0.8);
         
         $this->addUrl('/textbook/', self::WEEKLY, 0.5, Helper::lastTime('TextbookBook') );
-        $this->addModels( TextbookClas::model()->forSitemap(), self::WEEKLY, 0.3);
-        $this->addModels( TextbookSubject::model()->forSitemap(), self::WEEKLY, 0.5);
-        $this->addModelsWithClas('textbook', TextbookClas::model()->forSitemap(), self::WEEKLY, 0.5);
-        $this->addModels( TextbookBook::model()->public()->findAll(), self::WEEKLY, 0.8);
-        // $this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
-        // $this->addUrl('/library/', self::WEEKLY, 0.5, Helper::lastTime('Library') );
+        $this->addModels( TClas::model()->forSitemap(), self::WEEKLY, 0.3, 'textbook');
+        $this->addModelsTextbook( TSubject::model()->forSitemap(5), self::WEEKLY, 0.5, 5);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(6), self::WEEKLY, 0.5, 6);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(7), self::WEEKLY, 0.5, 7);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(8), self::WEEKLY, 0.5, 8);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(9), self::WEEKLY, 0.5, 9);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(10), self::WEEKLY, 0.5, 10);
+        $this->addModelsTextbook( TSubject::model()->forSitemap(11), self::WEEKLY, 0.5, 11);
+        // $this->addModels( TextbookBook::model()->public()->findAll(), self::WEEKLY, 0.8);
+
      
         $this->addUrl('/knowall/', self::WEEKLY, 0.5, Helper::lastTime('Knowall') );
         $this->addModels( KnowallCategory::model()->forSitemap(), self::WEEKLY, 0.5);
@@ -73,7 +77,7 @@ public function actionIndex() {
         
         $this->addUrl('/writing/', self::WEEKLY, 0.5, Helper::lastTime('Writing') );
         $this->addModels( Writing::model()->forSitemap('clas'), self::WEEKLY, 0.5, 'writing');
-        $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.5, 'writing');
+        // $this->addModels( Writing::model()->forSitemap('subject'), self::WEEKLY, 0.5, 'writing');
         $this->addWritingWithClas( Writing::model()->public()->findAll(), self::WEEKLY, 0.5);
         $this->addWritingModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
         // $this->addModels( Writing::model()->public()->findAll(), self::WEEKLY, 0.8);
@@ -160,6 +164,42 @@ public function addModels($models, $changeFreq=self::DAILY, $priority=0.5, $mode
                 
             	$item['lastmod'] = $this->dateToW3C((int)$model->update_time);
         	}
+
+
+        }
+
+        $this->items[] = $item;
+    }
+}
+
+/**
+ * @param CActiveRecord[] $models
+ * @param string $changeFreq
+ * @param float $priority
+ */
+public function addModelsTextbook($models, $changeFreq=self::DAILY, $priority=0.5, $clas){
+    $time=time();
+
+    foreach ($models as $model){
+
+        $item = array(
+            'loc' => $this->siteUrl . '/textbook/'.$clas.'-clas'. $model->getUrl(),
+            'changefreq' => $changeFreq,
+            'priority' => $priority
+        );
+
+        if ($model->hasAttribute('update_time')){
+
+            if(isset($model->public_time)){
+                if($model->public_time > $model->update_time){
+                    $item['lastmod'] = $this->dateToW3C($model->public_time);
+                } else {
+                    $item['lastmod'] = $this->dateToW3C((int)$model->update_time);
+                }
+            } else {
+                
+                $item['lastmod'] = $this->dateToW3C((int)$model->update_time);
+            }
 
 
         }
@@ -360,4 +400,4 @@ protected function dateToW3C($date){
 }
 
 
-} // end class SitemapController
+}

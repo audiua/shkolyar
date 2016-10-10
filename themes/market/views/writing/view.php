@@ -1,6 +1,3 @@
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
-
 <?php  
 $this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
@@ -11,13 +8,24 @@ $this->widget('BreadcrumbsWidget', array(
 
 <h1><?php echo  $model->title; ?> </h1>
 
+<div class="clear"></div>
+<div class="separator task-separator"></div>
+<!--
+<div class="center">
+	
+	<a target="_blank" rel="nofollow" href="https://lenkmio.com/g/4ss1yy7fyeedbcdfe0b68753afd1f1/?i=4&subid=sh"><img width="500" height="500" border="0" src="https://ad.admitad.com/b/4ss1yy7fyeedbcdfe0b68753afd1f1/" alt="Letyshops"/></a>
+</div>
+-->
+
+<div class="clear"></div>
+<div class="separator task-separator"></div>
 <div class="knowall-article">
 	
 <?php echo  $model->text; ?>
 <?php $this->renderDynamic('getUpdateBtn', array('id'=>$model->id)); ?>
 </div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'big-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 
 

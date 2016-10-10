@@ -40,7 +40,7 @@ public function filters() {
  */
 public function actionIndex(){
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
+	if($this->beginCache('main_library_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'Художня література'
@@ -73,7 +73,7 @@ public function actionIndex(){
  */
 public function actionCategory($category){
 	// TODO - закешировать на сутки
-	if($this->beginCache('category_library_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
+	if($this->beginCache('category_library_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'page'))) ){
 
 		$criteria = new CDbCriteria;
 		$criteria->condition = 't.slug="'.$category.'"';
@@ -112,7 +112,7 @@ public function actionCategory($category){
 public function actionView($category, $article){
 
 
-	if($this->beginCache('library_category_article_page_', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
+	if($this->beginCache('library_category_article_page_'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('category', 'article'))) ){
 
 		$path = Yii::app()->theme->basePath;
 	    $mainAssets = Yii::app()->AssetManager->publish($path);

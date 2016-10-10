@@ -75,7 +75,7 @@ $('.search-form form').submit(function(){
 		),
 		'textbook_clas_id'=>array(
 			'name'=>'textbook_clas_id',
-			'value'=>'$data->textbook_clas->clas->slug',
+			'value'=>'$data->textbook_clas->slug',
 			'header'=>'Клас',
 			'htmlOptions'=>array('width'=>'30px')
 		),

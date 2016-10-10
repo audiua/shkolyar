@@ -15,7 +15,11 @@ class RelativeKnowallWidget extends CWidget{
 		if($this->beginCache( 'relative_knowall_article_' . $this->article->id ) ){
 
 			// передаем данные в представление виджета
-	        $this->render('index',array('model' => $this->relativeArticle($this->countBook)));
+			$view = 'index';
+			if(Yii::app()->theme->name =='m'){
+				$view = 'm_'.$view;
+			}
+	        $this->render($view,array('model' => $this->relativeArticle($this->countBook)));
 
 	        $this->endCache(); 
 		}

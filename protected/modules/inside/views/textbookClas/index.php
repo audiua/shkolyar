@@ -58,16 +58,15 @@ $('.search-form form').submit(function(){
 			'value'=>'$data->id',
 			'htmlOptions'=>array('width'=>'30px')
 		),
+		'slug'=>array(
+			'name'=>'slug',
+			'value'=>'$data->slug',
+			'htmlOptions'=>array('width'=>'30px')
+		),
 		'description'=>array(
 			'name'=>'description',
 			'value'=>'$data->description',
 			'htmlOptions'=>array('width'=>'800px')
-		),
-		'clas_id'=>array(
-			'name'=>'clas_id',
-			'value'=>'$data->clas->slug',
-			'header'=>'Клас',
-			'htmlOptions'=>array('width'=>'50px')
 		),
 		'create_time'=>array(
 			'name'=>'create_time',

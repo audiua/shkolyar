@@ -25,7 +25,19 @@ class DataBookWidget extends CWidget{
 		// }
 
        // передаем данные в представление виджета
-       $this->render('index',array('dataProvider' => $this->model));
+
+		$view = 'index';
+		if(Yii::app()->theme->name == 'm'){
+			$view = 'm_'.$view;
+		}
+
+
+		if($this->controller->id == 'textbook'){
+			$view = 't_'.$view;
+
+		}
+
+       $this->render($view,array('dataProvider' => $this->model));
    }
 
 }

@@ -62,7 +62,7 @@ public function actionIndex(){
 
 
 	// TODO - закешировать на 4 hour
-	if($this->beginCache('main-gdz-page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
+	if($this->beginCache('main-gdz-page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('page'))) ){
 
 		$this->breadcrumbs = array(
 			'ГДЗ'
@@ -101,7 +101,7 @@ public function actionIndex(){
 public function actionClas($clas){
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('gdz_clas_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
+	if($this->beginCache('gdz_clas_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'page'))) ){
 		
 		$this->checkClas($clas);
 
@@ -161,7 +161,7 @@ public function actionClas($clas){
 public function actionSubject($clas, $subject){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
+	if($this->beginCache('gdz_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'page'))) ){
 
 		$this->checkClas($clas);
 		$this->checkSubject($subject);
@@ -221,8 +221,15 @@ public function actionCurrentSubject($subject){
 	// print_r($_POST);
 	// die;
 
+	$subjectModel = Subject::model()->findByAttributes(array('slug'=>$subject));
+	if(!$subjectModel){
+		throw new CHttpException('404', 'немае такого предмету');
+	} else {
+		throw new CHttpException('410', 'страница удалена');
+	}
+
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_current_subject_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
+	if($this->beginCache('gdz_current_subject_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('subject', 'page'))) ){
 
 		// все классы
 		$this->allClasModel = GdzClas::model()->cache(86400)->findAll();
@@ -297,7 +304,7 @@ public function actionCurrentSubject($subject){
 public function actionBook( $clas, $subject, $book ){
 
 	// TODO - закешировать на сутка
-	if($this->beginCache('gdz_book_page', array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
+	if($this->beginCache('gdz_book_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME, 'varyByParam'=>array('clas', 'subject', 'book'))) ){
 		
 		$path = Yii::app()->theme->basePath;
 	    $mainAssets = Yii::app()->AssetManager->publish($path);

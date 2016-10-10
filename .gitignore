@@ -13,3 +13,4 @@ robots.txt
 moderator.txt
 sitemap.xml
 !/.gitignore
+.idea

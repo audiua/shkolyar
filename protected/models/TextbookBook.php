@@ -68,7 +68,7 @@ class TextbookBook extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'textbook_subject' => array(self::BELONGS_TO, 'TextbookSubject', 'textbook_subject_id'),
+			'textbook_subject' => array(self::BELONGS_TO, 'TSubject', 'textbook_subject_id'),
 			'textbook_clas' => array(self::BELONGS_TO, 'TextbookClas', 'textbook_clas_id'),
 		);
 	}
@@ -198,49 +198,50 @@ class TextbookBook extends CActiveRecord
     	return parent::beforeSave();
     }
 
-    public function afterSave(){
+    // public function afterSave(){
 
-    	// создам папку для картинок
-    	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->subject->slug;
-    	$clasDir = $dir.'/'.$this->slug;
+    // 	// создам папку для картинок
+    // 	$dir = Yii::app()->basePath . '/../img/textbook/'.$this->textbook_clas->clas->slug . '/' . $this->textbook_subject->slug;
+    // 	$clasDir = $dir.'/'.$this->slug;
 
-    	if(file_exists($dir)){
+    // 	if(file_exists($dir)){
 
-    		if(! is_writable($dir)){
-    			chmod($dir, 0777);
-    		}
+    // 		if(! is_writable($dir)){
+    // 			chmod($dir, 0777);
+    // 		}
 
-    		if(! file_exists($clasDir)){
-    			mkdir($clasDir);
-    			chmod($clasDir, 0777);
+    // 		if(! file_exists($clasDir)){
+    // 			mkdir($clasDir);
+    // 			chmod($clasDir, 0777);
 
-    			mkdir($clasDir.'/book');
-    			chmod($clasDir, 0777);
+    // 			mkdir($clasDir.'/book');
+    // 			chmod($clasDir, 0777);
 
-    			mkdir($clasDir.'/task');
-    			chmod($clasDir, 0777);
+    // 			mkdir($clasDir.'/task');
+    // 			chmod($clasDir, 0777);
 
-    		}
+    // 		}
 
-    		if(! is_writable($clasDir)){
-    			chmod($clasDir, 0777);
-    		}
+    // 		if(! is_writable($clasDir)){
+    // 			chmod($clasDir, 0777);
+    // 		}
     		
-    	}
+    // 	}
 
-    	return parent::afterSave();
-    }
+    // 	return parent::afterSave();
+    // }
 
     public function getUrl(){
 	   if ($this->_url === null){
-	        $this->_url = Yii::app()->createUrl( '/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug );
+	        $this->_url = Yii::app()->createUrl( '/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->slug . '/'. $this->slug );
 	   }
 	   return $this->_url;
 	}
 
 	public function getImgDir($mkdir = true){
     	// $directory = Yii::app()->basePath . '/../img/gdz/thumbs/'.$this->uniqKnowallId();
-    	$directory = Yii::app()->basePath . '/../img/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug .'/book';
+    	$clas = $this->textbook_clas->clas->slug;
+    	$directory = Yii::app()->basePath . '/../img/textbook/' . $clas . '/'. $this->textbook_subject->slug . '/'. $this->id .'/';
         if ($mkdir && file_exists($directory) == false) {
             mkdir($directory, 0777, true);
         }
@@ -250,18 +251,18 @@ class TextbookBook extends CActiveRecord
 
     public function getThumb($width=null, $height=null, $mode='origin')
 	{
-		$dir = $this->getImgDir(false) . '/';
-		$originFile = $dir . $this->slug . '.' . $this->img;
+		$dir = $this->getImgDir(false);
+		$originFile = $dir . 'origin.jpg';
 
 		if (!is_file($originFile)) {
 			return "http://www.placehold.it/{$width}x{$height}/EFEFEF/AAAAAA";
 		}
 
 		if ($mode == 'origin') {
-			return '/img/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug .'/book/'.$this->slug . '.' . $this->img;
+			return '/img/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->slug . '/'. $this->id .'/origin.jpg';
 		}
 
-		$fileName = $this->slug . '_' . $width . 'x' . $height . '.' . $this->img;
+		$fileName = $width . 'x' . $height . '_origin.jpg';
 		$filePath = $dir . $fileName;
 		if (!is_file($filePath)) {
 			if ($mode == 'resize') {
@@ -272,6 +273,6 @@ class TextbookBook extends CActiveRecord
 		}
 
 		// return '/img/writing/thumbs/'.$this->uniqKnowallId(). '/'. $fileName;
-		return '/img/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->subject->slug . '/'. $this->slug .'/book/'.$fileName;
+		return '/img/textbook/' . $this->textbook_clas->clas->slug . '/'. $this->textbook_subject->slug . '/'. $this->id .'/'.$fileName;
 	}
 }

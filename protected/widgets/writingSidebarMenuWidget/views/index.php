@@ -35,7 +35,7 @@
 	<div class="clear"></div>
 
 
-
+	
 
 	<!-- <div class="title-sidebar-menu">Клас</div> -->
 	<ul class="sidebar-menu-clas">
@@ -100,7 +100,7 @@
 	
 	<div class="clear"></div>
 
-
+	<?php if($clas): ?>
 	<div class="clear"></div>
 
 	<!-- <div class="title-sidebar-menu">Предмет</div> -->
@@ -151,7 +151,7 @@
 	</ul>
 	<div class="clear"></div>
 
-
+	<?php endif; ?>
 
 
 </div>

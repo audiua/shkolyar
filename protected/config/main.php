@@ -23,17 +23,17 @@ return CMap::mergeArray( array(
 	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
 	// 'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 
-	'onBeginRequest' => function($event){
-	    return ob_start();
-	},
+	// 'onBeginRequest' => function($event){
+	//     return ob_start();
+	// },
 
-	'onEndRequest' => function($event){
-		$page = ob_get_flush();
-		// $page = preg_replace('/<!--\s+(.*?)\s+-->/', '', $page);
-		$page = preg_replace('~<!--\s+.*\s+-->~', '', $page);
-		// file_put_contents('filename3', $page);
-    	return $page;
-	},
+	// 'onEndRequest' => function($event){
+	// 	$page = ob_get_flush();
+	// 	// $page = preg_replace('/<!--\s+(.*?)\s+-->/', '', $page);
+	// 	$page = preg_replace('~<!--\s+.*\s+-->~', '', $page);
+	// 	// file_put_contents('filename3', $page);
+ //    	return $page;
+	// },
 
 	//GZIP compress   
 	// 'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
@@ -75,6 +75,7 @@ return CMap::mergeArray( array(
 		'application.widgets.linkPagerWidget.*',
 		'application.widgets.breadcrumdsWidget.*',
 		'application.widgets.bookSidebarMenuWidget.*',
+		'application.widgets.textbookSidebarMenuWidget.*',
 		'application.widgets.writingSidebarMenuWidget.*',
 		'application.widgets.librarySidebarMenuWidget.*',
 		'application.widgets.knowallSidebarMenuWidget.*',
@@ -144,6 +145,7 @@ return CMap::mergeArray( array(
 				'/qa.*?'=>'site/removePage',
 				
 
+				'/textbook/syncPost'=>'textbook/syncPost',
 				'position/<token:[a-z0-9-]+>'=>'position/index',
 				'sape/<token:[a-z0-9-]+>'=>'sape/index',
 				'sape/<token:[a-z0-9-]+>/url'=>'sape/sapeUrlToKeyword',
@@ -166,20 +168,24 @@ return CMap::mergeArray( array(
 
 				'writing/<clas:\d+>/page/<page:\d+>'=>'writing/clas',
 				'writing/<clas:\d+>/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'writing/view',
+				'library/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'library/view',
+				'library/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>/<task:\d+>'=>'library/task',
+				'knowall/<category:[0-9a-z-]+>/<article:[0-9a-z-]+>'=>'knowall/view',
 
-				'<controller:\w+>/<clas:\d+>/page/<page:\d>'=>'<controller>/clas',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/page/<page:\d>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/subject',
 				'<controller:knowall|library|writing|gdz|textbook>/page/<page:\d>'=>'<controller>/index',
 				
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<paragraph:\d+>/<task:\d+>'=>'<controller>/nestedTwo',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<section:\d+>/<task:\d+>'=>'<controller>/nestedOne',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>/<task:\d+>'=>'<controller>/task',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>/<book:[a-z0-9-]+>'=>'<controller>/book',
 				
 				
-				'<controller:\w+>/<clas:\d+>/<subject:[a-z-]+>'=>'<controller>/subject',
+				'<controller:\w+>/<clas:[a-z0-9-]+>/<subject:[a-z-]+>'=>'<controller>/subject',
 				
-				'<controller:\w+>/<clas:\d+>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[0-9]-clas>'=>'<controller>/clas',
+				'<controller:\w+>/<clas:[0-9]+>'=>'<controller>/clas',
 
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>/page/<page:\d>'=>'<controller>/currentSubject',
 				'<controller:gdz|textbook|writing>/<subject:[a-z-]+>'=>'<controller>/currentSubject',

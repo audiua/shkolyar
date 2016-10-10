@@ -1,16 +1,11 @@
 <div class="sidebar-block">
-	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
-</div>
-
-<div class="separator"></div>
-<div class="clear"></div>
-
-<div class="sidebar-block">
 	<div class="menu">
 		<div class="info">Навігація</div>
 
-		<?php if( $this->id == 'gdz' || $this->id == 'textbook' ):  ?>
+		<?php if( $this->id == 'gdz' ):  ?>
 			<?php $this->widget('BookSidebarMenuWidget'); ?>
+		<?php elseif($this->id == 'textbook') : ?>
+			<?php $this->widget('TextbookSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'knowall') : ?>
 			<?php $this->widget('KnowallSidebarMenuWidget'); ?>
 		<?php elseif($this->id == 'library') : ?>
@@ -30,7 +25,6 @@
 
 <div class="separator"></div>
 <div class="clear"></div>
-
 
 <div class="sidebar-block social">
 	<div class="info">Соц. мережі</div>
@@ -96,6 +90,13 @@
 		</div>
 	</noindex>
 
+</div>
+
+<div class="separator"></div>
+<div class="clear"></div>
+
+<div class="sidebar-block">
+	<?php $this->widget('BannerWidget', array('params'=>array('name'=>'large-skyscraper-sidebar-top'))); ?>
 </div>
 
 <div class="separator"></div>

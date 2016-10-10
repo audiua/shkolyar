@@ -59,7 +59,7 @@ public function actionIndex(){
 	// $code->create(Yii::getPathOfAlias('webroot').'/img/qr/file'.time().'.png');
 
 	// TODO - закешировать на сутки
-	if($this->beginCache('main_page', array('duration'=>self::CACHE_TIME)) ){
+	if($this->beginCache('main_page'.Yii::app()->theme->name, array('duration'=>self::CACHE_TIME)) ){
 
 		$this->canonical = Yii::app()->createAbsoluteUrl('/');
 		$this->pageTitle = 'Гдз, готові домашні завдяння, гдз онлайн, підручники, твори, художня література, всезнайка';
@@ -79,7 +79,7 @@ public function actionError()
 	if($error=Yii::app()->errorHandler->error)
 	{
 		if(Yii::app()->request->isAjaxRequest){
-			echo $error['message'];
+			// echo $error['message'];
 		} else {
 			$this->pageTitle=Yii::app()->name . ' - Error '.$error['code'];
 			$this->render('error'.$error['code'], $error);
@@ -162,20 +162,20 @@ public function actionLogin(){
 
 
 	// авторизация только после получения куки на 1 мин
-	$model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
-	if( ! $model){
-		throw new CHttpException('404');
-	}
+	// $model = Setting::model()->findByAttributes(array('field'=>'cookie_token'));
+	// if( ! $model){
+	// 	throw new CHttpException('404');
+	// }
 
-	$token = Yii::app()->request->cookies['cookie_token'];
-	if( ! $token ){
-		throw new CHttpException('404');
-	}
+	// $token = Yii::app()->request->cookies['cookie_token'];
+	// if( ! $token ){
+	// 	throw new CHttpException('404');
+	// }
 
-	$value = unserialize($model->value);
-	if( $value['expire'] < time() || $token->value !== $value['token'] ){
-		throw new CHttpException('404');
-	}
+	// $value = unserialize($model->value);
+	// if( $value['expire'] < time() || $token->value !== $value['token'] ){
+	// 	throw new CHttpException('404');
+	// }
 
 
 	$this->layout = '//layouts/login';
@@ -193,7 +193,7 @@ public function actionLogin(){
 		$model->attributes=$_POST['LoginForm'];
 		// validate user input and redirect to the previous page if valid
 		if($model->validate() && $model->login()){
-			$this->redirect(Yii::app()->user->returnUrl);
+			$this->redirect('/inside/admin');
 		}
 	}
 	// display the login form
@@ -243,7 +243,7 @@ public function actionJewel(){
 		);
 
 		if($model->update()){
-			$this->redirect(Yii::app()->user->returnUrl);
+			$this->redirect('/login');
 		}
 	}
 }

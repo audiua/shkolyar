@@ -28,7 +28,13 @@ class TaskWidget extends CWidget{
     }
 
 	public function run(){
-        $this->render( 'indexAjax', array('model' => $this->model) );
+
+        $view = 'indexAjax';
+        if(Yii::app()->theme->name == 'm'){
+            $view = 'm_'.$view;
+        }
+
+        $this->render( $view, array('model' => $this->model) );
     }
 
     // рекурсивно дерево в асоц массив

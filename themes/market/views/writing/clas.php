@@ -1,6 +1,3 @@
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-top'))); ?>
-<div class="clear"></div>
-
 <?php  
 $this->widget('BreadcrumbsWidget', array(
     'links'=>$this->breadcrumbs,
@@ -23,7 +20,7 @@ $this->widget('BreadcrumbsWidget', array(
 <div class="clear"></div>
 <div class="separator"></div>
 
-<?php $this->widget('BannerWidget', array('params'=>array('name'=>'full-banner-content-middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <?php $this->widget('DataWritingWidget', array('model'=>$model)); ?>
 <div class="clear"></div>
