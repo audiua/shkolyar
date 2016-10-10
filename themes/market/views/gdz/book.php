@@ -86,7 +86,7 @@ $this->widget('BreadcrumbsWidget', array(
 
 </div>
 -->
-<?php //$this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
+<?php $this->widget('BannerWidget', array('params'=>array('name'=>'sh_netboard_middle'))); ?>
 
 <div class="clear"></div>
 <div class="separator task-separator"></div>
